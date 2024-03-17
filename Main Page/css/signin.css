@@ -47,8 +47,8 @@
 
 .signin-container {
     
-    width: 30rem;
-    margin: 4rem auto;
+    width: 45%;
+    margin: 4em auto;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
