@@ -31,7 +31,7 @@ h2{
 
 :root {
     /* so we can add all clors heree */
-    --button--bg:  rgb(222, 160, 174);
+    --color--bg:  rgb(201, 170, 178);
     --color--txt: white;
 }
 
@@ -60,8 +60,17 @@ h2{
     }
     .signInButton{
         border: none;
-     
+        margin: 0 0.5rem;
+        background-color: white;
+        padding: 0.8rem;
+        border-radius: 4rem;
     }
+    .signInButton:hover{
+        background-color: var(--color--bg);
+    }
+    /* .profile-icon{
+      
+    } */
 }
 
 /* navigation */
@@ -72,14 +81,16 @@ h2{
         list-style: none;  
         display: flex; 
         justify-content:center; 
-        
-        li a{
-            color: rgb(6, 5, 5);
-            text-decoration: none;
-            margin: 1rem 2.5rem
-    }
+        li {
+            border-radius: 10rem;
+            padding: 0.3rem;
+            a{
+                color: rgb(6, 5, 5);
+                text-decoration: none;
+                margin: 1rem 2.5rem;   
+            }}
     li:hover {
-        background-color: var(--button--bg);
+        background-color: var(--color--bg);
     }
 }
 }
@@ -108,14 +119,16 @@ h2{
             align-items: center;
             gap: 14px;
             
-            img{
-                
+            img{  
                 width: 70%;
                 aspect-ratio: 4 /5 ;
                 border-radius: 10px;
             }
-    
-            
+       
+    }
+    .box:hover{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border-radius: 1rem; 
     }}}
 
     
