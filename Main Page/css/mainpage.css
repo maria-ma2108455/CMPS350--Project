@@ -13,9 +13,11 @@ body {
 
 :root {
     /* so we can add all clors heree */
-    --color--bg:  rgb(201, 170, 178);
+    /* --color--bg:  rgb(201, 170, 178); */
+    --color--bg:  #FFC9D6;
     --color--txt: white;
     --color--icons: #E66592;
+
 }
 
 /* using grids for the main layout of the page */
@@ -110,7 +112,7 @@ body {
             
             li:hover {
                 background-color: var(--color--bg);
-                cursor: pointer;
+                cursor: pointer;                
             }
         }
     }
