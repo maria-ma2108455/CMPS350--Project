@@ -11,28 +11,108 @@ body {
     margin: auto;
 }
 
+:root {
+    /* so we can add all clors heree */
+    --color--bg:  rgb(201, 170, 178);
+    --color--txt: white;
+    --color--icons: #E66592;
+}
+
 /* using grids for the main layout of the page */
-.page{
+.page {
+
     display: grid;  
     grid-template-columns: auto ;
-    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas: 
-    "head "
-    "nav "
-    "main "
-    "footer "
-    ;
+    "head"
+    "nav"
+    "main"
+    "footer";
+
+    i {
+        color: var(--color--icons);
+        font-size: 2rem;
+    }
+
+    .head {
+        grid-area: head;
+        display: flex;
+        align-items: center;
+        margin: 0.2rem 3rem ;
+        justify-content: space-between;
+        height: 5rem;
+        
+        .search-box {
+
+            margin: 0px 20px;
+            flex-grow: 1;
+            position: relative;
+
+            .search-bar{
+                padding: 10px;
+                margin: 0px 20px; 
+                width: 100%;
+                border: 1px solid #181515;
+                border-radius: 40px;
+                
+            }
+
+            i {
+                position: absolute;
+                right: 0;
+                top: 0;
+                margin-top: 0.1rem;
+            }
+        }
+        
+        .signInButton{
+            border: none;
+            margin: 0 0.5rem;
+            background-color: white;
+            padding: 0.8rem;
+            border-radius: 4rem;
+        }
+        .signInButton:hover{
+            background-color: var(--color--bg);
+            cursor: pointer;
+        }
+
+        .profile-icon {
+            font-size: 2.5rem;
+        }
+    }
+
+    .nav {
+
+        grid-area: nav;
+        .flex {
+            margin: 0 0 1rem 0;
+            list-style: none;  
+            display: flex; 
+            justify-content:center; 
+            li {
+                border-radius: 10rem;
+                padding: 0.3rem;
+                a {
+                    color: rgb(6, 5, 5);
+                    text-decoration: none;
+                    margin: 1rem 2.5rem;   
+                }
+            }
+            
+            li:hover {
+                background-color: var(--color--bg);
+                cursor: pointer;
+            }
+        }
+    }
+
 }
 /* for all h2 fonts in the page  */
 h2{
     text-align: center;
     font-size: 26px;
-}
-
-:root {
-    /* so we can add all clors heree */
-    --color--bg:  rgb(201, 170, 178);
-    --color--txt: white;
 }
 
     
@@ -43,57 +123,16 @@ h2{
    
 }
 
-/* header */
+/* header
 .head{
-    grid-area: head;
-    display: flex;
-    align-items: center;
-    margin: 0.2rem 3rem ;
-    justify-content: space-between;
-    height: 5rem;
-    .search-bar{
-        flex-grow: 1;
-        padding: 10px;
-        margin: 0px 20px; 
-        border: 1px solid #181515;
-        border-radius: 40px;
-    }
-    .signInButton{
-        border: none;
-        margin: 0 0.5rem;
-        background-color: white;
-        padding: 0.8rem;
-        border-radius: 4rem;
-    }
-    .signInButton:hover{
-        background-color: var(--color--bg);
-        cursor: pointer;
-    }
     
-}
+    
+} */
 
-/* navigation */
+/* navigation
 .nav{
-    grid-area: nav;
-    .flex{
-        margin: 0 0 1rem 0;
-        list-style: none;  
-        display: flex; 
-        justify-content:center; 
-        li {
-            border-radius: 10rem;
-            padding: 0.3rem;
-            a{
-                color: rgb(6, 5, 5);
-                text-decoration: none;
-                margin: 1rem 2.5rem;   
-            }}
-    li:hover {
-        background-color: var(--color--bg);
-        cursor: pointer;
-    }
-}
-}
+    
+} */
 
 /* categories */
 .categories{
