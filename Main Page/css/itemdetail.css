@@ -5,16 +5,87 @@
     /* outline: auto; */
 }
 
-.item {
-    margin: 3rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(6,auto);
+:root {
+    /* so we can add all clors heree */
+    --color--bg:  rgb(201, 170, 178);
+    --color--txt: white;
+    --color--icons: #E66592;
+}
 
-    img {
-        width: 80%;
-        padding: 1rem;
-        grid-column: 1/2;
-        grid-row: 1/-1;
+main {
+
+    p {
+        padding: 1rem 0rem 0rem 2rem;
+        
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .item {
+
+        display: flex;
+        margin: 0rem 4rem;
+        justify-content: center;
+        /* width: 80%; */
+    
+        img {
+            width: 40%;
+            flex-grow: 1;
+            padding: 2rem;
+        }
+
+        p {
+            padding: 0rem;
+        }
+    
+        .details {
+            flex-grow: 3;
+            padding: 2rem;
+            /* display: grid;
+            grid-template-rows: auto auto auto auto 1fr;
+            row-gap: 0.5rem; */
+    
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: larger;
+    
+            form {
+    
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                flex-grow: 1;
+                justify-content: end;
+                margin-bottom: 2rem;
+    
+                div {
+    
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    gap: 1rem;
+                    
+                }
+    
+                input[type="submit"] {
+                    padding: 0.6rem;
+                    border: var(--color--icons) solid;
+                    border-radius: 2rem;
+                    background: var(--color--icons);
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 8px;
+                    color: var(--color--txt);
+                    transition-duration: 0.4s;
+                    cursor: pointer;
+                    font-size: larger;
+                }
+            }
+        }    
     }
 }
+
