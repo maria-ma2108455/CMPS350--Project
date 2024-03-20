@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* outline: auto; */
+}
+
+/* header old */
+.head{
+    grid-area: head;
+    display: flex;
+    align-items: center;
+    margin: 0.2rem 3rem ;
+    justify-content: space-between;
+    height: 5rem;
+    .search-bar{
+        flex-grow: 1;
+        padding: 10px;
+        margin: 0px 20px; 
+        border: 1px solid #181515;
+        border-radius: 40px;
+    }
+    .signInButton{
+        border: none;
+        margin: 0 0.5rem;
+        background-color: white;
+        padding: 0.8rem;
+        border-radius: 4rem;
+    }
+    .signInButton:hover{
+        background-color: var(--color--bg);
+        cursor: pointer;
+    }
+    
+}
+
+
+
+/*  new*/
+:root {
+    /* so we can add all clors heree */
+    --button--bg:  rgb(3, 3, 3);
+    --color--txt: white;
+}
+
+.purchase-container {
+    
+    width: 45%;
+    margin: 4em auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    /* justify-content: center; */
+    .h2 {
+        margin: 1.6rem 0;
+      }
+      .purchase-form {
+        .inputs {
+          margin-bottom: 15px;
+
+          input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #c2c2c2;
+            border-radius: 10px;
+          }
+        }
+    
+        .purchase-btn {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          border-radius: 17px;
+          background-color: var(--button--bg);
+          color: var(--color--txt);
+          cursor: pointer;
+          
+        }
+      }
+     
+    }
+  
+   
