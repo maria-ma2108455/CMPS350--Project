@@ -142,7 +142,22 @@ h2{
 .nav{
     
 } */
-
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    padding: 0 2%;
+    gap: 0.4rem;
+    img{
+        
+        width: 110%;
+    height: 20%;
+        margin: 2%;
+        border-radius: 1rem;  /* additional */
+       
+   }}
 /* categories */
 .categories{
     h2{
