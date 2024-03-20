@@ -42,6 +42,13 @@ body {
         margin: 0.2rem 3rem ;
         justify-content: space-between;
         height: 5rem;
+
+        img {
+            width: 20%;
+            /* padding: 4rem 0rem; */
+            margin-top: 3rem;
+            /* padding-right: 1rem; */
+        }
         
         .search-box {
 
