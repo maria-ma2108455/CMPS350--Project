@@ -69,12 +69,15 @@
     
         .purchase-btn {
           width: 100%;
-          padding: 10px;
+          padding: 5px;
           border: none;
           border-radius: 17px;
-          background-color: var(--button--bg);
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 4px;
+          border: var(--color--icons) solid;
+          background-color: var(--color--icons);
           color: var(--color--txt);
           cursor: pointer;
+          font-size:large;
           
         }
       }
