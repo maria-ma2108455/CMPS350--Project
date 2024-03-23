@@ -117,7 +117,7 @@
         "quantity": 60,
         "description": "A modern ceramic plate in pastel lavender, featuring a subtle white floral and heart pattern. The plate is round with a smooth, glossy finish.",
         "seller": "CeramicArt Co.",
-        "itemId": "I3"
+        "itemId": "I12"
     },
     {
         "name": "Blue Mug with Hearts Design",
@@ -127,6 +127,6 @@
         "quantity": 50,
         "description": "- A minimalist ceramic mug in pastel blue with delicate white hearts pattern. The mug has a modern, sleek design with a smooth surface.",
         "seller": "CeramicArt Co.",
-        "itemId": "I9"
+        "itemId": "I13"
     }
 ]
