@@ -1,0 +1,65 @@
+{
+    "users": [
+        {
+            "type": "seller",
+            "username": "craftsworld_user",
+            "password": "cw_123",
+            "companyName": "CraftsWorld Inc.",
+            "bankAccount": "CW123456789",
+            "items": [
+                { "itemId": "I1", "name": "Elegant Pink Vase", "price": 32.0, "quantity": 25 },
+                { "itemId": "I3", "name": "Pink Heart Teapot", "price": 35.0, "quantity": 20 },
+                { "itemId": "I4", "name": "Pink Cherry Mug", "price": 22.0, "quantity": 45 },
+                { "itemId": "I6", "name": "Green Cherry Plate", "price": 27.0, "quantity": 30 },
+                { "itemId": "I8", "name": "Lavender Floral Teapot", "price": 36.0, "quantity": 20 },
+                { "itemId": "I10", "name": "Pink Floral Mug", "price": 22.0, "quantity": 45 }
+            ]
+        },
+        {
+            "type": "seller",
+            "companyName": "CeramicArt Co.",
+            "username": "ceramicart_user",
+            "password": "ca_pass123",
+            "bankAccount": "CA987654321",
+            "items": [
+                { "itemId": "I2", "name": "Contemporary Floral Platter", "price": 27.0, "quantity": 30 },
+                { "itemId": "I5", "name": "Pink Strawberry Bowl", "price": 28.0, "quantity": 35 },
+                { "itemId": "I7", "name": "Yellow Heart Vase", "price": 32.0, "quantity": 25 },
+                { "itemId": "I9", "name": "Blue Heart Mug", "price": 21.0, "quantity": 50 },
+                { "itemId": "I11", "name": "Modern Floral Bowl", "price": 28.0, "quantity": 35 },
+                { "itemId": "I12", "name": "Lavender Floral Plate", "price": 20.0, "quantity": 60 },
+                { "itemId": "I13", "name": "Blue Hearts Mug", "price": 21.0, "quantity": 50 }
+            ]
+        },
+        {
+            "type": "customer",
+            "username": "maria_attili",
+            "password": "ma_123",
+            "name": "Maria",
+            "surname": "Attili",
+            "shippingAddress": "465 Alasiri Street, Doha",
+            "moneyBalance": 500,
+            "email": "attilimaria@gmail.com",
+            "phoneNumber": "974-33008644",
+            "purchases": [
+                { "purchaseId": "P1", "quantity": 2, "item": { "itemId": "I1", "name": "Elegant Pink Vase", "price": 32.0 } },
+                { "purchaseId": "P2", "quantity": 1, "item": { "itemId": "I3", "name": "Pink Heart Teapot", "price": 35.0 } }
+            ]
+        },
+        {
+            "type": "customer",
+            "username": "ali_zaid",
+            "password": "az_123",
+            "name": "Ali",
+            "surname": "Zaid",
+            "shippingAddress": "456 Amman, Jordan",
+            "moneyBalance": 100,
+            "email": "ali.zaid@gmail.com",
+            "phoneNumber": "555-0202",
+            "purchases": [
+                { "purchaseId": "P3", "quantity": 3, "item": { "itemId": "I5", "name": "Pink Strawberry Bowl", "price": 28.0 } }
+            ]
+        }
+       
+    ]
+}

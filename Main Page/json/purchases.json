@@ -1,0 +1,53 @@
+{
+    "purchases": [
+        {
+            "purchaseId": "P1",
+            "quantity": 2,
+            "item": {
+                "itemId": "I1",
+                "name": "Elegant Pink Vase",
+                "price": 32.0
+            },
+            "customer": {
+                "username": "maria_attili",
+                "name": "Maria",
+                "surname": "Attili",
+                "shippingAddress": "465 Alasiri Street, Doha"
+            },
+            "totalPrice": 64.0
+        },
+        {
+            "purchaseId": "P2",
+            "quantity": 1,
+            "item": {
+                "itemId": "I3",
+                "name": "Pink Heart Teapot",
+                "price": 35.0
+            },
+            "customer": {
+                "username": "maria_attili",
+                "name": "Maria",
+                "surname": "Attili",
+                "shippingAddress": "465 Alasiri Street, Doha"
+            },
+            "totalPrice": 35.0
+        },
+        {
+            "purchaseId": "P3",
+            "quantity": 3,
+            "item": {
+                "itemId": "I5",
+                "name": "Pink Strawberry Bowl",
+                "price": 28.0
+            },
+            "customer": {
+                "username": "ali_zaid",
+                "name": "Ali",
+                "surname": "Zaid",
+                "shippingAddress": "456 Amman, Jordan"
+            },
+            "totalPrice": 84.0
+        }
+       
+    ]
+}
