@@ -1,0 +1,19 @@
+.main{
+    border: 2px solid rgb(115, 113, 113);
+    padding: 3rem;
+    border-radius: 1rem;
+    margin: 10rem 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    img{
+        width: 40%;
+    }
+    h2{
+        font-size: 2rem;
+    }
+    p{
+        font-size: 3rem;
+    }
+}
