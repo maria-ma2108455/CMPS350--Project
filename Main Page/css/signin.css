@@ -5,7 +5,7 @@
     /* outline: auto; */
 }
 
-/* header old */
+header old
 .head{
     grid-area: head;
     display: flex;
