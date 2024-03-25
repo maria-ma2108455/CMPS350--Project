@@ -30,11 +30,10 @@ body {
 .page {
 
     display: grid;  
-    grid-template-columns: auto ;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas: 
     "head"
-    "nav"
     "main"
     "footer";
 
@@ -43,89 +42,116 @@ body {
         font-size: 2rem;
     }
 
-    .head {
-        grid-area: head;
-        display: flex;
-        align-items: center;
-        margin: 0.2rem 3rem ;
-        justify-content: space-between;
-        height: 5rem;
-
-        img {
-            width: 20%;
-            /* padding: 4rem 0rem; */
-            margin-top: 3rem;
-            /* padding-right: 1rem; */
-        }
-        
-        .search-box {
-
-            margin: 0px 20px;
-            flex-grow: 1;
-            position: relative;
-
-            .search-bar{
-                padding: 10px;
-                margin: 0px 20px; 
-                width: 100%;
-                border: 1px solid #181515;
-                border-radius: 40px;
-                
-            }
-
-            i {
-                position: absolute;
-                right: 0;
-                top: 0;
-                margin-top: 0.1rem;
-            }
-        }
-        
-        .signInButton{
-            border: none;
-            margin: 0 0.5rem;
-            background-color: white;
-            padding: 0.8rem;
-            border-radius: 4rem;
-        }
-        .signInButton:hover{
-            background-color: var(--color--bg);
-            cursor: pointer;
-        }
-
-        .profile-icon {
-            font-size: 2.5rem;
-        }
+    .hidden {
+        display: none;
     }
 
-    .nav {
+    .head {
+        width: 100%;
+        grid-area: head;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 'img top-bar top-bar'
+        'img nav nav';
+        align-items: center;
+        justify-content: space-evenly;
+        height: 8rem;
 
-        
-        grid-area: nav;
-        .flex {
-            margin: 0 0 1rem 0;
-            list-style: none;  
-            display: flex; 
-            justify-content:center; 
-            li {
-                border-radius: 10rem;
-                padding: 0.3rem;
+        img {
+            grid-area: img;
+            width: 94%;
+            margin-left: 1rem;
+        }
+
+        .top-bar {
+
+            display: flex;
+            grid-area: top-bar;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            width: 96%;
+            margin-left: 2rem;
+            padding: 0.5rem;
+            
+
+            .search-box {
+
                 
-                a {
-                    color: rgb(6, 5, 5);
-                    text-decoration: none;
-                    margin: 1rem 2.5rem;   
+                margin: 0.5rem 1.5rem 0 0;
+                
+                flex-grow: 1;
+                position: relative;
+    
+                .search-bar{
+                    padding: 0.7rem;
+                    margin-right: 0.8rem;
+                    width: 100%;
+                    border: 1px solid #181515;
+                    border-radius: 40px;
                     
+                }
+    
+                i {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    margin: 0.2rem 1rem 0rem 1rem;
                 }
             }
             
-            li:hover {
+            .signInButton{
+                border: none;
+                margin: 0.5rem 0rem;
+                background-color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 4rem;
+            }
+            .signInButton:hover{
                 background-color: var(--color--bg);
-                cursor: pointer;                
+                cursor: pointer;
+            }
+    
+            .profile-icon {
+                font-size: 2.5rem;
+            }
+
+            .profile-icon:hover{
+                cursor: pointer;
+            }
+        }
+
+        .nav {
+
+        
+            grid-area: nav;
+            margin-left: 2rem;
+
+            .flex {
+                list-style: none;  
+                display: flex; 
+                justify-content: start;
+                gap: 3rem;
+                margin: 0.5rem 0rem 1rem 2.5rem;
+
+                li {
+                    border-radius: 10rem;
+                    padding: 0.5rem 1rem;
+                    
+                    a {
+                        color: rgb(6, 5, 5);
+                        text-decoration: none;
+                    }
+                }
+                
+                li:hover {
+                    background-color: var(--color--bg);
+                    cursor: pointer;                
+                }
             }
         }
     }
-
 }
 /* for all h2 fonts in the page  */
 h2{
@@ -141,16 +167,6 @@ h2{
    
 }
 
-/* header
-.head{
-    
-    
-} */
-
-/* navigation
-.nav{
-    
-} */
 .home{
     display: flex;
     flex-direction: column;
@@ -167,6 +183,7 @@ h2{
         border-radius: 1rem;  /* additional */
        
    }}
+
 /* main */
 .main{
     h2{
@@ -280,91 +297,198 @@ h2{
 
 /* slide show */
 
-    /* Slideshow container */
-    .slideshow-container {
-        max-width: 1000px;
-        position: relative;
-        margin: auto;
-      }
-      
-      /* Hide the images by default */
-      .mySlides {
-        display: none;
-      }
-      
-      /* Next & previous buttons */
-      .prev, .next {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        margin-top: -22px;
-        padding: 16px;
-        color: white;
-        font-weight: bold;
-        font-size: 18px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-      }
-      
-      /* Position the "next button" to the right */
-      .next {
-        right: 0;
-        border-radius: 3px 0 0 3px;
-      }
-      
-      /* On hover, add a black background color with a little bit see-through */
-      .prev:hover, .next:hover {
-        background-color: rgba(0,0,0,0.8);
-      }
-      
-      /* Caption text */
-      .text {
-        color:var(--color--bg);
-        font-size: 15px;
-        padding: 8px 12px;
-        position: absolute;
-        bottom: 8px;
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}      
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color:var(--color--bg);
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@media (max-width: 49rem) {
+    /* using grids for the main layout of the page */
+.page {
+
+    .head {
+        
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 'img'
+        'top-bar'
+        'nav';
+        align-items: center;
+        justify-content: space-evenly;
+        height: 15rem;
         width: 100%;
-        text-align: center;
-      }
-      
-      /* Number text (1/3 etc) */
-      .numbertext {
-        color: #f2f2f2;
-        font-size: 12px;
-        padding: 8px 12px;
-        position: absolute;
-        top: 0;
-      }
-      
-      /* The dots/bullets/indicators */
-      .dot {
-        cursor: pointer;
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-      }
-      
-      .active, .dot:hover {
-        background-color: #717171;
-      }
-      
-      /* Fading animation */
-      .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
-      }
-      
-      @keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
-      }
+
+        img {
+            
+            align-items: center;
+            grid-area: img;
+            width: 35%;
+        }
+
+        .top-bar {
+
+            display: flex;
+            grid-area: top-bar;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            width: 96%;
+            margin-left: 2rem;
+            padding: 0.5rem;
+            
+
+            .search-box {
+
+                
+                margin: 0.5rem 1.5rem 0 0;
+                
+                flex-grow: 1;
+                position: relative;
     
+                .search-bar{
+                    padding: 0.7rem;
+                    margin-right: 0.8rem;                    
+                }
+    
+                i {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    margin: 0.2rem 1rem 0rem 1rem;
+                }
+            }
+            
+            .signInButton{
+                border: none;
+                margin: 0.5rem 0rem;
+                background-color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 4rem;
+            }
+            .signInButton:hover{
+                background-color: var(--color--bg);
+                cursor: pointer;
+            }
+    
+            .profile-icon {
+                font-size: 2.5rem;
+            }
 
+            .profile-icon:hover{
+                cursor: pointer;
+            }
+        }
 
+        .nav {
+
+        
+            grid-area: nav;
+            margin-left: 2rem;
+
+            .flex {
+                list-style: none;  
+                display: flex; 
+                justify-content: start;
+                gap: 3rem;
+                margin: 0.5rem 0rem 1rem 2.5rem;
+
+                li {
+                    border-radius: 10rem;
+                    padding: 0.5rem 1rem;
+                    
+                    a {
+                        color: rgb(6, 5, 5);
+                        text-decoration: none;
+                    }
+                }
+                
+                li:hover {
+                    background-color: var(--color--bg);
+                    cursor: pointer;                
+                }
+            }
+        }
+    }
+}
+}
