@@ -1,13 +1,341 @@
-{
-    "users": [
-        {
-            "type": "seller",
-            "username": "craftsworld_user",
-            "password": "cw_123",
-            "companyName": "CraftsWorld Inc.",
-            "bankAccount": "CW123456789",
-            "items": [
-                {
+[
+    {
+        "type": "seller",
+        "username": "craftsworld_user",
+        "password": "cw_123",
+        "companyName": "CraftsWorld Inc.",
+        "bankAccount": "CW123456789",
+        "items": [
+            {
+                "name": "Elegant Pink Vase",
+                "category": "Ceramics",
+                "image": "images/ceramics/pink_vase.png",
+                "price": 32.0,
+                "quantity": 25,
+                "description": "An elegant ceramic vase, slender and tall, in a soft pastel pink with subtle white accents. The vase features a minimalist design with a smooth, matte finish.",
+                "seller": "CraftsWorld Inc.",
+                "itemId": "I1"
+            },
+            {
+                "name": "Pink Heart Teapot",
+                "category": "Ceramics",
+                "image": "images/ceramics/heart_pink_teapot.png",
+                "price": 35.0,
+                "quantity": 20,
+                "description": "A ceramic teapot, in a pastel pink color with a minimalistic white heart design. The teapot has a classic shape with a smooth, matte finish.",
+                "seller": "CraftsWorld Inc.",
+                "itemId": "I3"
+            },
+            {
+                "name": "Pink Cherry Mug",
+                "category": "Ceramics",
+                "image": "images/ceramics/pink_mug_cerry.png",
+                "price": 22.0,
+                "quantity": 45,
+                "description": "A sleek ceramic mug in pastel pink, adorned with a minimalistic white cherry design. The mug has a modern, elegant shape with a smooth surface.",
+                "seller": "CraftsWorld Inc.",
+                "itemId": "I4"
+            },
+            {
+                "name": "Green Cherry Plate",
+                "category": "Ceramics",
+                "image": "images/ceramics/green_plate_cherry.png",
+                "price": 27.0,
+                "quantity": 30,
+                "description": "A chic ceramic plate in pastel green with a minimalist white cherry pattern. The plate is round with a smooth, glossy finish, ideal for serving or as decor",
+                "seller": "CraftsWorld Inc.",
+                "itemId": "I6"
+            },
+            {
+                "name": "Lavender Floral Teapot",
+                "category": "Ceramics",
+                "image": "images/ceramics/lavender_teapot_floral.png",
+                "price": 36.0,
+                "quantity": 20,
+                "description": "A modern ceramic teapot in a gentle pastel lavender, featuring a minimalist white floral design. The teapot has a classic shape with a smooth, matte finish.",
+                "seller": "CraftsWorld Inc.",
+                "itemId": "I8"
+            },
+            {
+                "name": "Pink Floral Mug",
+                "category": "Ceramics",
+                "image": "images/ceramics/pink_leaves_mug.png",
+                "price": 22.0,
+                "quantity": 45,
+                "description": "A chic pink ceramic mug with a delicate floral design.",
+                "seller": "CraftsWorld Inc.",
+                "itemId": "I10"
+            }
+        ]
+    },
+    {
+        "type": "seller",
+        "companyName": "CeramicArt Co.",
+        "username": "ceramicart_user",
+        "password": "ca_pass123",
+        "bankAccount": "CA987654321",
+        "items": [
+            {
+                "name": "Contemporary Floral Platter",
+                "category": "Ceramics",
+                "image": "images/ceramics/contemporary_floral_platter.png",
+                "price": 27.0,
+                "quantity": 30,
+                "description": "Contemporary ceramic platter, featuring a pastel pink color with an intricate white floral pattern. The platter is rectangular with slightly curved .",
+                "seller": "CeramicArt Co.",
+                "itemId": "I2"
+            },
+            {
+                "name": "Pink Strawberry Bowl",
+                "category": "Ceramics",
+                "image": "images/ceramics/pink_bowl_strawberry.png",
+                "price": 28.0,
+                "quantity": 35,
+                "description": "A modern pastel pink bowl with a white strawberry pattern.",
+                "seller": "CeramicArt Co.",
+                "itemId": "I5"
+            },
+            {
+                "name": "Yellow Heart Vase",
+                "category": "Ceramics",
+                "image": "images/ceramics/yellow_vase_hearts.png",
+                "price": 32.0,
+                "quantity": 25,
+                "description": "An artistic ceramic vase, pastel yellow with a simple white heart pattern. The vase is slender, with an elegant, elongated form, ideal for displaying .",
+                "seller": "CeramicArt Co.",
+                "itemId": "I7"
+            },
+            {
+                "name": "Blue Heart Mug",
+                "category": "Ceramics",
+                "image": "images/ceramics/blue_heart_mug.png",
+                "price": 21.0,
+                "quantity": 50,
+                "description": "A chic ceramic mug in pastel blue, decorated with a simple white heart pattern. The mug has a contemporary design, with a smooth finish.",
+                "seller": "CeramicArt Co.",
+                "itemId": "I9"
+            },
+            {
+                "name": "Modern Floral Bowl",
+                "category": "Ceramics",
+                "image": "images/ceramics/green_floral_bowl.png",
+                "price": 28.0,
+                "quantity": 35,
+                "description": "A contemporary ceramic bowl in a soft pastel green, adorned with minimalist white floral patterns. The bowl has a gentle curve and a matte finish.",
+                "seller": "CeramicArt Co.",
+                "itemId": "I11"
+            },
+            {
+                "name": "Lavender Floral Plate",
+                "category": "Ceramics",
+                "image": "images/ceramics/lavender_floral_plate.png",
+                "price": 20.0,
+                "quantity": 60,
+                "description": "A modern ceramic plate in pastel lavender, featuring a subtle white floral and heart pattern. The plate is round with a smooth, glossy finish.",
+                "seller": "CeramicArt Co.",
+                "itemId": "I12"
+            },
+            {
+                "name": "Blue Hearts Mug",
+                "category": "Ceramics",
+                "image": "images/ceramics/blue_hearts_mug.png",
+                "price": 21.0,
+                "quantity": 50,
+                "description": "- A minimalist ceramic mug in pastel blue with delicate white hearts pattern. The mug has a modern, sleek design with a smooth surface.",
+                "seller": "CeramicArt Co.",
+                "itemId": "I13"
+            }
+        ]
+    },
+    {
+        "type": "seller",
+        "username": "elegant_jewels",
+        "password": "el123",
+        "companyName": "Elegant Jewels Co.",
+        "bankAccount": "AG789012345",
+        "items" : [
+            {
+                "name": "Elegant Beaded Bracelet",
+                "category": "Jewelry",
+                "image": "images/jewelry/elegant_beaded_bracelet.webp",
+                "price": 29.99,
+                "quantity": 50,
+                "description": "A beautiful bracelet adorned with elegant beads, perfect for adding a touch of sophistication to any outfit.",
+                "seller": {
+                    "username": "elegant_jewels",
+                    "companyName": "Elegant Jewels Co."
+                },
+                "itemId": "I14"
+            },
+            {
+                "name": "Elegant Rhinestone Jewelry Set",
+                "category": "Jewelry",
+                "image": "images/jewelry/elegant_rhinestone_jewelry_set.webp",
+                "price": 89.99,
+                "quantity": 30,
+                "description": "A stunning jewelry set featuring rhinestones, including a necklace, bracelet, and earrings. Perfect for special occasions.",
+                "seller": {
+                  "username": "elegant_jewels",
+                  "companyName": "Elegant Jewels Co."
+                },
+                "itemId": "I15"
+            },
+            {
+                "name": "Glass Beaded Daisy Bracelet",
+                "category": "Jewelry",
+                "image": "images/jewelry/glass_beaded_daisy_bracelet.webp",
+                "price": 19.99,
+                "quantity": 40,
+                "description": "A charming bracelet adorned with glass beads in the shape of daisies. Adds a touch of whimsy to your look.",
+                "seller": {
+                  "username": "elegant_jewels",
+                  "companyName": "Elegant Jewels Co."
+                },
+                "itemId": "I16"
+            },
+            {
+                "name": "Lily Of The Valley Dangle Earrings",
+                "category": "Jewelry",
+                "image": "images/jewelry/lily_of_the_valley_dangle_earrings.webp",
+                "price": 24.99,
+                "quantity": 35,
+                "description": "Elegant dangle earrings inspired by the delicate lily of the valley flower. Adds a touch of nature-inspired beauty to any ensemble.",
+                "seller": {
+                  "username": "elegant_jewels",
+                  "companyName": "Elegant Jewels Co."
+                },
+                "itemId": "I18"
+            },
+            {
+                "name": "Moon Star Pendant Necklace",
+                "category": "Jewelry",
+                "image": "images/jewelry/moon_star_pendant_necklace.webp",
+                "price": 34.99,
+                "quantity": 45,
+                "description": "A celestial-inspired necklace featuring a moon and star pendant. Perfect for those who love astronomy or celestial motifs.",
+                "seller": {
+                  "username": "elegant_jewels",
+                  "companyName": "Elegant Jewels Co."
+                },
+                "itemId": "I19"
+            },
+            {
+                "name": "Swan Shaped Pearl Earrings",
+                "category": "Jewelry",
+                "image": "images/jewelry/swan_shaped_pearl_earrings.webp",
+                "price": 29.99,
+                "quantity": 30,
+                "description": "Elegant earrings featuring swan-shaped designs adorned with lustrous pearls. Perfect for adding a touch of sophistication to any look.",
+                "seller": {
+                  "username": "elegant_jewels",
+                  "companyName": "Elegant Jewels Co."
+                },
+                "itemId": "I24"
+            },
+            {
+                "name": "White Flower Hoop Earrings",
+                "category": "Jewelry",
+                "image": "images/jewelry/white_flower_hoop_earrings.webp",
+                "price": 19.99,
+                "quantity": 40,
+                "description": "Chic hoop earrings featuring white flower accents, perfect for adding a feminine touch to your ensemble.",
+                "seller": {
+                  "username": "elegant_jewels",
+                  "companyName": "Elegant Jewels Co."
+                },
+                "itemId": "I25"
+            }
+        ]
+    },
+    {
+        "type": "seller",
+        "username": "stellar_designs",
+        "password": "ste456",
+        "companyName": "Stellar Designs Co.",
+        "bankAccount": "FA567890123",
+        "items" : [
+            {
+                "name": "Hollow Flower Design Earrings",
+                "category": "Jewelry",
+                "image": "images/jewelry/hollow_flower_design_earrings.webp",
+                "price": 14.99,
+                "quantity": 60,
+                "description": "Delicate earrings featuring a hollow flower design, perfect for everyday wear or special occasions.",
+                "seller": {
+                  "username": "stellar_designs",
+                  "companyName": "Stellar Designs Co."
+                },
+                "itemId": "I17"
+            },
+            {
+                "name": "Purple Crystal Flower Earrings",
+                "category": "Jewelry",
+                "image": "images/jewelry/purple_crystal_flower_earrings.webp",
+                "price": 17.99,
+                "quantity": 55,
+                "description": "Exquisite earrings featuring purple crystal flowers, adding a pop of color and sparkle to your ensemble.",
+                "seller": {
+                  "username": "stellar_designs",
+                  "companyName": "Stellar Designs Co."
+                },
+                "itemId": "I20"
+            },
+            {
+                "name": "Rhinestone Stackable Rings",
+                "category": "Jewelry",
+                "image": "images/jewelry/rhinestone_stackable_rings.webp",
+                "price": 27.99,
+                "quantity": 25,
+                "description": "Set of stackable rings adorned with sparkling rhinestones, perfect for mixing and matching to create your unique look.",
+                "seller": {
+                  "username": "stellar_designs",
+                  "companyName": "Stellar Designs Co."
+                },
+                "itemId": "I21"
+            },
+            {
+                "name": "Snowflake Luxury Necklace",
+                "category": "Jewelry",
+                "image": "images/jewelry/snowflake_luxury_necklace.webp",
+                "price": 39.99,
+                "quantity": 20,
+                "description": "A luxurious necklace featuring intricate snowflake design, perfect for winter-themed events or adding a touch of elegance to your look.",
+                "seller": {
+                  "username": "stellar_designs",
+                  "companyName": "Stellar Designs Co."
+                },
+                "itemId": "I22"
+            },
+            {
+                "name": "Star Bracelet",
+                "category": "Jewelry",
+                "image": "images/jewelry/star_bracelet.webp",
+                "price": 21.99,
+                "quantity": 35,
+                "description": "A charming bracelet adorned with star-shaped charms, adding a touch of celestial whimsy to your ensemble.",
+                "seller": {
+                  "username": "stellar_designs",
+                  "companyName": "Stellar Designs Co."
+                },
+                "itemId": "I23"
+            }
+        ]
+    },
+    {
+        "type": "customer",
+        "username": "maria_attili",
+        "password": "ma_123",
+        "name": "Maria",
+        "surname": "Attili",
+        "shippingAddress": "465 Alasiri Street, Doha",
+        "moneyBalance": 500,
+        "email": "attilimaria@gmail.com",
+        "phoneNumber": "974-33008644",
+        "purchases": [
+            {
+                "purchaseId": "P1",
+                "quantity": 2,
+                "item": {
                     "name": "Elegant Pink Vase",
                     "category": "Ceramics",
                     "image": "images/ceramics/pink_vase.png",
@@ -16,8 +344,12 @@
                     "description": "An elegant ceramic vase, slender and tall, in a soft pastel pink with subtle white accents. The vase features a minimalist design with a smooth, matte finish.",
                     "seller": "CraftsWorld Inc.",
                     "itemId": "I1"
-                },
-                {
+                }
+            },
+            {
+                "purchaseId": "P2",
+                "quantity": 1,
+                "item": {
                     "name": "Pink Heart Teapot",
                     "category": "Ceramics",
                     "image": "images/ceramics/heart_pink_teapot.png",
@@ -26,67 +358,25 @@
                     "description": "A ceramic teapot, in a pastel pink color with a minimalistic white heart design. The teapot has a classic shape with a smooth, matte finish.",
                     "seller": "CraftsWorld Inc.",
                     "itemId": "I3"
-                },
-                {
-                    "name": "Pink Cherry Mug",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/pink_mug_cerry.png",
-                    "price": 22.0,
-                    "quantity": 45,
-                    "description": "A sleek ceramic mug in pastel pink, adorned with a minimalistic white cherry design. The mug has a modern, elegant shape with a smooth surface.",
-                    "seller": "CraftsWorld Inc.",
-                    "itemId": "I4"
-                },
-                {
-                    "name": "Green Cherry Plate",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/green_plate_cherry.png",
-                    "price": 27.0,
-                    "quantity": 30,
-                    "description": "A chic ceramic plate in pastel green with a minimalist white cherry pattern. The plate is round with a smooth, glossy finish, ideal for serving or as decor",
-                    "seller": "CraftsWorld Inc.",
-                    "itemId": "I6"
-                },
-                {
-                    "name": "Lavender Floral Teapot",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/lavender_teapot_floral.png",
-                    "price": 36.0,
-                    "quantity": 20,
-                    "description": "A modern ceramic teapot in a gentle pastel lavender, featuring a minimalist white floral design. The teapot has a classic shape with a smooth, matte finish.",
-                    "seller": "CraftsWorld Inc.",
-                    "itemId": "I8"
-                },
-                {
-                    "name": "Pink Floral Mug",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/pink_leaves_mug.png",
-                    "price": 22.0,
-                    "quantity": 45,
-                    "description": "A chic pink ceramic mug with a delicate floral design.",
-                    "seller": "CraftsWorld Inc.",
-                    "itemId": "I10"
                 }
-            ]
-        },
-        {
-            "type": "seller",
-            "companyName": "CeramicArt Co.",
-            "username": "ceramicart_user",
-            "password": "ca_pass123",
-            "bankAccount": "CA987654321",
-            "items": [
-                {
-                    "name": "Contemporary Floral Platter",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/contemporary_floral_platter.png",
-                    "price": 27.0,
-                    "quantity": 30,
-                    "description": "Contemporary ceramic platter, featuring a pastel pink color with an intricate white floral pattern. The platter is rectangular with slightly curved .",
-                    "seller": "CeramicArt Co.",
-                    "itemId": "I2"
-                },
-                {
+            }
+        ]
+    },
+    {
+        "type": "customer",
+        "username": "ali_zaid",
+        "password": "az_123",
+        "name": "Ali",
+        "surname": "Zaid",
+        "shippingAddress": "456 Amman, Jordan",
+        "moneyBalance": 100,
+        "email": "ali.zaid@gmail.com",
+        "phoneNumber": "555-0202",
+        "purchases": [
+            {
+                "purchaseId": "P3",
+                "quantity": 3,
+                "item": {
                     "name": "Pink Strawberry Bowl",
                     "category": "Ceramics",
                     "image": "images/ceramics/pink_bowl_strawberry.png",
@@ -95,300 +385,8 @@
                     "description": "A modern pastel pink bowl with a white strawberry pattern.",
                     "seller": "CeramicArt Co.",
                     "itemId": "I5"
-                },
-                {
-                    "name": "Yellow Heart Vase",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/yellow_vase_hearts.png",
-                    "price": 32.0,
-                    "quantity": 25,
-                    "description": "An artistic ceramic vase, pastel yellow with a simple white heart pattern. The vase is slender, with an elegant, elongated form, ideal for displaying .",
-                    "seller": "CeramicArt Co.",
-                    "itemId": "I7"
-                },
-                {
-                    "name": "Blue Heart Mug",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/blue_heart_mug.png",
-                    "price": 21.0,
-                    "quantity": 50,
-                    "description": "A chic ceramic mug in pastel blue, decorated with a simple white heart pattern. The mug has a contemporary design, with a smooth finish.",
-                    "seller": "CeramicArt Co.",
-                    "itemId": "I9"
-                },
-                {
-                    "name": "Modern Floral Bowl",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/green_floral_bowl.png",
-                    "price": 28.0,
-                    "quantity": 35,
-                    "description": "A contemporary ceramic bowl in a soft pastel green, adorned with minimalist white floral patterns. The bowl has a gentle curve and a matte finish.",
-                    "seller": "CeramicArt Co.",
-                    "itemId": "I11"
-                },
-                {
-                    "name": "Lavender Floral Plate",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/lavender_floral_plate.png",
-                    "price": 20.0,
-                    "quantity": 60,
-                    "description": "A modern ceramic plate in pastel lavender, featuring a subtle white floral and heart pattern. The plate is round with a smooth, glossy finish.",
-                    "seller": "CeramicArt Co.",
-                    "itemId": "I12"
-                },
-                {
-                    "name": "Blue Hearts Mug",
-                    "category": "Ceramics",
-                    "image": "images/ceramics/blue_hearts_mug.png",
-                    "price": 21.0,
-                    "quantity": 50,
-                    "description": "- A minimalist ceramic mug in pastel blue with delicate white hearts pattern. The mug has a modern, sleek design with a smooth surface.",
-                    "seller": "CeramicArt Co.",
-                    "itemId": "I13"
                 }
-            ]
-        },
-        {
-            "type": "seller",
-            "username": "elegant_jewels",
-            "password": "el123",
-            "companyName": "Elegant Jewels Co.",
-            "bankAccount": "AG789012345",
-            "items" : [
-                {
-                    "name": "Elegant Beaded Bracelet",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/elegant_beaded_bracelet.webp",
-                    "price": 29.99,
-                    "quantity": 50,
-                    "description": "A beautiful bracelet adorned with elegant beads, perfect for adding a touch of sophistication to any outfit.",
-                    "seller": {
-                        "username": "elegant_jewels",
-                        "companyName": "Elegant Jewels Co."
-                    },
-                    "itemId": "I14"
-                },
-                {
-                    "name": "Elegant Rhinestone Jewelry Set",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/elegant_rhinestone_jewelry_set.webp",
-                    "price": 89.99,
-                    "quantity": 30,
-                    "description": "A stunning jewelry set featuring rhinestones, including a necklace, bracelet, and earrings. Perfect for special occasions.",
-                    "seller": {
-                      "username": "elegant_jewels",
-                      "companyName": "Elegant Jewels Co."
-                    },
-                    "itemId": "I15"
-                },
-                {
-                    "name": "Glass Beaded Daisy Bracelet",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/glass_beaded_daisy_bracelet.webp",
-                    "price": 19.99,
-                    "quantity": 40,
-                    "description": "A charming bracelet adorned with glass beads in the shape of daisies. Adds a touch of whimsy to your look.",
-                    "seller": {
-                      "username": "elegant_jewels",
-                      "companyName": "Elegant Jewels Co."
-                    },
-                    "itemId": "I16"
-                },
-                {
-                    "name": "Lily Of The Valley Dangle Earrings",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/lily_of_the_valley_dangle_earrings.webp",
-                    "price": 24.99,
-                    "quantity": 35,
-                    "description": "Elegant dangle earrings inspired by the delicate lily of the valley flower. Adds a touch of nature-inspired beauty to any ensemble.",
-                    "seller": {
-                      "username": "elegant_jewels",
-                      "companyName": "Elegant Jewels Co."
-                    },
-                    "itemId": "I18"
-                },
-                {
-                    "name": "Moon Star Pendant Necklace",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/moon_star_pendant_necklace.webp",
-                    "price": 34.99,
-                    "quantity": 45,
-                    "description": "A celestial-inspired necklace featuring a moon and star pendant. Perfect for those who love astronomy or celestial motifs.",
-                    "seller": {
-                      "username": "elegant_jewels",
-                      "companyName": "Elegant Jewels Co."
-                    },
-                    "itemId": "I19"
-                },
-                {
-                    "name": "Swan Shaped Pearl Earrings",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/swan_shaped_pearl_earrings.webp",
-                    "price": 29.99,
-                    "quantity": 30,
-                    "description": "Elegant earrings featuring swan-shaped designs adorned with lustrous pearls. Perfect for adding a touch of sophistication to any look.",
-                    "seller": {
-                      "username": "elegant_jewels",
-                      "companyName": "Elegant Jewels Co."
-                    },
-                    "itemId": "I24"
-                },
-                {
-                    "name": "White Flower Hoop Earrings",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/white_flower_hoop_earrings.webp",
-                    "price": 19.99,
-                    "quantity": 40,
-                    "description": "Chic hoop earrings featuring white flower accents, perfect for adding a feminine touch to your ensemble.",
-                    "seller": {
-                      "username": "elegant_jewels",
-                      "companyName": "Elegant Jewels Co."
-                    },
-                    "itemId": "I25"
-                }
-            ]
-        },
-        {
-            "type": "seller",
-            "username": "stellar_designs",
-            "password": "ste456",
-            "companyName": "Stellar Designs Co.",
-            "bankAccount": "FA567890123",
-            "items" : [
-                {
-                    "name": "Hollow Flower Design Earrings",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/hollow_flower_design_earrings.webp",
-                    "price": 14.99,
-                    "quantity": 60,
-                    "description": "Delicate earrings featuring a hollow flower design, perfect for everyday wear or special occasions.",
-                    "seller": {
-                      "username": "stellar_designs",
-                      "companyName": "Stellar Designs Co."
-                    },
-                    "itemId": "I17"
-                },
-                {
-                    "name": "Purple Crystal Flower Earrings",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/purple_crystal_flower_earrings.webp",
-                    "price": 17.99,
-                    "quantity": 55,
-                    "description": "Exquisite earrings featuring purple crystal flowers, adding a pop of color and sparkle to your ensemble.",
-                    "seller": {
-                      "username": "stellar_designs",
-                      "companyName": "Stellar Designs Co."
-                    },
-                    "itemId": "I20"
-                },
-                {
-                    "name": "Rhinestone Stackable Rings",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/rhinestone_stackable_rings.webp",
-                    "price": 27.99,
-                    "quantity": 25,
-                    "description": "Set of stackable rings adorned with sparkling rhinestones, perfect for mixing and matching to create your unique look.",
-                    "seller": {
-                      "username": "stellar_designs",
-                      "companyName": "Stellar Designs Co."
-                    },
-                    "itemId": "I21"
-                },
-                {
-                    "name": "Snowflake Luxury Necklace",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/snowflake_luxury_necklace.webp",
-                    "price": 39.99,
-                    "quantity": 20,
-                    "description": "A luxurious necklace featuring intricate snowflake design, perfect for winter-themed events or adding a touch of elegance to your look.",
-                    "seller": {
-                      "username": "stellar_designs",
-                      "companyName": "Stellar Designs Co."
-                    },
-                    "itemId": "I22"
-                },
-                {
-                    "name": "Star Bracelet",
-                    "category": "Jewelry",
-                    "image": "images/jewelry/star_bracelet.webp",
-                    "price": 21.99,
-                    "quantity": 35,
-                    "description": "A charming bracelet adorned with star-shaped charms, adding a touch of celestial whimsy to your ensemble.",
-                    "seller": {
-                      "username": "stellar_designs",
-                      "companyName": "Stellar Designs Co."
-                    },
-                    "itemId": "I23"
-                }
-            ]
-        },
-        {
-            "type": "customer",
-            "username": "maria_attili",
-            "password": "ma_123",
-            "name": "Maria",
-            "surname": "Attili",
-            "shippingAddress": "465 Alasiri Street, Doha",
-            "moneyBalance": 500,
-            "email": "attilimaria@gmail.com",
-            "phoneNumber": "974-33008644",
-            "purchases": [
-                {
-                    "purchaseId": "P1",
-                    "quantity": 2,
-                    "item": {
-                        "name": "Elegant Pink Vase",
-                        "category": "Ceramics",
-                        "image": "images/ceramics/pink_vase.png",
-                        "price": 32.0,
-                        "quantity": 25,
-                        "description": "An elegant ceramic vase, slender and tall, in a soft pastel pink with subtle white accents. The vase features a minimalist design with a smooth, matte finish.",
-                        "seller": "CraftsWorld Inc.",
-                        "itemId": "I1"
-                    }
-                },
-                {
-                    "purchaseId": "P2",
-                    "quantity": 1,
-                    "item": {
-                        "name": "Pink Heart Teapot",
-                        "category": "Ceramics",
-                        "image": "images/ceramics/heart_pink_teapot.png",
-                        "price": 35.0,
-                        "quantity": 20,
-                        "description": "A ceramic teapot, in a pastel pink color with a minimalistic white heart design. The teapot has a classic shape with a smooth, matte finish.",
-                        "seller": "CraftsWorld Inc.",
-                        "itemId": "I3"
-                    }
-                }
-            ]
-        },
-        {
-            "type": "customer",
-            "username": "ali_zaid",
-            "password": "az_123",
-            "name": "Ali",
-            "surname": "Zaid",
-            "shippingAddress": "456 Amman, Jordan",
-            "moneyBalance": 100,
-            "email": "ali.zaid@gmail.com",
-            "phoneNumber": "555-0202",
-            "purchases": [
-                {
-                    "purchaseId": "P3",
-                    "quantity": 3,
-                    "item": {
-                        "name": "Pink Strawberry Bowl",
-                        "category": "Ceramics",
-                        "image": "images/ceramics/pink_bowl_strawberry.png",
-                        "price": 28.0,
-                        "quantity": 35,
-                        "description": "A modern pastel pink bowl with a white strawberry pattern.",
-                        "seller": "CeramicArt Co.",
-                        "itemId": "I5"
-                    }
-                }
-            ]
-        }
-    ]
-}
+            }
+        ]
+    }  
+]
