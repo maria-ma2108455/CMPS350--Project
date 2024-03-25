@@ -394,99 +394,44 @@ h2{
         grid-template-areas: 'img'
         'top-bar'
         'nav';
-        align-items: center;
-        justify-content: space-evenly;
-        height: 15rem;
-        width: 100%;
+        height: 35%;
 
         img {
-            
-            align-items: center;
-            grid-area: img;
-            width: 35%;
+            width: 36%;
+            margin-left: 32vw;
         }
 
         .top-bar {
 
-            display: flex;
-            grid-area: top-bar;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            width: 96%;
-            margin-left: 2rem;
-            padding: 0.5rem;
+            gap: 0rem;
+            width: 95vw;
+            margin-left: 0rem;
             
 
             .search-box {
-
                 
-                margin: 0.5rem 1.5rem 0 0;
+                margin-top: 0rem;
+                margin-right: 1rem;
                 
-                flex-grow: 1;
-                position: relative;
     
                 .search-bar{
-                    padding: 0.7rem;
-                    margin-right: 0.8rem;                    
+                    margin-right: 0rem;                    
                 }
     
-                i {
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    margin: 0.2rem 1rem 0rem 1rem;
-                }
             }
             
-            .signInButton{
-                border: none;
-                margin: 0.5rem 0rem;
-                background-color: white;
-                padding: 0.5rem 1rem;
-                border-radius: 4rem;
-            }
-            .signInButton:hover{
-                background-color: var(--color--bg);
-                cursor: pointer;
-            }
-    
-            .profile-icon {
-                font-size: 2.5rem;
-            }
-
-            .profile-icon:hover{
-                cursor: pointer;
-            }
         }
 
         .nav {
 
-        
-            grid-area: nav;
-            margin-left: 2rem;
+            margin-left: 0rem;
 
             .flex {
-                list-style: none;  
-                display: flex; 
-                justify-content: start;
-                gap: 3rem;
-                margin: 0.5rem 0rem 1rem 2.5rem;
-
-                li {
-                    border-radius: 10rem;
-                    padding: 0.5rem 1rem;
-                    
-                    a {
-                        color: rgb(6, 5, 5);
-                        text-decoration: none;
-                    }
-                }
                 
-                li:hover {
-                    background-color: var(--color--bg);
-                    cursor: pointer;                
-                }
+                justify-content: space-evenly;
+                gap: 0rem;
+                margin-top: 0rem;
+                margin-left: 0rem;
             }
         }
     }
