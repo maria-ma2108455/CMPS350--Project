@@ -20,9 +20,9 @@ body {
 :root {
     /* so we can add all clors heree */
     /* --color--bg:  rgb(201, 170, 178); */
-    --color--bg:  #FFC9D6;
+    --color--bg:  #f8e2e7ee;
     --color--txt: white;
-    --color--icons: #E66592;
+    --color--icons: #d65f83;
 
 }
 
@@ -208,8 +208,8 @@ h2{
 
     .us{
         
-        background-color: #ECD7D7;
-        color: #8e062c;
+        background-color: var(--color--bg);
+        color: #a43254;
         padding: 1rem;
         h2{
             font-size: 1.45rem;
@@ -225,7 +225,7 @@ h2{
     margin-top: 2rem;
     padding: 1rem;
     color: white;
-    background-color: #9b4552;
+    background-color: var(--color--icons);
 
     display: grid;
     justify-items: center;
