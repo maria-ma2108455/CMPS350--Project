@@ -56,7 +56,7 @@ body {
         'img nav nav';
         align-items: center;
         justify-content: space-evenly;
-        height: 8rem;
+        height: 24vh;
 
         img {
             grid-area: img;
