@@ -10,7 +10,7 @@
   grid-area: head;
   display: flex;
   align-items: center;
-  margin: 0.2rem 3rem;
+  /* margin: 0.2rem 3rem; */
   justify-content: space-between;
   height: 5rem;
 
