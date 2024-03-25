@@ -1,0 +1,220 @@
+{
+    "users": [
+        {
+            "type": "seller",
+            "username": "craftsworld_user",
+            "password": "cw_123",
+            "companyName": "CraftsWorld Inc.",
+            "bankAccount": "CW123456789",
+            "items": [
+                {
+                    "name": "Elegant Pink Vase",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/pink_vase.png",
+                    "price": 32.0,
+                    "quantity": 25,
+                    "description": "An elegant ceramic vase, slender and tall, in a soft pastel pink with subtle white accents. The vase features a minimalist design with a smooth, matte finish.",
+                    "seller": "CraftsWorld Inc.",
+                    "itemId": "I1"
+                },
+                {
+                    "name": "Pink Heart Teapot",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/heart_pink_teapot.png",
+                    "price": 35.0,
+                    "quantity": 20,
+                    "description": "A ceramic teapot, in a pastel pink color with a minimalistic white heart design. The teapot has a classic shape with a smooth, matte finish.",
+                    "seller": "CraftsWorld Inc.",
+                    "itemId": "I3"
+                },
+                {
+                    "name": "Pink Cherry Mug",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/pink_mug_cerry.png",
+                    "price": 22.0,
+                    "quantity": 45,
+                    "description": "A sleek ceramic mug in pastel pink, adorned with a minimalistic white cherry design. The mug has a modern, elegant shape with a smooth surface.",
+                    "seller": "CraftsWorld Inc.",
+                    "itemId": "I4"
+                },
+                {
+                    "name": "Green Cherry Plate",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/green_plate_cherry.png",
+                    "price": 27.0,
+                    "quantity": 30,
+                    "description": "A chic ceramic plate in pastel green with a minimalist white cherry pattern. The plate is round with a smooth, glossy finish, ideal for serving or as decor",
+                    "seller": "CraftsWorld Inc.",
+                    "itemId": "I6"
+                },
+                {
+                    "name": "Lavender Floral Teapot",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/lavender_teapot_floral.png",
+                    "price": 36.0,
+                    "quantity": 20,
+                    "description": "A modern ceramic teapot in a gentle pastel lavender, featuring a minimalist white floral design. The teapot has a classic shape with a smooth, matte finish.",
+                    "seller": "CraftsWorld Inc.",
+                    "itemId": "I8"
+                },
+                {
+                    "name": "Pink Floral Mug",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/pink_leaves_mug.png",
+                    "price": 22.0,
+                    "quantity": 45,
+                    "description": "A chic pink ceramic mug with a delicate floral design.",
+                    "seller": "CraftsWorld Inc.",
+                    "itemId": "I10"
+                }
+            ]
+        },
+        {
+            "type": "seller",
+            "companyName": "CeramicArt Co.",
+            "username": "ceramicart_user",
+            "password": "ca_pass123",
+            "bankAccount": "CA987654321",
+            "items": [
+                {
+                    "name": "Contemporary Floral Platter",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/contemporary_floral_platter.png",
+                    "price": 27.0,
+                    "quantity": 30,
+                    "description": "Contemporary ceramic platter, featuring a pastel pink color with an intricate white floral pattern. The platter is rectangular with slightly curved .",
+                    "seller": "CeramicArt Co.",
+                    "itemId": "I2"
+                },
+                {
+                    "name": "Pink Strawberry Bowl",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/pink_bowl_strawberry.png",
+                    "price": 28.0,
+                    "quantity": 35,
+                    "description": "A modern pastel pink bowl with a white strawberry pattern.",
+                    "seller": "CeramicArt Co.",
+                    "itemId": "I5"
+                },
+                {
+                    "name": "Yellow Heart Vase",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/yellow_vase_hearts.png",
+                    "price": 32.0,
+                    "quantity": 25,
+                    "description": "An artistic ceramic vase, pastel yellow with a simple white heart pattern. The vase is slender, with an elegant, elongated form, ideal for displaying .",
+                    "seller": "CeramicArt Co.",
+                    "itemId": "I7"
+                },
+                {
+                    "name": "Blue Heart Mug",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/blue_heart_mug.png",
+                    "price": 21.0,
+                    "quantity": 50,
+                    "description": "A chic ceramic mug in pastel blue, decorated with a simple white heart pattern. The mug has a contemporary design, with a smooth finish.",
+                    "seller": "CeramicArt Co.",
+                    "itemId": "I9"
+                },
+                {
+                    "name": "Modern Floral Bowl",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/green_floral_bowl.png",
+                    "price": 28.0,
+                    "quantity": 35,
+                    "description": "A contemporary ceramic bowl in a soft pastel green, adorned with minimalist white floral patterns. The bowl has a gentle curve and a matte finish.",
+                    "seller": "CeramicArt Co.",
+                    "itemId": "I11"
+                },
+                {
+                    "name": "Lavender Floral Plate",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/lavender_floral_plate.png",
+                    "price": 20.0,
+                    "quantity": 60,
+                    "description": "A modern ceramic plate in pastel lavender, featuring a subtle white floral and heart pattern. The plate is round with a smooth, glossy finish.",
+                    "seller": "CeramicArt Co.",
+                    "itemId": "I12"
+                },
+                {
+                    "name": "Blue Hearts Mug",
+                    "category": "Ceramics",
+                    "image": "images/ceramics/blue_hearts_mug.png",
+                    "price": 21.0,
+                    "quantity": 50,
+                    "description": "- A minimalist ceramic mug in pastel blue with delicate white hearts pattern. The mug has a modern, sleek design with a smooth surface.",
+                    "seller": "CeramicArt Co.",
+                    "itemId": "I13"
+                }
+            ]
+        },
+        {
+            "type": "customer",
+            "username": "maria_attili",
+            "password": "ma_123",
+            "name": "Maria",
+            "surname": "Attili",
+            "shippingAddress": "465 Alasiri Street, Doha",
+            "moneyBalance": 500,
+            "email": "attilimaria@gmail.com",
+            "phoneNumber": "974-33008644",
+            "purchases": [
+                {
+                    "purchaseId": "P1",
+                    "quantity": 2,
+                    "item": {
+                        "name": "Elegant Pink Vase",
+                        "category": "Ceramics",
+                        "image": "images/ceramics/pink_vase.png",
+                        "price": 32.0,
+                        "quantity": 25,
+                        "description": "An elegant ceramic vase, slender and tall, in a soft pastel pink with subtle white accents. The vase features a minimalist design with a smooth, matte finish.",
+                        "seller": "CraftsWorld Inc.",
+                        "itemId": "I1"
+                    }
+                },
+                {
+                    "purchaseId": "P2",
+                    "quantity": 1,
+                    "item": {
+                        "name": "Pink Heart Teapot",
+                        "category": "Ceramics",
+                        "image": "images/ceramics/heart_pink_teapot.png",
+                        "price": 35.0,
+                        "quantity": 20,
+                        "description": "A ceramic teapot, in a pastel pink color with a minimalistic white heart design. The teapot has a classic shape with a smooth, matte finish.",
+                        "seller": "CraftsWorld Inc.",
+                        "itemId": "I3"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "customer",
+            "username": "ali_zaid",
+            "password": "az_123",
+            "name": "Ali",
+            "surname": "Zaid",
+            "shippingAddress": "456 Amman, Jordan",
+            "moneyBalance": 100,
+            "email": "ali.zaid@gmail.com",
+            "phoneNumber": "555-0202",
+            "purchases": [
+                {
+                    "purchaseId": "P3",
+                    "quantity": 3,
+                    "item": {
+                        "name": "Pink Strawberry Bowl",
+                        "category": "Ceramics",
+                        "image": "images/ceramics/pink_bowl_strawberry.png",
+                        "price": 28.0,
+                        "quantity": 35,
+                        "description": "A modern pastel pink bowl with a white strawberry pattern.",
+                        "seller": "CeramicArt Co.",
+                        "itemId": "I5"
+                    }
+                }
+            ]
+        }
+    ]
+}
