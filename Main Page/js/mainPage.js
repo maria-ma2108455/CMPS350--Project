@@ -1,8 +1,5 @@
-
 // let users = []
-
 // // Get all information from files
-
 // document.addEventListener('DOMContentLoaded', async () => {
 //   try {
 //       if(!localStorage.users) {
@@ -19,7 +16,7 @@
 
 //get the ref of elemnt we want to interact with
 //select more than one element 
-const categoriesB = document.querySelectorAll('#Ceramics, #Paintings, #jelwery');
+const categoriesB = document.querySelectorAll('#Ceramics, #Paintings, #Jewelry');
 //add event listener
 categoriesB.forEach(c => {
     c.addEventListener('click', handleCategoryClick)})

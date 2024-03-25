@@ -1,18 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ArtiCat</title>
+    <link rel="stylesheet" href="css/mainpage.css">
     <link rel="stylesheet" href="css/items.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Enter new style sheet here -->
 </head>
-<body>
-    <main >
-        <div class="items-container" id="items-container"></div>
-      
-    <script src="js/itemss.js"></script>
 
-    </main>
+<body>
+
+    <div class="page">
+
+        <!-- Header -->
+        <header class="head">
+            <img src="images/no bg logo.PNG" alt="logo" class="logo">
+            <div class="top-bar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for anything" class="search-bar" name="searchValue">
+                    <i class="material-icons">search</i>
+                </div>
+                <button class="signInButton" id="signInBtn">Sign In</button>
+                <i class="material-icons profile-icon hidden" id="profile-icon">account_circle</i>
+            </div>
+            <!-- Navigation -->
+            <nav class="nav">
+                <ul class="flex">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us </a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <hr>
+
+        <main class="main">
+            <div class="items-container" id="items-container"></div>
+      
+             <script src="js/itemss.js"></script>
+            <script src="js/header.js"></script>
+        </main>
+
+        <footer class="footer">
+            <!-- Contact -->
+            <section id="contact">
+                <h3>Have a question? Contact Us!</h3>
+
+                <div class="socials">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-pinterest"></a>
+                </div>
+                
+            </section>
+
+            <p>&copy; 2024 ArtiCat</p>
+
+        </footer>
+    </div>
 </body>
+
 </html>
