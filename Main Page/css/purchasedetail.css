@@ -1,87 +1,147 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* outline: auto; */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* outline: auto; */
 }
 
 /* header old */
-.head{
-    grid-area: head;
-    display: flex;
-    align-items: center;
-    margin: 0.2rem 3rem ;
-    justify-content: space-between;
-    height: 5rem;
-    .search-bar{
-        flex-grow: 1;
-        padding: 10px;
-        margin: 0px 20px; 
-        border: 1px solid #181515;
-        border-radius: 40px;
-    }
-    .signInButton{
-        border: none;
-        margin: 0 0.5rem;
-        background-color: white;
-        padding: 0.8rem;
-        border-radius: 4rem;
-    }
-    .signInButton:hover{
-        background-color: var(--color--bg);
-        cursor: pointer;
-    }
-    
+.head {
+  grid-area: head;
+  display: flex;
+  align-items: center;
+  /* margin: 0.2rem 3rem; */
+  justify-content: space-between;
+  height: 5rem;
+
+  .search-bar {
+    flex-grow: 1;
+    padding: 10px;
+    margin: 0px 20px;
+    border: 1px solid #181515;
+    border-radius: 40px;
+  }
+
+  .signInButton {
+    border: none;
+    margin: 0 0.5rem;
+    background-color: white;
+    padding: 0.8rem;
+    border-radius: 4rem;
+  }
+
+  .signInButton:hover {
+    background-color: var(--color--bg);
+    cursor: pointer;
+  }
+
 }
 
 
 
 /*  new*/
 :root {
-    /* so we can add all clors heree */
-    --button--bg:  rgb(3, 3, 3);
-    --color--txt: white;
+  /* so we can add all clors heree */
+  --button--bg: rgb(3, 3, 3);
+  --color--txt: white;
 }
 
 .purchase-container {
-    
-    width: 45%;
-    margin: 4em auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /* align-items: center; */
-    /* justify-content: center; */
-    .h2 {
-        margin: 1.6rem 0;
-      }
-      .purchase-form {
-        .inputs {
-          margin-bottom: 15px;
 
-          input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #c2c2c2;
-            border-radius: 10px;
-          }
-        }
-    
-        .purchase-btn {
-          width: 100%;
-          padding: 5px;
-          border: none;
-          border-radius: 17px;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 4px;
-          border: var(--color--icons) solid;
-          background-color: var(--color--icons);
-          color: var(--color--txt);
-          cursor: pointer;
-          font-size:large;
-          
-        }
+  width: 45%;
+  margin: 4em auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  /* align-items: center; */
+  /* justify-content: center; */
+  .h2 {
+    margin: 1.6rem 0;
+  }
+
+  .purchase-form {
+    .inputs {
+      margin-bottom: 15px;
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #c2c2c2;
+        border-radius: 10px;
       }
-     
     }
-  
-   
+
+    .purchase-btn {
+      width: 100%;
+      padding: 5px;
+      border: none;
+      border-radius: 17px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 4px;
+      border: var(--color--icons) solid;
+      background-color: var(--color--icons);
+      color: var(--color--txt);
+      cursor: pointer;
+      font-size: large;
+
+    }
+  }
+
+}
+
+
+.footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  color: white;
+  background-color: var(--color--icons);
+
+  display: grid;
+  justify-items: center;
+
+  .contact {
+    h3 {
+
+      text-align: center;
+      margin: 2rem 0 1rem 0;
+    }
+  }
+
+  .fa {
+    padding: 1rem;
+    font-size: 2rem;
+    /* width: 30px; */
+    text-align: center;
+    text-decoration: none;
+    /* border-radius: 50%; */
+  }
+
+  .fa:hover {
+    opacity: 0.7;
+  }
+
+  .fa-facebook {
+    /* background: #3B5998; */
+    color: white;
+  }
+
+  .fa-twitter {
+    /* background: #55ACEE; */
+    color: white;
+  }
+
+  .fa-youtube {
+    /* background: #bb0000; */
+    color: white;
+  }
+
+  .fa-instagram {
+    /* background: #125688; */
+    color: white;
+  }
+
+  .fa-pinterest {
+    /* background: #cb2027; */
+    color: white;
+  }
+}
