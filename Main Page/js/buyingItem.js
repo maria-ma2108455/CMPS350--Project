@@ -1,23 +1,20 @@
-
-
 const usersFile = "../json/users.json";
-const buyNow = document.querySelector('#buy-now')
+const buyNow = document.querySelector('#buy-btn')
 const quantity = document.querySelector('#quantity')
 const confirmPurchase = document.querySelector('#purchase-btn')
 
 //assuming
-const itemId = document.querySelector('#itemId')
-
+// const itemId = urlParameter.get('item'); dosn't read correctly
 document.addEventListener('DOMContentLoaded', handlePageLoad)
 buyNow.addEventListener('click', checkLoggedIn)
-confirmPurchase.addEventListener('click', confirmedPurchase)
+// confirmPurchase.addEventListener('click', confirmedPurchase)
 
 users = []
 async function handlePageLoad(){
     try {
-        // const data = await fetch(bookURL)
-        // books = await data.json()    
-        // localStorage.books = JSON.stringify(books)
+        // const data = await fetch(usersFile)
+        // users = await data.json()
+        // localStorage.users = JSON.stringify(users)
         if(!localStorage.users){
             const data = await fetch(usersFile)
             users = await data.json()
@@ -31,6 +28,8 @@ async function handlePageLoad(){
         console.error("Failed to load books:", error);
     }
 }
+
+
 
 //currentUser in localStorage that has user info
 //if currentUser true then take the username and search by user name to find balance
