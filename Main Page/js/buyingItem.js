@@ -7,7 +7,7 @@ const purchaseForm = document.querySelector('#purchase-form')
 // const itemId = urlParameter.get('item'); dosn't read correctly
 document.addEventListener('DOMContentLoaded', handlePageLoad)
 // buyNow.addEventListener('click', checkLoggedIn)
-confirmPurchase.addEventListener('submit', confirmedPurchase)
+purchaseForm.addEventListener('submit', confirmedPurchase)
 
 users = []
 async function handlePageLoad(){
