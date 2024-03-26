@@ -37,7 +37,7 @@ async function handlePageLoad(){
 
 
 function checkLoggedIn(){
-
+    buyNow.preventDefault()
     if(localStorage.currentUser){
         // const localUser = localStorage.getItem("currentUser")
         // const custUser = users.find(u => localStorage.getItem(u.username) == localUser)

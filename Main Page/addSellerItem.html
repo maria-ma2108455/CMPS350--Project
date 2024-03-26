@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtiCat</title>
+    <link rel="stylesheet" href="css/mainpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/addSellerItem.css">
+    <!-- Enter new style sheet here -->
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- Header -->
+        <header class="head">
+            <img src="images/no bg logo.PNG" alt="logo" class="logo">
+            <div class="top-bar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for anything" class="search-bar" name="searchValue">
+                    <i class="material-icons">search</i>
+                </div>
+                <button class="signInButton" id="signInBtn">Sign In</button>
+                <i class="material-icons profile-icon hidden" id="profile-icon">account_circle</i>
+            </div>
+            <!-- Navigation -->
+            <nav class="nav">
+                <ul class="flex">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us </a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <hr>
+
+        <main class="main">
+            <div class="addItem-container">
+                <h2 class="h2">Enter Item Details</h2>
+
+            <form class="addItem-form">
+                <div class="inputs">
+                    <label for="item-name">Name</label>
+                    <input type="text" id="item-name" name="item-name" required>
+                </div>
+
+                <div class="inputs">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" required>
+                </div>
+
+                <div class="inputs">
+                    <label for="item-image">Select image file (only type png/jpeg)</label>
+                    <br>
+                    <label for="item-image" class="file-upload">Upload Image</label>
+                    <input type="file" id="item-image" name="item-image" accept="image/png, image/jpeg" class="inputfile" required>
+
+                </div>
+
+                <div class="inputs">
+                    <label for="item-price">Price</label>
+                    <input type="number" id="item-price" name="item-price" min="0" step="0.01" required>
+                </div>
+
+                <div class="inputs">
+                    <label for="item-quantity">Quantity</label>
+                    <input type="number" id="item-quantity" name="item-quantity" min="1" value="1" required>
+                </div>
+
+                <div class="inputs">
+                    <label for="item-description">Description</label>
+                    <textarea name="item-description" id="item-description" placeholder="Write a short description of item characteristics and functionalities." cols="20" rows="5"></textarea>
+                </div>
+
+                <button type="submit" class="addItem-btn" id="addItem-btn">Add Item</button>
+
+
+            </form>
+            </div>
+            <script src="js/header.js"></script>
+        </main>
+
+        <footer class="footer">
+            <!-- Contact -->
+            <section id="contact">
+                <h3>Have a question? Contact Us!</h3>
+
+                <div class="socials">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-pinterest"></a>
+                </div>
+                
+            </section>
+
+            <p>&copy; 2024 ArtiCat</p>
+
+        </footer>
+    </div>
+</body>
+
+</html>
