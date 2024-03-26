@@ -1,12 +1,13 @@
 const usersFile = "../json/users.json";
 // const buyNow = document.querySelector('#buy-btn')
 const confirmPurchase = document.querySelector('#purchase-btn')
+const purchaseForm = document.querySelector('#purchase-form')
 
 //assuming
 // const itemId = urlParameter.get('item'); dosn't read correctly
 document.addEventListener('DOMContentLoaded', handlePageLoad)
 // buyNow.addEventListener('click', checkLoggedIn)
-confirmPurchase.addEventListener('click', confirmedPurchase)
+confirmPurchase.addEventListener('submit', confirmedPurchase)
 
 users = []
 async function handlePageLoad(){
@@ -59,7 +60,7 @@ function checkLoggedIn(){
 
 
 function confirmedPurchase(){
-    confirmPurchase.preventDefault()
+    purchaseForm.preventDefault()
     if(confirm("Are you sure about your purchase?")){
         
         const custUser = users.find(u => u.username === localStorage.currentUser)
