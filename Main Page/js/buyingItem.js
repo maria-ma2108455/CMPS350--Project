@@ -56,22 +56,22 @@ function checkLoggedIn(){
 }
 
 
-function confirmedPurchase(){
+// function confirmedPurchase(){
 
-    if(confirm("Are you sure about your purchase?")){
+//     if(confirm("Are you sure about your purchase?")){
         
-        const custUser = users.find(u => u.username === localStorage.currentUser)
+//         const custUser = users.find(u => u.username === localStorage.currentUser)
 
-        custUser.moneyBalance -= totalPrice;
-        const item = localStorage.items.find(item=> item.itemId === itemId)
-        item.quantity -= quantity;
+//         JSON.parse(custUser.moneyBalance) -= totalPrice;
+//         const item = localStorage.itemsArray.find(item=> item.itemId === itemId)
+//         JSON.parse(item.quantity) -= quantity;
 
-        window.location.href = "mainpage.html"
-        alert("Purchase Confirmed")
+//         window.location.href = "mainpage.html"
+//         alert("Purchase Confirmed")
         
-    }
-    else{
-        alert("Purchase Cancelled")
-    }
-}
+//     }
+//     else{
+//         alert("Purchase Cancelled")
+//     }
+// }
 
