@@ -1,40 +1,21 @@
+let users = []
 
+// Get all information from files
 
-// let users = []
-
-// // Get all information from files
-
-// document.addEventListener('DOMContentLoaded', async () => {
-//   try {
-//       if(!localStorage.users) {
-//           const data = await fetch('../json/users.json')
-//           users = await data.json()
-//           localStorage.users = JSON.stringify(users)
-//       } else {
-//           users = JSON.parse(localStorage.books)
-//       }
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+      if(!localStorage.users) {
+          const data = await fetch('../json/users.json')
+          users = await data.json()
+          localStorage.users = JSON.stringify(users)
+      } else {
+          users = JSON.parse(localStorage.users)
+      }
       
-//   } catch (error) {
-//       console.error("Failed to load users:", error);
-//   }
-// });
-
-// let users = []
-// // Get all information from files
-// document.addEventListener('DOMContentLoaded', async () => {
-//   try {
-//       if(!localStorage.users) {
-//           const data = await fetch('../json/users.json')
-//           users = await data.json()
-//           localStorage.users = JSON.stringify(users)
-//       } else {
-//           users = JSON.parse(localStorage.books)
-//       }
-//   } catch (error) {
-//       console.error("Failed to load users:", error);
-//   }
-// });
-
+  } catch (error) {
+      console.error("Failed to load users:", error);
+  }
+});
 
 //get the ref of elemnt we want to interact with
 //select more than one element 
