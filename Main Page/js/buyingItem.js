@@ -1,17 +1,20 @@
 const usersFile = "../json/users.json";
-const buyNow = document.querySelector('#buy-btn')
-const quantity = document.querySelector('#quantity')
+// const buyNow = document.querySelector('#buy-btn')
 const confirmPurchase = document.querySelector('#purchase-btn')
 
 //assuming
 // const itemId = urlParameter.get('item'); dosn't read correctly
 document.addEventListener('DOMContentLoaded', handlePageLoad)
-buyNow.addEventListener('click', checkLoggedIn)
-// confirmPurchase.addEventListener('click', confirmedPurchase)
+// buyNow.addEventListener('click', checkLoggedIn)
+confirmPurchase.addEventListener('click', confirmedPurchase)
 
 users = []
 async function handlePageLoad(){
     try {
+        const buyNow = document.querySelector('#buy-btn')
+        const quantity = document.querySelector('#quantity')
+        buyNow.addEventListener('click', checkLoggedIn)
+
         // const data = await fetch(usersFile)
         // users = await data.json()
         // localStorage.users = JSON.stringify(users)
@@ -25,7 +28,7 @@ async function handlePageLoad(){
         }   
 
     } catch (error) {
-        console.error("Failed to load books:", error);
+        console.error("Failed to load:", error);
     }
 }
 
@@ -36,7 +39,7 @@ async function handlePageLoad(){
 
 
 function checkLoggedIn(){
-    buyNow.preventDefault()
+    // buyNow.preventDefault()
     if(localStorage.currentUser){
         // const localUser = localStorage.getItem("currentUser")
         // const custUser = users.find(u => localStorage.getItem(u.username) == localUser)
@@ -55,22 +58,22 @@ function checkLoggedIn(){
 }
 
 
-// function confirmedPurchase(){
+function confirmedPurchase(){
 
-//     if(confirm("Are you sure about your purchase?")){
+    if(confirm("Are you sure about your purchase?")){
         
-//         const custUser = users.find(u => u.username === localStorage.currentUser)
+        const custUser = users.find(u => u.username === localStorage.currentUser)
 
-//         JSON.parse(custUser.moneyBalance) -= totalPrice;
-//         const item = localStorage.itemsArray.find(item=> item.itemId === itemId)
-//         JSON.parse(item.quantity) -= quantity;
+        JSON.parse(custUser.moneyBalance) -= totalPrice;
+        const item = localStorage.itemsArray.find(item=> item.itemId === itemId)
+        JSON.parse(item.quantity) -= quantity;
 
-//         window.location.href = "mainpage.html"
-//         alert("Purchase Confirmed")
+        window.location.href = "mainpage.html"
+        alert("Purchase Confirmed")
         
-//     }
-//     else{
-//         alert("Purchase Cancelled")
-//     }
-// }
+    }
+    else{
+        alert("Purchase Cancelled")
+    }
+}
 
