@@ -29,7 +29,7 @@ function itemDetailsToHTML(item){
         <form>
             <div>
                 <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="0" max="${item.quantity}" step="1" value="1">
+                <input type="number" id="quantity" name="quantity" min="1" max="${item.quantity}" step="1" value="1">
             </div>
             <input type="button" value="Buy Now" id="purchase-btn">
         </form>
