@@ -172,7 +172,7 @@
         {
             "name": "Elegant Beaded Bracelet",
             "category": "Jewelry",
-            "image": "images/jewelry/elegant_beaded_bracelet.webp",
+            "image": "images/jewelry/elegant_beaded_bracelet.png",
             "price": 29.99,
             "quantity": 50,
             "description": "A beautiful bracelet adorned with elegant beads, perfect for adding a touch of sophistication to any outfit.",
@@ -183,22 +183,9 @@
             "itemId": "I14"
           },
           {
-            "name": "Elegant Rhinestone Jewelry Set",
-            "category": "Jewelry",
-            "image": "images/jewelry/elegant_rhinestone_jewelry_set.webp",
-            "price": 89.99,
-            "quantity": 30,
-            "description": "A stunning jewelry set featuring rhinestones, including a necklace, bracelet, and earrings. Perfect for special occasions.",
-            "seller": {
-              "username": "elegant_jewels",
-              "companyName": "Elegant Jewels Co."
-            },
-            "itemId": "I15"
-          },
-          {
             "name": "Glass Beaded Daisy Bracelet",
             "category": "Jewelry",
-            "image": "images/jewelry/glass_beaded_daisy_bracelet.webp",
+            "image": "images/jewelry/glass_beaded_daisy_bracelet.png",
             "price": 19.99,
             "quantity": 40,
             "description": "A charming bracelet adorned with glass beads in the shape of daisies. Adds a touch of whimsy to your look.",
@@ -209,9 +196,22 @@
             "itemId": "I16"
           },
           {
-            "name": "Hollow Flower Design Earrings",
+            "name": "Elegant Rhinestone Jewelry Set",
             "category": "Jewelry",
-            "image": "images/jewelry/hollow_flower_design_earrings.webp",
+            "image": "images/jewelry/elegant_rhinestone_jewelry_set.png",
+            "price": 89.99,
+            "quantity": 30,
+            "description": "A stunning jewelry set featuring rhinestones, including a necklace, bracelet, and earrings. Perfect for special occasions.",
+            "seller": {
+              "username": "elegant_jewels",
+              "companyName": "Elegant Jewels Co."
+            },
+            "itemId": "I15"
+          },
+          {
+            "name": "Flower Design Earrings",
+            "category": "Jewelry",
+            "image": "images/jewelry/hollow_flower_design_earrings.png",
             "price": 14.99,
             "quantity": 60,
             "description": "Delicate earrings featuring a hollow flower design, perfect for everyday wear or special occasions.",
@@ -224,7 +224,7 @@
           {
             "name": "Lily Of The Valley Dangle Earrings",
             "category": "Jewelry",
-            "image": "images/jewelry/lily_of_the_valley_dangle_earrings.webp",
+            "image": "images/jewelry/lily_of_the_valley_dangle_earrings.png",
             "price": 24.99,
             "quantity": 35,
             "description": "Elegant dangle earrings inspired by the delicate lily of the valley flower. Adds a touch of nature-inspired beauty to any ensemble.",
@@ -235,22 +235,22 @@
             "itemId": "I18"
           },
           {
-            "name": "Moon Star Pendant Necklace",
+            "name": "Swan Shaped Pearl Earrings",
             "category": "Jewelry",
-            "image": "images/jewelry/moon_star_pendant_necklace.webp",
-            "price": 34.99,
-            "quantity": 45,
-            "description": "A celestial-inspired necklace featuring a moon and star pendant. Perfect for those who love astronomy or celestial motifs.",
+            "image": "images/jewelry/swan_shaped_pearl_earrings.png",
+            "price": 29.99,
+            "quantity": 30,
+            "description": "Elegant earrings featuring swan-shaped designs adorned with lustrous pearls. Perfect for adding a touch of sophistication to any look.",
             "seller": {
               "username": "elegant_jewels",
               "companyName": "Elegant Jewels Co."
             },
-            "itemId": "I19"
+            "itemId": "I24"
           },
           {
-            "name": "Purple Crystal Flower Earrings",
+            "name": "Pink Crystal Flower Earrings",
             "category": "Jewelry",
-            "image": "images/jewelry/purple_crystal_flower_earrings.webp",
+            "image": "images/jewelry/purple_crystal_flower_earrings.png",
             "price": 17.99,
             "quantity": 55,
             "description": "Exquisite earrings featuring purple crystal flowers, adding a pop of color and sparkle to your ensemble.",
@@ -263,7 +263,7 @@
           {
             "name": "Rhinestone Stackable Rings",
             "category": "Jewelry",
-            "image": "images/jewelry/rhinestone_stackable_rings.webp",
+            "image": "images/jewelry/rhinestone_stackable_rings.png",
             "price": 27.99,
             "quantity": 25,
             "description": "Set of stackable rings adorned with sparkling rhinestones, perfect for mixing and matching to create your unique look.",
@@ -276,7 +276,7 @@
           {
             "name": "Snowflake Luxury Necklace",
             "category": "Jewelry",
-            "image": "images/jewelry/snowflake_luxury_necklace.webp",
+            "image": "images/jewelry/snowflake_luxury_necklace.png",
             "price": 39.99,
             "quantity": 20,
             "description": "A luxurious necklace featuring intricate snowflake design, perfect for winter-themed events or adding a touch of elegance to your look.",
@@ -289,7 +289,7 @@
           {
             "name": "Star Bracelet",
             "category": "Jewelry",
-            "image": "images/jewelry/star_bracelet.webp",
+            "image": "images/jewelry/star_bracelet.png",
             "price": 21.99,
             "quantity": 35,
             "description": "A charming bracelet adorned with star-shaped charms, adding a touch of celestial whimsy to your ensemble.",
@@ -300,22 +300,22 @@
             "itemId": "I23"
           },
           {
-            "name": "Swan Shaped Pearl Earrings",
+            "name": "Moon Star Pendant Necklace",
             "category": "Jewelry",
-            "image": "images/jewelry/swan_shaped_pearl_earrings.webp",
-            "price": 29.99,
-            "quantity": 30,
-            "description": "Elegant earrings featuring swan-shaped designs adorned with lustrous pearls. Perfect for adding a touch of sophistication to any look.",
+            "image": "images/jewelry/moon_star_pendant_necklace.png",
+            "price": 34.99,
+            "quantity": 45,
+            "description": "A celestial-inspired necklace featuring a moon and star pendant. Perfect for those who love astronomy or celestial motifs.",
             "seller": {
               "username": "elegant_jewels",
               "companyName": "Elegant Jewels Co."
             },
-            "itemId": "I24"
+            "itemId": "I19"
           },
           {
             "name": "White Flower Hoop Earrings",
             "category": "Jewelry",
-            "image": "images/jewelry/white_flower_hoop_earrings.webp",
+            "image": "images/jewelry/white_flower_hoop_earrings.png",
             "price": 19.99,
             "quantity": 40,
             "description": "Chic hoop earrings featuring white flower accents, perfect for adding a feminine touch to your ensemble.",
