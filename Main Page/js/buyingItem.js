@@ -59,8 +59,8 @@ function checkLoggedIn(){
 }
 
 
-function confirmedPurchase(){
-    purchaseForm.preventDefault()
+function confirmedPurchase(e){
+    e.preventDefault()
     if(confirm("Are you sure about your purchase?")){
         
         const custUser = users.find(u => u.username === localStorage.currentUser)
