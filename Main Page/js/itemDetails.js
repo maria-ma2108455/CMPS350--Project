@@ -2,7 +2,7 @@
 itemsArray = JSON.parse(localStorage.itemsArray);
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
-const itemDetailsCC = document.querySelector ('.item')
+const itemDetailsCC = document.querySelector ('.item-container')
 
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
@@ -16,8 +16,10 @@ async function handlePageLoad() {
 
 //displaying the item
 function itemDetailsToHTML(item){
+    if (!item) {
+        return `<div class="details">Item details not available.</div>`;}
     return  `
-    <div class="item" onclick="handleItemClick('${item.itemId}')">
+    <div class="item">
     <img src="${item.image}" alt="${item.name}">
     <div class="details">
         <h1>${item.price}$</h1>
@@ -29,7 +31,7 @@ function itemDetailsToHTML(item){
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" min="0" max="${item.quantity}" step="1" value="1">
             </div>
-            <input type="submit" value="Buy Now">
+            <input type="button" value="Buy Now" id="purchase-btn">
         </form>
     </div>`
 }

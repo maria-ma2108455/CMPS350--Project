@@ -74,7 +74,7 @@ main {
                     
                 }
     
-                input[type="submit"] {
+                input[type="button"] {
                     padding: 0.6rem;
                     border: var(--color--icons) solid;
                     border-radius: 2rem;
