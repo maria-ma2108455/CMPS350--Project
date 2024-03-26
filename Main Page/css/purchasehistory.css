@@ -25,11 +25,14 @@ h2{
         margin: auto;
         width: 70%;
         img {
-            width: 20%;
+            width: 30%;
             /* flex-grow: 1; */
             padding: 1rem;
+            border-radius: 2rem;
         }
         border: 2px solid black;
+        margin-top: 1rem;
+        border-radius: 1rem;
     .details {
             flex-grow: 2;
             padding: 2rem;
@@ -55,7 +58,7 @@ h2{
                     align-self: center;
                     padding: 1rem;
                 }
-            
+                margin-top: 0.5rem;
             }
         }
 }
