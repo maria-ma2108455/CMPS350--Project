@@ -37,6 +37,7 @@ main {
             width: 40%;
             flex-grow: 1;
             padding: 2rem;
+            border-radius: 2.5rem;
         }
 
         p {
