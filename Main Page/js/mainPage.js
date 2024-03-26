@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
           users = JSON.parse(localStorage.books)
       }
+      
   } catch (error) {
       console.error("Failed to load users:", error);
   }
