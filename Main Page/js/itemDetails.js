@@ -4,15 +4,55 @@ const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
 const itemDetailsCC = document.querySelector ('.item-container')
 
+
+// const buyNow = document.querySelector('#buy-btn')
+// buyNow.addEventListener('click', checkLoggedIn)
+
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {
+
     const item= itemsArray.items.find(i=>i.itemId==itemId)
     console.log("found item:", item);
     const itemDetailsHTML= itemDetailsToHTML(item)
     itemDetailsCC.innerHTML=itemDetailsHTML
-    };
+
+    const quantityItem = document.getElementById('quantity');
+    const priceOfItem = document.getElementById('price');
+
+    if (quantityItem && priceOfItem) {
+        // Calculate total price and update displayed price when quantity changes
+        quantityItem.addEventListener('input', () => {
+            const quantity = parseInt(quantityItem.value);
+            const price = parseInt(item.price);
+            if(!quantity){
+                priceOfItem.textContent = '0' + '$';
+            }
+            else{
+                const totalPrice = quantity * price;
+                priceOfItem.textContent = totalPrice + '$';
+                window.itemQuantity = quantity;
+                window.totalPrice = totalPrice;
+                
+                
+            }
+            
+        });
+
+        const buyNow = document.querySelector('#buy-btn');
+        buyNow.addEventListener('click', () => checkLoggedIn());
+    }
+};
+
+
+function assignNeededAttributes(){
+    localStorage.currentItemId = itemId
+    localStorage.custQuantity = window.itemQuantity
+}
+
+
+
 
 //displaying the item
 function itemDetailsToHTML(item){
@@ -22,7 +62,7 @@ function itemDetailsToHTML(item){
     <div class="item">
     <img src="${item.image}" alt="${item.name}">
     <div class="details">
-        <h1>${item.price}$</h1>
+        <h1 id="price">${item.price}$</h1>
         <h3>${item.name}</h3>
         <p>${item.description}</p>
         <p>${item.seller.companyName}</p>
@@ -35,6 +75,26 @@ function itemDetailsToHTML(item){
         </form>
     </div>`
 }
+
+
+function checkLoggedIn(){
+    if(localStorage.currentUser){
+
+        const totalPrice = window.totalPrice
+        const users = localStorage.users
+        const user = JSON.parse(users)
+        const foundUser = user.find(u => u.username === localStorage.currentUser)
+
+        if(foundUser.moneyBalance < totalPrice){
+            alert("Not Enough Balance");
+        }
+        else{
+            assignNeededAttributes()
+            window.location.href = "purchasedetails.html"
+        }
+    }
+    else{
+        window.location.href = "signin.html"
     
-
-
+    }
+}

@@ -1,77 +1,71 @@
-const usersFile = "../json/users.json";
-// const buyNow = document.querySelector('#buy-btn')
+// const usersFile = "../json/users.json";
 // const confirmPurchase = document.querySelector('#purchase-btn')
 const purchaseForm = document.querySelector('#purchase-form')
 
 //assuming
-// const itemId = urlParameter.get('item'); dosn't read correctly
 // document.addEventListener('DOMContentLoaded', handlePageLoad)
-// buyNow.addEventListener('click', checkLoggedIn)
+
+// const quantity = document.querySelector('#quantity')
 purchaseForm.addEventListener('submit', confirmedPurchase)
 
-users = []
-async function handlePageLoad(){
-    try {
-        const buyNow = document.querySelector('#buy-btn')
-        const quantity = document.querySelector('#quantity')
-        buyNow.addEventListener('click', checkLoggedIn)
+// users = []
+// async function handlePageLoad(){
+//     try {
+//         // const buyNow = document.querySelector('#buy-btn')
+//         // const quantity = document.querySelector('#quantity')
+//         // buyNow.addEventListener('click', checkLoggedIn)
 
-        // const data = await fetch(usersFile)
-        // users = await data.json()
-        // localStorage.users = JSON.stringify(users)
-        if(!localStorage.users){
-            const data = await fetch(usersFile)
-            users = await data.json()
-            localStorage.users = JSON.stringify(users)
-        }
-        else{
-            users=JSON.parse(localStorage.users)
-        }   
+//         // const data = await fetch(usersFile)
+//         // users = await data.json()
+//         // localStorage.users = JSON.stringify(users)
+//         if(!localStorage.users){
+//             const data = await fetch(usersFile)
+//             users = await data.json()
+//             localStorage.users = JSON.stringify(users)
+//         }
+//         else{
+//             users=JSON.parse(localStorage.users)
+//         }   
 
-    } catch (error) {
-        console.error("Failed to load:", error);
-    }
-}
-
-
-
-//currentUser in localStorage that has user info
-//if currentUser true then take the username and search by user name to find balance
-
-
-function checkLoggedIn(){
-    // buyNow.preventDefault()
-    if(localStorage.currentUser){
-        // const localUser = localStorage.getItem("currentUser")
-        // const custUser = users.find(u => localStorage.getItem(u.username) == localUser)
-        const custUser = users.find(u => u.username === localStorage.currentUser)
-        const balance = custUser.moneyBalance
-        if(balance < quantity){
-            alert("Not Enough Balance");
-        }
-        else{
-            window.location.href = "purchasedetails.html"
-        }
-    }
-    else{
-        window.location.href = "signin.html"
-    }
-}
+//     } catch (error) {
+//         console.error("Failed to load:", error);
+//     }
+// }
 
 
 function confirmedPurchase(e){
     e.preventDefault()
     // console.log('purchase works');
+
     if(confirm("Are you sure about your purchase?")){
         
-        const custUser = users.find(u => u.username === localStorage.currentUser)
+        const users = localStorage.users
+        const user = JSON.parse(users)
+        const foundUser = user.find(u => u.username === localStorage.currentUser)
+        
+        // parseItems = JSON.parse(allItems)
+        // items = parseItems.items
 
-        JSON.parse(custUser.moneyBalance) -= totalPrice;
-        const item = localStorage.itemsArray.find(item=> item.itemId === itemId)
-        JSON.parse(item.quantity) -= quantity;
+
+        let items =[]
+        const allItems = localStorage.itemsArray
+        items = JSON.parse(allItems).items
+
+        const foundItem = items.find(it => it.itemId === localStorage.currentItemId)
+
+        const totalPrice = foundItem.price * localStorage.custQuantity
+
+        foundUser.moneyBalance = JSON.parse(foundUser.moneyBalance) - totalPrice
+        // localStorage.setItem('users', JSON.stringify(users))
+
+        foundItem.quantity = JSON.parse(foundItem.quantity) - localStorage.custQuantity
+        // localStorage.setItem('itemsArray', JSON.stringify(items))
 
         window.location.href = "mainpage.html"
         alert("Purchase Confirmed")
+
+        // delete localStorage.custQuantity
+        // delete localStorage.currentItemId
         
     }
     else{
