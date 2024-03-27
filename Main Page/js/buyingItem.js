@@ -26,21 +26,21 @@ function confirmedPurchase(e) {
     let purchase = false;
     if (!done) {
     //   foundUser.moneyBalance -= totalPrice;
-      foundItem.quantity -= localStorage.custQuantity;
-
-      localStorage.itemsArray = JSON.stringify(items);
+      // foundItem.quantity -= localStorage.custQuantity;
+      console.log(foundItem.quantity -= localStorage.custQuantity);
+      localStorage.itemsArray = JSON.stringify(JSON.parse(allItems));
     //   localStorage.users = JSON.stringify(user);
       done = true;
     } 
 
-    while(done && !purchase){
-      window.location.href = "mainpage.html";
-      alert("Purchase Confirmed");
-      delete localStorage.custQuantity;
-      delete localStorage.currentItemId;
-      purchase=true
-        break
-    }
+    // while(done && !purchase){
+    //   window.location.href = "mainpage.html";
+    //   alert("Purchase Confirmed");
+    //   delete localStorage.custQuantity;
+    //   delete localStorage.currentItemId;
+    //   purchase=true
+    //     break
+    // }
   } else {
     alert("Purchase Cancelled");
   }
