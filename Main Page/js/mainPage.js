@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   loadUsers()
 
-  loadItems()
+  // delete localStorage.items
+
+  // loadItems()
 
   loadPurchases()
 
