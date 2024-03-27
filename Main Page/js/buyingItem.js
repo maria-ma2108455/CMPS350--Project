@@ -1,36 +1,6 @@
-// const usersFile = "../json/users.json";
-// const confirmPurchase = document.querySelector('#purchase-btn')
 const purchaseForm = document.querySelector("#purchase-form");
-
-//assuming
-// document.addEventListener('DOMContentLoaded', handlePageLoad)
-
-// const quantity = document.querySelector('#quantity')
 purchaseForm.addEventListener("submit", confirmedPurchase);
 
-// users = []
-// async function handlePageLoad(){
-//     try {
-//         // const buyNow = document.querySelector('#buy-btn')
-//         // const quantity = document.querySelector('#quantity')
-//         // buyNow.addEventListener('click', checkLoggedIn)
-
-//         // const data = await fetch(usersFile)
-//         // users = await data.json()
-//         // localStorage.users = JSON.stringify(users)
-//         if(!localStorage.users){
-//             const data = await fetch(usersFile)
-//             users = await data.json()
-//             localStorage.users = JSON.stringify(users)
-//         }
-//         else{
-//             users=JSON.parse(localStorage.users)
-//         }
-
-//     } catch (error) {
-//         console.error("Failed to load:", error);
-//     }
-// }
 
 function confirmedPurchase(e) {
   e.preventDefault();
@@ -58,11 +28,11 @@ function confirmedPurchase(e) {
     //   foundUser.moneyBalance -= totalPrice;
       foundItem.quantity -= localStorage.custQuantity;
 
-      localStorage.itemsArray = JSON.stringify(items);
+      localStorage.itemsArray = JSON.stringify(JSON.parse(allItems));
     //   localStorage.users = JSON.stringify(user);
       done = true;
     } 
-    
+
     while(done && !purchase){
       window.location.href = "mainpage.html";
       alert("Purchase Confirmed");
