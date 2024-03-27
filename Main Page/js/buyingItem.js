@@ -1,75 +1,47 @@
-// const usersFile = "../json/users.json";
-// const confirmPurchase = document.querySelector('#purchase-btn')
-const purchaseForm = document.querySelector('#purchase-form')
-
-//assuming
-// document.addEventListener('DOMContentLoaded', handlePageLoad)
-
-// const quantity = document.querySelector('#quantity')
-purchaseForm.addEventListener('submit', confirmedPurchase)
-
-// users = []
-// async function handlePageLoad(){
-//     try {
-//         // const buyNow = document.querySelector('#buy-btn')
-//         // const quantity = document.querySelector('#quantity')
-//         // buyNow.addEventListener('click', checkLoggedIn)
-
-//         // const data = await fetch(usersFile)
-//         // users = await data.json()
-//         // localStorage.users = JSON.stringify(users)
-//         if(!localStorage.users){
-//             const data = await fetch(usersFile)
-//             users = await data.json()
-//             localStorage.users = JSON.stringify(users)
-//         }
-//         else{
-//             users=JSON.parse(localStorage.users)
-//         }   
-
-//     } catch (error) {
-//         console.error("Failed to load:", error);
-//     }
-// }
+const purchaseForm = document.querySelector("#purchase-form");
+purchaseForm.addEventListener("submit", confirmedPurchase);
 
 
-function confirmedPurchase(e){
-    e.preventDefault()
-    // console.log('purchase works');
+function confirmedPurchase(e) {
+  e.preventDefault();
+  // console.log('purchase works');
 
-    if(confirm("Are you sure about your purchase?")){
-        
-        const users = localStorage.users
-        const user = JSON.parse(users)
-        const foundUser = user.find(u => u.username === localStorage.currentUser)
-        
-        // parseItems = JSON.parse(allItems)
-        // items = parseItems.items
+  if (confirm("Are you sure about your purchase?")) {
+    const users = localStorage.users;
+    const user = JSON.parse(users);
+    const foundUser = user.find((u) => u.username === localStorage.currentUser);
 
+    let items = [];
+    const allItems = localStorage.itemsArray;
+    items = JSON.parse(allItems).items;
 
-        let items =[]
-        const allItems = localStorage.itemsArray
-        items = JSON.parse(allItems).items
+    
+    const foundItem = items.find(
+      (it) => it.itemId === localStorage.currentItemId
+    );
 
-        const foundItem = items.find(it => it.itemId === localStorage.currentItemId)
+    const totalPrice = foundItem.price * localStorage.custQuantity;
 
-        const totalPrice = foundItem.price * localStorage.custQuantity
+    let done = false;
+    let purchase = false;
+    if (!done) {
+    //   foundUser.moneyBalance -= totalPrice;
+      foundItem.quantity -= localStorage.custQuantity;
 
-        foundUser.moneyBalance = JSON.parse(foundUser.moneyBalance) - totalPrice
-        // localStorage.setItem('users', JSON.stringify(users))
+      localStorage.itemsArray = JSON.stringify(JSON.parse(allItems));
+    //   localStorage.users = JSON.stringify(user);
+      done = true;
+    } 
 
-        foundItem.quantity = JSON.parse(foundItem.quantity) - localStorage.custQuantity
-        // localStorage.setItem('itemsArray', JSON.stringify(items))
-
-        window.location.href = "mainpage.html"
-        alert("Purchase Confirmed")
-
-        // delete localStorage.custQuantity
-        // delete localStorage.currentItemId
-        
+    while(done && !purchase){
+      window.location.href = "mainpage.html";
+      alert("Purchase Confirmed");
+      delete localStorage.custQuantity;
+      delete localStorage.currentItemId;
+      purchase=true
+        break
     }
-    else{
-        alert("Purchase Cancelled")
-    }
+  } else {
+    alert("Purchase Cancelled");
+  }
 }
-
