@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 
 <head>
     <meta charset="UTF-8">
@@ -8,13 +9,12 @@
     <link rel="stylesheet" href="css/mainpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/purchasehistory.css">
     <!-- <style type="text/css">* {cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani176.cur), auto !important;}</style><a href="https://www.cursors-4u.com/cursor/2008/11/07/ani176.html" target="_blank" title="Cute Hello Kitty"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Hello Kitty" style="position:absolute; top: 0px; right: 0px;" /></a> -->
-    <!-- Enter new style sheet here -->
+    <link rel="stylesheet" href="css/purchasehistory.css">
 </head>
 
 <body>
-
+    
     <div class="page">
 
         <!-- Header -->
@@ -22,16 +22,22 @@
             <img src="images/no bg logo.PNG" alt="logo" class="logo">
             <div class="top-bar">
                 <div class="search-box">
-                    <input type="text" placeholder="Search for anything" class="search-bar" name="searchValue">
-                    <i class="material-icons">search</i>
+                    <form id="searchForm">
+                        <input type="text" placeholder="Search for anything" class="search-bar" name="searchValue">
+                        <input type="submit" style="display: none;">
+                    </form>                    <i class="material-icons">search</i>
                 </div>
                 <button class="signInButton" id="signInBtn">Sign In</button>
-                <i class="material-icons profile-icon hidden" id="profile-icon">account_circle</i>
+                <div class="drop-down">
+                    <i class="material-icons profile-icon hidden" id="profile-icon" onclick="showDropDown()">account_circle</i>
+                    <div class="drop-down-list hidden" id="drop-down-list"></div>
+                </div>
+       
             </div>
             <!-- Navigation -->
             <nav class="nav">
                 <ul class="flex">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="mainpage.html">Home</a></li>
                     <li><a href="#categories">Categories</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact Us </a></li>
@@ -43,22 +49,21 @@
         <hr>
 
         <main class="main">
+            <!-- Write new content here -->
             <h2>Purchase History</h2>
-        <div class="purchases-container"></div>
-        <!-- <div class="item-purchased">
-        <div class="details">
-        <p>Purchase ID:</p>s
-        <p>Item ID:</p>
-        <p>Item Name:</p>
-        <p>Total Price</p>
-        <p>Seller:</p>
-        </div>
-        <img src="images/ceramics/blue_heart_mug.png">
-      
-        </div> -->
-    </div>
-    <script src="js/purchasehistory.js"></script>
-            <script src="js/header.js"></script>
+            <div class="purchases-container"></div>
+            <!-- <div class="item-purchased">
+            <div class="details">
+            <p>Purchase ID:</p>s
+            <p>Item ID:</p>
+            <p>Item Name:</p>
+            <p>Total Price</p>
+            <p>Seller:</p>
+            </div>
+            <img src="images/ceramics/blue_heart_mug.png">
+          
+            </div> -->
+        </div>      
         </main>
 
         <footer class="footer">
@@ -77,9 +82,13 @@
             </section>
 
             <p>&copy; 2024 ArtiCat</p>
-
+            
         </footer>
     </div>
+    <script src="js/mainpage.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/purchasehistory.js"></script>
 </body>
 
 </html>

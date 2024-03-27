@@ -1,21 +1,62 @@
 let users = []
+let items = []
+let purchases = []
 
 // Get all information from files
-
 document.addEventListener('DOMContentLoaded', async () => {
-  try {
-      if(!localStorage.users) {
-          const data = await fetch('../json/users.json')
-          users = await data.json()
-          localStorage.users = JSON.stringify(users)
-      } else {
-          users = JSON.parse(localStorage.users)
-      }
-      
-  } catch (error) {
-      console.error("Failed to load users:", error);
-  }
+
+  loadUsers()
+
+  loadItems()
+
+  loadPurchases()
+
 });
+
+async function loadUsers() {
+  try {
+    if(!localStorage.users) {
+        const data = await fetch('../json/users.json')
+        users = await data.json()
+        localStorage.users = JSON.stringify(users)
+    } else {
+        users = JSON.parse(localStorage.users)
+    }
+  } catch (error) {
+    console.error("Failed to load users:", error);
+  }
+}
+
+async function loadItems() {
+  try {
+    if(!localStorage.items) {
+        const data = await fetch('../json/ceramic.json')
+        items = await data.json()
+        localStorage.items = JSON.stringify(items)
+    } else {
+        items = JSON.parse(localStorage.items)
+    }
+  } catch (error) {
+    console.error("Failed to load items:", error);
+  }
+}
+
+async function loadPurchases() {
+  const data = await fetch('../json/purchases.json')
+        purchases = await data.json()
+        localStorage.purchases = JSON.stringify(purchases)
+  try {
+    if(!localStorage.purchases) {
+        const data = await fetch('../json/purchases.json')
+        purchases = await data.json()
+        localStorage.purchases = JSON.stringify(purchases)
+    } else {
+      purchases = JSON.parse(localStorage.purchases)
+    }
+  } catch (error) {
+    console.error("Failed to load purchases:", error);
+  } 
+}
 
 //get the ref of elemnt we want to interact with
 //select more than one element 
