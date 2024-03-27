@@ -69,7 +69,7 @@ function signOut() {
 // to hide the drop down list when clicking outside the area
 window.onclick = event => {
     if (!event.target.matches('.profile-icon')) {
-        var dropdowns = document.getElementsByClassName("drop-down-list");
+        var dropdowns = document.querySelectorAll("#drop-down-list");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];

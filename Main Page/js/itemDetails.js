@@ -2,7 +2,7 @@
 let items = JSON.parse(localStorage.items);
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
-const itemDetailsCC = document.querySelector ('.item-container')
+const itemDetailsCC = document.querySelector('.item-container')
 
 
 // const buyNow = document.querySelector('#buy-btn')
@@ -18,8 +18,8 @@ async function handlePageLoad() {
     const itemDetailsHTML= itemDetailsToHTML(item)
     itemDetailsCC.innerHTML = itemDetailsHTML
 
-    const quantityItem = document.getElementById('quantity');
-    const priceOfItem = document.getElementById('price');
+    const quantityItem = document.querySelector('#quantity');
+    const priceOfItem = document.querySelector('#price');
 
     if (quantityItem && priceOfItem) {
         // Calculate total price and update displayed price when quantity changes
