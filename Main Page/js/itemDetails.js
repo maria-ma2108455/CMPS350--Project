@@ -18,22 +18,38 @@ async function handlePageLoad() {
     const itemDetailsHTML= itemDetailsToHTML(item)
     itemDetailsCC.innerHTML=itemDetailsHTML
 
-    const quantityItem = document.getElementById('quantity')
-    const priceOfItem = document.getElementById('price')
+    const quantityItem = document.getElementById('quantity');
+    const priceOfItem = document.getElementById('price');
 
     if (quantityItem && priceOfItem) {
-        const buyNow = document.querySelector('#buy-btn')
-        const quantity = parseInt(quantityItem.value);
-        const price = parseInt(priceOfItem.value)
-        buyNow.addEventListener('click', () => checkLoggedIn(quantity, price));
+        // Calculate total price and update displayed price when quantity changes
+        quantityItem.addEventListener('input', () => {
+            const quantity = parseInt(quantityItem.value);
+            const price = parseInt(item.price);
+            if(!quantity){
+                priceOfItem.textContent = '0' + '$';
+            }
+            else{
+                const totalPrice = quantity * price;
+                priceOfItem.textContent = totalPrice + '$';
+                window.itemQuantity = quantity;
+                window.totalPrice = totalPrice;
+                
+                
+            }
+            
+        });
+
+        const buyNow = document.querySelector('#buy-btn');
+        buyNow.addEventListener('click', () => checkLoggedIn());
     }
 };
 
 
-// function assignNeededAttributes(){
-//     localStorage.currentItemId = itemId
-//     localStorage.custQuantity = quantity
-// }
+function assignNeededAttributes(){
+    localStorage.currentItemId = itemId
+    localStorage.custQuantity = window.itemQuantity
+}
 
 
 
@@ -61,33 +77,24 @@ function itemDetailsToHTML(item){
 }
 
 
-function checkLoggedIn(quantity, price){
+function checkLoggedIn(){
     if(localStorage.currentUser){
 
+        const totalPrice = window.totalPrice
         const users = localStorage.users
         const user = JSON.parse(users)
         const foundUser = user.find(u => u.username === localStorage.currentUser)
-        // const totalPrice = quantity * price
-        // console.log(totalPrice);
-        // console.log(quantity);
 
-    //     if(foundUser.balance < totalPrice){
-    //         alert("Not Enough Balance");
-    //     }
-    //     else{
-    //         window.location.href = "purchasedetails.html"
-    //     }
-    // }
-    // else{
-    //     window.location.href = "signin.html"
-    window.location.href = "purchasedetails.html"
+        if(foundUser.moneyBalance < totalPrice){
+            alert("Not Enough Balance");
+        }
+        else{
+            assignNeededAttributes()
+            window.location.href = "purchasedetails.html"
+        }
+    }
+    else{
+        window.location.href = "signin.html"
     
     }
-
-    
-
 }
-
-    
-
-
