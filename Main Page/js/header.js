@@ -27,8 +27,37 @@ function showDropDown() {
         const currentUser = users.find(user => user.username == localStorage.currentUser)
         
         currentUser.type == "seller" ? 
-        list = ['Add Item', 'Current Items', 'Sale History', 'Sign Out'] 
-        : list = ['Purchase History','Shopping Wallet','Sign Out']
+        list = [
+            {
+                name: 'Add Item',
+                page: 'addSellerItem.html'
+            }, 
+            {
+                name: 'My Items',
+                page: '#',
+            },
+            {
+                name: 'Sale History',
+                page: 'purchasehistory.html'
+            },
+            {
+                name: 'Sign Out',
+            }
+        ] 
+        : list = [
+            {
+                name: 'Shopping Wallet',
+                page: 'wallet.html'
+            }, 
+            {
+                name: 'Purchase History',
+                page: 'purchasehistory.html'
+            },
+            {
+                name: 'Sign Out',
+                page: 'mainPage.html'
+            }
+        ]
         
         dropDownList.innerHTML = list.map(option => optionToHTML(option)). join(' ')
     
@@ -38,11 +67,10 @@ function showDropDown() {
 
 function optionToHTML(option) {
 
-    const id = option.toLowerCase().replace(' ','-')
-    if (option === "Sign Out") return `<a href="#" id=${id} onclick='signOut()'>${option}</a>`
+    if (option.name === "Sign Out") return `<a href="mainPage.html" onclick='signOut()'>${option.name}</a>`
 
     return `
-        <a href="#" id=${id}>${option}</a>
+        <a href="${option.page}">${option.name}</a>
     `
 }
 
