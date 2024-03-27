@@ -27,7 +27,7 @@ async function handlePageLoad() {
             const quantity = parseInt(quantityItem.value);
             const price = parseInt(item.price);
             if(!quantity){
-                priceOfItem.textContent = '0' + '$';
+                priceOfItem.textContent = '0' + '$';             
             }
             else{
                 const totalPrice = quantity * price;
@@ -87,6 +87,16 @@ function checkLoggedIn(){
 
         if(foundUser.moneyBalance < totalPrice){
             alert("Not Enough Balance");
+        }
+        else if(!window.itemQuantity){
+            // console.log(window.itemQuantity);
+            // window.itemQuantity=1
+            // console.log(window.itemQuantity);
+            
+        }
+        else if(window.itemQuantity===0){
+            // alert("Minimum Quantity is 1.")
+            // console.log(window.itemQuantity);
         }
         else{
             assignNeededAttributes()
