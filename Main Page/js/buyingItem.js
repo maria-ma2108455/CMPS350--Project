@@ -12,12 +12,12 @@ function confirmedPurchase(e) {
     const foundUser = user.find((u) => u.username === localStorage.currentUser);
 
     let items = [];
-    const allItems = localStorage.itemsArray;
-    items = JSON.parse(allItems).items;
+    const allItems = localStorage.items;
+    items = JSON.parse(allItems);
 
     
     const foundItem = items.find(
-      (it) => it.itemId === localStorage.currentItemId
+      it => it.itemId === localStorage.currentItemId
     );
 
     const totalPrice = foundItem.price * localStorage.custQuantity;
@@ -28,7 +28,8 @@ function confirmedPurchase(e) {
     //   foundUser.moneyBalance -= totalPrice;
       // foundItem.quantity -= localStorage.custQuantity;
       console.log(foundItem.quantity -= localStorage.custQuantity);
-      localStorage.itemsArray = JSON.stringify(JSON.parse(allItems));
+      // localStorage.items = JSON.stringify(JSON.parse(allItems));
+      localStorage.items = JSON.stringify(items);
     //   localStorage.users = JSON.stringify(user);
       done = true;
     } 

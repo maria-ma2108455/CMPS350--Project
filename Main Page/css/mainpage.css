@@ -64,6 +64,10 @@ body {
             margin-left: 1rem;
         }
 
+        img:hover {
+            cursor: pointer;
+        }
+
         .top-bar {
 
             display: flex;
@@ -78,7 +82,6 @@ body {
 
             .search-box {
 
-                
                 margin: 0.5rem 1.5rem 0 0;
                 
                 flex-grow: 1;

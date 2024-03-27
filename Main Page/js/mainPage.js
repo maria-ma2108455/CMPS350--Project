@@ -2,25 +2,25 @@ let users = []
 let items = []
 let purchases = []
 
-// Get all information from files
+// Get all information from files and save in localStorage
 document.addEventListener('DOMContentLoaded', async () => {
 
   loadUsers()
 
-  // delete localStorage.items
-
-  // loadItems()
+  loadItems()
 
   loadPurchases()
 
 });
 
 async function loadUsers() {
+  
   try {
     if(!localStorage.users) {
-        const data = await fetch('../json/users.json')
-        users = await data.json()
-        localStorage.users = JSON.stringify(users)
+      const usersURL = '../json/users.json'
+      const data = await fetch(usersURL)
+      users = await data.json()
+      localStorage.users = JSON.stringify(users)
     } else {
         users = JSON.parse(localStorage.users)
     }
@@ -32,7 +32,8 @@ async function loadUsers() {
 async function loadItems() {
   try {
     if(!localStorage.items) {
-        const data = await fetch('../json/ceramic.json')
+        const itemsURL = '../json/items.json'
+        const data = await fetch(itemsURL)
         items = await data.json()
         localStorage.items = JSON.stringify(items)
     } else {
@@ -44,12 +45,10 @@ async function loadItems() {
 }
 
 async function loadPurchases() {
-  const data = await fetch('../json/purchases.json')
-        purchases = await data.json()
-        localStorage.purchases = JSON.stringify(purchases)
   try {
     if(!localStorage.purchases) {
-        const data = await fetch('../json/purchases.json')
+        const purchasesURL = '../json/purchases.json'
+        const data = await fetch(purchasesURL)
         purchases = await data.json()
         localStorage.purchases = JSON.stringify(purchases)
     } else {

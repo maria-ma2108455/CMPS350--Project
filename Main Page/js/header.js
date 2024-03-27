@@ -1,6 +1,7 @@
 const signInBtn = document.querySelector('#signInBtn')
 const profileIcon = document.querySelector('#profile-icon')
 const dropDownList = document.querySelector('#drop-down-list')
+const logo = document.querySelector('#logo')
 
 let currentUser = {}
 
@@ -13,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 signInBtn.addEventListener('click', signIn)
+logo.addEventListener('click', goHome)
+
+function goHome() {
+    window.location.href = "mainPage.html"
+}
 
 function signIn() {
     window.location.href = "signin.html"
@@ -28,35 +34,15 @@ function showDropDown() {
         
         currentUser.type == "seller" ? 
         list = [
-            {
-                name: 'Add Item',
-                page: 'addSellerItem.html'
-            }, 
-            {
-                name: 'My Items',
-                page: '#',
-            },
-            {
-                name: 'Sale History',
-                page: 'history.html'
-            },
-            {
-                name: 'Sign Out',
-            }
+            {   name: 'Add Item',   page: 'addSellerItem.html'  }, 
+            {   name: 'My Items',   page: '#'   },
+            {   name: 'Sale History',   page: 'history.html'    },
+            {   name: 'Sign Out'    }
         ] 
         : list = [
-            {
-                name: 'Shopping Wallet',
-                page: 'wallet.html'
-            }, 
-            {
-                name: 'Purchase History',
-                page: 'history.html'
-            },
-            {
-                name: 'Sign Out',
-                page: 'mainPage.html'
-            }
+            {   name: 'Shopping Wallet',    page: 'wallet.html' }, 
+            {   name: 'Purchase History',   page: 'history.html'    },
+            {   name: 'Sign Out',   page: 'mainPage.html'   }
         ]
         
         dropDownList.innerHTML = list.map(option => optionToHTML(option)). join(' ')

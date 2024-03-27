@@ -1,5 +1,5 @@
 //from local storage cause they cant reach this page without being first the items page which loads from json file
-itemsArray = JSON.parse(localStorage.itemsArray);
+let items = JSON.parse(localStorage.items);
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
 const itemDetailsCC = document.querySelector ('.item-container')
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {
 
-    const item= itemsArray.items.find(i=>i.itemId==itemId)
+    const item = items.find(i => i.itemId == itemId)
     console.log("found item:", item);
     const itemDetailsHTML= itemDetailsToHTML(item)
-    itemDetailsCC.innerHTML=itemDetailsHTML
+    itemDetailsCC.innerHTML = itemDetailsHTML
 
     const quantityItem = document.getElementById('quantity');
     const priceOfItem = document.getElementById('price');
