@@ -28,7 +28,7 @@ function confirmedPurchase(e) {
     //   foundUser.moneyBalance -= totalPrice;
       foundItem.quantity -= localStorage.custQuantity;
 
-      localStorage.itemsArray = JSON.stringify(JSON.parse(allItems));
+      localStorage.itemsArray = JSON.stringify(items);
     //   localStorage.users = JSON.stringify(user);
       done = true;
     } 
