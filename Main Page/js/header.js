@@ -38,7 +38,7 @@ function showDropDown() {
             },
             {
                 name: 'Sale History',
-                page: 'purchasehistory.html'
+                page: 'history.html'
             },
             {
                 name: 'Sign Out',
@@ -51,7 +51,7 @@ function showDropDown() {
             }, 
             {
                 name: 'Purchase History',
-                page: 'purchasehistory.html'
+                page: 'history.html'
             },
             {
                 name: 'Sign Out',
