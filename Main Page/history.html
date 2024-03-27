@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- <style type="text/css">* {cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani176.cur), auto !important;}</style><a href="https://www.cursors-4u.com/cursor/2008/11/07/ani176.html" target="_blank" title="Cute Hello Kitty"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Cute Hello Kitty" style="position:absolute; top: 0px; right: 0px;" /></a> -->
+    <!-- Enter new style sheet here -->
     <link rel="stylesheet" href="css/purchasehistory.css">
 </head>
 
@@ -19,7 +20,7 @@
 
         <!-- Header -->
         <header class="head">
-            <img src="images/no bg logo.PNG" alt="logo" class="logo">
+            <img src="images/no bg logo.PNG" alt="logo" class="logo" id="logo">
             <div class="top-bar">
                 <div class="search-box">
                     <form id="searchForm">
@@ -38,9 +39,9 @@
             <nav class="nav">
                 <ul class="flex">
                     <li><a href="mainpage.html">Home</a></li>
-                    <li><a href="#categories">Categories</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact Us </a></li>
+                    <li><a href="mainpage.html#categories">Categories</a></li>
+                    <li><a href="mainpage.html#about">About Us</a></li>
+                    <li><a href="mainpage.html#contact">Contact Us </a></li>
                 </ul>
             </nav>
         </header>
@@ -49,9 +50,9 @@
         <hr>
 
         <main class="main">
+            <!-- Write new content here -->    
             <h2 id="history-heading">History</h2>
-            <div class="purchases-container"></div>
-        </div>      
+            <div class="purchases-container"></div>        
         </main>
 
         <footer class="footer">
@@ -73,9 +74,10 @@
             
         </footer>
     </div>
-    <script src="js/mainpage.js"></script>
+    <script src="js/loadData.js"></script>
     <script src="js/search.js"></script>
     <script src="js/header.js"></script>
+    <!-- Enter the new js script here -->
     <script src="js/history.js"></script>
 </body>
 

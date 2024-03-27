@@ -3,8 +3,8 @@ purchaseForm.addEventListener("submit", confirmedPurchase);
 
 
 function confirmedPurchase(e) {
+  
   e.preventDefault();
-  // console.log('purchase works');
 
   if (confirm("Are you sure about your purchase?")) {
     const users = localStorage.users;

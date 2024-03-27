@@ -3,6 +3,7 @@ const itemsFile= "json/items.json";
 const urlParameter = new URLSearchParams(window.location.search);
 const category = urlParameter.get('category');
 const search = decodeURIComponent(urlParameter.get('searchValue'));
+const sellerItems = urlParameter.get('items')
 
 // localStorage.removeItem('items')
 const itemsContainer = document.querySelector('#items-container')
@@ -23,16 +24,28 @@ async function handlePageLoad() {
     //     else{
             
     //     }
-        if(category){
+
+        let itemsHTML = ''
+
+        if (category){
+
             const filteredItems = items.filter(item => item.category === category)
-            const itemsHTML= filteredItems.map(item => itemToHTML(item)).join(' ')
-            itemsContainer.innerHTML = itemsHTML
-        }
-        else if(search){
+            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+
+        } else if (sellerItems) {
+    
+            let filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+        
+        } else if (search){
+
             let filteredItems = items.filter(i=> i.name.toLowerCase().includes(search))
-            const itemsHTML= filteredItems.map(i=> itemToHTML(i)).join(' ')
-            itemsContainer.innerHTML = itemsHTML
+            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+
         }
+
+        itemsContainer.innerHTML = itemsHTML
+
         
     } catch (error) {
         console.error("Failed to load items:", error);  
