@@ -43,15 +43,29 @@ function confirmedPurchase(e){
         const user = JSON.parse(users)
         const foundUser = user.find(u => u.username === localStorage.currentUser)
         
-        console.log();
+        // parseItems = JSON.parse(allItems)
+        // items = parseItems.items
 
-        // foundUser.moneyBalance
-        // JSON.parse(custUser.moneyBalance) -= totalPrice;
-        // const item = localStorage.itemsArray.find(item=> item.itemId === itemId)
-        // JSON.parse(item.quantity) -= quantity;
 
-        // window.location.href = "mainpage.html"
-        // alert("Purchase Confirmed")
+        let items =[]
+        const allItems = localStorage.itemsArray
+        items = JSON.parse(allItems).items
+
+        const foundItem = items.find(it => it.itemId === localStorage.currentItemId)
+
+        const totalPrice = foundItem.price * localStorage.custQuantity
+
+        foundUser.moneyBalance = JSON.parse(foundUser.moneyBalance) - totalPrice
+        // localStorage.setItem('users', JSON.stringify(users))
+
+        foundItem.quantity = JSON.parse(foundItem.quantity) - localStorage.custQuantity
+        // localStorage.setItem('itemsArray', JSON.stringify(items))
+
+        window.location.href = "mainpage.html"
+        alert("Purchase Confirmed")
+
+        // delete localStorage.custQuantity
+        // delete localStorage.currentItemId
         
     }
     else{
