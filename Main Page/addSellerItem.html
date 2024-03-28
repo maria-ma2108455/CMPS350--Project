@@ -54,7 +54,7 @@
             <div class="addItem-container">
                 <h2 class="h2">Enter Item Details</h2>
 
-            <form class="addItem-form">
+            <form class="addItem-form" id="addItem-form" enctype="multipart/form-data">
 
                 <input type="text" id="itemId" name="itemId" hidden>
 
@@ -63,16 +63,31 @@
                     <input type="text" id="item-name" name="itemname" required>
                 </div>
 
-                <div class="inputs">
+                <!-- <div class="inputs">
                     <label for="category" class="label">Category</label>
                     <input type="text" id="category" name="category" required>
+                </div> -->
+                <div class="inputs">
+                    <label class="label">Category</label>
+                    <div class="radio">
+                        <input type="radio" id="Ceramics" name="category" value="Ceramics" required>
+                        <label for="Ceramics">Ceramics</label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="Jewelry" name="category" value="Jewelry">
+                        <label for="Jewelry">Jewelry</label>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="Paintings" name="category" value="Paintings">
+                        <label for="Paintings">Paintings</label>
+                    </div>
                 </div>
 
                 <div class="inputs">
                     <label for="item-image" class="label">Select image file (only type png/jpeg)</label>
                     <br>
                     <label for="item-image" class="file-upload">Upload Image</label>
-                    <input type="file" id="item-image" name="item-image" accept="image/png, image/jpeg" class="inputfile" required>
+                    <input type="file" id="item-image" name="item-image" accept="image/png, image/jpeg" class="inputfile"  onchange="encodeImageFileAsURL(this)">
 
                 </div>
 
@@ -120,6 +135,7 @@
     <script src="js/loadData.js"></script>
     <script src="js/search.js"></script>
     <script src="js/header.js"></script>
+    <script src="js/addItem.js"></script>
     <!-- Enter the new js script here -->
 </body>
 
