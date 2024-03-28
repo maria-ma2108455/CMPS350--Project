@@ -323,5 +323,173 @@
         "companyName": "Elegant Jewels Co."
       },
       "itemId": "I25"
+    },
+
+    {
+      "name": "Serenity Sunset",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 150,
+      "quantity": 2,
+      "description": "A breathtaking landscape painting capturing the tranquil beauty of a sunset over rolling hills and a calm lake.",
+      "seller": {
+        "username": "artvista_creations",
+        "companyName": "ArtVista Creations"
+      },
+      "itemId": "I26"
+    },
+
+    {
+      "name": "Whimsical Wonderland",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 250,
+      "quantity": 3,
+      "description": "An enchanting depiction of a magical forest filled with vibrant colors, whimsical creatures, and sparkling fireflies.",
+      "seller": {
+        "username": "artvista_creations",
+        "companyName": "ArtVista Creations"
+      },
+      "itemId": "I27"
+    },
+
+    {
+      "name": "Dreamy Seascape",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 300,
+      "quantity": 2,
+      "description": "A soothing seascape painting that transports viewers to a peaceful beach at twilight, with gentle waves and a pastel sky.",
+      "seller": {
+        "username": "artvista_creations",
+        "companyName": "ArtVista Creations"
+      },
+      "itemId": "I28"
+    },
+
+    {
+      "name": "Abstract Harmony",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 100,
+      "quantity": 2,
+      "description": "A dynamic abstract painting characterized by bold brushstrokes and vibrant colors, evoking a sense of energy and harmony.",
+      "seller": {
+        "username": "artvista_creations",
+        "companyName": "ArtVista Creations"
+      },
+      "itemId": "I29"
+    },
+
+    {
+      "name": "Urban Melodies",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 268,
+      "quantity": 4,
+      "description": "A captivating cityscape painting that portrays the rhythm and movement of urban life through bold shapes and vibrant colors.",
+      "seller": {
+        "username": "artvista_creations",
+        "companyName": "ArtVista Creations"
+      },
+      "itemId": "I30"
+    },
+
+    {
+      "name": "Mystical Moonlit Mountains",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 355,
+      "quantity": 2,
+      "description": "A mystical painting of moonlit mountains shrouded in mist, creating an atmosphere of mystery and tranquility.",
+      "seller": {
+        "username": "artvista_creations",
+        "companyName": "ArtVista Creations"
+      },
+      "itemId": "I31"
+    },
+
+    {
+      "name": "Floral Fantasy",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 220,
+      "quantity": 2,
+      "description": "An imaginative floral painting bursting with colorful blooms, swirling vines, and delicate petals, creating a sense of beauty and wonder.",
+      "seller": {
+        "username": "canvas_harmony",
+        "companyName": "Canvas Harmony Studios"
+      },
+      "itemId": "I32"
+    },
+
+    {
+      "name": "Celestial Symphony",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 345,
+      "quantity": 2,
+      "description": "An ethereal painting inspired by the cosmos, featuring swirling galaxies, shimmering stars, and cosmic nebulae.",
+      "seller": {
+        "username": "canvas_harmony",
+        "companyName": "Canvas Harmony Studios"
+      },
+      "itemId": "I33"
+    },
+
+    {
+      "name": "Enchanted Garden",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 429.99,
+      "quantity": 3,
+      "description": "A whimsical garden painting filled with lush foliage, blooming flowers, and playful butterflies, inviting viewers into a magical realm.",
+      "seller": {
+        "username": "canvas_harmony",
+        "companyName": "Canvas Harmony Studios"
+      },
+      "itemId": "I34"
+    },
+
+    {
+      "name": "Rustic Charm",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 555.99,
+      "quantity": 3,
+      "description": "A charming rustic landscape painting capturing the idyllic beauty of a countryside scene, with rolling hills, rustic barns, and winding paths.",
+      "seller": {
+        "username": "canvas_harmony",
+        "companyName": "Canvas Harmony Studios"
+      },
+      "itemId": "I35"
+    },
+
+    {
+      "name": "Ethereal Waters",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 780,
+      "quantity": 2,
+      "description": "A mesmerizing underwater painting depicting a colorful coral reef teeming with exotic marine life, creating a sense of wonder and awe.",
+      "seller": {
+        "username": "canvas_harmony",
+        "companyName": "Canvas Harmony Studios"
+      },
+      "itemId": "I36"
+    },
+
+    {
+      "name": "Timeless Elegance",
+      "category": "Paintings",
+      "image": "images/",
+      "price": 235.99,
+      "quantity": 4,
+      "description": "A timeless portrait painting capturing the grace and elegance of a bygone era, with intricate details and a sense of classical beauty.",
+      "seller": {
+        "username": "canvas_harmony",
+        "companyName": "Canvas Harmony Studios"
+      },
+      "itemId": "I37"
     }
 ]
