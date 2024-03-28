@@ -345,7 +345,7 @@ h2{
 /* Hide the images by default */
 .mySlides {
   display: none;
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   img{
     border-radius: 1.5rem;
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
