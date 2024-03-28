@@ -37,3 +37,25 @@ function confirmedPurchase(e) {
     alert("Purchase Cancelled");
   }
 }
+
+
+// function formToObject(purchaseForm){
+//   const formData = new FormData(purchaseForm)
+//   console.log(formData);
+//   const data = {}
+
+//   for (const [key, value] of formData){
+//       data[key] = value
+//   }
+
+//   return data;
+// }
+
+// function addPurchase(p){
+//     p.preventDefault()
+//     const purchase = formToObject(p.target)
+//     // book._id= Date.now();
+//     // books.unshift(book)
+//     localStorage.purchases = JSON.stringify(purchases)
+//     hideForm()
+// } 
