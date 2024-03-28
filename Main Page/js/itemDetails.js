@@ -66,6 +66,9 @@ function itemDetailsToHTML(item, user){
         <p>${item.description}</p>
         <p>${item.seller.companyName}</p>
         <form id="quantity-form">
+            <input type="text" id="itemId" name="itemId" hidden>
+            <input type="text" id="itemPrice" name="itemPrice" hidden>
+            <input type="text" id="user" name="user" hidden>
             <p>Unit Price: ${item.price}$</p>
             <div>
                 <label for="quantity">Quantity:</label>
@@ -93,17 +96,24 @@ function checkLoggedIn(){
         return
     } 
 
-    const quantityItem = document.querySelector('#quantity');
-    const priceOfItem = document.querySelector('#price');
+    const items = JSON.parse(localStorage.items)
+    const item = items.find(i => i.itemId === itemId)
+
+    const quantityItem = document.querySelector('#quantity').value
+    const priceOfItem = item.price
     const totalPrice = quantityItem * priceOfItem
-    
+
+
+    console.log(quantityItem);
+
     if(foundUser.moneyBalance < totalPrice){
+        
         alert("Not Enough Balance");
         return
     }
 
-    localStorage.custQuantity = quantityItem.value
-    localStorage.currentItemId = priceOfItem.value
+    localStorage.custQuantity = quantityItem
+    localStorage.currentItemId = priceOfItem
     window.location.href = "purchasedetails.html"
     
 }
