@@ -6,8 +6,25 @@
     /* outline: auto; */
     
 }
+
+:root {
+    --background-gradient: linear-gradient(178deg, #ffff33 10%, #3333ff);
+    --gray: #34495e;
+    --darkgray: #2c3e50;
+    --color--bg:  #f8e2e7ee;
+    --color--txt: white;
+    --color--icons: #d65f83;
+  }
 main{
    margin: 0.8rem 3rem
+}
+
+.filter-drop-down {
+    margin-left: 1rem;
+
+    option {
+        height: 5rem;
+    }
 }
 
 
@@ -43,5 +60,62 @@ main{
     }
 }
 
+}
+
+select {
+    /* reset */
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 0 1em;
+    color: black;
+    background-color: var(--color--bg);
+    background-image: none;
+    cursor: pointer;
+
+    option {
+        color: black;
+        background: var(--color--txt);
+    }
+
+}
+
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+
+/* Custom Select wrapper */
+.select {
+    margin: 0.5rem 0rem 0.5rem 1rem;
+    margin-left: 1rem;
+    position: relative;
+    display: flex;
+    width: 15em;
+    height: 2em;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+/* Arrow */
+.select::after {
+  font-family: "Material Icons";
+  content: "\e5cf";
+  font-size: large;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em;
+  background-color: var(--color--icons);
+  transition: .25s all ease;
+  pointer-events: none;
+}
+
+/* Transition */
+.select:hover::after {
+  color: var(--color--txt);
 }
 

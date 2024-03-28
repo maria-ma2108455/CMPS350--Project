@@ -7,8 +7,11 @@ const sellerItems = urlParameter.get('items')
 
 // localStorage.removeItem('items')
 const itemsContainer = document.querySelector('#items-container')
+const dropdown = document.querySelector('#dropdown-items')
+const dropdownList = document.querySelector('#dropdownlist-items')
 
 document.addEventListener('DOMContentLoaded', handlePageLoad);
+document.addEventListener('change', showSellerItems)
 
 async function handlePageLoad() {
    
@@ -33,15 +36,12 @@ async function handlePageLoad() {
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
 
         } else if (sellerItems) {
-    
-            let filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+            dropdown.classList.remove('hidden')
+            filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
-        
         } else if (search){
-
             let filteredItems = items.filter(i=> i.name.toLowerCase().includes(search))
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
-
         }
 
         itemsContainer.innerHTML = itemsHTML
@@ -50,6 +50,25 @@ async function handlePageLoad() {
     } catch (error) {
         console.error("Failed to load items:", error);  
     }
+}
+
+function showSellerItems() {
+
+    const items = JSON.parse(localStorage.items);
+
+    let filteredItems = []
+
+    if (dropdownList.value === 'available') {
+        filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity > 0)
+    } else if (dropdownList.value === 'sold-out') {
+        filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity <= 0)
+    } else if (dropdownList.value === 'all'){
+        filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+    }
+
+    let itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+    itemsContainer.innerHTML = itemsHTML
+
 }
 
 function itemToHTML(item){

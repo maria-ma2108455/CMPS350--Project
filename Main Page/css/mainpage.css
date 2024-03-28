@@ -375,7 +375,7 @@ h2{
 }
 
 /* Caption text */
-.text {
+.captiontext {
   color:var(--color--bg);
   font-size: 15px;
   padding: 8px 12px;
