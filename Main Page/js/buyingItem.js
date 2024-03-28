@@ -11,10 +11,6 @@ function confirmedPurchase(e) {
     const user = JSON.parse(users);
     const foundUser = user.find((u) => u.username === localStorage.currentUser);
 
-    // let items = [];
-    // const allItems = localStorage.items;
-    // items = JSON.parse(allItems);
-
     const items = localStorage.items;
     const item = JSON.parse(items);
     const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
@@ -30,7 +26,7 @@ function confirmedPurchase(e) {
       localStorage.items = JSON.stringify(item);
       localStorage.users = JSON.stringify(user);
       done = true;
-    } 
+    }
 
   
     window.location.href = "mainpage.html";

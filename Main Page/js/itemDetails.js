@@ -27,15 +27,20 @@ async function handlePageLoad() {
         quantityItem.addEventListener('input', () => {
             const quantity = parseInt(quantityItem.value);
             const price = parseInt(item.price);
-            if(!quantity){
-                priceOfItem.textContent = '0' + '$';             
+            if(!quantity || window.itemQuantity==0){
+                priceOfItem.textContent = '0' + '$';  
+                alert('Minimum value is 1')           
             }
             else{
                 const totalPrice = quantity * price;
                 priceOfItem.textContent = totalPrice + '$';
                 window.itemQuantity = quantity;
                 window.totalPrice = totalPrice;
+                const buyNow = document.querySelector('#buy-btn')
+                buyNow.addEventListener('click', checkLoggedIn)
             }
+
+            
             
         });
 
@@ -43,8 +48,8 @@ async function handlePageLoad() {
         window.itemQuantity = quantity.value;
         window.totalPrice = totalPrice.value;
         // console.log(quantityItem.value);
-        const buyNow = document.querySelector('#buy-btn')
-        buyNow.addEventListener('click', checkLoggedIn)
+        // const buyNow = document.querySelector('#buy-btn')
+        // buyNow.addEventListener('click', checkLoggedIn)
 
 
     }
@@ -97,6 +102,7 @@ function checkLoggedIn(){
             assignNeededAttributes()
             window.location.href = "purchasedetails.html"
         }
+        
     }
     else{
         window.location.href = "signin.html"
