@@ -3,6 +3,7 @@ let items = JSON.parse(localStorage.items);
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
 const itemDetailsCC = document.querySelector('.item-container')
+const itemLink = document.querySelector('#item-link')
 
 
 // const buyNow = document.querySelector('#buy-btn')
@@ -13,13 +14,18 @@ document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {
 
+    const users = JSON.parse(localStorage.users)
+    const currentUser = users.find(user => user.username === localStorage.currentUser)
+    console.log(currentUser);
     const item = items.find(i => i.itemId == itemId)
     console.log("found item:", item);
-    const itemDetailsHTML= itemDetailsToHTML(item)
+    const itemDetailsHTML= itemDetailsToHTML(item, currentUser)
     itemDetailsCC.innerHTML = itemDetailsHTML
 
     const quantityItem = document.querySelector('#quantity');
     const priceOfItem = document.querySelector('#price');
+
+    itemLink.innerHTML = `<a href="items.html?category=${item.category}">${item.category}</a> > ${item.name}`
     
 
     if (quantityItem && priceOfItem) {
@@ -65,7 +71,7 @@ function assignNeededAttributes(){
 
 
 //displaying the item
-function itemDetailsToHTML(item){
+function itemDetailsToHTML(item, user){
     if (!item) {
         return `<div class="details">Item details not available.</div>`;}
     return  `
@@ -75,13 +81,17 @@ function itemDetailsToHTML(item){
         <h1 id="price">${item.price}$</h1>
         <h3>${item.name}</h3>
         <p>${item.description}</p>
-        <p>${item.seller.companyName}</p>
+        <p>${item.seller.companyName} [${item.seller.username}]</p>
         <form>
+            <p>Unit Price: ${item.price}$</p>
             <div>
                 <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" max="${item.quantity}" step="1" value="1">
+                ${user.type === 'seller' && user.username === item.seller.username ? `<p>${item.quantity}</p>` :
+                `<input type="number" id="quantity" name="quantity" min="1" max="${item.quantity}" step="1" value="1">`
+                }
             </div>
-            <input type="button" value="Buy Now" id="buy-btn" >
+            ${user.type === 'seller' && user.username === item.seller.username ? `<input type="button" value="Update Item" id="update-btn" >`:
+            `<input type="button" value="Buy Now" id="buy-btn" ></input>` }
         </form>
     </div>`
 }
@@ -95,6 +105,7 @@ function checkLoggedIn(){
         const user = JSON.parse(users)
         const foundUser = user.find(u => u.username === localStorage.currentUser)
 
+        
         if(foundUser.moneyBalance < totalPrice){
             alert("Not Enough Balance");
         }
