@@ -86,11 +86,11 @@ function itemDetailsToHTML(item, user){
             <p>Unit Price: ${item.price}$</p>
             <div>
                 <label for="quantity">Quantity:</label>
-                ${user.type === 'seller' && user.username === item.seller.username ? `<p>${item.quantity}</p>` :
+                ${user ? user.type === 'seller' && user.username === item.seller.username ? `<p>${item.quantity}</p>`: `` :
                 `<input type="number" id="quantity" name="quantity" min="1" max="${item.quantity}" step="1" value="1">`
                 }
             </div>
-            ${user.type === 'seller' && user.username === item.seller.username ? `<input type="button" value="Update Item" id="update-btn" >`:
+            ${user ? user.type === 'seller' && user.username === item.seller.username ? `<input type="button" value="Update Item" id="update-btn" >` : `` :
             `<input type="button" value="Buy Now" id="buy-btn" ></input>` }
         </form>
     </div>`
