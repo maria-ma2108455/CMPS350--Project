@@ -70,11 +70,10 @@ function addPurchase(foundUser, foundItem){
 
 
 function cancelPurchase(){
-
-  // delete localStorage.custQuantity;
-  // delete localStorage.currentItemId;
-
   window.location.href=`itemdetail.html?item=${localStorage.currentItemId}`
+
+  delete localStorage.custQuantity;
+  delete localStorage.currentItemId
 }
 
 
