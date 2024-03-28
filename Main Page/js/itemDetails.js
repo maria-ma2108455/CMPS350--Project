@@ -51,28 +51,7 @@ function buyItem(e) {
 
     checkLoggedIn()
 
-    // if (quantityItem && priceOfItem) {
-    //     // Calculate total price and update displayed price when quantity changes
-
-
-    //     const totalPrice = quantity * price;
-    //     window.itemQuantity = quantity.value;
-    //     window.totalPrice = totalPrice.value;
-    //     const buyNow = document.querySelector('#buy-btn')
-    //     buyNow.addEventListener('click', checkLoggedIn)
-
-
-    // }
 }
-
-
-function assignNeededAttributes(){
-    localStorage.currentItemId = itemId
-    localStorage.custQuantity = window.itemQuantity
-}
-
-
-
 
 //displaying the item
 function itemDetailsToHTML(item, user){
@@ -102,33 +81,29 @@ function itemDetailsToHTML(item, user){
 
 
 function checkLoggedIn(){
-    
-    if(localStorage.currentUser){
 
-        const totalPrice = window.totalPrice
-        const users = localStorage.users
-        const user = JSON.parse(users)
-        const foundUser = user.find(u => u.username === localStorage.currentUser)
+    if (!localStorage.currentUser) window.location.href = "signin.html"
 
-        const items = localStorage.items;
-        const item = JSON.parse(items);
-        const foundItem = item.find(it => it.itemId === itemId);
-        
-        if(foundUser.moneyBalance < totalPrice){
-            alert("Not Enough Balance");
-        }
-        // else if(foundItem.quantity<window.itemQuantity){
-        //     alert(`Quanitity can't be over ${foundItem.quantity}`)
-        // }
-        else{
-            assignNeededAttributes()
-            window.location.href = "purchasedetails.html"
-            // localStorage.setItem('refreshBuyingItemsPage', 'true');
-        }
-        
-    }
-    else{
-        window.location.href = "signin.html"
+    const users = localStorage.users
+    const user = JSON.parse(users)
+    const foundUser = user.find(u => u.username === localStorage.currentUser)
+
+    if (foundUser.type === 'seller') {
+        alert('Please sign in as a customer to buy items')
+        return
+    } 
+
+    const quantityItem = document.querySelector('#quantity');
+    const priceOfItem = document.querySelector('#price');
+    const totalPrice = quantityItem * priceOfItem
     
+    if(foundUser.moneyBalance < totalPrice){
+        alert("Not Enough Balance");
+        return
     }
+
+    localStorage.custQuantity = quantityItem.value
+    localStorage.currentItemId = priceOfItem.value
+    window.location.href = "purchasedetails.html"
+    
 }
