@@ -105,9 +105,15 @@ function checkLoggedIn(){
         const user = JSON.parse(users)
         const foundUser = user.find(u => u.username === localStorage.currentUser)
 
+        const items = localStorage.items;
+        const item = JSON.parse(items);
+        const foundItem = item.find(it => it.itemId === itemId);
         
         if(foundUser.moneyBalance < totalPrice){
             alert("Not Enough Balance");
+        }
+        else if(foundItem.quantity<window.itemQuantity){
+            alert(`Quanitity can't be over ${foundItem.quantity}`)
         }
         else{
             assignNeededAttributes()
