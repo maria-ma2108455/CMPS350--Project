@@ -8,7 +8,6 @@ const itemLink = document.querySelector('#item-link')
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
-
 async function handlePageLoad() {    
 
     const users = JSON.parse(localStorage.users)
@@ -124,7 +123,7 @@ function checkLoggedIn(){
         else{
             assignNeededAttributes()
             window.location.href = "purchasedetails.html"
-            localStorage.setItem('refreshBuyingItemsPage', 'true');
+            // localStorage.setItem('refreshBuyingItemsPage', 'true');
         }
         
     }
