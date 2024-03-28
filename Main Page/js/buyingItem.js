@@ -20,7 +20,6 @@ function confirmedPurchase(e) {
     const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
 
     const totalPrice = foundItem.price * localStorage.custQuantity;
-
     let done = false;
     
     if (!done) {
@@ -32,11 +31,11 @@ function confirmedPurchase(e) {
       done = true;
     } 
 
-  
-    window.location.href = "mainpage.html";
-    alert("Purchase Confirmed");
     delete localStorage.custQuantity;
     delete localStorage.currentItemId;
+   
+    alert("Purchase Confirmed");
+    window.location.href = "mainpage.html";
 
   } else {
     alert("Purchase Cancelled");
