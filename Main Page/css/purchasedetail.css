@@ -5,6 +5,15 @@
   /* outline: auto; */
 }
 
+:root {
+  /* so we can add all clors heree */
+  /* --color--bg:  rgb(201, 170, 178); */
+  --color--bg:  #f8e2e7ee;
+  --color--txt: white;
+  --color--icons: #d65f83;
+
+}
+
 /* header old */
 .head {
   grid-area: head;
@@ -37,14 +46,6 @@
 
 }
 
-
-
-/*  new*/
-:root {
-  /* so we can add all clors heree */
-  --button--bg: rgb(3, 3, 3);
-  --color--txt: white;
-}
 
 .purchase-container {
 

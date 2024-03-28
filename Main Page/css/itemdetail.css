@@ -7,10 +7,12 @@
 
 :root {
     /* so we can add all clors heree */
+    /* --color--bg:  rgb(201, 170, 178); */
     --color--bg:  #f8e2e7ee;
     --color--txt: white;
     --color--icons: #d65f83;
-}
+  
+  }
 
 main {
 
