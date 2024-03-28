@@ -250,6 +250,8 @@ h2{
                 width: 70%;
                 aspect-ratio: 5 /6 ;
                 border-radius: 15px;
+                /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
             }
          }
     /* img:hover{
@@ -259,6 +261,9 @@ h2{
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; 
         border-radius: 1rem; 
         cursor: pointer;
+        img{
+            box-shadow: none;
+        }
     }}
 
     .us{
