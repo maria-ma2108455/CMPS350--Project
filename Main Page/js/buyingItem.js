@@ -5,6 +5,7 @@ purchaseForm.addEventListener("submit", confirmedPurchase)
 
 cancel.addEventListener("click", cancelPurchase)
 
+window.addEventListener('popstate', refreshPreviousPage)
 
 
 
@@ -70,11 +71,10 @@ function addPurchase(foundUser, foundItem){
 
 function cancelPurchase(){
 
-  delete localStorage.custQuantity;
-  delete localStorage.currentItemId;
+  // delete localStorage.custQuantity;
+  // delete localStorage.currentItemId;
 
-  localStorage.refresh=true
-  window.history.back()
-
+  window.location.href=`itemdetail.html?item=${localStorage.currentItemId}`
 }
+
 
