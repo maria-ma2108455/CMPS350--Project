@@ -49,10 +49,10 @@ function confirmedPurchase(e) {
 function addPurchase(foundUser, foundItem){
   let purchase = {}
 
-  const purchaseNo = localStorage.purchases.length + 1
+  const purchaseNo = JSON.parse(localStorage.purchases).length + 1
   purchase.purchaseId = `P${purchaseNo}`;
 
-  purchase.quantity=localStorage.custQuantity;
+  purchase.quantity=JSON.parse(localStorage.custQuantity);
 
   purchase.item=foundItem
   purchase.customer=foundUser
