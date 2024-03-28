@@ -5,17 +5,10 @@ const itemId = urlParameter.get('item');
 const itemDetailsCC = document.querySelector('.item-container')
 const itemLink = document.querySelector('#item-link')
 
-
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {
-
-
-    if(localStorage.refresh){
-        window.location.reload()
-        delete localStorage.refresh
-    }
 
     const users = JSON.parse(localStorage.users)
     const currentUser = users.find(user => user.username === localStorage.currentUser)
@@ -25,44 +18,52 @@ async function handlePageLoad() {
     const itemDetailsHTML= itemDetailsToHTML(item, currentUser)
     itemDetailsCC.innerHTML = itemDetailsHTML
 
+    itemLink.innerHTML = `<a href="items.html?category=${item.category}">${item.category}</a> > ${item.name}`
+    
+    const form = document.querySelector('#quantity-form')
     const quantityItem = document.querySelector('#quantity');
     const priceOfItem = document.querySelector('#price');
 
-    itemLink.innerHTML = `<a href="items.html?category=${item.category}">${item.category}</a> > ${item.name}`
+    form.addEventListener('submit', buyItem)
+
+    quantityItem.addEventListener('input', () => {
+        
+        const quantity = parseInt(quantityItem.value);
+        const price = parseInt(item.price);
+        if(!quantity) {
+            priceOfItem.textContent = `${price}` + '$';  
+        }
+        else{
+            const totalPrice = quantity * price;
+            priceOfItem.textContent = totalPrice + '$';
+            // const buyNow = document.querySelector('#buy-btn')
+            // buyNow.addEventListener('click', checkLoggedIn)
+        }
+
+    });
     
-
-    if (quantityItem && priceOfItem) {
-        // Calculate total price and update displayed price when quantity changes
-        quantityItem.addEventListener('input', () => {
-            const quantity = parseInt(quantityItem.value);
-            const price = parseInt(item.price);
-            if(!quantity || window.itemQuantity==0){
-                priceOfItem.textContent = `${price}` + '$';  
-                alert('Minimum value is 1')      
-                quantityItem.value = 1     
-            }
-            else{
-                const totalPrice = quantity * price;
-                priceOfItem.textContent = totalPrice + '$';
-                window.itemQuantity = quantity;
-                window.totalPrice = totalPrice;
-                const buyNow = document.querySelector('#buy-btn')
-                buyNow.addEventListener('click', checkLoggedIn)
-            }
-
-            
-            
-        });
-
-        const totalPrice = quantity * price;
-        window.itemQuantity = quantity.value;
-        window.totalPrice = totalPrice.value;
-        const buyNow = document.querySelector('#buy-btn')
-        buyNow.addEventListener('click', checkLoggedIn)
-
-
-    }
+    
 };
+
+function buyItem(e) {
+
+    e.preventDefault()
+
+    checkLoggedIn()
+
+    // if (quantityItem && priceOfItem) {
+    //     // Calculate total price and update displayed price when quantity changes
+
+
+    //     const totalPrice = quantity * price;
+    //     window.itemQuantity = quantity.value;
+    //     window.totalPrice = totalPrice.value;
+    //     const buyNow = document.querySelector('#buy-btn')
+    //     buyNow.addEventListener('click', checkLoggedIn)
+
+
+    // }
+}
 
 
 function assignNeededAttributes(){
@@ -84,23 +85,24 @@ function itemDetailsToHTML(item, user){
         <h1 id="price">${item.price}$</h1>
         <h3>${item.name}</h3>
         <p>${item.description}</p>
-        <p>${item.seller.companyName} [${item.seller.username}]</p>
-        <form>
+        <p>${item.seller.companyName}</p>
+        <form id="quantity-form">
             <p>Unit Price: ${item.price}$</p>
             <div>
                 <label for="quantity">Quantity:</label>
-                ${user ? user.type === 'seller' && user.username === item.seller.username ? `<p>${item.quantity}</p>`: `` :
+                ${user && user.type === 'seller' && user.username === item.seller.username ? `<p>${item.quantity}</p>` :
                 `<input type="number" id="quantity" name="quantity" min="1" max="${item.quantity}" step="1" value="1">`
                 }
             </div>
-            ${user ? user.type === 'seller' && user.username === item.seller.username ? `<input type="button" value="Update Item" id="update-btn" >` : `` :
-            `<input type="button" value="Buy Now" id="buy-btn" ></input>` }
+            ${user && user.type === 'seller' && user.username === item.seller.username ? `<input type="button" value="Update Item" id="update-btn" >` :
+            `<input type="submit" value="Buy Now" id="buy-btn" ></input>` }
         </form>
     </div>`
 }
 
 
 function checkLoggedIn(){
+    
     if(localStorage.currentUser){
 
         const totalPrice = window.totalPrice
