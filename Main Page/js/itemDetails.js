@@ -8,7 +8,6 @@ const itemLink = document.querySelector('#item-link')
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
-
 async function handlePageLoad() {    
 
     const users = JSON.parse(localStorage.users)
@@ -52,28 +51,7 @@ function buyItem(e) {
 
     checkLoggedIn()
 
-    // if (quantityItem && priceOfItem) {
-    //     // Calculate total price and update displayed price when quantity changes
-
-
-    //     const totalPrice = quantity * price;
-    //     window.itemQuantity = quantity.value;
-    //     window.totalPrice = totalPrice.value;
-    //     const buyNow = document.querySelector('#buy-btn')
-    //     buyNow.addEventListener('click', checkLoggedIn)
-
-
-    // }
 }
-
-
-function assignNeededAttributes(){
-    localStorage.currentItemId = itemId
-    localStorage.custQuantity = window.itemQuantity
-}
-
-
-
 
 //displaying the item
 function itemDetailsToHTML(item, user){
@@ -88,6 +66,9 @@ function itemDetailsToHTML(item, user){
         <p>${item.description}</p>
         <p>${item.seller.companyName}</p>
         <form id="quantity-form">
+            <input type="text" id="itemId" name="itemId" hidden>
+            <input type="text" id="itemPrice" name="itemPrice" hidden>
+            <input type="text" id="user" name="user" hidden>
             <p>Unit Price: ${item.price}$</p>
             <div>
                 <label for="quantity">Quantity:</label>
@@ -103,33 +84,36 @@ function itemDetailsToHTML(item, user){
 
 
 function checkLoggedIn(){
-    
-    if(localStorage.currentUser){
 
-        const totalPrice = window.totalPrice
-        const users = localStorage.users
-        const user = JSON.parse(users)
-        const foundUser = user.find(u => u.username === localStorage.currentUser)
+    if (!localStorage.currentUser) window.location.href = "signin.html"
 
-        const items = localStorage.items;
-        const item = JSON.parse(items);
-        const foundItem = item.find(it => it.itemId === itemId);
+    const users = localStorage.users
+    const user = JSON.parse(users)
+    const foundUser = user.find(u => u.username === localStorage.currentUser)
+
+    if (foundUser.type === 'seller') {
+        alert('Please sign in as a customer to buy items')
+        return
+    } 
+
+    const items = JSON.parse(localStorage.items)
+    const item = items.find(i => i.itemId === itemId)
+
+    const quantityItem = document.querySelector('#quantity').value
+    const priceOfItem = item.price
+    const totalPrice = quantityItem * priceOfItem
+
+
+    console.log(quantityItem);
+
+    if(foundUser.moneyBalance < totalPrice){
         
-        if(foundUser.moneyBalance < totalPrice){
-            alert("Not Enough Balance");
-        }
-        // else if(foundItem.quantity<window.itemQuantity){
-        //     alert(`Quanitity can't be over ${foundItem.quantity}`)
-        // }
-        else{
-            assignNeededAttributes()
-            window.location.href = "purchasedetails.html"
-            localStorage.setItem('refreshBuyingItemsPage', 'true');
-        }
-        
+        alert("Not Enough Balance");
+        return
     }
-    else{
-        window.location.href = "signin.html"
+
+    localStorage.custQuantity = quantityItem
+    localStorage.currentItemId = priceOfItem
+    window.location.href = "purchasedetails.html"
     
-    }
 }
