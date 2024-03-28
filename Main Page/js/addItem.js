@@ -13,8 +13,8 @@ function addForm(e){
     e.preventDefault()
     const item= formToObject(e.target)
     item.itemId= Date.now()
-    // const sellerusername=JSON.parse(localStorage.currentuser)
-    const sellerusername="craftsworld_user"
+    const sellerusername=JSON.parse(localStorage.currentuser)
+    // const sellerusername="craftsworld_user"
     const seller= users.find(u=>u.username== sellerusername)
     item.seller = {
         username: seller.username,   
