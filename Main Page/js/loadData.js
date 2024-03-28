@@ -1,6 +1,11 @@
 // Get all information from files and save in localStorage
 document.addEventListener('DOMContentLoaded', async () => {
 
+
+  // delete localStorage.users
+  // delete localStorage.items
+  // delete localStorage.purchases
+
   loadUsers()
 
   loadItems()
