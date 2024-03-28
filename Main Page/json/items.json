@@ -328,7 +328,7 @@
     {
       "name": "Serenity Sunset",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/serenity_sunset.png",
       "price": 150,
       "quantity": 2,
       "description": "A breathtaking landscape painting capturing the tranquil beauty of a sunset over rolling hills and a calm lake.",
@@ -342,7 +342,7 @@
     {
       "name": "Whimsical Wonderland",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/whimsical_wonderland.png",
       "price": 250,
       "quantity": 3,
       "description": "An enchanting depiction of a magical forest filled with vibrant colors, whimsical creatures, and sparkling fireflies.",
@@ -356,7 +356,7 @@
     {
       "name": "Dreamy Seascape",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/dreamy_seascape.png",
       "price": 300,
       "quantity": 2,
       "description": "A soothing seascape painting that transports viewers to a peaceful beach at twilight, with gentle waves and a pastel sky.",
@@ -370,7 +370,7 @@
     {
       "name": "Abstract Harmony",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/abstract_harmony.png",
       "price": 100,
       "quantity": 2,
       "description": "A dynamic abstract painting characterized by bold brushstrokes and vibrant colors, evoking a sense of energy and harmony.",
@@ -384,7 +384,7 @@
     {
       "name": "Urban Melodies",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/urban_melodies.png",
       "price": 268,
       "quantity": 4,
       "description": "A captivating cityscape painting that portrays the rhythm and movement of urban life through bold shapes and vibrant colors.",
@@ -398,7 +398,7 @@
     {
       "name": "Mystical Moonlit Mountains",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/mystical_moonlit_mountains.png",
       "price": 355,
       "quantity": 2,
       "description": "A mystical painting of moonlit mountains shrouded in mist, creating an atmosphere of mystery and tranquility.",
@@ -412,7 +412,7 @@
     {
       "name": "Floral Fantasy",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/floral_fantasy.png",
       "price": 220,
       "quantity": 2,
       "description": "An imaginative floral painting bursting with colorful blooms, swirling vines, and delicate petals, creating a sense of beauty and wonder.",
@@ -426,7 +426,7 @@
     {
       "name": "Celestial Symphony",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/celestial_symphony.png",
       "price": 345,
       "quantity": 2,
       "description": "An ethereal painting inspired by the cosmos, featuring swirling galaxies, shimmering stars, and cosmic nebulae.",
@@ -440,7 +440,7 @@
     {
       "name": "Enchanted Garden",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/enchanted_garden.png",
       "price": 429.99,
       "quantity": 3,
       "description": "A whimsical garden painting filled with lush foliage, blooming flowers, and playful butterflies, inviting viewers into a magical realm.",
@@ -454,7 +454,7 @@
     {
       "name": "Rustic Charm",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/rustic_charm.png",
       "price": 555.99,
       "quantity": 3,
       "description": "A charming rustic landscape painting capturing the idyllic beauty of a countryside scene, with rolling hills, rustic barns, and winding paths.",
@@ -468,7 +468,7 @@
     {
       "name": "Ethereal Waters",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/ethereal_waters.png",
       "price": 780,
       "quantity": 2,
       "description": "A mesmerizing underwater painting depicting a colorful coral reef teeming with exotic marine life, creating a sense of wonder and awe.",
@@ -482,7 +482,7 @@
     {
       "name": "Timeless Elegance",
       "category": "Paintings",
-      "image": "images/",
+      "image": "images/paintings/timeless_elegance.png",
       "price": 235.99,
       "quantity": 4,
       "description": "A timeless portrait painting capturing the grace and elegance of a bygone era, with intricate details and a sense of classical beauty.",

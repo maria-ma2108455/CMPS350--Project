@@ -113,7 +113,7 @@ function checkLoggedIn(){
     }
 
     localStorage.custQuantity = quantityItem
-    localStorage.currentItemId = priceOfItem
+    localStorage.currentItemId = itemId
     window.location.href = "purchasedetails.html"
     
 }
