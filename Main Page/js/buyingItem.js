@@ -5,8 +5,6 @@ purchaseForm.addEventListener("submit", confirmedPurchase)
 
 cancel.addEventListener("click", cancelPurchase)
 
-window.addEventListener('popstate', refreshPreviousPage)
-//adding
 
 
 
@@ -48,13 +46,21 @@ function confirmedPurchase(e) {
 
 function addPurchase(foundUser, foundItem){
   let purchase = {}
+  let userPurchase ={}
+
+  // const userPurchases = JSON.parse(foundUser.purchases)
 
   const purchaseNo = JSON.parse(localStorage.purchases).length + 1
   purchase.purchaseId = `P${purchaseNo}`;
+  // userPurchase.purchaseId = `P${purchaseNo}`;
+
 
   purchase.quantity=JSON.parse(localStorage.custQuantity);
+  // userPurchase.quantity=JSON.parse(localStorage.custQuantity);
+
 
   purchase.item=foundItem
+  // userPurchase.item=foundItem
   purchase.customer=foundUser
 
   const totalPrice = foundItem.price * localStorage.custQuantity;
@@ -62,7 +68,9 @@ function addPurchase(foundUser, foundItem){
 
   const purchases = JSON.parse(localStorage.purchases);
   purchases.push(purchase)
-  localStorage.purchases = JSON.stringify(purchases)
+  // localStorage.users.purchases = JSON.stringify(userPurchase)
+
+  // userPurchases.push(userPurchase)
 
   delete localStorage.custQuantity;
   delete localStorage.currentItemId;
