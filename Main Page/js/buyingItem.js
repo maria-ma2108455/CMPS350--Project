@@ -45,35 +45,33 @@ function confirmedPurchase(e) {
 }
 
 function addPurchase(foundUser, foundItem){
-  let purchase = {}
-  let userPurchase ={}
 
-  // const userPurchases = JSON.parse(foundUser.purchases)
+  let purchase = {}
 
   const purchaseNo = JSON.parse(localStorage.purchases).length + 1
   purchase.purchaseId = `P${purchaseNo}`;
-  // userPurchase.purchaseId = `P${purchaseNo}`;
 
+  purchase.quantity = JSON.parse(localStorage.custQuantity);
 
-  purchase.quantity=JSON.parse(localStorage.custQuantity);
-  // userPurchase.quantity=JSON.parse(localStorage.custQuantity);
+  const { seller, ...item } = foundItem
+  seller = seller.companyName
+  item.seller = seller
+  purchase.item = { ...item } 
 
-
-  purchase.item=foundItem
-  // userPurchase.item=foundItem
-  purchase.customer=foundUser
+  const { purchases, ...customer } = foundUser
+  purchase.customer = { ...customer }
 
   const totalPrice = foundItem.price * localStorage.custQuantity;
   purchase.totalPrice= totalPrice
 
-  const purchases = JSON.parse(localStorage.purchases);
+  purchases = JSON.parse(localStorage.purchases);
   purchases.push(purchase)
-  // localStorage.users.purchases = JSON.stringify(userPurchase)
 
-  // userPurchases.push(userPurchase)
+  foundUser.purchases.push()
 
   delete localStorage.custQuantity;
   delete localStorage.currentItemId;
+
 }
 
 

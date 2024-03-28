@@ -24,6 +24,7 @@ async function handlePageLoad() {
         historyHeading.textContent = `Sale ${historyHeading.textContent}`
 
         const purchases = JSON.parse(localStorage.purchases)
+        console.log(purchases);
         const sales = purchases.filter(purchase => purchase.item.seller === user.companyName)
         purchaseCC.innerHTML = sales.map(sale => purchaseToHTML(sale, 'sale')).join(' ')
     }
