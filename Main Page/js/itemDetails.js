@@ -6,13 +6,16 @@ const itemDetailsCC = document.querySelector('.item-container')
 const itemLink = document.querySelector('#item-link')
 
 
-// const buyNow = document.querySelector('#buy-btn')
-// buyNow.addEventListener('click', checkLoggedIn)
-
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {
+
+
+    if(localStorage.refresh){
+        window.location.reload()
+        delete localStorage.refresh
+    }
 
     const users = JSON.parse(localStorage.users)
     const currentUser = users.find(user => user.username === localStorage.currentUser)
@@ -34,7 +37,7 @@ async function handlePageLoad() {
             const quantity = parseInt(quantityItem.value);
             const price = parseInt(item.price);
             if(!quantity || window.itemQuantity==0){
-                priceOfItem.textContent = '0' + '$';  
+                priceOfItem.textContent = `${price}` + '$';  
                 alert('Minimum value is 1')      
                 quantityItem.value = 1     
             }
@@ -112,9 +115,9 @@ function checkLoggedIn(){
         if(foundUser.moneyBalance < totalPrice){
             alert("Not Enough Balance");
         }
-        else if(foundItem.quantity<window.itemQuantity){
-            alert(`Quanitity can't be over ${foundItem.quantity}`)
-        }
+        // else if(foundItem.quantity<window.itemQuantity){
+        //     alert(`Quanitity can't be over ${foundItem.quantity}`)
+        // }
         else{
             assignNeededAttributes()
             window.location.href = "purchasedetails.html"
