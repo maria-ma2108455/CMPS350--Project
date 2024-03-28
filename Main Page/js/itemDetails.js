@@ -35,7 +35,8 @@ async function handlePageLoad() {
             const price = parseInt(item.price);
             if(!quantity || window.itemQuantity==0){
                 priceOfItem.textContent = '0' + '$';  
-                alert('Minimum value is 1')           
+                alert('Minimum value is 1')      
+                quantityItem.value = 1     
             }
             else{
                 const totalPrice = quantity * price;
