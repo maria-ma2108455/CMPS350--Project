@@ -248,8 +248,8 @@ h2{
             
             img{  
                 width: 70%;
-                aspect-ratio: 4 /5 ;
-                border-radius: 10px;
+                aspect-ratio: 5 /6 ;
+                border-radius: 15px;
             }
          }
     /* img:hover{
@@ -345,6 +345,13 @@ h2{
 /* Hide the images by default */
 .mySlides {
   display: none;
+  margin-top: 2.5rem;
+  img{
+    border-radius: 1.5rem;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+ 
 }
 
 /* Next & previous buttons */
