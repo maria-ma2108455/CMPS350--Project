@@ -6,7 +6,7 @@ purchaseForm.addEventListener("submit", confirmedPurchase)
 cancel.addEventListener("click", cancelPurchase)
 
 window.addEventListener('popstate', refreshPreviousPage)
-
+//adding
 
 
 
