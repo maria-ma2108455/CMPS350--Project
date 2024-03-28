@@ -75,6 +75,7 @@
     .buttons{
 
       display: flex;
+      gap: 1rem;
       
       .purchase-btn {
         width: 100%;

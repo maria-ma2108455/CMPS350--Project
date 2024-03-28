@@ -32,30 +32,29 @@ function confirmedPurchase(e) {
    
     alert("Purchase Confirmed");
     window.location.href = "mainpage.html";
+    addPurchase(foundUser, foundItem)
 
   } else {
     alert("Purchase Cancelled");
   }
 }
 
+function addPurchase(foundUser, foundItem){
+  let purchase = {}
 
-// function formToObject(purchaseForm){
-//   const formData = new FormData(purchaseForm)
-//   console.log(formData);
-//   const data = {}
+  const purchaseNo = localStorage.purchases.length + 1
+  purchase.purchaseId = `P${purchaseNo}`;
 
-//   for (const [key, value] of formData){
-//       data[key] = value
-//   }
+  purchase.quantity=localStorage.custQuantity;
 
-//   return data;
-// }
+  purchase.item=foundItem
+  purchase.customer=foundUser
 
-// function addPurchase(p){
-//     p.preventDefault()
-//     const purchase = formToObject(p.target)
-//     // book._id= Date.now();
-//     // books.unshift(book)
-//     localStorage.purchases = JSON.stringify(purchases)
-//     hideForm()
-// } 
+  const totalPrice = foundItem.price * localStorage.custQuantity;
+  purchase.totalPrice= totalPrice
+
+  const purchases = JSON.parse(localStorage.purchases);
+  purchases.push(purchase)
+  localStorage.purchases = JSON.stringify(purchases)
+}
+

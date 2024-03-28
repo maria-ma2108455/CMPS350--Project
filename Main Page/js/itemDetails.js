@@ -53,9 +53,8 @@ async function handlePageLoad() {
         const totalPrice = quantity * price;
         window.itemQuantity = quantity.value;
         window.totalPrice = totalPrice.value;
-        // console.log(quantityItem.value);
-        // const buyNow = document.querySelector('#buy-btn')
-        // buyNow.addEventListener('click', checkLoggedIn)
+        const buyNow = document.querySelector('#buy-btn')
+        buyNow.addEventListener('click', checkLoggedIn)
 
 
     }
