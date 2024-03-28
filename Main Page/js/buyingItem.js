@@ -72,6 +72,8 @@ function cancelPurchase(){
 
   delete localStorage.custQuantity;
   delete localStorage.currentItemId;
+
+  localStorage.refresh=true
   window.history.back()
 
 }
