@@ -6,9 +6,6 @@ const itemDetailsCC = document.querySelector('.item-container')
 const itemLink = document.querySelector('#item-link')
 
 
-// const buyNow = document.querySelector('#buy-btn')
-// buyNow.addEventListener('click', checkLoggedIn)
-
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 

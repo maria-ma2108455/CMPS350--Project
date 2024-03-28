@@ -1,5 +1,12 @@
 const purchaseForm = document.querySelector("#purchase-form");
-purchaseForm.addEventListener("submit", confirmedPurchase);
+
+const cancel = document.querySelector('#cancel-btn')
+purchaseForm.addEventListener("submit", confirmedPurchase)
+
+cancel.addEventListener("click", cancelPurchase)
+
+
+
 
 
 function confirmedPurchase(e) {
@@ -27,12 +34,11 @@ function confirmedPurchase(e) {
       done = true;
     }
 
-    delete localStorage.custQuantity;
-    delete localStorage.currentItemId;
+    addPurchase(foundUser, foundItem)
    
     alert("Purchase Confirmed");
     window.location.href = "mainpage.html";
-    addPurchase(foundUser, foundItem)
+    
 
   } else {
     alert("Purchase Cancelled");
@@ -56,5 +62,17 @@ function addPurchase(foundUser, foundItem){
   const purchases = JSON.parse(localStorage.purchases);
   purchases.push(purchase)
   localStorage.purchases = JSON.stringify(purchases)
+
+  delete localStorage.custQuantity;
+  delete localStorage.currentItemId;
+}
+
+
+function cancelPurchase(){
+
+  delete localStorage.custQuantity;
+  delete localStorage.currentItemId;
+  window.history.back()
+
 }
 
