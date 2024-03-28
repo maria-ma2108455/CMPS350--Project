@@ -3,16 +3,16 @@ body {
     /* mandatory default */
   }
   
-  .pointer, button, a {
+  /* .pointer, button, a {
     cursor: url("https://assets.codepen.io/4806767/plink-cursor-pointer.svg") 8 8, pointer;
   }
   /* note the offset */
   
-  .drag {
+  /* .drag {
     cursor: url("https://assets.codepen.io/4806767/plink-cursor-drag-hover.svg") 8 8, grab;
   }
   
   .dragging {
     cursor: url("https://assets.codepen.io/4806767/plink-cursor-dragging.svg") 8 8, grabbing;
-  }
+  }  */
   
