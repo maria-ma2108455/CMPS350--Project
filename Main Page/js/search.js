@@ -9,5 +9,5 @@ searchForm.addEventListener('submit', handleFrorm)
 function handleFrorm(e){
     e.preventDefault();
     const searchValue = encodeURIComponent(searchBB.value) //replace all spaces with nothing
-    window.location.href = `items.html?searchValue=${searchValue}`;
+    window.location.href = `items.html?searchValue=${searchValue}`
 }

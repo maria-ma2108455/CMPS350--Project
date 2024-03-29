@@ -17,6 +17,7 @@ function addForm(e){
     const item= formToObject(e.target)
     console.log(item)
     let foundIndex = items.findIndex(i => i.itemId == item.itemId)
+    let add=false
     if(foundIndex<0){
         const itemNo = JSON.parse(localStorage.items).length + 1
         item.itemId = `I${itemNo}`;
@@ -29,17 +30,29 @@ function addForm(e){
         item.image = localStorage.getItem('uploadedImage')
         items.push(item)
         localStorage.removeItem('uploadedImage')
-        alert('Item sucessfully added')
+        add=true
     }
     else{
         item.image= localStorage.getItem('uploadedImage') ? localStorage.getItem('uploadedImage') : items[foundIndex].image
-        items[foundIndex] = {...items[foundIndex], ...item};
+        items[foundIndex] = {...items[foundIndex], ...item}
         localStorage.removeItem('uploadedImage')
-        alert('Item sucessfully updated')
+        add=false
+        
     }
     localStorage.items=JSON.stringify(items)
     form.reset()
-    window.history.go(-2)
+    Swal.fire({
+        title: add ? 'Added!' : 'Updated!',
+        text: add ? 'Item successfully added' : 'Item successfully updated',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#d65f83'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `items.html?items=myItems`;
+        }
+      })
+    
 }
 function formToObject(form){
     const formData= new FormData(form)
