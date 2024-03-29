@@ -76,7 +76,7 @@ function itemDetailsToHTML(item, user){
                 `<input type="number" id="quantity" name="quantity" min="1" max="${item.quantity}" step="1" value="1">`
                 }
             </div>
-            ${user && user.type === 'seller' && user.username === item.seller.username ? `<input type="button" value="Update Item" id="update-btn" >` :
+            ${user && user.type === 'seller' && user.username === item.seller.username ? `<input type="button" value="Update Item" id="update-btn" onclick="updateItem('${item.itemId}')">` :
             `<input type="submit" value="Buy Now" id="buy-btn" ></input>` }
         </form>
     </div>`
@@ -116,4 +116,9 @@ function checkLoggedIn(){
     localStorage.currentItemId = itemId
     window.location.href = "purchasedetails.html"
     
+
 }
+
+
+function updateItem(itemId){
+    window.location.href = `addSellerItem.html?item=${itemId}`}

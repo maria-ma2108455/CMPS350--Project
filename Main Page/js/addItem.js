@@ -42,3 +42,4 @@ function getImageAsUrl(element) {
     }
     reader.readAsDataURL(file);
 }
+
