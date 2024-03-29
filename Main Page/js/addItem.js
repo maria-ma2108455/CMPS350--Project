@@ -8,6 +8,8 @@ const uploadImage= document.querySelector('#item-image')
 items= JSON.parse(localStorage.items)
 users= JSON.parse(localStorage.users)
 const form = document.querySelector('#addItem-form')
+const cancelBTN = document.querySelector('#cancel-btn')
+
 form.addEventListener('submit',addForm)
 function addForm(e){
     console.log("Form submitted");
@@ -26,13 +28,18 @@ function addForm(e){
         }
         item.image = localStorage.getItem('uploadedImage')
         items.push(item)
+        localStorage.removeItem('uploadedImage')
+        alert('Item sucessfully added')
     }
     else{
+        item.image= localStorage.getItem('uploadedImage') ? localStorage.getItem('uploadedImage') : items[foundIndex].image
         items[foundIndex] = {...items[foundIndex], ...item};
-
+        localStorage.removeItem('uploadedImage')
+        alert('Item sucessfully updated')
     }
     localStorage.items=JSON.stringify(items)
     form.reset()
+    window.history.go(-2)
 }
 function formToObject(form){
     const formData= new FormData(form)
@@ -67,10 +74,15 @@ if(urlParameter.get('item')){
     itemId.value=item.itemId
     price.value=item.price
     quantity.value=item.quantity
-    image.src = item.image
+    image.src= item.image
     name.value=item.name
     description.value=item.description
     category.value=item.category
     categories.forEach(c=> {if(c.value === item.category) {c.checked= true}})
-        
+   
 }
+cancelBTN.addEventListener('click',cancelSubmit)
+function cancelSubmit(){
+    // window.history.back() //go to prev page
+    window.history.go(-2); //go back two pages
+}  
