@@ -31,7 +31,7 @@ function itemToHTML(item){
  
   <div class="item" onclick="handleItemClick('${item.itemId}')">
   <img src="${item.image}" alt="${item.name}">
-      <h3>${item.name}</h3>
+      <h4>${item.name}</h4>
       <p>$${item.price}</p>
    </div>`
 }
@@ -39,11 +39,7 @@ function itemToHTML(item){
 function handleItemClick(itemId){
   window.location.href = `itemdetail.html?item=${itemId}`
 }
-shopBTN.addEventListener('click',allItemsPage)
-function allItemsPage(){
-  window.location.href = `items.html`
 
-}
 // slide show
 let slideIndex = 1;
 showSlides(slideIndex);
