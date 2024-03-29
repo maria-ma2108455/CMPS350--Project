@@ -13,7 +13,8 @@ function addForm(e){
     console.log("Form submitted");
     e.preventDefault()
     const item= formToObject(e.target)
-    let foundIndex = items.findIndex(i => i.itemId == item.ItemId)
+    console.log(item)
+    let foundIndex = items.findIndex(i => i.itemId == item.itemId)
     if(foundIndex<0){
         const itemNo = JSON.parse(localStorage.items).length + 1
         item.itemId = `I${itemNo}`;
