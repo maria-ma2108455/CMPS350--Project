@@ -35,12 +35,12 @@
         input, textarea {
           width: 100%;
           padding: 0.5rem;
-          margin-top: 0.3rem;
+          margin-top: 0.4rem;
           border: 1px solid #c2c2c2;
           border-radius: 10px;
         }
 
-
+          
         input[type="file"] {
             display: none;
           }
@@ -93,77 +93,38 @@
       }
     }
 
- 
-  .radio input[type="radio"] {
-
-      margin-right: 5px;
-      margin-left: 1.5rem;
-
-      width: auto;
-      cursor: pointer;
       
+  /*hide radio button thats there*/
+  .radio input[type="radio"] {
+    display: none;
+  }
+
+  .custom {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    border: 2px solid var(--color--icons);
+    margin-right: 0.6rem;
+    margin-left: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .radio input[type="radio"]:checked + label .custom {
+    background-color:var(--color--icons);
   }
   .radio label {
-      cursor: pointer;
+    display: flex;
+    /* buttons and label on same level: */
+    align-items: center; 
+    cursor: pointer;
   }
-  
-  }
-  
-  
-  .footer {
-    margin-top: 2rem;
-    padding: 1rem;
-    color: white;
-    background-color: var(--color--icons);
-  
-    display: grid;
-    justify-items: center;
-  
-    .contact {
-      h3 {
-  
-        text-align: center;
-        margin: 2rem 0 1rem 0;
-      }
-    }
-  
-    .fa {
-      padding: 1rem;
-      font-size: 2rem;
-      /* width: 30px; */
-      text-align: center;
-      text-decoration: none;
-      /* border-radius: 50%; */
-    }
-  
-    .fa:hover {
-      opacity: 0.7;
-    }
-  
-    .fa-facebook {
-      /* background: #3B5998; */
-      color: white;
-    }
-  
-    .fa-twitter {
-      /* background: #55ACEE; */
-      color: white;
-    }
-  
-    .fa-youtube {
-      /* background: #bb0000; */
-      color: white;
-    }
-  
-    .fa-instagram {
-      /* background: #125688; */
-      color: white;
-    }
-  
-    .fa-pinterest {
-      /* background: #cb2027; */
-      color: white;
-    }
-  }
+ 
+.radio label:hover .label {
+  background-color: var(--color--bg);
+  padding: 3px;
+  border-radius: 20px ;
+}
 
-
+  }
+  
+  
