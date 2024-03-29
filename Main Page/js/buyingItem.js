@@ -4,7 +4,7 @@ const cancel = document.querySelector('#cancel-btn')
 
 const users = localStorage.users;
 const user = JSON.parse(users);
-let foundUser = user.find((u) => u.username === localStorage.currentUser);
+const foundUser = user.find((u) => u.username === localStorage.currentUser);
 
 document.addEventListener('DOMContentLoaded', showFormFields)
 purchaseForm.addEventListener("submit", confirmedPurchase)
@@ -45,7 +45,6 @@ function confirmedPurchase(e) {
 
       const purchaseDetails = formToObject(e.target)
       
-
       const items = localStorage.items;
       const item = JSON.parse(items);
       const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
@@ -55,16 +54,16 @@ function confirmedPurchase(e) {
       foundUser.moneyBalance -= totalPrice;
       foundItem.quantity -= localStorage.custQuantity;
 
-      const { address, city, ...updatedUser } = { ...purchaseDetails} 
 
-      updatedUser.shippingAddress = `${address}, ${city}`
+      foundUser.name = purchaseDetails.name
+      foundUser.surname = purchaseDetails.surname
+      foundUser.phoneNumber = purchaseDetails.phoneNumber
+      foundUser.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`
+      
+      addPurchase(foundUser, foundItem)
 
-      foundUser = {...foundUser, ...updatedUser}
-
-    addPurchase(foundUser, foundItem)
-
-    localStorage.users = JSON.stringify(user)
-    localStorage.items = JSON.stringify(item)
+      localStorage.users = JSON.stringify(user)
+      localStorage.items = JSON.stringify(item)
 
       swalWithBootstrapButtons.fire({
         title: "Purchase Confirmed!",
