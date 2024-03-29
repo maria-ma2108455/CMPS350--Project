@@ -9,25 +9,23 @@ function handleCategoryClick(){
     const category = this.id;
     window.location.href = `items.html?category=${category}`;
 }
-const featuredCC=document.querySelector('#featured')
+const featuredCC=document.querySelector('#featured-container')
 items=JSON.parse(localStorage.items)
 document.addEventListener('DOMContentLoaded', addFeatured);
 function addFeatured(){
   const featuredItems = items.filter(item => item.featured == true)
   itemsHTML = featuredItems.map(item => itemToHTML(item)).join(' ')
-  featuredCC.innerHTML = ` <h2>Featured Products</h2>`
-  featuredCC.innerHTML += itemsHTML
+  featuredCC.innerHTML = itemsHTML
 
 }
 
 function itemToHTML(item){
   return `
-  <div class="featured-container" >
+ 
   <div class="item" onclick="handleItemClick('${item.itemId}')">
   <img src="${item.image}" alt="${item.name}">
       <h3>${item.name}</h3>
       <p>$${item.price}</p>
-  </div>
    </div>`
 }
 

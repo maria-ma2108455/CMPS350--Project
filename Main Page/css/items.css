@@ -55,7 +55,9 @@ main{
         
         margin: 0.5rem
     }
-   
+    h3{
+        text-align: center;
+    }
     img:hover{
         transform: scale(1.05);
     }

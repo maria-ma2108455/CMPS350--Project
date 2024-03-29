@@ -36,8 +36,7 @@
           "username": "craftsworld_user",
           "companyName": "CraftsWorld Inc."
       },
-      "itemId": "I3",
-      "featured": true
+      "itemId": "I3"
   },
   {
       "name": "Pink Cherry Mug",
@@ -63,7 +62,8 @@
           "username": "ceramicart_user",
           "companyName": "CeramicArt Co."
       },
-      "itemId": "I5"
+      "itemId": "I5",
+      "featured": true
   },
   {
       "name": "Green Cherry Plate",
@@ -116,7 +116,7 @@
           "companyName": "CeramicArt Co."
       },
       "itemId": "I9"
-  },
+      },
   {
       "name": "Pink Floral Mug",
       "category": "Ceramics",
@@ -169,7 +169,9 @@
           "username": "ceramicart_user",
           "companyName": "CeramicArt Co."
       },
-      "itemId": "I13"
+      "itemId": "I13",
+      "featured":true
+
   },
   {
       "name": "Elegant Beaded Bracelet",
@@ -182,7 +184,9 @@
         "username": "elegant_jewels",
         "companyName": "Elegant Jewels Co."
       },
-      "itemId": "I14"
+      "itemId": "I14",
+      "featured": true
+
     },
     {
       "name": "Glass Beaded Daisy Bracelet",
@@ -195,8 +199,7 @@
         "username": "elegant_jewels",
         "companyName": "Elegant Jewels Co."
       },
-      "itemId": "I16",
-      "featured": true
+      "itemId": "I16"
     },
     {
       "name": "Elegant Rhinestone Jewelry Set",
@@ -476,14 +479,16 @@
       "name": "Ethereal Waters",
       "category": "Paintings",
       "image": "images/paintings/ethereal_waters.png",
-      "price": 780,
+      "price": 340,
       "quantity": 2,
       "description": "A mesmerizing underwater painting depicting a colorful coral reef teeming with exotic marine life, creating a sense of wonder and awe.",
       "seller": {
         "username": "canvas_harmony",
         "companyName": "Canvas Harmony Studios"
       },
-      "itemId": "I36"
+      "itemId": "I36",
+      "featured": true
+
     },
 
     {
