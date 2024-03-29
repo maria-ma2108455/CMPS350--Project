@@ -75,37 +75,6 @@ function confirmedPurchase(e) {
     }
   });
 
-  // if (confirm("Are you sure about your purchase?")) {
-  //   const users = localStorage.users;
-  //   const user = JSON.parse(users);
-  //   const foundUser = user.find((u) => u.username === localStorage.currentUser);
-
-  //   const items = localStorage.items;
-  //   const item = JSON.parse(items);
-  //   const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
-
-  //   const totalPrice = foundItem.price * localStorage.custQuantity;
-  //   let done = false;
-    
-  //   if (!done) {
-  //     foundUser.moneyBalance -= totalPrice;
-  //     foundItem.quantity -= localStorage.custQuantity;
-
-  //     done = true;
-  //   }
-
-  //   addPurchase(foundUser, foundItem)
-
-  //   localStorage.users = JSON.stringify(user)
-  //   localStorage.items = JSON.stringify(item)
-   
-  //   alert("Purchase Confirmed");
-  //   window.location.href = "mainpage.html";
-    
-
-  // } else {
-  //   alert("Purchase Cancelled");
-  // }
 }
 
 

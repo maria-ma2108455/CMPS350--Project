@@ -92,7 +92,17 @@ function checkLoggedIn(){
     const foundUser = user.find(u => u.username === localStorage.currentUser)
 
     if (foundUser.type === 'seller') {
-        alert('Please sign in as a customer to buy items')
+        Swal.fire({
+            title: 'Not a Customer!',
+            text: 'Please sign in as a customer to buy items.',
+            icon: 'warning',
+            iconColor: '#d65f83',
+            confirmButtonColor: '#d65f83'
+         }).then((result) => {
+            if(result.value){
+             this.props.submitUser(this.state)
+           }
+         })
         return
     } 
 
@@ -108,7 +118,6 @@ function checkLoggedIn(){
 
     if(foundUser.moneyBalance < totalPrice){
         
-        // alert("Not Enough Balance");
         Swal.fire({
             title: 'Not Enough Balance',
             text: 'Please check your balance and try again.',

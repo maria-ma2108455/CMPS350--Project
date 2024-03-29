@@ -12,7 +12,18 @@ function signIn(e) {
         window.location.href = "mainPage.html"
     } else {
         form.elements['password'].value = ''
-        alert('Incorrect username or password!')
+        Swal.fire({
+            title: 'Try Again!',
+            text: 'Incorrect username or password.',
+            icon: 'error',
+            iconColor: '#d65f83',
+            confirmButtonColor: '#d65f83',
+            // confirmButtonText: 'Y'
+         }).then((result) => {
+            if(result.value){
+             this.props.submitUser(this.state)
+           }
+         })
     }
 }
 
