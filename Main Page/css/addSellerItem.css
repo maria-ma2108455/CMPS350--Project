@@ -61,6 +61,12 @@
             background-color:#f8e2e7ee;
           }
 
+          img {
+            width:75%;
+            border-radius: 0.5rem;
+            margin: 0.5rem
+          }
+
       }
 
       .buttons{

@@ -1,13 +1,13 @@
 const urlParameter = new URLSearchParams(window.location.search);
 const uploadImage= document.querySelector('#item-image')
 const itemId = urlParameter.get('item');
-// let items=[]
-// let users=[]
+
 items= JSON.parse(localStorage.items)
 users= JSON.parse(localStorage.users)
 const form = document.querySelector('#addItem-form')
 const cancelBTN = document.querySelector('#cancel-btn')
 const submitBTN = document.querySelector('#addItem-btn')
+const imageInputs = document.querySelector('#image-inputs')
 
 document.addEventListener('DOMContentLoaded', () => {
     if (itemId) {
@@ -26,8 +26,8 @@ function addForm(e){
     if(foundIndex<0){
         const itemNo = JSON.parse(localStorage.items).length + 1
         item.itemId = `I${itemNo}`;
-        const sellerusername=localStorage.currentUser
-        const seller= users.find(u=>u.username== sellerusername)
+        const sellerusername = localStorage.currentUser
+        const seller = users.find(u => u.username == sellerusername)
         item.seller = {
             username: seller.username,   
             companyName: seller.companyName
@@ -35,13 +35,13 @@ function addForm(e){
         item.image = localStorage.getItem('uploadedImage')
         items.push(item)
         localStorage.removeItem('uploadedImage')
-        add=true
+        add = true
     }
     else{
         item.image= localStorage.getItem('uploadedImage') ? localStorage.getItem('uploadedImage') : items[foundIndex].image
         items[foundIndex] = {...items[foundIndex], ...item}
         localStorage.removeItem('uploadedImage')
-        add=false
+        add = false
         
     }
     localStorage.items=JSON.stringify(items)
@@ -67,6 +67,7 @@ function formToObject(form){
     }
     return data
 }
+
 uploadImage.addEventListener('change', function() {getImageAsUrl(this)})
 
 function getImageAsUrl(element) {
@@ -74,6 +75,7 @@ function getImageAsUrl(element) {
     var reader = new FileReader();
     reader.onloadend = function() {
         localStorage.setItem('uploadedImage', reader.result); //Store image
+        imageInputs.innerHTML = imageInputs.innerHTML + `<img src=${localStorage.uploadedImage} alt="Item Image">` 
     }
     reader.readAsDataURL(file);
 }
@@ -92,7 +94,7 @@ if(urlParameter.get('item')){
     itemId.value=item.itemId
     price.value=item.price
     quantity.value=item.quantity
-    image.src= item.image
+    image.src = item.image
     name.value=item.name
     description.value=item.description
     category.value=item.category
