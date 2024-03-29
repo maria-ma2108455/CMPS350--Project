@@ -12,63 +12,65 @@ function confirmedPurchase(e) {
   
   e.preventDefault();
 
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: "btn btn-success",
-      cancelButton: "btn btn-danger"
-    },
-    buttonsStyling: false
-  });
+  const swalWithBootstrapButtons = Swal.mixin();
 
   swalWithBootstrapButtons.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
+    title: "Are you sure about your purchase?",
+    // text: "You won't be able to revert this!",
     icon: "warning",
+    iconColor: '#d65f83',
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: "Yes, confirm!",
     cancelButtonText: "No, cancel!",
+    confirmButtonColor: '#d65f83',
+    cancelButtonColor: '#d65f83',
     reverseButtons: true
   }).then((result) => {
     if (result.isConfirmed) {
 
-        //   const users = localStorage.users;
-  //   const user = JSON.parse(users);
-  //   const foundUser = user.find((u) => u.username === localStorage.currentUser);
+    const users = localStorage.users;
+    const user = JSON.parse(users);
+    const foundUser = user.find((u) => u.username === localStorage.currentUser);
 
-  //   const items = localStorage.items;
-  //   const item = JSON.parse(items);
-  //   const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
+    const items = localStorage.items;
+    const item = JSON.parse(items);
+    const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
 
-  //   const totalPrice = foundItem.price * localStorage.custQuantity;
-  //   let done = false;
+    const totalPrice = foundItem.price * localStorage.custQuantity;
+    let done = false;
     
-  //   if (!done) {
-  //     foundUser.moneyBalance -= totalPrice;
-  //     foundItem.quantity -= localStorage.custQuantity;
+    if (!done) {
+      foundUser.moneyBalance -= totalPrice;
+      foundItem.quantity -= localStorage.custQuantity;
 
-  //     done = true;
-  //   }
+      done = true;
+    }
 
-  //   addPurchase(foundUser, foundItem)
+    addPurchase(foundUser, foundItem)
 
-  //   localStorage.users = JSON.stringify(user)
-  //   localStorage.items = JSON.stringify(item)
+    localStorage.users = JSON.stringify(user)
+    localStorage.items = JSON.stringify(item)
 
       swalWithBootstrapButtons.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
+        title: "Purchase Confirmed!",
+        text: "Your purchase has been confirmed and added to purchase history.",
+        icon: "success",
+        iconColor: '#d65f83',
+        confirmButtonColor: '#d65f83'
+
       }).then(()=>{
         window.location.href="mainpage.html"
       });
     } else if (
-      /* Read more about handling dismissals below */
       result.dismiss === Swal.DismissReason.cancel
     ) {
       swalWithBootstrapButtons.fire({
         title: "Cancelled",
-        text: "Your imaginary file is safe :)",
-        icon: "error"
+        text: "Your attempt to purchase has been cancelled.",
+        icon: "error",
+        iconColor: '#d65f83',
+        confirmButtonColor: '#d65f83'
+
       });
     }
   });
