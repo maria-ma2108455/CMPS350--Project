@@ -1,23 +1,28 @@
-
-
-
 const urlParameter = new URLSearchParams(window.location.search);
 const uploadImage= document.querySelector('#item-image')
+const itemId = urlParameter.get('item');
 // let items=[]
 // let users=[]
 items= JSON.parse(localStorage.items)
 users= JSON.parse(localStorage.users)
 const form = document.querySelector('#addItem-form')
 const cancelBTN = document.querySelector('#cancel-btn')
+const submitBTN = document.querySelector('#addItem-btn')
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (itemId) {
+        submitBTN.textContent = 'Update Item'
+    }
+})
 
 form.addEventListener('submit',addForm)
 function addForm(e){
     console.log("Form submitted");
     e.preventDefault()
-    const item= formToObject(e.target)
+    const item = formToObject(e.target)
     console.log(item)
     let foundIndex = items.findIndex(i => i.itemId == item.itemId)
-    let add=false
+    let add = false
     if(foundIndex<0){
         const itemNo = JSON.parse(localStorage.items).length + 1
         item.itemId = `I${itemNo}`;
