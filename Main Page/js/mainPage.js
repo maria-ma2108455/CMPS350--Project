@@ -9,14 +9,21 @@ function handleCategoryClick(){
     const category = this.id;
     window.location.href = `items.html?category=${category}`;
 }
-const featuredCC=document.querySelector('#featured-container')
-items=JSON.parse(localStorage.items)
+
+const featuredCC = document.querySelector('#featured-container')
+const shopAllBtn = document.querySelector('#shop-btn')
+items = JSON.parse(localStorage.items)
 document.addEventListener('DOMContentLoaded', addFeatured);
+shopAllBtn.addEventListener('click', handleShopAll)
+
+function handleShopAll() {
+  window.location.href = `items.html?category=all`
+}
+
 function addFeatured(){
   let featuredItems = items.filter(item => item.featured == true)
   itemsHTML = featuredItems.map(item => itemToHTML(item)).join(' ')
   featuredCC.innerHTML = itemsHTML
-
 }
 
 function itemToHTML(item){

@@ -20,9 +20,11 @@ async function handlePageLoad() {
         const items = JSON.parse(localStorage.items);
 
         let itemsHTML = ''
+        let filteredItems = []
 
         if (category){
-            const filteredItems = items.filter(item => item.category === category)
+            if (category === 'all') filteredItems = items
+            else filteredItems = items.filter(item => item.category === category)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         } else if (sellerItems) {
             title.classList.remove('hidden')
