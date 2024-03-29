@@ -121,7 +121,7 @@
  
 .radio label:hover .label {
   background-color: var(--color--bg);
-  padding: 5px;
+  padding: 3px;
   border-radius: 20px ;
 }
 
