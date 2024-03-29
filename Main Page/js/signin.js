@@ -17,8 +17,7 @@ function signIn(e) {
             text: 'Incorrect username or password.',
             icon: 'error',
             iconColor: '#d65f83',
-            confirmButtonColor: '#d65f83',
-            // confirmButtonText: 'Y'
+            confirmButtonColor: '#d65f83'
          }).then((result) => {
             if(result.value){
              this.props.submitUser(this.state)
