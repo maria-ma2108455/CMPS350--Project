@@ -13,7 +13,7 @@ const featuredCC=document.querySelector('#featured-container')
 items=JSON.parse(localStorage.items)
 document.addEventListener('DOMContentLoaded', addFeatured);
 function addFeatured(){
-  const featuredItems = items.filter(item => item.featured == true)
+  let featuredItems = items.filter(item => item.featured == true)
   itemsHTML = featuredItems.map(item => itemToHTML(item)).join(' ')
   featuredCC.innerHTML = itemsHTML
 

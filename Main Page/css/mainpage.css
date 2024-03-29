@@ -319,11 +319,26 @@ h2{
             padding: 0.5rem;
         }
         }
-
+        
+       
 }
-
+input[type="button"] {
+    padding: 0.6rem 4rem;
+    margin-left: 42%;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    border: var(--color--icons) solid;
+    border-radius: 2rem;
+    background: var(--color--icons);
+    box-shadow: rgba(91, 91, 91, 0.35) 0px 3px 3px;
+    color: var(--color--txt);
+    cursor: pointer;
+    font-size: larger;
 }
-
+}
+#shop-btn:hover{
+    transform: scale(1.1);
+}
 .footer{
     margin-top: 2rem;
     padding: 1rem;
