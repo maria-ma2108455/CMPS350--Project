@@ -5,7 +5,6 @@ const category = urlParameter.get('category');
 const search = decodeURIComponent(urlParameter.get('searchValue'));
 const sellerItems = urlParameter.get('items')
 
-// localStorage.removeItem('items')
 const itemsContainer = document.querySelector('#items-container')
 const dropdown = document.querySelector('#dropdown-items')
 const dropdownList = document.querySelector('#dropdownlist-items')

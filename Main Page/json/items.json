@@ -36,7 +36,8 @@
           "username": "craftsworld_user",
           "companyName": "CraftsWorld Inc."
       },
-      "itemId": "I3"
+      "itemId": "I3",
+      "featured": true
   },
   {
       "name": "Pink Cherry Mug",
@@ -153,7 +154,9 @@
           "username": "ceramicart_user",
           "companyName": "CeramicArt Co."
       },
-      "itemId": "I12"
+      "itemId": "I12",
+      "featured": true
+
   },
   {
       "name": "Blue Hearts Mug",
@@ -192,7 +195,8 @@
         "username": "elegant_jewels",
         "companyName": "Elegant Jewels Co."
       },
-      "itemId": "I16"
+      "itemId": "I16",
+      "featured": true
     },
     {
       "name": "Elegant Rhinestone Jewelry Set",
@@ -244,7 +248,8 @@
         "username": "elegant_jewels",
         "companyName": "Elegant Jewels Co."
       },
-      "itemId": "I24"
+      "itemId": "I24",
+      "featured": true
     },
     {
       "name": "Pink Crystal Flower Earrings",
@@ -364,7 +369,8 @@
         "username": "artvista_creations",
         "companyName": "ArtVista Creations"
       },
-      "itemId": "I28"
+      "itemId": "I28",
+      "featured": true
     },
 
     {
@@ -448,7 +454,8 @@
         "username": "canvas_harmony",
         "companyName": "Canvas Harmony Studios"
       },
-      "itemId": "I34"
+      "itemId": "I34",
+      "featured": true
     },
 
     {
