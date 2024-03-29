@@ -108,7 +108,18 @@ function checkLoggedIn(){
 
     if(foundUser.moneyBalance < totalPrice){
         
-        alert("Not Enough Balance");
+        // alert("Not Enough Balance");
+        Swal.fire({
+            title: 'Not Enough Balance',
+            text: 'Please check your balance and try again.',
+            icon: 'warning',
+            iconColor: '#d65f83',
+            confirmButtonColor: '#d65f83',
+         }).then((result) => {
+            if(result.value){
+             this.props.submitUser(this.state)
+           }
+         })
         return
     }
 
