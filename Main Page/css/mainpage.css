@@ -561,5 +561,10 @@ input[type="button"] {
             }
         }
     }
+    .main{
+    input[type="button"] {
+        margin-left: 30%;
+    }
+    }
 }
 }
