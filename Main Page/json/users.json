@@ -516,7 +516,7 @@
         "shippingAddress": "465 Alasiri Street, Doha",
         "moneyBalance": 1000,
         "email": "attilimaria@gmail.com",
-        "phoneNumber": "974-33008644",
+        "phoneNumber": "+974 33008644",
         "purchases": [
             {
                 "purchaseId": "P1",
@@ -557,7 +557,7 @@
         "shippingAddress": "456 Amman, Jordan",
         "moneyBalance": 100,
         "email": "ali.zaid@gmail.com",
-        "phoneNumber": "555-0202",
+        "phoneNumber": "+91 5550163422",
         "purchases": [
             {
                 "purchaseId": "P3",
