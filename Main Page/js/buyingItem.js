@@ -1,10 +1,25 @@
 const purchaseForm = document.querySelector("#purchase-form");
 
 const cancel = document.querySelector('#cancel-btn')
+
+const users = localStorage.users;
+const user = JSON.parse(users);
+let foundUser = user.find((u) => u.username === localStorage.currentUser);
+
+document.addEventListener('DOMContentLoaded', showFormFields)
 purchaseForm.addEventListener("submit", confirmedPurchase)
 
 cancel.addEventListener("click", cancelPurchase)
 
+function showFormFields() {
+  if (foundUser.shippingAddress) {
+    purchaseForm.elements['name'].value = foundUser.name
+    purchaseForm.elements['surname'].value = foundUser.surname
+    purchaseForm.elements['phoneNumber'].value = foundUser.phoneNumber
+    purchaseForm.elements['address'].value = foundUser.shippingAddress.split(',')[0]
+    purchaseForm.elements['city'].value = foundUser.shippingAddress.split(',')[1]
+  }
+}
 
 
 
@@ -28,23 +43,23 @@ function confirmedPurchase(e) {
   }).then((result) => {
     if (result.isConfirmed) {
 
-    const users = localStorage.users;
-    const user = JSON.parse(users);
-    const foundUser = user.find((u) => u.username === localStorage.currentUser);
+      const purchaseDetails = formToObject(e.target)
+      
 
-    const items = localStorage.items;
-    const item = JSON.parse(items);
-    const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
+      const items = localStorage.items;
+      const item = JSON.parse(items);
+      const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
 
-    const totalPrice = foundItem.price * localStorage.custQuantity;
-    let done = false;
-    
-    if (!done) {
+      const totalPrice = foundItem.price * localStorage.custQuantity;
+
       foundUser.moneyBalance -= totalPrice;
       foundItem.quantity -= localStorage.custQuantity;
 
-      done = true;
-    }
+      const { address, city, ...updatedUser } = { ...purchaseDetails} 
+
+      updatedUser.shippingAddress = `${address}, ${city}`
+
+      foundUser = {...foundUser, ...updatedUser}
 
     addPurchase(foundUser, foundItem)
 
@@ -76,6 +91,20 @@ function confirmedPurchase(e) {
   });
 
 }
+
+function formToObject(form) {
+
+  const formData = new FormData(form)
+  const data = {}
+
+  // the name in html will become the key
+  for (const [key, value] of formData) {
+      data[key] = value
+  }
+
+  return data
+
+} 
 
 
 function addPurchase(foundUser, foundItem){
