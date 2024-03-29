@@ -9,12 +9,15 @@ function handleCategoryClick(){
     const category = this.id;
     window.location.href = `items.html?category=${category}`;
 }
+
+
+const shopBTN= document.querySelector('#shop-btn')
 const featuredCC=document.querySelector('#featured-container')
 items=JSON.parse(localStorage.items)
 document.addEventListener('DOMContentLoaded', addFeatured);
 function addFeatured(){
   let featuredItems = items.filter(item => item.featured == true)
-  itemsHTML = featuredItems.map(item => itemToHTML(item)).join(' ')
+  const itemsHTML = featuredItems.map(item => itemToHTML(item)).join(' ')
   featuredCC.innerHTML = itemsHTML
 
 }
@@ -32,7 +35,11 @@ function itemToHTML(item){
 function handleItemClick(itemId){
   window.location.href = `itemdetail.html?item=${itemId}`
 }
+shopBTN.addEventListener('click',allItemsPage)
+function allItemsPage(){
+  window.location.href = `items.html`
 
+}
 // slide show
 let slideIndex = 1;
 showSlides(slideIndex);

@@ -36,7 +36,8 @@
           "username": "craftsworld_user",
           "companyName": "CraftsWorld Inc."
       },
-      "itemId": "I3"
+      "itemId": "I3",
+      "featured":true
   },
   {
       "name": "Pink Cherry Mug",
@@ -174,6 +175,20 @@
 
   },
   {
+    "name": "Swan Shaped Pearl Earrings",
+    "category": "Jewelry",
+    "image": "images/jewelry/swan_shaped_pearl_earrings.png",
+    "price": 25.99,
+    "quantity": 30,
+    "description": "Elegant earrings featuring swan-shaped designs adorned with lustrous pearls. Perfect for adding a touch of sophistication to any look.",
+    "seller": {
+      "username": "elegant_jewels",
+      "companyName": "Elegant Jewels Co."
+    },
+    "itemId": "I24",
+    "featured": true
+  },
+  {
       "name": "Elegant Beaded Bracelet",
       "category": "Jewelry",
       "image": "images/jewelry/elegant_beaded_bracelet.png",
@@ -226,6 +241,7 @@
         "companyName": "Stellar Designs Co."
       },
       "itemId": "I17"
+
     },
     {
       "name": "Lily Of The Valley Dangle Earrings",
@@ -240,20 +256,7 @@
       },
       "itemId": "I18"
     },
-    {
-      "name": "Swan Shaped Pearl Earrings",
-      "category": "Jewelry",
-      "image": "images/jewelry/swan_shaped_pearl_earrings.png",
-      "price": 29.99,
-      "quantity": 30,
-      "description": "Elegant earrings featuring swan-shaped designs adorned with lustrous pearls. Perfect for adding a touch of sophistication to any look.",
-      "seller": {
-        "username": "elegant_jewels",
-        "companyName": "Elegant Jewels Co."
-      },
-      "itemId": "I24",
-      "featured": true
-    },
+   
     {
       "name": "Pink Crystal Flower Earrings",
       "category": "Jewelry",
@@ -265,7 +268,9 @@
         "username": "stellar_designs",
         "companyName": "Stellar Designs Co."
       },
-      "itemId": "I20"
+      "itemId": "I20",
+      "featured":true
+
     },
     {
       "name": "Rhinestone Stackable Rings",

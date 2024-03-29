@@ -33,7 +33,10 @@ async function handlePageLoad() {
             let filteredItems = items.filter(i=> i.name.toLowerCase().includes(search))
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         }
-
+        else {
+            itemsHTML = items.map(item => itemToHTML(item)).join(' ')
+        }
+        
         itemsContainer.innerHTML = itemsHTML
 
         

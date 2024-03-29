@@ -285,10 +285,10 @@ h2{
     }
         
     .featured-container{
-            width: 90%;
+            width: 87%;
             margin: auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 0.7fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             grid-auto-rows: 1fr; /*grid rows take up equal space */
             gap: 1.5rem;
             padding: 1rem; 
