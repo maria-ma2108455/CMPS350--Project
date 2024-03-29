@@ -9,6 +9,7 @@ const sellerItems = urlParameter.get('items')
 const itemsContainer = document.querySelector('#items-container')
 const dropdown = document.querySelector('#dropdown-items')
 const dropdownList = document.querySelector('#dropdownlist-items')
+const title = document.querySelector('#title')
 
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 document.addEventListener('change', showSellerItems)
@@ -19,23 +20,13 @@ async function handlePageLoad() {
 
         const items = JSON.parse(localStorage.items);
 
-    //     if(!localStorage.items){
-    //         const data = await fetch(itemsFile);
-    //         const items = await data.json();
-    //         localStorage.items= JSON.stringify(items) 
-    // }
-    //     else{
-            
-    //     }
-
         let itemsHTML = ''
 
         if (category){
-
             const filteredItems = items.filter(item => item.category === category)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
-
         } else if (sellerItems) {
+            title.classList.remove('hidden')
             dropdown.classList.remove('hidden')
             filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
