@@ -22,50 +22,25 @@ async function handlePageLoad() {
         let itemsHTML = ''
         let filteredItems = []
 
-        // if (sellerItems) {
-        //     title.textContent = "My Items"
-        //     showDropDown('seller')
-        //     filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
-        //     itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
-        // } else if (search) {
-        //     let filteredItems = items.filter(i=> i.name.toLowerCase().includes(search))
-        //     itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
-        // } else {
-        //     showDropDown()
-        //     dropdownList.value = category
-        // }
-
-        if (category) {
+        if (sellerItems) {
+            title.textContent = "My Items"
+            showDropDown('seller')
+            filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+        } else if (category) {
             title.textContent = "Product Catalogue"
             showDropDown()
             if (category === 'all') filteredItems = items
             else filteredItems = items.filter(item => item.category === category)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
             dropdownList.value = category.toLowerCase()
-        } else if (sellerItems) {
-            title.textContent = "My Items"
-            showDropDown('seller')
-            filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
-            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         } else if (search) {
-            let filteredItems = items.filter(i=> i.name.toLowerCase().includes(search))
+            title.classList.add('hidden')
+            dropdown.classList.add('hidden')
+            let filteredItems = items.filter( i => i.name.toLowerCase().includes(search.toLowerCase()) 
+            || i.seller.companyName.toLowerCase().includes(search.toLowerCase()))
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         }
-
-        // if (category){
-        //     if (category === 'all') filteredItems = items
-        //     else filteredItems = items.filter(item => item.category === category)
-        //     itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
-        // } else if (sellerItems) {
-        //     title.classList.remove('hidden')
-        //     dropdown.classList.remove('hidden')
-
-        // } else if (search){
-
-        // }
-        // else {
-        //     itemsHTML = items.map(item => itemToHTML(item)).join(' ')
-        // }
         
         itemsContainer.innerHTML = itemsHTML
 
@@ -106,8 +81,10 @@ function showItems() {
         filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity > 0)
     } else if (dropdownList.value === 'sold-out') {
         filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity <= 0)
-    } else if (dropdownList.value === 'all'){
+    } else if (dropdownList.value === 'all' && sellerItems){
         filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+    } else if (dropdownList.value === 'all') {
+        filteredItems = items
     } else {
         filteredItems = items.filter(item => item.category.toLowerCase() === dropdownList.value)
     }
