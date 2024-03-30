@@ -97,7 +97,6 @@ function checkLoggedIn(){
             title: 'Not a Customer!',
             text: 'Please sign in as a customer to buy items.',
             icon: 'warning',
-            iconColor: '#d65f83',
             confirmButtonColor: '#d65f83'
          }).then((result) => {
             if(result.value){
@@ -123,7 +122,6 @@ function checkLoggedIn(){
             title: 'Not Enough Balance',
             text: 'Please check your balance and try again.',
             icon: 'warning',
-            iconColor: '#d65f83',
             confirmButtonColor: '#d65f83',
          }).then((result) => {
             if(result.value){
@@ -142,4 +140,4 @@ function checkLoggedIn(){
 
 
 function updateItem(itemId){
-    window.location.href = `addSellerItem.html?item=${itemId}`}
+    window.location.href = `addOrUpdateItem.html?item=${itemId}`}
