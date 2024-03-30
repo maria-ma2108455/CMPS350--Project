@@ -13,37 +13,6 @@
 
 }
 
-/* header old */
-.head {
-  grid-area: head;
-  display: flex;
-  align-items: center;
-  /* margin: 0.2rem 3rem; */
-  justify-content: space-between;
-  height: 5rem;
-
-  .search-bar {
-    flex-grow: 1;
-    padding: 10px;
-    margin: 0px 20px;
-    border: 1px solid #181515;
-    border-radius: 40px;
-  }
-
-  .signInButton {
-    border: none;
-    margin: 0 0.5rem;
-    background-color: white;
-    padding: 0.8rem;
-    border-radius: 4rem;
-  }
-
-  .signInButton:hover {
-    background-color: var(--color--bg);
-    cursor: pointer;
-  }
-
-}
 .main{
 
 
@@ -113,7 +82,7 @@
 
 }
 
-@media screen and (max-width: 40rem) {
+@media screen and (max-width: 51rem) {
   .main{
   .purchase-container {
     width: 80%;

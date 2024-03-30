@@ -16,7 +16,7 @@
   
   .addItem-container {
   
-    width: 45%;
+    width: 65%;
     margin: 4em auto;
     display: flex;
     flex-direction: column;
@@ -149,7 +149,7 @@
   }
 
 
-  @media screen and (max-width: 40rem) {
+  @media screen and (max-width: 49rem) {
     .main{
     .addItem-container {
       width: 80%;
