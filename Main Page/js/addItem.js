@@ -1,7 +1,7 @@
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
 
-items= JSON.parse(localStorage.items)
+let items= JSON.parse(localStorage.items)
 users= JSON.parse(localStorage.users)
 const form = document.querySelector('#addItem-form')
 const cancelBTN = document.querySelector('#cancel-btn')
@@ -9,6 +9,7 @@ const submitBTN = document.querySelector('#addItem-btn')
 const fileInput = document.querySelector('#image');
 const preview = document.querySelector("#preview");
 const reader = new FileReader()
+let update= false
 
 if (itemId) {
     const item = items.find(i => i.itemId === itemId)
@@ -16,64 +17,64 @@ if (itemId) {
     preview.src = item.image
     preview.classList.remove('hidden')
 }
-
 form.addEventListener('submit',addForm)
 function addForm(e){
-    console.log("Form submitted");
-    e.preventDefault()
-    const item = formToObject(e.target)
-    console.log(item);
-    if (!localStorage.itemUploaded) {
-        Swal.fire({
-            title: 'No Image Uploaded!',
-            text: 'Please upload an image for your item',
-            icon: 'error',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#d65f83'
-          }).then((result) => {
-            if(result.value){
-             this.props.submitUser(this.state)
-           }
-         })
-    }
-    console.log(item)
-    let foundIndex = items.findIndex(i => i.itemId == item.itemId)
-    let add = false
-    if(foundIndex<0){
-        const itemNo = JSON.parse(localStorage.items).length + 1
-        item.itemId = `I${itemNo}`;
-        const sellerusername = localStorage.currentUser
-        const seller = users.find(u => u.username == sellerusername)
-        item.seller = {
-            username: seller.username,   
-            companyName: seller.companyName
-        }
-        item.image = localStorage.getItem('uploadedImage')
-        items.push(item)
-        localStorage.removeItem('uploadedImage')
-        add = true
-    }
-    else{
-        item.image= localStorage.getItem('uploadedImage') ? localStorage.getItem('uploadedImage') : items[foundIndex].image
-        items[foundIndex] = {...items[foundIndex], ...item}
-        localStorage.removeItem('uploadedImage')
-        add = false
-        
-    }
-    localStorage.items=JSON.stringify(items)
-    form.reset()
+  e.preventDefault()
+  let imageFile = document.querySelector('#image')
+
+  if (!imageFile.value && !update) {
     Swal.fire({
-        title: add ? 'Added!' : 'Updated!',
-        text: add ? 'Item successfully added' : 'Item successfully updated',
-        icon: 'success',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#d65f83'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = `items.html?items=myItems`;
-        }
-      })
-    
+      title: 'No Image Uploaded!',
+      text: 'Please upload an image for your item',
+      icon: 'error',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#d65f83'
+    }).then((result) => {
+      if(result.value){
+        this.props.submitUser(this.state)
+      }
+    })
+    } else {
+      console.log("Form submitted")
+      e.preventDefault()
+      const item = formToObject(e.target)      
+      console.log(item)
+      let foundIndex = items.findIndex(i => i.itemId == item.itemId)
+      let add = false
+      if(foundIndex<0){
+          const itemNo = JSON.parse(localStorage.items).length + 1
+          item.itemId = `I${itemNo}`;
+          const sellerusername = localStorage.currentUser
+          const seller = users.find(u => u.username == sellerusername)
+          item.seller = {
+              username: seller.username,   
+              companyName: seller.companyName
+          }
+          item.image = localStorage.getItem('uploadedImage')
+          items.push(item)
+          localStorage.removeItem('uploadedImage')
+          add = true
+      }
+      else{
+          item.image= localStorage.getItem('uploadedImage') ? localStorage.getItem('uploadedImage') : items[foundIndex].image
+          items[foundIndex] = {...items[foundIndex], ...item}
+          localStorage.removeItem('uploadedImage')
+          add = false
+      }
+      localStorage.items=JSON.stringify(items)
+      form.reset()
+      Swal.fire({
+          title: add ? 'Added!' : 'Updated!',
+          text: add ? 'Item successfully added' : 'Item successfully updated',
+          icon: 'success',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#d65f83'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = `items.html?items=myItems`;
+          }
+        })
+      }
 }
 function formToObject(form){
     const formData= new FormData(form)
@@ -85,7 +86,6 @@ function formToObject(form){
 }
 
 function handleEvent(event) {
-  
   if (event.type === "load") {
     localStorage.setItem('uploadedImage', reader.result); //Store image
     preview.src = reader.result;
@@ -94,16 +94,11 @@ function handleEvent(event) {
 }
 
 function addListeners(reader) {
-  reader.addEventListener("loadstart", handleEvent);
   reader.addEventListener("load", handleEvent);
-  reader.addEventListener("loadend", handleEvent);
-  reader.addEventListener("progress", handleEvent);
-  reader.addEventListener("error", handleEvent);
-  reader.addEventListener("abort", handleEvent);
 }
 
+fileInput.addEventListener("change", handleSelected);
 function handleSelected(e) {
-  
   const selectedFile = fileInput.files[0];
   if (selectedFile) {
     addListeners(reader);
@@ -111,9 +106,9 @@ function handleSelected(e) {
   }
 }
 
-fileInput.addEventListener("change", handleSelected);
 
 if(urlParameter.get('item')){
+    update=true
     const itemid = urlParameter.get('item');
     const item = items.find(b=> b.itemId==itemid)
     const itemId= document.querySelector('#itemId')
@@ -136,6 +131,5 @@ if(urlParameter.get('item')){
 }
 cancelBTN.addEventListener('click',cancelSubmit)
 function cancelSubmit(){
-    // window.history.back() //go to prev page
     window.history.go(-2); //go back two pages
 }  
