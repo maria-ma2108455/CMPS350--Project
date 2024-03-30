@@ -147,5 +147,14 @@
 }
 
   }
+
+
+  @media screen and (max-width: 40rem) {
+    .main{
+    .addItem-container {
+      width: 80%;
+    }
+  }
+  }
   
   
