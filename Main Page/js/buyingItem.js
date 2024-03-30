@@ -33,7 +33,6 @@ function confirmedPurchase(e) {
     title: "Are you sure about your purchase?",
     // text: "You won't be able to revert this!",
     icon: "warning",
-    iconColor: '#d65f83',
     showCancelButton: true,
     confirmButtonText: "Yes, confirm!",
     cancelButtonText: "No, cancel!",
@@ -69,7 +68,6 @@ function confirmedPurchase(e) {
         title: "Purchase Confirmed!",
         text: "Your purchase has been confirmed and added to purchase history.",
         icon: "success",
-        iconColor: '#d65f83',
         confirmButtonColor: '#d65f83'
 
       }).then(()=>{
@@ -82,7 +80,6 @@ function confirmedPurchase(e) {
         title: "Cancelled",
         text: "Your attempt to purchase has been cancelled.",
         icon: "error",
-        iconColor: '#d65f83',
         confirmButtonColor: '#d65f83'
 
       });
