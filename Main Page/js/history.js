@@ -30,6 +30,10 @@ async function handlePageLoad() {
 }
 
 function purchaseToHTML(p, type){
+
+    const date = new Date(p.date)
+    const dateFormat = `${p.date.split('T')[0]} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+
     return  `
     <div class="item-purchased">
         <div class="details">
@@ -41,6 +45,7 @@ function purchaseToHTML(p, type){
             <p>Total Price: $${p.item.price*p.quantity}</p>
             ${type === 'sale' ? `<p>Customer: ${p.customer.name} ${p.customer.surname} [${p.customer.username}] </p>` :
                 `<p>Seller: ${p.item.seller}</p>`}
+            <p>Date: ${dateFormat}</p>
         </div>
         <img src="${p.item.image}">
     </div>

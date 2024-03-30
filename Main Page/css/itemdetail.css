@@ -75,6 +75,14 @@ main {
                     gap: 1rem;
                     
                 }
+
+                input[type="number"]{
+                    width: 15%;
+                    padding: 0.5rem;
+                    margin-top: 0.4rem;
+                    border: 1px solid #c2c2c2;
+                    border-radius: 10px;
+                }
     
                 input[type="submit"], input[type="button"] {
                     padding: 0.6rem;
@@ -87,6 +95,7 @@ main {
                     cursor: pointer;
                     font-size: larger;
                 }
+
             }
         }    
     }

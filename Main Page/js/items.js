@@ -47,6 +47,12 @@ async function handlePageLoad() {
     }
 }
 
+function showDropDown(type) {
+    if (type === 'seller') {
+        
+    }
+}
+
 function showSellerItems() {
 
     const items = JSON.parse(localStorage.items);

@@ -23,7 +23,8 @@
             "email": "attilimaria@gmail.com",
             "phoneNumber": "974-33008644"
         },
-        "totalPrice": 64.0
+        "totalPrice": 64.0,
+        "date" : "2024-03-29T03:41:59.449Z"
     },
     {
         "purchaseId": "P2",
@@ -49,7 +50,8 @@
             "email": "attilimaria@gmail.com",
             "phoneNumber": "974-33008644"
         },
-        "totalPrice": 35.0
+        "totalPrice": 35.0,
+        "date" : "2024-03-30T03:43:50.530Z"
     },
     {
         "purchaseId": "P3",
@@ -75,6 +77,7 @@
             "email": "ali.zaid@gmail.com",
             "phoneNumber": "555-0202"
         },
-        "totalPrice": 84.0
+        "totalPrice": 84.0,
+        "date" : "2024-03-30T03:44:52.469Z"
     }
 ]

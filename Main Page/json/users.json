@@ -530,7 +530,8 @@
                     "description": "An elegant ceramic vase, slender and tall, in a soft pastel pink with subtle white accents. The vase features a minimalist design with a smooth, matte finish.",
                     "seller": "CraftsWorld Inc.",
                     "itemId": "I1"
-                }
+                },
+                "date" : "2024-03-29T03:41:59.449Z"
             },
             {
                 "purchaseId": "P2",
@@ -544,7 +545,8 @@
                     "description": "A ceramic teapot, in a pastel pink color with a minimalistic white heart design. The teapot has a classic shape with a smooth, matte finish.",
                     "seller": "CraftsWorld Inc.",
                     "itemId": "I3"
-                }
+                },
+                "date" : "2024-03-30T03:43:50.530Z"
             }
         ]
     },
@@ -571,7 +573,8 @@
                     "description": "A modern pastel pink bowl with a white strawberry pattern.",
                     "seller": "CeramicArt Co.",
                     "itemId": "I5"
-                }
+                },
+                "date" : "2024-03-30T03:44:52.469Z"
             }
         ]
     }  

@@ -122,3 +122,9 @@ select::-ms-expand {
   color: var(--color--txt);
 }
 
+@media (max-width: 49rem) {
+    .items-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 0.7fr));
+    }
+}

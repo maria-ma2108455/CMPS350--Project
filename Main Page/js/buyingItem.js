@@ -126,6 +126,8 @@ function addPurchase(foundUser, foundItem){
   const totalPrice = foundItem.price * localStorage.custQuantity;
   purchase.totalPrice= totalPrice
 
+  purchase.date = new Date()
+
   const updatedPurchases = JSON.parse(localStorage.purchases);
   updatedPurchases.push(purchase)
   localStorage.purchases = JSON.stringify(updatedPurchases)
