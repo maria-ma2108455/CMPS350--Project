@@ -10,7 +10,6 @@ const fileInput = document.querySelector('#image');
 const preview = document.querySelector("#preview");
 const reader = new FileReader()
 let update= false
-
 if (itemId) {
     const item = items.find(i => i.itemId === itemId)
     submitBTN.textContent = 'Update Item'
