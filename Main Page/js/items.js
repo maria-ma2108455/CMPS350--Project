@@ -24,12 +24,12 @@ async function handlePageLoad() {
 
         if (sellerItems) {
             title.textContent = "My Items"
-            showDropDown('seller')
+            showCategoryDropDown('seller')
             filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         } else if (category) {
             title.textContent = "Product Catalogue"
-            showDropDown()
+            showCategoryDropDown()
             if (category === 'all') filteredItems = items
             else filteredItems = items.filter(item => item.category === category)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
@@ -50,7 +50,7 @@ async function handlePageLoad() {
     }
 }
 
-function showDropDown(type) {
+function showCategoryDropDown(type) {
     let listHTML = ``
 
     if (type === 'seller') {
