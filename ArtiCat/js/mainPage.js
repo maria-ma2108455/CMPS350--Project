@@ -1,4 +1,4 @@
-//get the ref of elemnt we want to interact with
+//get the ref of element we want to interact with
 //select more than one element 
 const categoriesB = document.querySelectorAll('#Ceramics, #Paintings, #Jewelry');
 //add event listener

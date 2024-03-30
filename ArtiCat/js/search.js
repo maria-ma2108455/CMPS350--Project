@@ -1,6 +1,6 @@
 //select the elements
-const searchForm = document.querySelector ('#searchForm')
-const searchBB = document.querySelector ('.search-bar')
+const searchForm = document.querySelector('#searchForm')
+const searchBB = document.querySelector('.search-bar')
 
 //event listener when form is submitted (user press enter)
 searchForm.addEventListener('submit', handleFrorm)

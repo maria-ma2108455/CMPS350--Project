@@ -12,7 +12,7 @@ async function handlePageLoad() {
 
     const users = JSON.parse(localStorage.users)
     const currentUser = users.find(user => user.username === localStorage.currentUser)
-    console.log(currentUser);
+   
     const item = items.find(i => i.itemId == itemId)
     console.log("found item:", item);
     const itemDetailsHTML= itemDetailsToHTML(item, currentUser)
@@ -36,8 +36,6 @@ async function handlePageLoad() {
         else{
             const totalPrice = quantity * price;
             priceOfItem.textContent = totalPrice + '$';
-            // const buyNow = document.querySelector('#buy-btn')
-            // buyNow.addEventListener('click', checkLoggedIn)
         }
 
     });

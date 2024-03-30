@@ -1,11 +1,11 @@
 //find the user using the username stored in current user, form the users json
 //get all purchase details
 //calculate the total price
-// const username= JSON.parse(localStorage.currentuser)
-// const username= 'maria_attili'
+
 const historyHeading = document.querySelector('#history-heading')
 const purchaseCC= document.querySelector('.purchases-container')
 
+// check if user is customer or seller and display accordingly
 document.addEventListener('DOMContentLoaded', handlePageLoad)
 
 async function handlePageLoad() {

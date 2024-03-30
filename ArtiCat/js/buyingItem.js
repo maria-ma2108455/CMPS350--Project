@@ -2,9 +2,9 @@ const purchaseForm = document.querySelector("#purchase-form");
 
 const cancel = document.querySelector('#cancel-btn')
 
-const users = localStorage.users;
-const user = JSON.parse(users);
-const foundUser = user.find((u) => u.username === localStorage.currentUser);
+const users = localStorage.users
+const user = JSON.parse(users)
+const foundUser = user.find((u) => u.username === localStorage.currentUser)
 
 document.addEventListener('DOMContentLoaded', showFormFields)
 purchaseForm.addEventListener("submit", confirmedPurchase)

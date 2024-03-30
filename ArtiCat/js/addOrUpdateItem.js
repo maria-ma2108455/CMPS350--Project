@@ -6,8 +6,8 @@ users= JSON.parse(localStorage.users)
 const form = document.querySelector('#addItem-form')
 const cancelBTN = document.querySelector('#cancel-btn')
 const submitBTN = document.querySelector('#addItem-btn')
-const fileInput = document.querySelector('#image');
-const preview = document.querySelector("#preview");
+const fileInput = document.querySelector('#image')
+const preview = document.querySelector("#preview")
 const reader = new FileReader()
 let update= false
 if (itemId) {

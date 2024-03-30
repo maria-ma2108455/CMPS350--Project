@@ -1,7 +1,7 @@
 // Get all information from files and save in localStorage
 document.addEventListener('DOMContentLoaded', async () => {
 
-
+  // Commented code to refresh localStorage data when needed
   // delete localStorage.users
   // delete localStorage.items
   // delete localStorage.purchases
