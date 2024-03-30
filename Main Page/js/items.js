@@ -26,28 +26,34 @@ async function handlePageLoad() {
             title.textContent = "My Items"
             showCategoryDropDown('seller')
             filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
-            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         } else if (category) {
             title.textContent = "Product Catalogue"
             showCategoryDropDown()
             if (category === 'all') filteredItems = items
             else filteredItems = items.filter(item => item.category === category)
-            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
             dropdownList.value = category.toLowerCase()
         } else if (search) {
             title.classList.add('hidden')
             dropdown.classList.add('hidden')
-            let filteredItems = items.filter( i => i.name.toLowerCase().includes(search.toLowerCase()) 
+            filteredItems = items.filter( i => i.quantity > 0 && i.name.toLowerCase().includes(search.toLowerCase()) 
             || i.seller.companyName.toLowerCase().includes(search.toLowerCase()))
-            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         }
-        
-        itemsContainer.innerHTML = itemsHTML
+
+        if (!filteredItems.length) noItemsErrorMsg()
+        else {
+            itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+            itemsContainer.innerHTML = itemsHTML
+        }
 
         
     } catch (error) {
         console.error("Failed to load items:", error);  
     }
+}
+
+function noItemsErrorMsg() {
+    title.classList.remove('hidden')
+    title.textContent = 'No items found!'
 }
 
 function showCategoryDropDown(type) {
