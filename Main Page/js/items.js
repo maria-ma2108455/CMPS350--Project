@@ -11,7 +11,7 @@ const dropdownList = document.querySelector('#dropdownlist-items')
 const title = document.querySelector('#title')
 
 document.addEventListener('DOMContentLoaded', handlePageLoad);
-document.addEventListener('change', showSellerItems)
+dropdownList.addEventListener('change', showItems)
 
 async function handlePageLoad() {
    
@@ -22,22 +22,50 @@ async function handlePageLoad() {
         let itemsHTML = ''
         let filteredItems = []
 
-        if (category){
+        // if (sellerItems) {
+        //     title.textContent = "My Items"
+        //     showDropDown('seller')
+        //     filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+        //     itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+        // } else if (search) {
+        //     let filteredItems = items.filter(i=> i.name.toLowerCase().includes(search))
+        //     itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+        // } else {
+        //     showDropDown()
+        //     dropdownList.value = category
+        // }
+
+        if (category) {
+            title.textContent = "Product Catalogue"
+            showDropDown()
             if (category === 'all') filteredItems = items
             else filteredItems = items.filter(item => item.category === category)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+            dropdownList.value = category.toLowerCase()
         } else if (sellerItems) {
-            title.classList.remove('hidden')
-            dropdown.classList.remove('hidden')
+            title.textContent = "My Items"
+            showDropDown('seller')
             filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
-        } else if (search){
+        } else if (search) {
             let filteredItems = items.filter(i=> i.name.toLowerCase().includes(search))
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
         }
-        else {
-            itemsHTML = items.map(item => itemToHTML(item)).join(' ')
-        }
+
+        // if (category){
+        //     if (category === 'all') filteredItems = items
+        //     else filteredItems = items.filter(item => item.category === category)
+        //     itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
+        // } else if (sellerItems) {
+        //     title.classList.remove('hidden')
+        //     dropdown.classList.remove('hidden')
+
+        // } else if (search){
+
+        // }
+        // else {
+        //     itemsHTML = items.map(item => itemToHTML(item)).join(' ')
+        // }
         
         itemsContainer.innerHTML = itemsHTML
 
@@ -48,12 +76,27 @@ async function handlePageLoad() {
 }
 
 function showDropDown(type) {
+    let listHTML = ``
+
     if (type === 'seller') {
-        
+        title.textContent = 'My Items'
+        listHTML = `
+        <option value="available">Available Items</option>
+        <option value="sold-out">Sold Out Items</option>
+        `
+    } else {
+        listHTML = `
+        <option value="ceramics">Ceramics</option>
+        <option value="jewelry">Jewelry</option>
+        <option value="paintings">Paintings</option>
+        `
     }
+
+    dropdownList.innerHTML = dropdownList.innerHTML + listHTML
+    
 }
 
-function showSellerItems() {
+function showItems() {
 
     const items = JSON.parse(localStorage.items);
 
@@ -65,6 +108,8 @@ function showSellerItems() {
         filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity <= 0)
     } else if (dropdownList.value === 'all'){
         filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+    } else {
+        filteredItems = items.filter(item => item.category.toLowerCase() === dropdownList.value)
     }
 
     let itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
