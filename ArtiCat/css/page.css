@@ -170,19 +170,20 @@ body {
                 margin: 0.5rem 0rem 1rem 2.5rem;
 
                 li {
-                    border-radius: 10rem;
-                    padding: 0.5rem 1rem;
-
+                    
                     a {
+                        border-radius: 10rem;
+                        padding: 0.5rem 1rem;
                         color: rgb(6, 5, 5);
                         text-decoration: none;
                     }
+
+                    a:hover {
+                        background-color: var(--color--bg);
+                        cursor: pointer;
+                    }
                 }
 
-                li:hover {
-                    background-color: var(--color--bg);
-                    cursor: pointer;
-                }
             }
         }
     }
