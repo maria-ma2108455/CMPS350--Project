@@ -83,13 +83,15 @@
                         <label for="Paintings"><span class="custom"></span><span class="label">Paintings</span></label>
                     </div>
                 </div>
-                
-                <div class="inputs" id="image-inputs">
-                    <label for="item-image" class="label">Select image file (only type png/jpeg)</label>
+
+                <div class="inputs">
+                    <p class="label">Select image file (only type png/jpeg)</p>
+                    <label for="image" class="file-upload">Upload Image</label>
+                    <input type="file" id="image" name="image" accept="image/png, image/jpeg" class="inputfile"/>
                     <br>
-                    <label for="item-image" class="file-upload">Upload Image</label>
-                    <input type="file" id="item-image" name="image" accept="image/png, image/jpeg" class="inputfile">
+                    <img src="" id="preview" alt="Image preview" class="hidden"/>                      
                 </div>
+                
 
                 <div class="inputs">
                     <label for="item-price" class="label">Price</label>
