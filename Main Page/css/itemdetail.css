@@ -86,6 +86,7 @@ main {
     
                 input[type="submit"], input[type="button"] {
                     padding: 0.6rem;
+                    margin: 0;
                     border: var(--color--icons) solid;
                     border-radius: 2rem;
                     background: var(--color--icons);
