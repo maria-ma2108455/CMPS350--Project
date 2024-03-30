@@ -34,7 +34,7 @@ function showDropDown() {
         
         currentUser.type == "seller" ? 
         list = [
-            {   name: 'Add Item',   page: 'addSellerItem.html'  }, 
+            {   name: 'Add Item',   page: 'addOrUpdateItem.html'  }, 
             {   name: 'My Items',   page: 'items.html?items=myItems'   },
             {   name: 'Sale History',   page: 'history.html'    },
             {   name: 'Sign Out'    }

@@ -140,4 +140,4 @@ function checkLoggedIn(){
 
 
 function updateItem(itemId){
-    window.location.href = `addSellerItem.html?item=${itemId}`}
+    window.location.href = `addOrUpdateItem.html?item=${itemId}`}
