@@ -30,11 +30,10 @@ async function handlePageLoad() {
 }
 
 function purchaseToHTML(p, type){
-    let dateFormat = ''
-    if (p && p.date) {
+
     const date = new Date(p.date)
     const dateFormat = `${p.date.split('T')[0]} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-    }
+
     return  `
     <div class="item-purchased">
         <div class="details">
