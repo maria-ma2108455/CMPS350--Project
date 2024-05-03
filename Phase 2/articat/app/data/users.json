@@ -28,13 +28,19 @@
         "bankAccount": "FA567890123"
         
     },
-
     {
         "type": "seller",
         "username": "canvas_harmony",
         "password": "canvas22",
         "companyName": "Canvas Harmony Studios",
         "bankAccount": "DC567263124"
+    },
+    {
+        "type": "seller",
+        "username": "artvista_creations",
+        "password": "artvista_22",
+        "companyName": "Artvista Creations",
+        "bankAccount": "DC567212324"
     },
     {
         "type": "customer",

@@ -6,8 +6,8 @@ Table User {
   username String [pk]
   password String [not null]
   type String [not null]
-  Customer Customer
-  Seller Seller
+  customer Customer
+  seller Seller
 }
 
 Table Customer {
@@ -19,7 +19,7 @@ Table Customer {
   email String [not null]
   phoneNumber String [not null]
   user User [not null]
-  Purchase Purchase [not null]
+  purchase Purchase [not null]
 }
 
 Table Seller {
@@ -27,7 +27,7 @@ Table Seller {
   companyName String [not null]
   bankAccount String [not null]
   user User [not null]
-  Item Item [not null]
+  items Item [not null]
 }
 
 Table Item {
@@ -37,10 +37,11 @@ Table Item {
   price Float [not null]
   quantity Int [not null]
   description String [not null]
+  featured Boolean
   itemId String [pk]
   sellerUN String [not null]
   seller Seller [not null]
-  Purchase Purchase [not null]
+  purchases Purchase [not null]
 }
 
 Table Purchase {
@@ -48,10 +49,10 @@ Table Purchase {
   quantity Int [not null]
   totalPrice Float [not null]
   date DateTime [not null]
-  item Item [not null]
-  customer Customer [not null]
   itemId String [not null]
   customerUN String [not null]
+  item Item [not null]
+  customer Customer [not null]
 }
 
 Ref: Customer.username - User.username

@@ -18,8 +18,8 @@ model User {
   username String    @id
   password String
   type     String
-  Customer Customer?
-  Seller   Seller?
+  customer Customer?
+  seller   Seller?
 }
 
 model Customer {
@@ -31,7 +31,7 @@ model Customer {
   email           String
   phoneNumber     String
   user            User       @relation(fields: [username], references: [username])
-  Purchase        Purchase[]
+  purchase        Purchase[]
 }
 
 model Seller {
@@ -39,7 +39,7 @@ model Seller {
   companyName String
   bankAccount String
   user        User   @relation(fields: [username], references: [username])
-  Item        Item[]
+  items       Item[]
 }
 
 model Item {
@@ -49,10 +49,11 @@ model Item {
   price       Float
   quantity    Int
   description String
+  featured    Boolean?
   itemId      String     @id @default(cuid())
   sellerUN    String
   seller      Seller     @relation(fields: [sellerUN], references: [username])
-  Purchase    Purchase[]
+  purchases   Purchase[]
 }
 
 model Purchase {
@@ -60,8 +61,8 @@ model Purchase {
   quantity   Int
   totalPrice Float
   date       DateTime
-  item       Item     @relation(fields: [itemId], references: [itemId])
-  customer   Customer @relation(fields: [customerUN], references: [username])
   itemId     String
   customerUN String
+  item       Item     @relation(fields: [itemId], references: [itemId])
+  customer   Customer @relation(fields: [customerUN], references: [username])
 }
