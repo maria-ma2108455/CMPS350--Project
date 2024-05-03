@@ -30,7 +30,7 @@ model Customer {
   moneyBalance    Float
   email           String
   phoneNumber     String
-  user            User       @relation(fields: [username], references: [username])
+  user            User       @relation(fields: [username], references: [username], onDelete: Cascade, onUpdate: Cascade)
   purchase        Purchase[]
 }
 
@@ -38,7 +38,7 @@ model Seller {
   username    String @id
   companyName String
   bankAccount String
-  user        User   @relation(fields: [username], references: [username])
+  user        User   @relation(fields: [username], references: [username], onDelete: Cascade, onUpdate: Cascade)
   items       Item[]
 }
 
@@ -52,7 +52,7 @@ model Item {
   featured    Boolean?
   itemId      String     @id @default(cuid())
   sellerUN    String
-  seller      Seller     @relation(fields: [sellerUN], references: [username])
+  seller      Seller     @relation(fields: [sellerUN], references: [username], onDelete: Cascade, onUpdate: Cascade)
   purchases   Purchase[]
 }
 
@@ -63,6 +63,6 @@ model Purchase {
   date       DateTime
   itemId     String
   customerUN String
-  item       Item     @relation(fields: [itemId], references: [itemId])
-  customer   Customer @relation(fields: [customerUN], references: [username])
+  item       Item     @relation(fields: [itemId], references: [itemId], onDelete: Cascade, onUpdate: Cascade)
+  customer   Customer @relation(fields: [customerUN], references: [username], onDelete: Cascade, onUpdate: Cascade)
 }

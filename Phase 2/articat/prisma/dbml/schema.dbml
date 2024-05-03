@@ -55,12 +55,12 @@ Table Purchase {
   customer Customer [not null]
 }
 
-Ref: Customer.username - User.username
+Ref: Customer.username - User.username [delete: Cascade]
 
-Ref: Seller.username - User.username
+Ref: Seller.username - User.username [delete: Cascade]
 
-Ref: Item.sellerUN > Seller.username
+Ref: Item.sellerUN > Seller.username [delete: Cascade]
 
-Ref: Purchase.itemId > Item.itemId
+Ref: Purchase.itemId > Item.itemId [delete: Cascade]
 
-Ref: Purchase.customerUN > Customer.username
+Ref: Purchase.customerUN > Customer.username [delete: Cascade]
