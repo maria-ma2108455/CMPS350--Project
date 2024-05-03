@@ -31,6 +31,15 @@ async function loadUsers() {
 
 async function loadItems() {
   try {
+    // const itemsURL = 'json/items.json'
+    // const data = await fetch(itemsURL)
+    // const items = await data.json()
+    // items.forEach(item => {
+    //   item.sellerUN = item.seller.username
+    //   delete item.seller
+    // });
+    // const jsonString = JSON.stringify(items, null, 2);
+    // console.log(jsonString);
     if(!localStorage.items) {
         const itemsURL = 'json/items.json'
         const data = await fetch(itemsURL)

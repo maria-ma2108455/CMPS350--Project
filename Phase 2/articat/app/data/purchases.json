@@ -1,0 +1,26 @@
+[
+    {
+        "purchaseId": "P1",
+        "quantity": 2,
+        "itemId": "I1",
+        "customerUN": "maria_attili",
+        "totalPrice": 64.0,
+        "date" : "2024-03-29T03:41:59.449Z"
+    },
+    {
+        "purchaseId": "P2",
+        "quantity": 1,
+        "itemId": "I3",
+        "customerUN": "maria_attili",
+        "totalPrice": 35.0,
+        "date" : "2024-03-30T03:43:50.530Z"
+    },
+    {
+        "purchaseId": "P3",
+        "quantity": 3,
+        "itemId": "I5",
+        "customerUN": "ali_zaid",
+        "totalPrice": 84.0,
+        "date" : "2024-03-30T03:44:52.469Z"
+    }
+]
