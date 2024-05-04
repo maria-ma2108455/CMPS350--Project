@@ -1,8 +1,7 @@
 import articatRepo from "@/app/repo/articat-repo"
 const AtriCatRepo = new articatRepo()
-export async function GET(request, { params }) {
-    const username= params.userid
-    const items = await AtriCatRepo.getPurchaseHistory(username)
+export async function GET(request) {
+    const users = await AtriCatRepo.getAllUsers()
     const headers = new Headers({
         'Access-Control-Allow-Origin': '*',  
         'Access-Control-Allow-Methods': 'GET, OPTIONS',
@@ -10,7 +9,7 @@ export async function GET(request, { params }) {
         'Content-Type': 'application/json'
     })
 
-    return  Response.json(items, {
+    return  Response.json(users, {
         status: 200,
         headers: headers
     })

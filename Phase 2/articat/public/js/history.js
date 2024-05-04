@@ -10,17 +10,19 @@ document.addEventListener('DOMContentLoaded', handlePageLoad)
 
 async function handlePageLoad() {
 
-    const users = JSON.parse(localStorage.users)
-    const user = users.find(user => user.username == localStorage.currentUser)
-
+    // const users = JSON.parse(localStorage.users)
+    // const user = users.find(user => user.username == localStorage.currentUser)
+    const currentusername= localStorage.currentUser
+    const response1 = await fetch(`http://localhost:3000/api/${currentusername}`, {method: 'GET'})
+    user = await response1.json()
     if (user.type === 'customer') {
-
         historyHeading.textContent = `Purchase ${historyHeading.textContent}`
-
-        purchaseCC.innerHTML = user.purchases.map( p => purchaseToHTML(p)).join(' ')
+        const response = await fetch(`http://localhost:3000/api/${currentusername}/history`, {method: 'GET'})
+        purchasesUser = await response.json()
+        purchaseCC.innerHTML = purchasesUser.map( p => purchaseToHTML(p)).join(' ')
     } 
     else {
-
+//aisha? ithink
         historyHeading.textContent = `Sale ${historyHeading.textContent}`
 
         const purchases = JSON.parse(localStorage.purchases)
@@ -44,7 +46,7 @@ function purchaseToHTML(p, type){
             <p>Unit Price: $${p.item.price}</p>
             <p>Total Price: $${p.item.price*p.quantity}</p>
             ${type === 'sale' ? `<p>Customer: ${p.customer.name} ${p.customer.surname} [${p.customer.username}] </p>` :
-                `<p>Seller: ${p.item.seller}</p>`}
+                `<p>Seller: ${p.item.seller.companyName}</p>`}
             <p>Date: ${dateFormat}</p>
         </div>
         <img src="${p.item.image}">
