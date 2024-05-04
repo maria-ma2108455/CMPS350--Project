@@ -1,4 +1,4 @@
-// const prisma = new PrismaClient()
+const prisma = new PrismaClient()
 
 class articatRepo{
     async getAllUsers(){
@@ -94,15 +94,16 @@ class articatRepo{
         }
         }
 
-        async addItem(item) {
-            try {
-                return prisma.item.create({
-                    data: account
-                })
-            } catch (error) {
-                return { error: error.message }
-            }
-        }
+        // async addItem(item) {
+        //     try {
+        //         return prisma.item.create({
+        //             data: account
+        //         })
+        //     } catch (error) {
+        //         return { error: error.message }
+        //     }
+        // }
+
 
 
     }
