@@ -11,44 +11,83 @@ class articatRepo{
         include: {
             user: true }
     })}
+   
     async getSeller(username) {
-        return await prisma.customer.findUnique({
-            where: {
-                username: username},
-            include: {
-                user: true }
-        })}
+        try {
+            return await prisma.customer.findUnique({
+                where: {
+                    username: username},
+                include: {
+                    user: true }
+            })
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
+        
     async getAllItems(){
-        return await prisma.item.findMany()
+        try {
+            return await prisma.item.findMany()
+        } catch (error) {
+            return { error: error.message }
+        }
     }
     async getItems(category){
-
+        try {
+            return await prisma.item.findMany()
+        } catch (error) {
+            return { error: error.message }
+        }
     }
     async getFeatured(){
-
+        try {
+            return await prisma.item.findMany({
+                where: {
+                    featured:true
+                }
+            })
+        } catch (error) {
+            return { error: error.message }
+        }
+       
     }
     async getSearchItems(searchValue){
         const search = searchValue.toLowerCase()
-        return await prisma.item.findMany({
-            where: {
-                quantity: {gt:0}, 
-                name: {contains: search, mode: 'insensitive' //not casesensitive
-                }}})
+        try {
+           
+            return await prisma.item.findMany({
+                where: { 
+                    quantity: {gt:0}, 
+                    name: {contains: search, mode: 'insensitive' //not casesensitive
+                    }}})
+        } catch (error) {
+            return { error: error.message }
+        }
+      
         // javacode:
         // filteredItems = items.filter( i => i.quantity > 0 && i.name.toLowerCase().includes(search.toLowerCase()) 
         // || i.seller.companyName.toLowerCase().includes(search.toLowerCase()))
     }
     async getPurchaseHistory(currentUser){
-        return await prisma.purchase.findMany({
-            where: {
-                customerUN: currentUser
-            },
-            include: {
-                item:{
-                    include: {
-                    seller: true 
-                }}},
-            orderBy: {
-                date: 'desc'}})
-            }
+        try {
+            return await prisma.purchase.findMany({
+                where: {
+                    customerUN: currentUser
+                },
+                include: {
+                    item:{
+                        include: {
+                        seller: true 
+                    }}},
+                orderBy: {
+                    date: 'desc'}})
+                }
+         catch (error) {
+            return { error: error.message }
         }
+        }
+
+
+
+        
+    }
