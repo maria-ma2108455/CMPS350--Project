@@ -35,10 +35,10 @@ export default class articatRepo{
     }
     async getItems(category){
         try {
-            if (!category || category === 'all')
+            if (category === 'all')
                 return prisma.item.findMany()
 
-            return prisma.account.findMany({
+            return prisma.item.findMany({
                 where: { category }
             })
 
@@ -67,7 +67,7 @@ export default class articatRepo{
             return await prisma.item.findMany({
                 where: { 
                     quantity: {gt:0}, 
-                    name: {contains: search, mode: 'insensitive' //not casesensitive
+                    name: {contains: search
                     }}})
         } catch (error) {
             return { error: error.message }
