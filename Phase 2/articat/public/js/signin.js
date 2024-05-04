@@ -2,12 +2,16 @@ const form = document.querySelector('#signin-form')
 
 form.addEventListener('submit', signIn)
 
-function signIn(e) {
+async function signIn(e) {
+
+    const baseURL = 'http://localhost:3000/api'
+    
     e.preventDefault()
     const signInData = formToObject(e.target)
-    const users = JSON.parse(localStorage.users)
-    const user = users.find(user => user.username == signInData.username && user.password == signInData.password)
-    if (user) {
+    const response = await fetch(`${baseURL}/${signInData.username}`,{ method: 'GET'})
+    const user = await response.json()
+    
+    if (user && user.password === signInData.password) {
         localStorage.currentUser = user.username
         window.location.href = "mainPage.html"
     } else {

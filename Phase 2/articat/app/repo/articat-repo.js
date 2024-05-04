@@ -6,9 +6,12 @@ export default class articatRepo{
         return await prisma.user.findMany()
     }
     async getUser(username){
+
         return await prisma.user.findUnique({
             where: {
-                username: username}})
+                username: username
+            }
+        })
     }
     async getCustomer(username) {
     return await prisma.customer.findUnique({
