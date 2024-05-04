@@ -100,16 +100,35 @@ export default class articatRepo{
         }
         }
 
-        // async addItem(item) {
-        //     try {
-        //         return prisma.item.create({
-        //             data: account
-        //         })
-        //     } catch (error) {
-        //         return { error: error.message }
-        //     }
-        // }
+    async addItem(item) {
+        try {
+            return prisma.item.create({
+                data: item
+             })
+        } catch (error) {
+            return { error: error.message }
+            }
+    }
 
+    async getItem(itemId) {
+        try {
+            return await prisma.item.findUnique({
+                where: { itemId }
+            })
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
 
-
+    async updateItem(itemId, item) {
+        try {
+            return await prisma.item.update({
+                where: { itemId },
+                data: item
+            })
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
+            
     }
