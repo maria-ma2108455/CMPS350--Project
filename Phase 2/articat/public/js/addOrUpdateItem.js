@@ -44,13 +44,14 @@ function addForm(e){
           const itemNo = JSON.parse(localStorage.items).length + 1
           item.itemId = `I${itemNo}`;
           const sellerusername = localStorage.currentUser
+          //replace this with GET	/api/:userId go to that file AND ADD THE include 
           const seller = users.find(u => u.username == sellerusername)
           item.seller = {
               username: seller.username,   
               companyName: seller.companyName
           }
           item.image = localStorage.getItem('uploadedImage')
-          items.push(item)
+          items.push(item)//here u will use POST
           localStorage.removeItem('uploadedImage')
           add = true
       }
