@@ -18,7 +18,7 @@ export async function GET(request) {
     // Manually setting CORS headers
     const headers = new Headers({
         'Access-Control-Allow-Origin': '*',  
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, OPTIONS, POST',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Content-Type': 'application/json'
     })
@@ -34,7 +34,7 @@ export async function POST(request) {
     const newItem = await AtriCatRepo.addItem(item)
     const headers = new Headers({
         'Access-Control-Allow-Origin': '*',  
-        'Access-Control-Allow-Methods': 'GET, OPTIONS, POST',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Content-Type': 'application/json'
     })

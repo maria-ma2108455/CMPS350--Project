@@ -1,7 +1,7 @@
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
 
-let items= JSON.parse(localStorage.items)
+ let items= JSON.parse(localStorage.items)
 users= JSON.parse(localStorage.users)
 const form = document.querySelector('#addItem-form')
 const cancelBTN = document.querySelector('#cancel-btn')
@@ -10,14 +10,23 @@ const fileInput = document.querySelector('#image')
 const preview = document.querySelector("#preview")
 const reader = new FileReader()
 let update= false
-if (itemId) {
-    const item = items.find(i => i.itemId === itemId)
-    submitBTN.textContent = 'Update Item'
-    preview.src = item.image
-    preview.classList.remove('hidden')
-}
+
+
+ document.addEventListener('DOMContentLoaded', async() => {
+  if (itemId) {
+    // fetching
+    const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {method: 'GET'})
+     const item = await response.json()
+      // const item = items.find(i => i.itemId === itemId)
+      submitBTN.textContent = 'Update Item'
+      preview.src = item.image
+      preview.classList.remove('hidden')
+  }
+})
+
+
 form.addEventListener('submit',addForm)
-function addForm(e){
+async function addForm(e){
   e.preventDefault()
   let imageFile = document.querySelector('#image')
 
@@ -38,20 +47,32 @@ function addForm(e){
       e.preventDefault()
       const item = formToObject(e.target)      
       console.log(item)
-      let foundIndex = items.findIndex(i => i.itemId == item.itemId)
+      //fetch
+      // let foundIndex = items.findIndex(i => i.itemId == item.itemId)
+      const response = await fetch(`http://localhost:3000/api/item/${item.itemId}`, { method: 'GET' })
       let add = false
-      if(foundIndex<0){
-          const itemNo = JSON.parse(localStorage.items).length + 1
+      if((response.ok)){
+       const itemNo= '33'
           item.itemId = `I${itemNo}`;
           const sellerusername = localStorage.currentUser
           //replace this with GET	/api/:userId go to that file AND ADD THE include 
-          const seller = users.find(u => u.username == sellerusername)
+          // const seller = users.find(u => u.username == sellerusername)
+          const response1 = await fetch(`http://localhost:3000/api/${sellerusername}`, {method: 'GET'})
+          user = await response1.json()
           item.seller = {
-              username: seller.username,   
-              companyName: seller.companyName
+              username: user.seller.username,   
+              companyName: user.seller.companyName
           }
           item.image = localStorage.getItem('uploadedImage')
-          items.push(item)//here u will use POST
+          //items.push(item)//here u will use POST
+          const response = await fetch('http://localhost:3000/api/items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item)
+    })
+    const responseData = await response.json();
           localStorage.removeItem('uploadedImage')
           add = true
       }
