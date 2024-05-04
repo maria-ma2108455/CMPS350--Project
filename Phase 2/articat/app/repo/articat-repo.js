@@ -34,11 +34,19 @@ class articatRepo{
     }
     async getItems(category){
         try {
-            return await prisma.item.findMany()
+            if (!category || category === 'all')
+                return prisma.item.findMany()
+
+            return prisma.account.findMany({
+                where: { category }
+            })
+
         } catch (error) {
             return { error: error.message }
         }
     }
+
+    
     async getFeatured(){
         try {
             return await prisma.item.findMany({
@@ -63,7 +71,6 @@ class articatRepo{
         } catch (error) {
             return { error: error.message }
         }
-      
         // javacode:
         // filteredItems = items.filter( i => i.quantity > 0 && i.name.toLowerCase().includes(search.toLowerCase()) 
         // || i.seller.companyName.toLowerCase().includes(search.toLowerCase()))
@@ -87,7 +94,15 @@ class articatRepo{
         }
         }
 
+        async addItem(item) {
+            try {
+                return prisma.item.create({
+                    data: account
+                })
+            } catch (error) {
+                return { error: error.message }
+            }
+        }
 
 
-        
     }
