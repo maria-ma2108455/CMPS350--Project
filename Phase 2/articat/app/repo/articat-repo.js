@@ -1,4 +1,4 @@
-const prisma = new PrismaClient()
+// const prisma = new PrismaClient()
 
 class articatRepo{
 
@@ -12,7 +12,7 @@ class articatRepo{
 
     }
     async getSearchItems(searchValue){
-        const search = searchValue.toLowerCase();
+        // const search = searchValue.toLowerCase();
         // javacode:
         // filteredItems = items.filter( i => i.quantity > 0 && i.name.toLowerCase().includes(search.toLowerCase()) 
         // || i.seller.companyName.toLowerCase().includes(search.toLowerCase()))
