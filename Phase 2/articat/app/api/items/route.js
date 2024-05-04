@@ -27,11 +27,21 @@ export async function GET(request) {
         status: 200,
         headers: headers
     })
-
-
-// // export async function POST(request) {
-// //     const account = await request.json()
-// //     const newAccount = await AtriCatRepo.addAccount(account)
-// //     return Response.json(newAccount, { status: 201 })
-// // }
 }
+
+export async function POST(request) {
+    const item = await request.json()
+    const newItem = await AtriCatRepo.addItem(item)
+    const headers = new Headers({
+        'Access-Control-Allow-Origin': '*',  
+        'Access-Control-Allow-Methods': 'GET, OPTIONS, POST',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Content-Type': 'application/json'
+    })
+
+    return  Response.json(newItem, {
+        status: 200,
+        headers: headers
+    })
+}
+
