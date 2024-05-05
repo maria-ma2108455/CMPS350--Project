@@ -10,14 +10,25 @@ const fileInput = document.querySelector('#image')
 const preview = document.querySelector("#preview")
 const reader = new FileReader()
 let update= false
-if (itemId) {
-    const item = items.find(i => i.itemId === itemId)
-    submitBTN.textContent = 'Update Item'
-    preview.src = item.image
-    preview.classList.remove('hidden')
-}
+
+
+document.addEventListener('DOMContentLoaded', async() => {
+  if (itemId) {
+    // fetching
+    const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {method: 'GET'})
+     const item = await response.json()
+      // const item = items.find(i => i.itemId === itemId)
+      submitBTN.textContent = 'Update Item'
+      preview.src = item.image
+      preview.classList.remove('hidden')
+  }
+})
+
+
+
+
 form.addEventListener('submit',addForm)
-function addForm(e){
+async function addForm(e){
   e.preventDefault()
   let imageFile = document.querySelector('#image')
 
@@ -38,19 +49,30 @@ function addForm(e){
       e.preventDefault()
       const item = formToObject(e.target)      
       console.log(item)
-      let foundIndex = items.findIndex(i => i.itemId == item.itemId)
+      //  let foundIndex = items.findIndex(i => i.itemId == item.itemId)
+      
       let add = false
-      if(foundIndex<0){
+      if (item.itemId==''){
           const itemNo = JSON.parse(localStorage.items).length + 1
           item.itemId = `I${itemNo}`;
           const sellerusername = localStorage.currentUser
-          const seller = users.find(u => u.username == sellerusername)
+          // const seller = users.find(u => u.username == sellerusername)
+          const response1 = await fetch(`http://localhost:3000/api/${sellerusername}`, {method: 'GET'})
+          user = await response1.json()
           item.seller = {
-              username: seller.username,   
-              companyName: seller.companyName
+              username: user.seller.username,   
+              companyName: user.seller.companyName
           }
           item.image = localStorage.getItem('uploadedImage')
-          items.push(item)
+          // items.push(item)
+          const response = await fetch('http://localhost:3000/api/items', {
+            mode: 'no-cors',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item)
+    })
           localStorage.removeItem('uploadedImage')
           add = true
       }

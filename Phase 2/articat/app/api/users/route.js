@@ -4,10 +4,10 @@ export async function GET(request) {
     
     const users = await AtriCatRepo.getAllUsers()
     const headers = new Headers({
-        'Access-Control-Allow-Origin': '*',  
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', 
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',  
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',  
     })
 
     return  Response.json(users, {
