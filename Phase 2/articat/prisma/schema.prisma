@@ -45,7 +45,7 @@ model Seller {
 model Item {
   name        String
   category    String
-  image       String
+  image       String?
   price       Float
   quantity    Int
   description String

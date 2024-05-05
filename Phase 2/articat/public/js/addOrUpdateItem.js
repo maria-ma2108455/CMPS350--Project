@@ -53,19 +53,25 @@ async function addForm(e){
       
       let add = false
       if (item.itemId==''){
-          const itemNo = JSON.parse(localStorage.items).length + 1
-          item.itemId = `I${itemNo}`;
+        item.name = String(item.name)
+        item.category = String(item.category)
+        item.price = parseFloat(item.price)
+        item.quantity = parseInt(item.quantity)
+        item.description = String(item.description)
+        item.featured=null
+        const itemNo = JSON.parse(localStorage.items).length + 1
+          item.itemId=String(Date.now())
           const sellerusername = localStorage.currentUser
           // const seller = users.find(u => u.username == sellerusername)
           const response1 = await fetch(`http://localhost:3000/api/${sellerusername}`, {method: 'GET'})
           user = await response1.json()
-          item.sellerUN = user.seller.username,   
-          
-          item.featured=false
-          item.image = localStorage.getItem('uploadedImage')
+          item.sellerUN = String(user.username)   
+          // item.sellerUN="canvas_harmony"
+        const image = localStorage.getItem('uploadedImage')
+        item.image= String(image)
+          // item.image="images/ceramics/pink_vase.png"
           // items.push(item)
           const response = await fetch('http://localhost:3000/api/items', {
-            // mode: 'no-cors',
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

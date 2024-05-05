@@ -33,7 +33,7 @@ Table Seller {
 Table Item {
   name String [not null]
   category String [not null]
-  image String [not null]
+  image String
   price Float [not null]
   quantity Int [not null]
   description String [not null]
