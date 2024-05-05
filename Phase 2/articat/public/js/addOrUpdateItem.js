@@ -59,20 +59,20 @@ async function addForm(e){
           // const seller = users.find(u => u.username == sellerusername)
           const response1 = await fetch(`http://localhost:3000/api/${sellerusername}`, {method: 'GET'})
           user = await response1.json()
-          item.seller = {
-              username: user.seller.username,   
-              companyName: user.seller.companyName
-          }
+          item.sellerUN = user.seller.username,   
+          
+          item.featured=false
           item.image = localStorage.getItem('uploadedImage')
           // items.push(item)
           const response = await fetch('http://localhost:3000/api/items', {
-            mode: 'no-cors',
+            // mode: 'no-cors',
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(item)
     })
+    console.log("added yay")
           localStorage.removeItem('uploadedImage')
           add = true
       }
