@@ -10,23 +10,21 @@ document.addEventListener('DOMContentLoaded', handlePageLoad)
 
 async function handlePageLoad() {
 
-    // const users = JSON.parse(localStorage.users)
-    // const user = users.find(user => user.username == localStorage.currentUser)
+    const baseURL = 'http://localhost:3000/api'
+
     const currentusername= localStorage.currentUser
-    const response1 = await fetch(`http://localhost:3000/api/${currentusername}`, {method: 'GET'})
-    user = await response1.json()
-    if (user.type === 'customer') {
+
+    const response = await fetch(`${baseURL}/${currentusername}/history`, {method: 'GET'})
+    const responseJson = await response.json()
+
+    if (responseJson.purchases) {
         historyHeading.textContent = `Purchase ${historyHeading.textContent}`
-        const response = await fetch(`http://localhost:3000/api/${currentusername}/history`, {method: 'GET'})
-        purchasesUser = await response.json()
-        purchaseCC.innerHTML = purchasesUser.map( p => purchaseToHTML(p)).join(' ')
+        const purchases = responseJson.purchases
+        purchaseCC.innerHTML = purchases.map( p => purchaseToHTML(p)).join(' ')
     } 
     else {
-//aisha? ithink
         historyHeading.textContent = `Sale ${historyHeading.textContent}`
-
-        const purchases = JSON.parse(localStorage.purchases)
-        const sales = purchases.filter(purchase => purchase.item.seller === user.companyName)
+        const sales = responseJson.sales
         purchaseCC.innerHTML = sales.map(sale => purchaseToHTML(sale, 'sale')).join(' ')
     }
 }
