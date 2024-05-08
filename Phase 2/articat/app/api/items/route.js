@@ -1,5 +1,5 @@
 import articatRepo from "@/app/repo/articat-repo"
-const AtriCatRepo = new articatRepo()
+const ArtiCatRepo = new articatRepo()
 
 export async function GET(request) {
     let items
@@ -8,11 +8,11 @@ export async function GET(request) {
     const searchValue = searchParams.get('searchValue')
     
     if (category) {
-        items = await AtriCatRepo.getItems(category)
+        items = await ArtiCatRepo.getItems(category)
     } else if (searchValue) {
-        items = await AtriCatRepo.getSearchItems(searchValue)
+        items = await ArtiCatRepo.getSearchItems(searchValue)
     } else {
-        items = await AtriCatRepo.getAllItems()
+        items = await ArtiCatRepo.getAllItems()
     }
 
     // Manually setting CORS headers
@@ -31,7 +31,7 @@ export async function GET(request) {
 
 export async function POST(request) {
     const item = await request.json()
-    const newItem = await AtriCatRepo.addItem(item)
+    const newItem = await ArtiCatRepo.addItem(item)
     const headers = new Headers({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*', 
