@@ -1,3 +1,7 @@
+.noCard{
+  margin: 4rem;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -41,7 +45,10 @@
 
 .charttitle{
   font-size:25px;
+  margin-top: 3rem;
+  text-align: center;
 }
+
 
 @media screen and (max-width: 768px) {
   .maincards {

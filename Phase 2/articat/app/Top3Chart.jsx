@@ -4,23 +4,22 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import styles from "./page.module.css";
 
 export default function Top3Chart({top3Items}) {
-
+// const [items, setitems] = useState(top3Items)
     if (!top3Items) {
         return <p>....</p>
       }
       const chooseData = top3Items.map(item => ({
         name: item.name,  
         totalQuantitySold: item.totalQuantitySold,
-        
-        
       }));
     
         return (
             <>
-            <h2 className={styles.charttitle}>Top 3 Products</h2>
+            
           <BarChart
-            width={700}
-            height={300}
+          
+            width={600}
+            height={400}
             data={chooseData}
             margin={{
               top: 5,
@@ -28,7 +27,7 @@ export default function Top3Chart({top3Items}) {
               left: 20,
               bottom: 5,
             }}
-            barSize={50}
+            barSize={70}
           >
             <XAxis dataKey="name" />
             <YAxis hi/>

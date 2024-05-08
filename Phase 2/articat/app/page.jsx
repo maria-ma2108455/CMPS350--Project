@@ -15,9 +15,16 @@ export default async function Home() {
   return (
     <div>
      <h1>Dashboard</h1>
+
+     <div className={styles.noCard}>
      <Card> </Card>
+     </div>
+
+     <h2 className={styles.charttitle}>Top 3 Products</h2>
+     <div className={styles.top3}>
      <Top3Chart top3Items={itemsdetails}/>
      <Top3Details top3Items={itemsdetails}/>
+     </div>
     </div>
   )
 }
