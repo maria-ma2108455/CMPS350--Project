@@ -13,15 +13,41 @@ let update= false
 
 const baseURL='http://localhost:3000'
 document.addEventListener('DOMContentLoaded', async() => {
+  const itemId = urlParameter.get('item');
   if (itemId) {
     // fetching
-    const response = await fetch(`${baseURL}/api/items/${itemId}`, {method: 'GET'})
-     const item = await response.json()
+    const response = await fetch(`${baseURL}/api/items/${urlParameter.get('item')}`, {method: 'GET'})
+     const item = await response.json() 
       // const item = items.find(i => i.itemId === itemId)
       submitBTN.textContent = 'Update Item'
       preview.src = item.image
       preview.classList.remove('hidden')
-  }
+
+
+
+      //loading data
+        update=true
+        const response2 = await fetch(`${baseURL}/api/items/${urlParameter.get('item')}`, {method: 'GET'})
+        const itemold = await response2.json()
+        const itemId= document.querySelector('#itemId')
+        const name= document.querySelector('#item-name')
+        const image= document.querySelector('#image')
+        const category= document.querySelector('#Ceramics')
+        const price= document.querySelector('#item-price')
+        const quantity= document.querySelector('#item-quantity')
+        const description= document.querySelector('#item-description')
+        const categories= document.querySelectorAll('input[name="category"]')
+        itemId.value=itemold.itemId
+        price.value=itemold.price
+        quantity.value=itemold.quantity
+        image.src = itemold.image
+        name.value=itemold.name
+        description.value=itemold.description
+        category.value=itemold.category
+        categories.forEach(c=> {if(c.value === itemold.category) {c.checked= true}})
+       
+    }
+  
 })
 
 
@@ -53,11 +79,7 @@ async function addForm(e){
       const sellerusername = localStorage.currentUser
       let add = false
       if (item.itemId==''){
-        item.name = String(item.name)
-        item.category = String(item.category)
-        item.price = parseFloat(item.price)
-        item.quantity = parseInt(item.quantity)
-        item.description = String(item.description)
+        parseItem(item)
         item.featured=null
         const itemNo = JSON.parse(localStorage.items).length + 1
           item.itemId=String(Date.now())
@@ -87,10 +109,11 @@ async function addForm(e){
         console.log("here2")
         const response2 = await fetch(`${baseURL}/api/items/${itemId}`, {method: 'GET'})
         const itemold = await response2.json()
-        item.image= String(localStorage.getItem('uploadedImage')) ? localStorage.getItem('uploadedImage') : itemold.image
-          // items[foundIndex] = {...items[foundIndex], ...item}
+        item.image= localStorage.getItem('uploadedImage') ? String(localStorage.getItem('uploadedImage')) : itemold.image
           console.log("here1")
-          const response = await fetch(`${baseURL}/api/items/${itemId}`, {
+          //make sure the type is same as in database
+          parseItem(item)
+          const response = await fetch(`${baseURL}/api/items/${itemold.itemId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -148,30 +171,14 @@ function handleSelected(e) {
   }
 }
 
+function parseItem(item) {
+  item.name = String(item.name);
+  item.category = String(item.category);
+  item.price = parseFloat(item.price);
+  item.quantity = parseInt(item.quantity);
+  item.description = String(item.description);
+}
 
-// if(urlParameter.get('item')){
-//     update=true
-//     const itemid = urlParameter.get('item');
-//     const response2 = await fetch(`${baseURL}/api/items/${itemId}`, {method: 'GET'})
-//     const item = await response2.json()
-//     const itemId= document.querySelector('#itemId')
-//     const name= document.querySelector('#item-name')
-//     const image= document.querySelector('#image')
-//     const category= document.querySelector('#Ceramics')
-//     const price= document.querySelector('#item-price')
-//     const quantity= document.querySelector('#item-quantity')
-//     const description= document.querySelector('#item-description')
-//     const categories= document.querySelectorAll('input[name="category"]')
-//     itemId.value=item.itemId
-//     price.value=item.price
-//     quantity.value=item.quantity
-//     image.src = item.image
-//     name.value=item.name
-//     description.value=item.description
-//     category.value=item.category
-//     categories.forEach(c=> {if(c.value === item.category) {c.checked= true}})
-   
-// }
 cancelBTN.addEventListener('click',cancelSubmit)
 function cancelSubmit(){
     window.history.go(-2); //go back two pages
