@@ -105,12 +105,14 @@ function formToObject(form) {
 } 
 
 
-function addPurchase(foundUser, foundItem){
+async function addPurchase(foundUser, foundItem){
 
   let purchase = {}
 
-  const purchaseNo = JSON.parse(localStorage.purchases).length + 1
-  purchase.purchaseId = `P${purchaseNo}`;
+  const response = await fetch(`api/purchases`,{ method: 'POST'})
+  
+  // const purchaseNo = JSON.parse(localStorage.purchases).length + 1
+  // purchase.purchaseId = `P${purchaseNo}`;
 
   purchase.quantity = JSON.parse(localStorage.custQuantity);
 
