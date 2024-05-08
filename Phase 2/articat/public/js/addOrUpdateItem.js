@@ -1,8 +1,7 @@
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
 
-// let items= JSON.parse(localStorage.items)
-// users= JSON.parse(localStorage.users)
+
 const form = document.querySelector('#addItem-form')
 const cancelBTN = document.querySelector('#cancel-btn')
 const submitBTN = document.querySelector('#addItem-btn')
@@ -18,14 +17,13 @@ document.addEventListener('DOMContentLoaded', async() => {
     // fetching
     const response = await fetch(`${baseURL}/api/items/${urlParameter.get('item')}`, {method: 'GET'})
      const item = await response.json() 
-      // const item = items.find(i => i.itemId === itemId)
+
+     //loading image into the form
       submitBTN.textContent = 'Update Item'
       preview.src = item.image
       preview.classList.remove('hidden')
 
-
-
-      //loading data
+      //loading data into the form
         update=true
         const response2 = await fetch(`${baseURL}/api/items/${urlParameter.get('item')}`, {method: 'GET'})
         const itemold = await response2.json()
@@ -51,13 +49,12 @@ document.addEventListener('DOMContentLoaded', async() => {
 })
 
 
-
-
 form.addEventListener('submit',addForm)
 async function addForm(e){
   e.preventDefault()
   let imageFile = document.querySelector('#image')
 
+  //the alert
   if (!imageFile.value && !update) {
     Swal.fire({
       title: 'No Image Uploaded!',
@@ -75,24 +72,21 @@ async function addForm(e){
       e.preventDefault()
       const item = formToObject(e.target)      
       console.log(item)
-      //  let foundIndex = items.findIndex(i => i.itemId == item.itemId)
       const sellerusername = localStorage.currentUser
       let add = false
+
+      //adding item
       if (item.itemId==''){
         parseItem(item)
         item.featured=null
         const itemNo = JSON.parse(localStorage.items).length + 1
           item.itemId=String(Date.now())
           
-          // const seller = users.find(u => u.username == sellerusername)
           const response1 = await fetch(`${baseURL}/api/${sellerusername}`, {method: 'GET'})
           user = await response1.json()
           item.sellerUN = String(user.username)   
-          // item.sellerUN="canvas_harmony"
         const image = localStorage.getItem('uploadedImage')
         item.image= String(image)
-          // item.image="images/ceramics/pink_vase.png"
-          // items.push(item)
           const response = await fetch(`${baseURL}/api/items`, {
           method: 'POST',
           headers: {
@@ -104,6 +98,8 @@ async function addForm(e){
           localStorage.removeItem('uploadedImage')
           add = true
       }
+
+      //updating item since same form is used for add and update
       else{
         //get the item thats being updated using api to take the image from it 
         console.log("here2")
@@ -126,7 +122,6 @@ async function addForm(e){
           localStorage.removeItem('uploadedImage')
           add = false
       }
-      // localStorage.items=JSON.stringify(items)
       form.reset()
       Swal.fire({
           title: add ? 'Added!' : 'Updated!',
@@ -141,6 +136,8 @@ async function addForm(e){
         })
       }
 }
+
+
 function formToObject(form){
     const formData= new FormData(form)
     const data={}
