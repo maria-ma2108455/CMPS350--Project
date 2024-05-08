@@ -181,4 +181,25 @@ export default class articatRepo {
         }
     }
 
+
+
+//FOR STATISTICS:---------------------------------------------------
+async getUnpurchasedProducts() {
+    try {
+        return await prisma.item.findMany({
+                where: {
+                  purchases: {
+                    none: {}
+                  }
+                }
+              })
+        
+    } catch (error) {
+        return { error: error.message }
+    }
 }
+
+}
+
+
+    
