@@ -11,11 +11,11 @@ const preview = document.querySelector("#preview")
 const reader = new FileReader()
 let update= false
 
-
+const baseURL='http://localhost:3000'
 document.addEventListener('DOMContentLoaded', async() => {
   if (itemId) {
     // fetching
-    const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {method: 'GET'})
+    const response = await fetch(`${baseURL}/api/items/${itemId}`, {method: 'GET'})
      const item = await response.json()
       // const item = items.find(i => i.itemId === itemId)
       submitBTN.textContent = 'Update Item'
@@ -63,7 +63,7 @@ async function addForm(e){
           item.itemId=String(Date.now())
           const sellerusername = localStorage.currentUser
           // const seller = users.find(u => u.username == sellerusername)
-          const response1 = await fetch(`http://localhost:3000/api/${sellerusername}`, {method: 'GET'})
+          const response1 = await fetch(`${baseURL}/api/${sellerusername}`, {method: 'GET'})
           user = await response1.json()
           item.sellerUN = String(user.username)   
           // item.sellerUN="canvas_harmony"
@@ -71,7 +71,7 @@ async function addForm(e){
         item.image= String(image)
           // item.image="images/ceramics/pink_vase.png"
           // items.push(item)
-          const response = await fetch('http://localhost:3000/api/items', {
+          const response = await fetch(`${baseURL}/api/items`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
