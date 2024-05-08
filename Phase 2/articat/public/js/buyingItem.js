@@ -52,7 +52,7 @@ async function confirmedPurchase(e) {
       const totalPrice = item.price * localStorage.custQuantity;
 
       user.customer.moneyBalance -= totalPrice;
-      user.customer.purchase.quantity -= localStorage.custQuantity;
+      item.quantity -= localStorage.custQuantity;
 
 
       user.customer.name = purchaseDetails.name

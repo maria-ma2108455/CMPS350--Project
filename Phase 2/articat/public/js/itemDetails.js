@@ -9,6 +9,8 @@ const itemLink = document.querySelector('#item-link')
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {    
+    // const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
+    // const item = await response2.json()
     
     const users = JSON.parse(localStorage.users)
     const currentUser = users.find(user => user.username === localStorage.currentUser)
