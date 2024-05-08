@@ -222,8 +222,6 @@ async getTotalNumberOfSellers() {
 //         return { error: error.message }
 //     }
 // }
-
-
   async getTotalNumberOfProducts() {
     try {
         return await prisma.item.count();
@@ -236,6 +234,17 @@ async getTotalNumberOfSellers() {
   }
 
 
+  async  getTotalNumberOfCategories() {
+    try {
+      const groupedCategories = await prisma.item.groupBy({
+        by: ['category']
+      })
+      //length of array is no of categorires 
+      return groupedCategories.length;
+    } catch (error) {
+        return { error: error.message }
+    }
+  }
   
 
 

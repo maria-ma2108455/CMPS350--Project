@@ -12,7 +12,7 @@ const AtriCatRepo = new articatRepo()
  export default async function Card() {
 
     const customersno= await AtriCatRepo.getTotalNumberOfCustomers()
-    // const categoriesno= await AtriCatRepo.getTotalNumberOfCategories()
+    const categoriesno= await AtriCatRepo.getTotalNumberOfCategories()
     const productsno= await AtriCatRepo.getTotalNumberOfProducts()
     const sellersno= await AtriCatRepo.getTotalNumberOfSellers()
   return (
@@ -30,7 +30,7 @@ const AtriCatRepo = new articatRepo()
                     <h3>CATEGORIES</h3>
                     <BsFillGrid3X3GapFill className='card_icon'/>
                 </div>
-                <h1>categoriesno</h1>
+                <h1>{categoriesno}</h1>
             </div>
             <div className={styles.card}>
                 <div className={styles.cardinner}>
