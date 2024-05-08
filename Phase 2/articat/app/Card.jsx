@@ -6,8 +6,15 @@ import
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
  from 'recharts';
  import styles from "./page.module.css";
+ import articatRepo from "@/app/repo/articat-repo"
+const AtriCatRepo = new articatRepo()
 
-export default function Card() {
+ export default async function Card() {
+
+    const customersno= await AtriCatRepo.getTotalNumberOfCustomers()
+    const categoriesno= await AtriCatRepo.getTotalNumberOfCategories()
+    const productsno= await AtriCatRepo.getTotalNumberOfProducts()
+    const sellersno= await AtriCatRepo.getTotalNumberOfSellers()
   return (
     <div>
 <div className={styles.maincards}>
@@ -16,28 +23,28 @@ export default function Card() {
                     <h3>PRODUCTS</h3>
                     <BsFillArchiveFill className='card_icon'/>
                 </div>
-                <h1>300</h1>
+                <h1>{productsno}</h1>
             </div>
             <div className={styles.card}>
                 <div className={styles.cardinner}>
                     <h3>CATEGORIES</h3>
                     <BsFillGrid3X3GapFill className='card_icon'/>
                 </div>
-                <h1>12</h1>
+                <h1>{categoriesno}</h1>
             </div>
             <div className={styles.card}>
                 <div className={styles.cardinner}>
                     <h3>CUSTOMERS</h3>
                     <BsPeopleFill className='card_icon'/>
                 </div>
-                <h1>33</h1>
+                <h1>{customersno}</h1>
             </div>
             <div className={styles.card}>
                 <div className={styles.cardinner}>
-                    <h3>COMPANIES</h3>
+                    <h3>SELLERS</h3>
                     <BsFillBellFill className='card_icon'/>
                 </div>
-                <h1>42</h1>
+                <h1>{sellersno}</h1>
             </div>
     </div>
     </div>
