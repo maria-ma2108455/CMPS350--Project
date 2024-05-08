@@ -1,5 +1,6 @@
 import articatRepo from "@/app/repo/articat-repo"
 const AtriCatRepo = new articatRepo()
+
 export async function GET(request, { params }) {
     const itemId= params.itemid
     const item = await AtriCatRepo.getItem(itemId)
