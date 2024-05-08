@@ -82,13 +82,17 @@ function itemDetailsToHTML(item, user){
 }
 
 
-function checkLoggedIn(){
+async function checkLoggedIn(){
+
+
+    const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
+    const user = await response1.json()
 
     if (!localStorage.currentUser) window.location.href = "signin.html"
 
-    const users = localStorage.users
-    const user = JSON.parse(users)
-    const foundUser = user.find(u => u.username === localStorage.currentUser)
+    // const users = localStorage.users
+    // const user = JSON.parse(users)
+    // const foundUser = user.find(u => u.username === localStorage.currentUser)
 
     if (foundUser.type === 'seller') {
         Swal.fire({
@@ -104,8 +108,11 @@ function checkLoggedIn(){
         return
     } 
 
-    const items = JSON.parse(localStorage.items)
-    const item = items.find(i => i.itemId === itemId)
+    // const items = JSON.parse(localStorage.items)
+    // const item = items.find(i => i.itemId === itemId)
+
+    const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
+    const item = await response2.json()
 
     const quantityItem = document.querySelector('#quantity').value
     const priceOfItem = item.price
