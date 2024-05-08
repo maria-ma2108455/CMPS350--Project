@@ -192,6 +192,17 @@ export default class articatRepo {
         }
     }
 
+
+    async getCustomer(username){
+        try {
+            return await prisma.customer.findUnique({
+                where: {username}
+            })
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
+
 //FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
     try {
