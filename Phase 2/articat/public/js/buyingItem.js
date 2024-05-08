@@ -52,14 +52,15 @@ async function confirmedPurchase(e) {
 
         const totalPrice = item.price * localStorage.custQuantity;
 
-        user.customer.moneyBalance -= totalPrice;
+        //update customer
+        // user.customer.moneyBalance -= totalPrice;
         //update PUT
         // item.quantity -= localStorage.custQuantity;
-
-        user.customer.name = purchaseDetails.name;
-        user.customer.surname = purchaseDetails.surname;
-        user.customer.phoneNumber = purchaseDetails.phoneNumber;
-        user.customer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`;
+        //update
+        // user.customer.name = purchaseDetails.name;
+        // user.customer.surname = purchaseDetails.surname;
+        // user.customer.phoneNumber = purchaseDetails.phoneNumber;
+        // user.customer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`;
 
         addPurchase(user.customer, item);
 
