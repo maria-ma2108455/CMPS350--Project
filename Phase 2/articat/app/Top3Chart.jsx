@@ -10,7 +10,9 @@ export default function Top3Chart({top3Items}) {
       }
       const chooseData = top3Items.map(item => ({
         name: item.name,  
-        totalQuantitySold: item.totalQuantitySold
+        totalQuantitySold: item.totalQuantitySold,
+        
+        
       }));
     
         return (
@@ -32,7 +34,7 @@ export default function Top3Chart({top3Items}) {
             <YAxis hi/>
             <Tooltip />
             <Legend />
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="2 1" />
             <Bar dataKey="totalQuantitySold" fill="#d65f83" background={{ fill: '#eee' }} />
           </BarChart>
           </>
