@@ -1,8 +1,8 @@
 import articatRepo from "@/app/repo/articat-repo"
-const AtriCatRepo = new articatRepo()
+const ArtiCatRepo = new articatRepo()
 export async function GET(request) {
     
-    const users = await AtriCatRepo.getAllUsers()
+    const users = await ArtiCatRepo.getAllUsers()
     const headers = new Headers({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*', 
