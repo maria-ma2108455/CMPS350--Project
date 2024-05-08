@@ -1,6 +1,6 @@
 import React from 'react'
 import 
-{ BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill}
+{ BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill, BsBuildingsFill}
  from 'react-icons/bs'
  import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
@@ -41,8 +41,8 @@ const AtriCatRepo = new articatRepo()
             </div>
             <div className={styles.card}>
                 <div className={styles.cardinner}>
-                    <h3>SELLERS</h3>
-                    <BsFillBellFill className='card_icon'/>
+                    <h3>COMPANIES</h3>
+                    <BsBuildingsFill className='card_icon'/>
                 </div>
                 <h1>{sellersno}</h1>
             </div>
