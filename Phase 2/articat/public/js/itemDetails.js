@@ -136,8 +136,8 @@ async function checkLoggedIn(){
         return
     }
 
-    // localStorage.custQuantity = quantityItem
-    // localStorage.currentItemId = itemId
+    localStorage.custQuantity = quantityItem
+    localStorage.currentItemId = itemId
     window.location.href = "purchasedetails.html"
     
 
