@@ -182,6 +182,15 @@ export default class articatRepo {
     }
 
     // add purchase, getcustomerinfo
+    async addPurchase(purchase){
+        try {
+            return prisma.purchase.create({
+                data: purchase
+            })
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
 
 //FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
