@@ -94,7 +94,7 @@ async function checkLoggedIn(){
     // const user = JSON.parse(users)
     // const foundUser = user.find(u => u.username === localStorage.currentUser)
 
-    if (foundUser.type === 'seller') {
+    if (user.type === 'seller') {
         Swal.fire({
             title: 'Not a Customer!',
             text: 'Please sign in as a customer to buy items.',
@@ -121,7 +121,7 @@ async function checkLoggedIn(){
 
     console.log(quantityItem);
 
-    if(foundUser.moneyBalance < totalPrice){
+    if(user.customer.moneyBalance < totalPrice){
         
         Swal.fire({
             title: 'Not Enough Balance',
@@ -136,8 +136,8 @@ async function checkLoggedIn(){
         return
     }
 
-    localStorage.custQuantity = quantityItem
-    localStorage.currentItemId = itemId
+    // localStorage.custQuantity = quantityItem
+    // localStorage.currentItemId = itemId
     window.location.href = "purchasedetails.html"
     
 
