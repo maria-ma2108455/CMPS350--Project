@@ -4,6 +4,7 @@ import { React } from 'react'
 import styles from "./page.module.css";
 import Card from "@/app/Card"
 import Top3Chart from "@/app/Top3Chart"
+import Top3Details from "@/app/Top3Details"
 import articatRepo from "@/app/repo/articat-repo"
 const AtriCatRepo = new articatRepo()
 
@@ -16,6 +17,7 @@ export default async function Home() {
      <h1>Dashboard</h1>
      <Card> </Card>
      <Top3Chart top3Items={itemsdetails}/>
+     <Top3Details top3Items={itemsdetails}/>
     </div>
   )
 }
