@@ -178,10 +178,10 @@ export default class articatRepo {
             })
         } catch (error) {
             return { error: error.message }
-        }
+        } 
     }
 
-
+    // add purchase, getcustomerinfo
 
 //FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
