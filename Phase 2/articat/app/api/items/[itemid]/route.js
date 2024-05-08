@@ -22,6 +22,6 @@ export async function GET(request, { params }) {
 export async function PUT(request, { params }){
     const itemId= params.itemid
     const itemUpdate = await request.json()
-    const updatedItems = await AtriCatRepo.updateItem(itemId,itemUpdate)
+    const updatedItems = await ArtiCatRepo.updateItem(itemId,itemUpdate)
     return Response.json(updatedItems, { status: 200 })
 }
