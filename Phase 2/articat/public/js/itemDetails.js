@@ -5,17 +5,23 @@ const itemId = urlParameter.get('item');
 const itemDetailsCC = document.querySelector('.item-container')
 const itemLink = document.querySelector('#item-link')
 
+const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
+const user = await response1.json()
+
+const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
+const item = await response2.json()
+
 //when the page loads
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {    
 
-    const users = JSON.parse(localStorage.users)
-    const currentUser = users.find(user => user.username === localStorage.currentUser)
+    // const users = JSON.parse(localStorage.users)
+    // const currentUser = users.find(user => user.username === localStorage.currentUser)
    
-    const item = items.find(i => i.itemId == itemId)
+    // const item = items.find(i => i.itemId == itemId)
     console.log("found item:", item);
-    const itemDetailsHTML= itemDetailsToHTML(item, currentUser)
+    const itemDetailsHTML= itemDetailsToHTML(item, user)
     itemDetailsCC.innerHTML = itemDetailsHTML
 
     itemLink.innerHTML = `<a href="items.html?category=${item.category}">${item.category}</a> > ${item.name}`
@@ -84,10 +90,6 @@ function itemDetailsToHTML(item, user){
 
 async function checkLoggedIn(){
 
-
-    const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
-    const user = await response1.json()
-
     if (!localStorage.currentUser) window.location.href = "signin.html"
 
     // const users = localStorage.users
@@ -110,9 +112,6 @@ async function checkLoggedIn(){
 
     // const items = JSON.parse(localStorage.items)
     // const item = items.find(i => i.itemId === itemId)
-
-    const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
-    const item = await response2.json()
 
     const quantityItem = document.querySelector('#quantity').value
     const priceOfItem = item.price
