@@ -110,13 +110,14 @@ async function addPurchase(foundUser, foundItem){
   let purchase = {}
 
   const response = await fetch(`api/purchases`,{ method: 'POST'})
-  
+  const adding = await response.json()
+
   // const purchaseNo = JSON.parse(localStorage.purchases).length + 1
   // purchase.purchaseId = `P${purchaseNo}`;
 
   purchase.quantity = JSON.parse(localStorage.custQuantity);
 
-  const { seller, ...item } = foundItem
+  const { seller, ...item } = foundItem //?
   const sellerCompany = seller.companyName
   item.seller = sellerCompany
   purchase.item = { ...item } 
@@ -129,12 +130,15 @@ async function addPurchase(foundUser, foundItem){
 
   purchase.date = new Date()
 
-  const updatedPurchases = JSON.parse(localStorage.purchases);
-  updatedPurchases.push(purchase)
-  localStorage.purchases = JSON.stringify(updatedPurchases)
+  // const updatedPurchases = JSON.parse(localStorage.purchases);
+  // updatedPurchases.push(purchase)
+  // localStorage.purchases = JSON.stringify(updatedPurchases)
+
+  //use the post
+
 
   delete purchase.totalPrice
-  foundUser.purchases.push(purchase)
+  foundUser.purchases.push(purchase) //?
 
   delete localStorage.custQuantity;
   delete localStorage.currentItemId;
