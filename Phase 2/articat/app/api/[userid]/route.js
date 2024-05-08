@@ -1,10 +1,10 @@
 import articatRepo from "@/app/repo/articat-repo"
-const AtriCatRepo = new articatRepo()
+const ArtiCatRepo = new articatRepo()
 
 export async function GET(request, { params }) {
 
     const username = params.userid
-    const user = await AtriCatRepo.getUser(username)
+    const user = await ArtiCatRepo.getUser(username)
 
     const headers = new Headers({
         'Content-Type': 'application/json',
@@ -17,5 +17,7 @@ export async function GET(request, { params }) {
         status: 200,
         headers: headers
     })
+
+    
 
 }
