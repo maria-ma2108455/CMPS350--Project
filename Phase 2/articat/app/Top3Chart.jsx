@@ -4,14 +4,21 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import styles from "./page.module.css";
 
 export default function Top3Chart({top3Items}) {
-// const [items, setitems] = useState(top3Items)
+  const [items, setItems] = useState([]);
+
+  //use staate and use effect to avoid hydration errors
     if (!top3Items) {
         return <p>....</p>
       }
-      const chooseData = top3Items.map(item => ({
-        name: item.name,  
-        totalQuantitySold: item.totalQuantitySold,
-      }));
+      useEffect(() => {
+        if (top3Items) {
+          setItems(top3Items.map(item => ({
+            name: item.name,
+            totalQuantitySold: item.totalQuantitySold,
+          }))
+        )
+        }
+    }, [top3Items])
     
         return (
             <>
@@ -20,7 +27,7 @@ export default function Top3Chart({top3Items}) {
           
             width={600}
             height={400}
-            data={chooseData}
+            data={items}
             margin={{
               top: 5,
               right: 30,
@@ -30,7 +37,7 @@ export default function Top3Chart({top3Items}) {
             barSize={70}
           >
             <XAxis dataKey="name" />
-            <YAxis hi/>
+            <YAxis/>
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="2 1" />
