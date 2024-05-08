@@ -276,13 +276,12 @@ async getTotalNumberOfSellers() {
         const itemDetails = await prisma.item.findUnique({
           where: { itemId: item.itemId }
         })
-          productDetails.push({
+        itemsDetails.push({
             ...itemDetails, totalQuantitySold: item._sum.quantity
           })
       }
-      return productDetails;
+      return itemsDetails;
     } catch (error) {
-      console.error("Failed to retrieve product details:", error);
       return { error: error.message };
     }
   }
