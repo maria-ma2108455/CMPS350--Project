@@ -246,7 +246,50 @@ async getTotalNumberOfSellers() {
     }
   }
   
+ 
+  async  getTopThreeMostBoughtProducts() {
+    const before6month = new Date();
+    before6month.setMonth(before6month.getMonth() - 6);
+    try {
+      //group with item id and add all quantities
+      return await prisma.purchase.groupBy({
+        by: ['itemId'], _sum: {quantity: true},
+        where: {
+          date: {gte: before6month},
+        },
+        orderBy: { 
+            _sum: {quantity: 'desc'},
+        },
+        take: 3  //top3
+        //will do another function to get the data of top 3 we found here 
+      })
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
 
+
+  async getitemsDetails(itemIds) {
+    try {
+      const itemsDetails = [];
+      for (const item of itemIds) {
+        const itemDetails = await prisma.item.findUnique({
+          where: { itemId: item.itemId }
+        })
+          productDetails.push({
+            ...itemDetails, totalQuantitySold: item._sum.quantity
+          })
+      }
+      return productDetails;
+    } catch (error) {
+      console.error("Failed to retrieve product details:", error);
+      return { error: error.message };
+    }
+  }
+  
+
+  
+  
 
 }
 
