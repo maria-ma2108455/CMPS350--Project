@@ -15,32 +15,18 @@ export async function GET(request) {
         items = await AtriCatRepo.getAllItems()
     }
 
-    // Manually setting CORS headers
-    const headers = new Headers({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', 
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',  
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',  
-    })
-
+   
     return new Response(JSON.stringify(items), {
-        status: 200,
-        headers: headers
+        status: 200
     })
 }
 
 export async function POST(request) {
     const item = await request.json()
     const newItem = await AtriCatRepo.addItem(item)
-    const headers = new Headers({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', 
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',  
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',  
-    })
+  
 
     return new Response(JSON.stringify(newItem), {
-        status: 200,
-        headers: headers
+        status: 200
     })
 }
