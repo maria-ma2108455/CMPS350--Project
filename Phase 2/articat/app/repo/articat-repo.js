@@ -12,7 +12,9 @@ export default class articatRepo {
                 username: username
             },
             include: {
-                seller: true }
+                seller: true,
+                customer:true
+             }
         })
     }
     async getCustomer(username) {
