@@ -6,17 +6,16 @@ const cancel = document.querySelector("#cancel-btn");
 // const user = JSON.parse(users)
 // const foundUser = user.find((u) => u.username === localStorage.currentUser)
 
-const response1 = await fetch(`api/${localStorage.currentUser}`, {
-  method: "GET",
-});
-const user = await response1.json();
-
 document.addEventListener("DOMContentLoaded", showFormFields);
 purchaseForm.addEventListener("submit", confirmedPurchase);
 
 cancel.addEventListener("click", cancelPurchase);
 
 async function showFormFields() {
+  const response1 = await fetch(`api/${localStorage.currentUser}`, {
+    method: "GET",
+  });
+  const user = await response1.json();
   if (user.customer.shippingAddress) {
     purchaseForm.elements["name"].value = user.customer.name;
     purchaseForm.elements["surname"].value = user.customer.surname;
@@ -54,7 +53,8 @@ async function confirmedPurchase(e) {
         const totalPrice = item.price * localStorage.custQuantity;
 
         user.customer.moneyBalance -= totalPrice;
-        item.quantity -= localStorage.custQuantity;
+        //update PUT
+        // item.quantity -= localStorage.custQuantity;
 
         user.customer.name = purchaseDetails.name;
         user.customer.surname = purchaseDetails.surname;
@@ -110,7 +110,8 @@ async function addPurchase(foundUser, foundItem) {
   const { seller, ...item } = foundItem; //?
   const sellerCompany = seller.companyName;
   item.seller = sellerCompany;
-  purchase.item = { ...item };
+  // purchase.item = { ...item };
+  purchase.itemId=item.itemId;
 
   const { purchases, ...customer } = foundUser;
   purchase.customer = { ...customer };
