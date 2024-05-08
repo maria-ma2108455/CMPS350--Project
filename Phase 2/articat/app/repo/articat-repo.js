@@ -165,7 +165,11 @@ export default class articatRepo {
     async getItem(itemId) {
         try {
             return await prisma.item.findUnique({
-                where: { itemId }
+                where: { itemId },
+
+                include: {
+                    seller: true
+                }
             })
         } catch (error) {
             return { error: error.message }

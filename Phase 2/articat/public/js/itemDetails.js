@@ -9,13 +9,13 @@ const itemLink = document.querySelector('#item-link')
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {    
-    // const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
-    // const item = await response2.json()
-    
+    const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
+    const item = await response2.json()
+    console.log(item.name);
     const users = JSON.parse(localStorage.users)
     const currentUser = users.find(user => user.username === localStorage.currentUser)
    
-    const item = items.find(i => i.itemId == itemId)
+    // const item = items.find(i => i.itemId == itemId)
     console.log("found item:", item);
     const itemDetailsHTML= itemDetailsToHTML(item, currentUser)
     itemDetailsCC.innerHTML = itemDetailsHTML
