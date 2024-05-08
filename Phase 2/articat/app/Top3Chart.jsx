@@ -15,7 +15,7 @@ export default function Top3Chart({top3Items}) {
     
         return (
             <>
-            
+             <div className={styles.barChart}>
           <BarChart
           
             width={600}
@@ -36,6 +36,7 @@ export default function Top3Chart({top3Items}) {
             <CartesianGrid strokeDasharray="2 1" />
             <Bar dataKey="totalQuantitySold" fill="#d65f83" background={{ fill: '#eee' }} />
           </BarChart>
+          </div>
           </>
         );
       }
