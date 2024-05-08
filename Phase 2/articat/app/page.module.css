@@ -1,0 +1,52 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px 15px;
+  border-radius: 1.5rem;
+}
+
+.card:first-child {
+  background-color:  #f5bdc9ee;
+}
+
+.card:nth-child(2) {
+  background-color: #c5e3f1;
+}
+
+.card:nth-child(3) {
+  background-color:#b7e2d4;
+}
+
+.card:nth-child(4) {
+  background-color: #d7c3e2;
+}
+
+.cardinner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardinner > .card_icon {
+  font-size: 25px;
+}
+
+.maincards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .maincards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+
+}
