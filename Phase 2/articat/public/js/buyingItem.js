@@ -6,26 +6,31 @@ const cancel = document.querySelector('#cancel-btn')
 // const user = JSON.parse(users)
 // const foundUser = user.find((u) => u.username === localStorage.currentUser)
 
+const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
+const user = await response1.json()
+
 document.addEventListener('DOMContentLoaded', showFormFields)
 purchaseForm.addEventListener("submit", confirmedPurchase)
 
 cancel.addEventListener("click", cancelPurchase)
 
-function showFormFields() {
-  if (foundUser.shippingAddress) {
-    purchaseForm.elements['name'].value = foundUser.name
-    purchaseForm.elements['surname'].value = foundUser.surname
-    purchaseForm.elements['phoneNumber'].value = foundUser.phoneNumber
-    purchaseForm.elements['address'].value = foundUser.shippingAddress.split(',')[0]
-    purchaseForm.elements['city'].value = foundUser.shippingAddress.split(',')[1]
+async function showFormFields() {
+  if (user.customer.shippingAddress) {
+    purchaseForm.elements['name'].value = user.customer.name
+    purchaseForm.elements['surname'].value = user.customer.surname
+    purchaseForm.elements['phoneNumber'].value = user.customer.phoneNumber
+    purchaseForm.elements['address'].value = user.customer.shippingAddress.split(',')[0]
+    purchaseForm.elements['city'].value = user.customer.shippingAddress.split(',')[1]
   }
 }
 
 
 
-function confirmedPurchase(e) {
+async function confirmedPurchase(e) {
   
   e.preventDefault();
+  const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
+  const item = await response2.json()
 
   const swalWithBootstrapButtons = Swal.mixin();
 
@@ -43,26 +48,23 @@ function confirmedPurchase(e) {
     if (result.isConfirmed) {
 
       const purchaseDetails = formToObject(e.target)
+
+      const totalPrice = item.price * localStorage.custQuantity;
+
+      user.customer.moneyBalance -= totalPrice;
+      user.customer.purchase.quantity -= localStorage.custQuantity;
+
+
+      user.customer.name = purchaseDetails.name
+      user.customer.surname = purchaseDetails.surname
+      user.customer.phoneNumber = purchaseDetails.phoneNumber
+      user.customer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`
       
-      const items = localStorage.items;
-      const item = JSON.parse(items);
-      const foundItem = item.find(it => it.itemId === localStorage.currentItemId);
 
-      const totalPrice = foundItem.price * localStorage.custQuantity;
+      addPurchase(user.customer, item)
 
-      foundUser.moneyBalance -= totalPrice;
-      foundItem.quantity -= localStorage.custQuantity;
-
-
-      foundUser.name = purchaseDetails.name
-      foundUser.surname = purchaseDetails.surname
-      foundUser.phoneNumber = purchaseDetails.phoneNumber
-      foundUser.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`
-      
-      addPurchase(foundUser, foundItem)
-
-      localStorage.users = JSON.stringify(user)
-      localStorage.items = JSON.stringify(item)
+      // localStorage.users = JSON.stringify(user)
+      // localStorage.items = JSON.stringify(item)
 
       swalWithBootstrapButtons.fire({
         title: "Purchase Confirmed!",
