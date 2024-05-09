@@ -38,16 +38,16 @@ export default function MonthlyRevenue({productsPerCategory}){
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="Revenue category"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-          <Line type="monotone" dataKey="Revenue category" stroke="#82ca9d" />
-          <Line type="monotone" dataKey="Revenue category" stroke="#82af8d" />
-
-        </LineChart>
-    );
+          {Object.keys(productsPerCategory).map((category, index) => (
+        <Line
+          key={index}
+          type="monotone"
+          dataKey={category}
+          stroke={`#${Math.floor(Math.random() * 16777215).toString(16)}`} // Random color
+          activeDot={{ r: 8 }}
+        />
+      ))}
+    </LineChart>
+  );
   }
 
