@@ -412,6 +412,20 @@ async getTotalNumberOfSellers() {
         }
     }
 
+    async  getTopThreeMostClickedProducts() {
+
+        try {
+          return await prisma.item.findMany({
+            orderBy: { 
+                clicks: 'desc'
+            },
+            take: 3
+          })
+        } catch (error) {
+          return { error: error.message };
+        }
+      }
+
 }
 
 

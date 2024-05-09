@@ -16,6 +16,7 @@ export default async function Home() {
  const itemsdetails= await ArtiCatRepo.getitemsDetails(itemids)
  const customersCount = await ArtiCatRepo.getTotalNumberOfCustomersPerCountry()
  const monthlyProductsRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
+ const clicksOfItem= await ArtiCatRepo.getTopThreeMostClickedProducts()
 
   return (
     <div>
