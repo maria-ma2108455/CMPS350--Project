@@ -6,11 +6,14 @@ export async function GET(request) {
     const {searchParams} = new URL(request.url)
     const category = searchParams.get('category')
     const searchValue = searchParams.get('searchValue')
+    const featured = searchParams.get('featured')
     
     if (category) {
         items = await AtriCatRepo.getItems(category)
     } else if (searchValue) {
         items = await AtriCatRepo.getSearchItems(searchValue)
+    } else if (featured) {
+        items = await AtriCatRepo.getFeatured()
     } else {
         items = await AtriCatRepo.getAllItems()
     }
