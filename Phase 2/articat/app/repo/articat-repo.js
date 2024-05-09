@@ -249,6 +249,10 @@ export default class articatRepo {
         } 
     }
 
+    async updateItemClick(itemId, itemUpdate){
+
+    }
+
 //FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
     try {
