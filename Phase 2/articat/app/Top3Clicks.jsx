@@ -13,8 +13,8 @@ export default function Top3Chart({top3Clicks}) {
       useEffect(() => {
         if (top3Clicks) {
           setItems(top3Clicks.map(item => ({
-            // name: item.name,
-            // "Total Quantity Sold": item.totalQuantitySold,
+            name: item.name,
+            "Number Of Clicks": item.clicks,
           }))
         )
         }
@@ -41,7 +41,7 @@ export default function Top3Chart({top3Clicks}) {
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="2 1" />
-            <Bar dataKey="Total Quantity Sold" fill="#d65f83" background={{ fill: '#eee' }} />
+            <Bar dataKey="Number Of Clicks" fill="#d65f83" background={{ fill: '#eee' }} />
           </BarChart>
           </div>
           </>
