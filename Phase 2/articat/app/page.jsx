@@ -7,6 +7,7 @@ import Top3Chart from "@/app/Top3Chart"
 import Top3Details from "@/app/Top3Details"
 import CustomersPerCountry from "@/app/CustomersPerCountry";
 import MonthlyRevenue from "@/app/MonthlyRevenue";
+import Top3Clicks from "@/app/Top3Clicks";
 import articatRepo from "@/app/repo/articat-repo"
 const ArtiCatRepo = new articatRepo()
 
@@ -16,6 +17,7 @@ export default async function Home() {
  const itemsdetails= await ArtiCatRepo.getitemsDetails(itemids)
  const customersCount = await ArtiCatRepo.getTotalNumberOfCustomersPerCountry()
  const monthlyProductsRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
+ const clicksOfItem= await ArtiCatRepo.getTopThreeMostClickedProducts()
 
   return (
     <div>
@@ -39,6 +41,11 @@ export default async function Home() {
      <h2 className={styles.charttitle}>Monthly Revenue</h2>
      <div className={styles.top3}>
      <MonthlyRevenue productsPerCategory={monthlyProductsRevenue}/>
+     </div>
+
+     <h2 className={styles.charttitle}>Top 3 Most Clicked Items</h2>
+     <div className={styles.top3}>
+     <Top3Clicks top3Clicks={clicksOfItem}/>
      </div>
     </div>
     

@@ -250,15 +250,14 @@ export default class articatRepo {
     }
 
     async updateItemClick(itemId){
-        // const data = {clicks : 8}
         try {
             return await prisma.item.update({
                 where: { itemId },
                 data: {
-                    clicks: {
-                        increment: 1  
-                    }
-                }
+                    clicks:{
+                        increment: 1,    
+                    },
+                },
             });
         } catch (error) {
             return { error: error.message }
@@ -417,6 +416,20 @@ async getTotalNumberOfSellers() {
           return { error: error.message };
         }
     }
+
+    async  getTopThreeMostClickedProducts() {
+
+        try {
+          return await prisma.item.findMany({
+            orderBy: { 
+                clicks: 'desc'
+            },
+            take: 3
+          })
+        } catch (error) {
+          return { error: error.message };
+        }
+      }
 
 }
 
