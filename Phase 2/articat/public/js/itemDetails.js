@@ -34,7 +34,7 @@ async function handlePageLoad() {
     quantityItem.addEventListener('input', () => {
         
         const quantity = parseInt(quantityItem.value);
-        const price = parseInt(item.price);
+        const price = parseFloat(item.price);
         if(!quantity) {
             priceOfItem.textContent = `${price}` + '$';  
         }
