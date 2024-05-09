@@ -131,6 +131,28 @@ function itemToHTML(item){
     </div>`
 }
 
-function handleItemClick(itemId){
+async function handleItemClick(itemId){
     window.location.href = `itemdetail.html?item=${itemId}`
+
+    console.log("here");
+
+
+        const response3 = await fetch(
+            
+          `api/items/${itemId}/click`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              
+            }
+          }
+        );
+
+        if (response3.ok) {
+            console.log("Click count incremented successfully");
+        } else {
+            console.error("Failed to increment click count");
+        }
 }
+

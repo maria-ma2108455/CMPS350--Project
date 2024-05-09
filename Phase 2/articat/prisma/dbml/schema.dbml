@@ -38,6 +38,7 @@ Table Item {
   quantity Int [not null]
   description String [not null]
   featured Boolean
+  clicks Int [not null, default: 0]
   itemId String [pk]
   sellerUN String [not null]
   seller Seller [not null]

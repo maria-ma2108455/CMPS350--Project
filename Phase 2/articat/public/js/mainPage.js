@@ -37,9 +37,20 @@ function itemToHTML(item){
    </div>`
 }
 
-function handleItemClick(itemId){
+async function handleItemClick(itemId){
   window.location.href = `itemdetail.html?item=${itemId}`
-}
+
+            const response3 = await fetch(
+              `api/items/${itemId}/click`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                }
+              }
+            );
+    }
+
 
 // slide show
 let slideIndex = 1;
