@@ -7,6 +7,7 @@
     "quantity": 25,
     "description": "An elegant ceramic vase, slender and tall, in a soft pastel pink with subtle white accents. The vase features a minimalist design with a smooth, matte finish.",
     "itemId": "I1",
+    "clicks": 5,
     "sellerUN": "craftsworld_user"
   },
   {
@@ -152,6 +153,7 @@
     "quantity": 50,
     "description": "A beautiful bracelet adorned with elegant beads, perfect for adding a touch of sophistication to any outfit.",
     "itemId": "I14",
+    "clicks": 14,
     "featured": true,
     "sellerUN": "elegant_jewels"
   },
@@ -284,6 +286,7 @@
     "quantity": 2,
     "description": "A soothing seascape painting that transports viewers to a peaceful beach at twilight, with gentle waves and a pastel sky.",
     "itemId": "I28",
+    "clicks": 20,
     "featured": true,
     "sellerUN": "artvista_creations"
   },
@@ -305,6 +308,7 @@
     "quantity": 4,
     "description": "A captivating cityscape painting that portrays the rhythm and movement of urban life through bold shapes and vibrant colors.",
     "itemId": "I30",
+    "clicks": 2,
     "sellerUN": "artvista_creations"
   },
   {
