@@ -29,6 +29,9 @@ async function showFormFields() {
 
 async function confirmedPurchase(e) {
   e.preventDefault();
+
+  let updatedItem ={}
+  let updatedCustomer={}
   const response2 = await fetch(`api/items/${itemId}`, { method: "GET" });
   const item = await response2.json();
 
@@ -52,15 +55,29 @@ async function confirmedPurchase(e) {
 
         const totalPrice = item.price * localStorage.custQuantity;
 
+
+
+
+        //update PUT
+        quantity=item.quantity;
+        quantity -= localStorage.custQuantity;
+        // item.quantity -= localStorage.custQuantity;
+        updatedItem.quantity=quantity;
+
+        //update
         //update customer
         // user.customer.moneyBalance -= totalPrice;
-        //update PUT
-        // item.quantity -= localStorage.custQuantity;
-        //update
+        balance = user.customer.moneyBalance
+        balance-=totalPrice
+        updatedCustomer.moneyBalance=balance
         // user.customer.name = purchaseDetails.name;
+        updatedCustomer.name = purchaseDetails.name
         // user.customer.surname = purchaseDetails.surname;
+        updatedCustomer.surname = purchaseDetails.surname
         // user.customer.phoneNumber = purchaseDetails.phoneNumber;
+        updatedCustomer.phoneNumber = purchaseDetails.phoneNumber
         // user.customer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`;
+        updatedCustomer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`
 
         addPurchase(user.customer, item);
 
@@ -86,6 +103,17 @@ async function confirmedPurchase(e) {
         });
       }
     });
+
+
+    const response = await fetch("api/purchases", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedItem),
+    });
+
+    //cust PUT
 }
 
 function formToObject(form) {
@@ -108,14 +136,14 @@ async function addPurchase(foundUser, foundItem) {
 
   purchase.quantity = JSON.parse(localStorage.custQuantity);
 
-  const { seller, ...item } = foundItem; //?
-  const sellerCompany = seller.companyName;
-  item.seller = sellerCompany;
+  // const { seller, ...item } = foundItem; //?
+  // const sellerCompany = seller.companyName;
+  // item.seller = sellerCompany;
   // purchase.item = { ...item };
-  purchase.itemId=item.itemId;
+  purchase.itemId=foundItem.itemId;
 
-  const { purchases, ...customer } = foundUser;
-  purchase.customer = { ...customer };
+  // const { purchases, ...customer } = foundUser;
+  // purchase.customer = { ...customer };
 
   const totalPrice = foundItem.price * localStorage.custQuantity;
   purchase.totalPrice = totalPrice;
