@@ -107,13 +107,14 @@ async function confirmedPurchase(e) {
     });
 
 
-    const response3 = await fetch("api/purchases", {
+    const response3 = await fetch(`api/items/${localStorage.currentItemId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedItem),
     });
+    const responseData3 = await response3.json();
 
     //customer PUT
 
@@ -124,6 +125,7 @@ async function confirmedPurchase(e) {
       },
       body: JSON.stringify(updatedCustomer),
     });
+    const responseData4 = await response4.json();
 }
 
 function formToObject(form) {
