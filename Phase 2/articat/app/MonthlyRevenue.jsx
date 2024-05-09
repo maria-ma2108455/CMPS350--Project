@@ -23,26 +23,28 @@ export default function MonthlyRevenue({productsPerCategory}){
         useEffect(() => {
           if (productsPerCategory) {
             setProducts(
-              Object.entries(productsPerCategory).map(([month, categoryRevenue]) => ({
-                month,
-                ...categoryRevenue,
-              }))
+              Object.entries(productsPerCategory).map(([category, data]) => ({
+                category,
+                data: Array.isArray(data) ? data.map(monthlyData => ({ month: monthlyData.month, revenue: monthlyData.revenue })) : [],
+            }))
             );
           }
         }, [productsPerCategory]);
     return (
 
-        <LineChart width={500} height={300} data={products}>
+        <LineChart width={500} height={300}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" padding={{ left: 30, right: 30 }} />
           <YAxis />
           <Tooltip />
           <Legend />
-          {Object.keys(productsPerCategory).map((category, index) => (
+          {products.map((product, index) => (
         <Line
           key={index}
           type="monotone"
-          dataKey={category}
+          dataKey="revenue"
+          data={product.data}
+          name={product.category}
           stroke={`#${Math.floor(Math.random() * 16777215).toString(16)}`} // Random color
           activeDot={{ r: 8 }}
         />
