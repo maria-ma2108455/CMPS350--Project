@@ -171,12 +171,16 @@ async function addPurchase(foundUser, foundItem) {
   purchase.totalPrice = totalPrice;
 
   purchase.date = new Date();
+  purchase.customerUN=localStorage.currentUser
 
   // const updatedPurchases = JSON.parse(localStorage.purchases);
   // updatedPurchases.push(purchase)
   // localStorage.purchases = JSON.stringify(updatedPurchases)
 
   //use the post
+  
+  console.log(purchase);
+
   const response = await fetch("api/purchases", {
     method: "POST",
     headers: {
