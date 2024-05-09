@@ -28,7 +28,7 @@ export default async function Home() {
      <Top3Details top3Items={itemsdetails}/>
      </div>
 
-     <h2 className={styles.charttitle}>Customer Per Country</h2>
+     <h2 className={styles.charttitle}>Customers Per Country</h2>
      <div className={styles.top3}>
      <CustomersPerCountry customersPerCountry={customersCount}/>
      </div>

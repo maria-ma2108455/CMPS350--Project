@@ -15,7 +15,7 @@ export default function CustomersPerCountry({customersPerCountry}) {
           setCustomers(
             Object.entries(customersPerCountry).map(([country, count]) => ({
               country,
-              numberOfCustomers: count,
+              "Number Of Customers": count,
             }))
           );
         }
@@ -42,7 +42,7 @@ export default function CustomersPerCountry({customersPerCountry}) {
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="2 1" />
-            <Bar dataKey="numberOfCustomers" fill="#d65f83" background={{ fill: '#eee' }} />
+            <Bar dataKey="Number Of Customers" fill="#d65f83" background={{ fill: '#eee' }} />
           </BarChart>
           </div>
           </>
