@@ -1,5 +1,5 @@
 //from local storage cause they cant reach this page without being first the items page which loads from json file
-let items = JSON.parse(localStorage.items);
+// let items = JSON.parse(localStorage.items);
 const urlParameter = new URLSearchParams(window.location.search);
 const itemId = urlParameter.get('item');
 const itemDetailsCC = document.querySelector('.item-container')
