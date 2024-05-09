@@ -80,7 +80,7 @@ async function confirmedPurchase(e) {
         // user.customer.phoneNumber = purchaseDetails.phoneNumber;
         updatedCustomer.phoneNumber = purchaseDetails.phoneNumber;
         // user.customer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`;
-        updatedCustomer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.country}`;
+        updatedCustomer.shippingAddress = `${purchaseDetails.address},${purchaseDetails.country}`;
 
         console.log(updatedCustomer.shippingAddress);
 
