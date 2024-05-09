@@ -26,6 +26,7 @@ export default async function Home() {
      <Top3Details top3Items={itemsdetails}/>
      </div>
     </div>
+    
   )
 }
 
