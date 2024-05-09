@@ -311,6 +311,28 @@ async getTotalNumberOfSellers() {
       return { error: error.message };
     }
   }
+
+
+  async getTotalNumberOfCustomersPerCountry() {
+    try {
+        //first get all customers
+        const allCustomers = await prisma.customer.findMany()
+
+        const countsPerCountry = {};
+        allCustomers.forEach(customer => {
+            const country = customer.shippingAddress.split(',');
+            // const trimmedCountry = country.trim(); // Trim any whitespace
+            countsPerCountry[country] = (countsPerCountry[country] || 0) + 1; // Increment count
+        });
+
+        return countsPerCountry;
+
+    } catch (error) {
+        return { error: error.message }
+    }
+}
+
+
   
 
   
