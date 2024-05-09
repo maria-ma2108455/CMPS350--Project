@@ -219,6 +219,36 @@ export default class articatRepo {
         } 
     }
 
+    async getSellerAvailableItems(sellerUN) {
+        try {
+            return await prisma.item.findMany({
+                where: {
+                    AND: [
+                        { sellerUN },
+                        { quantity: {gt: 0} }
+                    ]
+                } 
+            })
+        } catch (error) {
+            return { error: error.message }
+        } 
+    }
+
+    async getSellerSoldOutItems(sellerUN) {
+        try {
+            return await prisma.item.findMany({
+                where: {
+                    AND: [
+                        { sellerUN },
+                        { quantity: {lte: 0} }
+                    ]
+                } 
+            })
+        } catch (error) {
+            return { error: error.message }
+        } 
+    }
+
 //FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
     try {
