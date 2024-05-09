@@ -32,7 +32,7 @@ async function confirmedPurchase(e) {
 
   let updatedItem ={}
   let updatedCustomer={}
-  const response2 = await fetch(`api/items/${itemId}`, { method: "GET" });
+  const response2 = await fetch(`api/items/${localStorage.currentItemId}`, { method: "GET" });
   const item = await response2.json();
 
   const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
