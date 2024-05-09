@@ -22,15 +22,18 @@ export default function MonthlyRevenue({productsPerCategory}){
         }
         useEffect(() => {
           if (productsPerCategory) {
+            console.log(productsPerCategory);
             setProducts(
               Object.entries(productsPerCategory).map(([category, data]) => ({
                 category,
-                data: Array.isArray(data) ? data.map(monthlyData => ({ month: monthlyData.month, revenue: monthlyData.revenue })) : [],
-            }))
+                data: Object.entries(data).map(itemData => ({
+                  month: itemData.month,
+                  revenue: itemData.revenue,
+                })),
+              }))
             );
           }
         }, [productsPerCategory]);
-    return (
 
         <LineChart width={500} height={300}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -50,6 +53,6 @@ export default function MonthlyRevenue({productsPerCategory}){
         />
       ))}
     </LineChart>
-  );
+  
   }
 
