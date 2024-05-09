@@ -9,17 +9,18 @@ const itemLink = document.querySelector('#item-link')
 document.addEventListener('DOMContentLoaded', handlePageLoad);
 
 async function handlePageLoad() {    
-    const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
-    const item = await response2.json()
-   
+    
     const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
     const currentUser = await response1.json()
+    
+    const response2 = await fetch(`api/items/${itemId}`,{ method: 'GET'})
+    const item = await response2.json()
 
     // const users = JSON.parse(localStorage.users)
     // const currentUser = users.find(user => user.username === localStorage.currentUser)
     // const item = items.find(i => i.itemId == itemId)
     
-    console.log("found item:", item);
+    // console.log("found item:", item);
     const itemDetailsHTML= itemDetailsToHTML(item, currentUser)
     itemDetailsCC.innerHTML = itemDetailsHTML
 
@@ -90,8 +91,8 @@ function itemDetailsToHTML(item, user){
 async function checkLoggedIn(){
 
 
-    const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
-    const user = await response1.json()
+    const response = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
+    const user = await response.json()
 
     if (!localStorage.currentUser) window.location.href = "signin.html"
 

@@ -209,6 +209,16 @@ export default class articatRepo {
         } 
     }
 
+    async getSellerItems(sellerUN) {
+        try {
+            return await prisma.item.findMany({
+                where: { sellerUN }
+            })
+        } catch (error) {
+            return { error: error.message }
+        } 
+    }
+
 //FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
     try {

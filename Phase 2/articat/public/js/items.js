@@ -3,7 +3,7 @@ let itemsFile
 const urlParameter = new URLSearchParams(window.location.search)
 const category = urlParameter.get('category')
 const search = decodeURIComponent(urlParameter.get('searchValue'))
-// const sellerItems = urlParameter.get('items')
+const sellerItems = urlParameter.get('items')
 
 const itemsContainer = document.querySelector('#items-container')
 const dropdown = document.querySelector('#dropdown-items')
@@ -20,16 +20,17 @@ async function handlePageLoad() {
         let filteredItems = []
 
         //this can be uncommented late after doing the... i think aisha knows when
-        // if (sellerItems) {
-        //     title.textContent = "My Items"
-        //     showCategoryDropDown('seller')
-        //     filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
+        if (sellerItems) {
 
+            title.textContent = "My Items"
+            showCategoryDropDown('seller')
+            filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
 
-         if (category) {
+        } else if (category) {
+
             title.textContent = "Product Catalogue"
             showCategoryDropDown()
-            const response = await fetch(`http://localhost:3000/api/items?category=${category}`,{ method: 'GET'})
+            const response = await fetch(`api/items?category=${category}`,{ method: 'GET'})
             filteredItems = await response.json()
             dropdownList.value = category.toLowerCase()
             // /api/items?category=${category}
@@ -37,12 +38,14 @@ async function handlePageLoad() {
         } else if (search) {
             title.classList.add('hidden')
             dropdown.classList.add('hidden')
-            const response = await fetch(`http://localhost:3000/api/items?searchValue=${search}`, {
+            const response = await fetch(`api/items?searchValue=${search}`, {
                 method: 'GET'})
             filteredItems = await response.json()
         }
+        
         if (!filteredItems.length) noItemsErrorMsg()
-        else {
+        
+            else {
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
             itemsContainer.innerHTML = itemsHTML
         }
