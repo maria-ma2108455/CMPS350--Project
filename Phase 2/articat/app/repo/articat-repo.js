@@ -249,8 +249,19 @@ export default class articatRepo {
         } 
     }
 
-    async updateItemClick(itemId, itemUpdate){
-
+    async updateItemClick(itemId){
+        try {
+            return await prisma.item.update({
+                where: { itemId },
+                data: {
+                    clicks:{
+                        increment: 1,    
+                    },
+                },
+            });
+        } catch (error) {
+            return { error: error.message }
+        } 
     }
 
 //FOR STATISTICS:---------------------------------------------------
