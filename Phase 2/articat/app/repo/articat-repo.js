@@ -392,22 +392,27 @@ async getTotalNumberOfSellers() {
     async getMonthlyRevenueOfProductsByCategory(){
 
         try {
-            return await prisma.purchase.groupBy({
-                by: ['item.category', { function: 'date_format', args:['%Y-%m', 'date'], as: 'month' }],
-                _sum: {
-                    quantity: true,
-                    totalPrice: true,
-                    // revenue: {
-                    //   sum: {
-                    //     value: 'totalPrice'
-                    //   },
-                    // },
-                  },
-                orderBy: [
-                    {month: 'asc'},
-                    {'item.category': 'asc  '},
-                ],
-              })
+
+            return await prisma.$queryRaw`
+                SELECT sum("totalPrice") "totalRevenue", "category", DATETIME('1319017136629', 'unixepoch', 'localtime') FROM "Purchase", "Item" GROUP BY "category"
+            `
+
+            // return await prisma.purchase.groupBy({
+            //     by: ['item.category', { function: 'date_format', args:['%Y-%m', 'date'], as: 'month' }],
+            //     _sum: {
+            //         quantity: true,
+            //         totalPrice: true,
+            //         // revenue: {
+            //         //   sum: {
+            //         //     value: 'totalPrice'
+            //         //   },
+            //         // },
+            //       },
+            //     orderBy: [
+            //         {month: 'asc'},
+            //         {'item.category': 'asc  '},
+            //     ],
+            //   })
         } catch (error) {
           return { error: error.message };
         }
