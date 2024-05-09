@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import  {React, useEffect, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -14,6 +14,7 @@ import styles from "./page.module.css";
 // import React, { PureComponent } from 'react';
 
 export default function MonthlyRevenue({productsPerCategory}){
+  
     const [products, setProducts] = useState([]);
 
     //use staate and use effect to avoid hydration errors
