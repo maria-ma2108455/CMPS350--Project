@@ -35,6 +35,8 @@ async function confirmedPurchase(e) {
   const response2 = await fetch(`api/items/${itemId}`, { method: "GET" });
   const item = await response2.json();
 
+  const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
+  const user = await response1.json()
   const swalWithBootstrapButtons = Swal.mixin();
 
   swalWithBootstrapButtons
@@ -105,7 +107,7 @@ async function confirmedPurchase(e) {
     });
 
 
-    const response = await fetch("api/purchases", {
+    const response3 = await fetch("api/purchases", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -114,6 +116,14 @@ async function confirmedPurchase(e) {
     });
 
     //customer PUT
+
+    const response4 = await fetch(`api/${user.username}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedCustomer),
+    });
 }
 
 function formToObject(form) {
