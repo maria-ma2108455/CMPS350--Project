@@ -40,7 +40,7 @@ async function handlePageLoad() {
         }
         else{
             const totalPrice = quantity * price;
-            priceOfItem.textContent = totalPrice + '$';
+            priceOfItem.textContent = totalPrice.toFixed(2) + '$';
         }
 
     });
