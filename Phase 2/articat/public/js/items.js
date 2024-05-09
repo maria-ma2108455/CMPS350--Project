@@ -92,12 +92,7 @@ function showCategoryDropDown(type) {
     
 }
 
-//also aisha here:
 async function showItems() {
-
-    // const items = JSON.parse(localStorage.items);
-    // const response = await fetch(`api/items?category=${category}`,{ method: 'GET'})
-    // const items = await response.json()
 
     const filteredItems = await getFilteredItems()
 
@@ -114,7 +109,6 @@ async function getFilteredItems() {
         const sellerUN = localStorage.currentUser
         const response = await fetch(`api/${sellerUN}/items?category=${dropdownList.value}`,{ method: 'GET'})
         filteredItems = await response.json()
-        // filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity > 0)
     } else if (dropdownList.value === 'all' && sellerItems){
         const sellerUN = localStorage.currentUser
         const response = await fetch(`api/${sellerUN}/items`,{ method: 'GET'})
@@ -122,8 +116,7 @@ async function getFilteredItems() {
     } 
     else if (dropdownList.value === 'all') {
         window.location.href = `items.html?category=${dropdownList.value}`
-    } 
-    else {
+    } else {
         const category = dropdownList.value.charAt(0).toUpperCase() + dropdownList.value.slice(1);
         window.location.href = `items.html?category=${category}`
     }
