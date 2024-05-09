@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', handlePageLoad);
 dropdownList.addEventListener('change', showItems)
 
 async function handlePageLoad() {
-
-    console.log(sellerItems);
    
     try {
         let itemsHTML = ''
