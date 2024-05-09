@@ -38,7 +38,7 @@ export default function CustomersPerCountry({customersPerCountry}) {
             barSize={70}
           >
             <XAxis dataKey="country" />
-            <YAxis tickFormatter={(value) => value.toFixed(0)}/>
+            <YAxis />
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="2 1" />
