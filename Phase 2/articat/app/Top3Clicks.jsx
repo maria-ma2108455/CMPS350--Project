@@ -25,7 +25,7 @@ export default function Top3Chart({top3Clicks}) {
              <div className={styles.barChart}>
           <BarChart
           
-            width={600}
+            width={650}
             height={400}
             data={items}
             margin={{
