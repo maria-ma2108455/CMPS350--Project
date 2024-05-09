@@ -6,5 +6,4 @@ export async function PUT(request, { params }){
     // const itemUpdate = await request.json()
     const updatedItemClick = await ArtiCatRepo.updateItemClick(itemId)
     return Response.json(updatedItemClick, { status: 200 })
-    // return Response.json('checking', { status: 200 })
 }
