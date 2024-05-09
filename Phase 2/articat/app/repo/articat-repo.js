@@ -377,7 +377,7 @@ async getTotalNumberOfSellers() {
 
         try {
             return await prisma.purchase.groupBy({
-                by: ['itemId', 'category', { function: 'toString', field: 'date', as: 'year' }],
+                by: ['itemId', 'category', { function: 'toString', field: 'date', as: 'month' }],
                 _sum: {
                   quantity: true,
                   revenue: {
@@ -388,7 +388,7 @@ async getTotalNumberOfSellers() {
                   },
                 },
                 orderBy: {
-                    year: 'asc',
+                    month: 'asc',
                 },
               })
         } catch (error) {
