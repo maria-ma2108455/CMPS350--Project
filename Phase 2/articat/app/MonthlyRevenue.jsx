@@ -17,24 +17,28 @@ export default function MonthlyRevenue({productsPerCategory}){
     const [products, setProducts] = useState([]);
 
     //use staate and use effect to avoid hydration errors
-      if (!productsPerCategory) {
-          return <p>Loading Data....</p>
-        }
+      // if (!productsPerCategory) {
+      //     return <p>Loading Data....</p>
+      //   }
         useEffect(() => {
           if (productsPerCategory) {
             console.log(productsPerCategory);
             setProducts(  
               Object.entries(productsPerCategory).map(([category, data]) => ({
                 category,
-                data: Object.entries(data).map(([month, revenue])=>({
+                data: Object.entries(data).map(({month, totalPrice})=>({
                   month,
-                  revenue
+                  revenue: totalPrice,
                 })),
               }))
             );
           }
         }, [productsPerCategory]);
 
+        if (!productsPerCategory) {
+          return <p>Loading Data....</p>
+        }
+        return(
         <LineChart width={500} height={300}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" padding={{ left: 30, right: 30 }} />
@@ -53,6 +57,6 @@ export default function MonthlyRevenue({productsPerCategory}){
         />
       ))}
     </LineChart>
-  
+        );
   }
 
