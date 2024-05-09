@@ -322,7 +322,6 @@ async getTotalNumberOfSellers() {
     }
   }
 
-
   async getTotalNumberOfCustomersPerCountry() {
     try {
         //first get all customers
@@ -342,13 +341,26 @@ async getTotalNumberOfSellers() {
     } catch (error) {
         return { error: error.message }
     }
-}
+}   
 
-
-  
-
-  
-  
+    async getAnnualRevenueOfProducts(){
+        const byYear = new Date();
+        byYear.setMonth(byYear.getMonth() - 12);
+        try {
+          //group with item id and add all quantities
+          return await prisma.purchase.groupBy({
+            by: ['itemId'], _sum: {quantity: true},
+            where: {
+              date: {gte: byYear},
+            },
+            orderBy: { 
+                _sum: {quantity: 'desc'},
+            }
+          })
+        } catch (error) {
+          return { error: error.message };
+        }
+    }
 
 }
 
