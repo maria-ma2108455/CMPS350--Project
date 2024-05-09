@@ -77,6 +77,20 @@
   margin: 4rem;
   margin-top: 1rem;
 }
+
+
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(136, 135, 135);
+  margin-top: 1rem;
+  border-radius: 1.5rem;
+  margin: 4rem;
+  margin-top: 1rem;
+
+
+}
 @media screen and (max-width: 768px) {
   .maincards {
     grid-template-columns: 1fr;

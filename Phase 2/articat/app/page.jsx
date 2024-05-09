@@ -34,17 +34,17 @@ export default async function Home() {
      </div>
 
      <h2 className={styles.charttitle}>Customers Per Country</h2>
-     <div className={styles.top3}>
+     <div className={styles.centered}>
      <CustomersPerCountry customersPerCountry={customersCount}/>
      </div>
 
      <h2 className={styles.charttitle}>Monthly Revenue</h2>
-     <div className={styles.top3}>
+     <div className={styles.centered}>
      <MonthlyRevenue productsPerCategory={monthlyProductsRevenue}/>
      </div>
 
      <h2 className={styles.charttitle}>Top 3 Most Clicked Items</h2>
-     <div className={styles.top3}>
+     <div className={styles.centered}>
      <Top3Clicks top3Clicks={clicksOfItem}/>
      </div>
     </div>
