@@ -23,12 +23,12 @@ export default function MonthlyRevenue({productsPerCategory}){
         useEffect(() => {
           if (productsPerCategory) {
             console.log(productsPerCategory);
-            setProducts(
+            setProducts(  
               Object.entries(productsPerCategory).map(([category, data]) => ({
                 category,
-                data: Object.entries(data).map(itemData => ({
-                  month: itemData.month,
-                  revenue: itemData.revenue,
+                data: Object.entries(data).map(([month, revenue])=>({
+                  month,
+                  revenue
                 })),
               }))
             );
