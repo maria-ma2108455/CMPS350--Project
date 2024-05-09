@@ -373,20 +373,24 @@ async getTotalNumberOfSellers() {
     }
 }   
 
-    async getAnnualRevenueOfProducts(){
-        const byYear = new Date();
-        byYear.setMonth(byYear.getMonth() - 12);
+    async getMonthlyRevenueOfProductsByCategory(){
+
         try {
-          //group with item id and add all quantities
-          return await prisma.purchase.groupBy({
-            by: ['itemId'], _sum: {quantity: true},
-            where: {
-              date: {gte: byYear},
-            },
-            orderBy: { 
-                _sum: {quantity: 'desc'},
-            }
-          })
+            return await prisma.purchase.groupBy({
+                by: ['itemId', 'category', { function: 'toString', field: 'date', as: 'month' }],
+                _sum: {
+                  quantity: true,
+                  revenue: {
+                    sum: {
+                      field: 'item.price',
+                      multiply: 'quantity',
+                    },
+                  },
+                },
+                orderBy: {
+                    month: 'asc',
+                },
+              })
         } catch (error) {
           return { error: error.message };
         }
