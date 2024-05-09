@@ -19,7 +19,7 @@ async function handlePageLoad() {
    
     try {
         let itemsHTML = ''
-        const filteredItems = await getFilteredItems()
+        const filteredItems = await getInitialFilteredItems()
         
         if (!filteredItems.length) noItemsErrorMsg()
         
@@ -34,7 +34,7 @@ async function handlePageLoad() {
     }
 }
 
-async function getFilteredItems() {
+async function getInitialFilteredItems() {
 
     let filteredItems = []
 
@@ -95,25 +95,40 @@ function showCategoryDropDown(type) {
 //also aisha here:
 async function showItems() {
 
-    const items = JSON.parse(localStorage.items);
+    // const items = JSON.parse(localStorage.items);
+    // const response = await fetch(`api/items?category=${category}`,{ method: 'GET'})
+    // const items = await response.json()
 
-    let filteredItems = []
-
-    if (dropdownList.value === 'available') {
-        filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity > 0)
-    } else if (dropdownList.value === 'sold-out') {
-        filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity <= 0)
-    } else if (dropdownList.value === 'all' && sellerItems){
-        filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
-    } else if (dropdownList.value === 'all') {
-        filteredItems = items
-    } else {
-        filteredItems = items.filter(item => item.category.toLowerCase() === dropdownList.value)
-    }
+    const filteredItems = await getFilteredItems()
 
     let itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
     itemsContainer.innerHTML = itemsHTML
 
+}
+
+async function getFilteredItems() {
+
+    let filteredItems = []
+
+    if (dropdownList.value === 'available' || dropdownList.value === 'sold-out') {
+        const sellerUN = localStorage.currentUser
+        const response = await fetch(`api/${sellerUN}/items?category=${dropdownList.value}`,{ method: 'GET'})
+        filteredItems = await response.json()
+        // filteredItems = items.filter(item => item.seller.username === localStorage.currentUser && item.quantity > 0)
+    } else if (dropdownList.value === 'all' && sellerItems){
+        const sellerUN = localStorage.currentUser
+        const response = await fetch(`api/${sellerUN}/items`,{ method: 'GET'})
+        filteredItems = await response.json()
+    } 
+    else if (dropdownList.value === 'all') {
+        window.location.href = `items.html?category=${dropdownList.value}`
+    } 
+    else {
+        const category = dropdownList.value.charAt(0).toUpperCase() + dropdownList.value.slice(1);
+        window.location.href = `items.html?category=${category}`
+    }
+
+    return filteredItems
 }
 
 function itemToHTML(item){
