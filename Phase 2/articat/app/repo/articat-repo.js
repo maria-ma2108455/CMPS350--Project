@@ -334,8 +334,7 @@ async getTotalNumberOfSellers() {
             const address = customer.shippingAddress.split(',');
 
             const country = address.length > 0 ? address[address.length - 1].trim() : 'Unknown';
-            // const trimmedCountry = country.trim(); // Trim any whitespace
-            countsPerCountry[country] = (countsPerCountry[country] || 0) + 1; // Increment count
+            countsPerCountry[country] = (countsPerCountry[country] || 0) + 1;
         });
 
         return countsPerCountry;
