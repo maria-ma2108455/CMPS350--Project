@@ -32,8 +32,8 @@ async function showDropDown() {
 
         // const currentUser = users.find(user => user.username == localStorage.currentUser)
         
-        const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
-        const currentUser = await response1.json()
+        const response = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
+        const currentUser = await response.json()
         
         currentUser.type == "seller" ? 
         list = [
