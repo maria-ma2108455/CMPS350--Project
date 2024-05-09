@@ -8,15 +8,18 @@ export default function CustomersPerCountry({customersPerCountry}) {
 
   //use staate and use effect to avoid hydration errors
     if (!customersPerCountry) {
-        return <p>....</p>
+        return <p>Loading Data....</p>
       }
       useEffect(() => {
         if (customersPerCountry) {
-        setCustomers(customersPerCountry.map(([country, count])=>
-            ({country, numberOfCustomers: count}))
-        )
+          setCustomers(
+            Object.entries(customersPerCountry).map(([country, count]) => ({
+              country,
+              numberOfCustomers: count,
+            }))
+          );
         }
-    }, [customersPerCountry])
+      }, [customersPerCountry]);
     
         return (
             <>
