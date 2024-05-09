@@ -14,7 +14,7 @@ export default function Top3Chart({top3Items}) {
         if (top3Items) {
           setItems(top3Items.map(item => ({
             name: item.name,
-            totalQuantitySold: item.totalQuantitySold,
+            "Total Quantity Sold": item.totalQuantitySold,
           }))
         )
         }
@@ -41,7 +41,7 @@ export default function Top3Chart({top3Items}) {
             <Tooltip />
             <Legend />
             <CartesianGrid strokeDasharray="2 1" />
-            <Bar dataKey="totalQuantitySold" fill="#d65f83" background={{ fill: '#eee' }} />
+            <Bar dataKey="Total Quantity Sold" fill="#d65f83" background={{ fill: '#eee' }} />
           </BarChart>
           </div>
           </>
