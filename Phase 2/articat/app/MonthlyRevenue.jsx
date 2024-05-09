@@ -13,7 +13,7 @@ import styles from "./page.module.css";
 
 // import React, { PureComponent } from 'react';
 
-export default function MonthlyRevenue({productsPerCategory}){
+export default function MonthlyRevenue(productsPerCategory){
     const [products, setProducts] = useState([]);
 
     //use staate and use effect to avoid hydration errors
