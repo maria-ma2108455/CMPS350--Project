@@ -80,7 +80,7 @@ function showCategoryDropDown(type) {
 }
 
 //also aisha here:
-function showItems() {
+async function showItems() {
 
     const items = JSON.parse(localStorage.items);
 

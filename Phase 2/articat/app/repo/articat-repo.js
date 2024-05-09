@@ -187,7 +187,7 @@ export default class articatRepo {
         } 
     }
 
-    // add purchase, getcustomerinfo
+    // add purchase
     async addPurchase(purchase){
         try {
             return prisma.purchase.create({
@@ -196,6 +196,17 @@ export default class articatRepo {
         } catch (error) {
             return { error: error.message }
         }
+    }
+
+    async updateCustomer(username, customer) {
+        try {
+            return await prisma.customer.update({
+                where: { username },
+                data: customer
+            })
+        } catch (error) {
+            return { error: error.message }
+        } 
     }
 
 //FOR STATISTICS:---------------------------------------------------

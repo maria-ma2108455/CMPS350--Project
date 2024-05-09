@@ -29,9 +29,18 @@ async function showFormFields() {
 
 async function confirmedPurchase(e) {
   e.preventDefault();
-  const response2 = await fetch(`api/items/${itemId}`, { method: "GET" });
+
+  let updatedItem = {};
+  let updatedCustomer = {};
+  const response2 = await fetch(`api/items/${localStorage.currentItemId}`, {
+    method: "GET",
+  });
   const item = await response2.json();
 
+  const response1 = await fetch(`api/${localStorage.currentUser}`, {
+    method: "GET",
+  });
+  const user = await response1.json();
   const swalWithBootstrapButtons = Swal.mixin();
 
   swalWithBootstrapButtons
@@ -52,20 +61,61 @@ async function confirmedPurchase(e) {
 
         const totalPrice = item.price * localStorage.custQuantity;
 
+        //update PUT
+        quantity = item.quantity;
+        quantity -= localStorage.custQuantity;
+        // item.quantity -= localStorage.custQuantity;
+        updatedItem.quantity = quantity;
+
+        //update
         //update customer
         // user.customer.moneyBalance -= totalPrice;
-        //update PUT
-        // item.quantity -= localStorage.custQuantity;
-        //update
+        balance = user.customer.moneyBalance;
+        balance -= totalPrice;
+        updatedCustomer.moneyBalance = balance;
         // user.customer.name = purchaseDetails.name;
+        updatedCustomer.name = purchaseDetails.name;
         // user.customer.surname = purchaseDetails.surname;
+        updatedCustomer.surname = purchaseDetails.surname;
         // user.customer.phoneNumber = purchaseDetails.phoneNumber;
+        updatedCustomer.phoneNumber = purchaseDetails.phoneNumber;
         // user.customer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`;
+        updatedCustomer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`;
 
         addPurchase(user.customer, item);
 
         // localStorage.users = JSON.stringify(user)
         // localStorage.items = JSON.stringify(item)
+
+        console.log(updatedItem);
+        console.log(updatedCustomer);
+
+        const updatedData = async () => {
+          const response3 = await fetch(
+            `api/items/${localStorage.currentItemId}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(updatedItem),
+            }
+          );
+          // const responseData3 = await response3.json();
+
+          //customer PUT
+
+          const response4 = await fetch(`api/${user.username}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedCustomer),
+          });
+          // const responseData4 = await response4.json();
+        };
+
+        updatedData()
 
         swalWithBootstrapButtons
           .fire({
@@ -108,25 +158,29 @@ async function addPurchase(foundUser, foundItem) {
 
   purchase.quantity = JSON.parse(localStorage.custQuantity);
 
-  const { seller, ...item } = foundItem; //?
-  const sellerCompany = seller.companyName;
-  item.seller = sellerCompany;
+  // const { seller, ...item } = foundItem; //?
+  // const sellerCompany = seller.companyName;
+  // item.seller = sellerCompany;
   // purchase.item = { ...item };
-  purchase.itemId=item.itemId;
+  purchase.itemId = foundItem.itemId;
 
-  const { purchases, ...customer } = foundUser;
-  purchase.customer = { ...customer };
+  // const { purchases, ...customer } = foundUser;
+  // purchase.customer = { ...customer };
 
   const totalPrice = foundItem.price * localStorage.custQuantity;
   purchase.totalPrice = totalPrice;
 
   purchase.date = new Date();
+  purchase.customerUN=localStorage.currentUser
 
   // const updatedPurchases = JSON.parse(localStorage.purchases);
   // updatedPurchases.push(purchase)
   // localStorage.purchases = JSON.stringify(updatedPurchases)
 
   //use the post
+  
+  console.log(purchase);
+
   const response = await fetch("api/purchases", {
     method: "POST",
     headers: {
@@ -136,7 +190,7 @@ async function addPurchase(foundUser, foundItem) {
   });
   const responseData = await response.json();
 
-  delete purchase.totalPrice;
+  // delete purchase.totalPrice;
   // foundUser.purchases.push(purchase); //?
 
   delete localStorage.custQuantity;

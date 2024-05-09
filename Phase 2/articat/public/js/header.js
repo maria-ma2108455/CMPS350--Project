@@ -24,13 +24,16 @@ function signIn() {
     window.location.href = "signin.html"
 }
 
-function showDropDown() {
+async function showDropDown() {
     if (localStorage.currentUser) {
         let list = []
 
-        const users = JSON.parse(localStorage.users)
+        // const users = JSON.parse(localStorage.users)
 
-        const currentUser = users.find(user => user.username == localStorage.currentUser)
+        // const currentUser = users.find(user => user.username == localStorage.currentUser)
+        
+        const response1 = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
+        const currentUser = await response1.json()
         
         currentUser.type == "seller" ? 
         list = [
