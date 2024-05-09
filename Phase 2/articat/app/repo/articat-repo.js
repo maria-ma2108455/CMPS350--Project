@@ -377,18 +377,20 @@ async getTotalNumberOfSellers() {
 
         try {
             return await prisma.purchase.groupBy({
-                by: ['item.category', { function: 'date_category', args:['%Y-%m', 'date'], as: 'month' }],
+                by: ['item.category', { function: 'date_format', args:['%Y-%m', 'date'], as: 'month' }],
                 _sum: {
                     quantity: true,
-                    revenue: {
-                      sum: {
-                        value: 'quantity*item.price'
-                      },
-                    },
+                    totalPrice: true,
+                    // revenue: {
+                    //   sum: {
+                    //     value: 'totalPrice'
+                    //   },
+                    // },
                   },
-                orderBy: {
-                    month: 'asc',
-                },
+                orderBy: [
+                    {month: 'asc'},
+                    {'item.category': 'asc  '},
+                ],
               })
         } catch (error) {
           return { error: error.message };
