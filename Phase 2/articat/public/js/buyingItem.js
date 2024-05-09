@@ -113,7 +113,7 @@ async function confirmedPurchase(e) {
       body: JSON.stringify(updatedItem),
     });
 
-    //cust PUT
+    //customer PUT
 }
 
 function formToObject(form) {
@@ -164,7 +164,7 @@ async function addPurchase(foundUser, foundItem) {
   });
   const responseData = await response.json();
 
-  delete purchase.totalPrice;
+  // delete purchase.totalPrice;
   // foundUser.purchases.push(purchase); //?
 
   delete localStorage.custQuantity;
