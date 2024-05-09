@@ -82,6 +82,8 @@ async function confirmedPurchase(e) {
         // user.customer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.city}`;
         updatedCustomer.shippingAddress = `${purchaseDetails.address}, ${purchaseDetails.country}`;
 
+        console.log(updatedCustomer.shippingAddress);
+
         addPurchase(user.customer, item);
 
         // localStorage.users = JSON.stringify(user)
