@@ -14,38 +14,16 @@ document.addEventListener('DOMContentLoaded', handlePageLoad);
 dropdownList.addEventListener('change', showItems)
 
 async function handlePageLoad() {
+
+    console.log(sellerItems);
    
     try {
         let itemsHTML = ''
-        let filteredItems = []
-
-        //this can be uncommented late after doing the... i think aisha knows when
-        if (sellerItems) {
-
-            title.textContent = "My Items"
-            showCategoryDropDown('seller')
-            filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
-
-        } else if (category) {
-
-            title.textContent = "Product Catalogue"
-            showCategoryDropDown()
-            const response = await fetch(`api/items?category=${category}`,{ method: 'GET'})
-            filteredItems = await response.json()
-            dropdownList.value = category.toLowerCase()
-            // /api/items?category=${category}
-
-        } else if (search) {
-            title.classList.add('hidden')
-            dropdown.classList.add('hidden')
-            const response = await fetch(`api/items?searchValue=${search}`, {
-                method: 'GET'})
-            filteredItems = await response.json()
-        }
+        const filteredItems = await getFilteredItems()
         
         if (!filteredItems.length) noItemsErrorMsg()
         
-            else {
+        else {
             itemsHTML = filteredItems.map(item => itemToHTML(item)).join(' ')
             itemsContainer.innerHTML = itemsHTML
         }
@@ -54,6 +32,38 @@ async function handlePageLoad() {
     } catch (error) {
         console.error("Failed to load items:", error);  
     }
+}
+
+async function getFilteredItems() {
+
+    let filteredItems = []
+
+    if (sellerItems) {
+
+        title.textContent = "My Items"
+        showCategoryDropDown('seller')
+        const sellerUN = localStorage.currentUser
+        const response = await fetch(`api/${sellerUN}/items`,{ method: 'GET'})
+        filteredItems = response.json()
+
+    } else if (category) {
+
+        title.textContent = "Product Catalogue"
+        showCategoryDropDown()
+        const response = await fetch(`api/items?category=${category}`,{ method: 'GET'})
+        filteredItems = await response.json()
+        dropdownList.value = category.toLowerCase()
+        // /api/items?category=${category}
+
+    } else if (search) {
+        title.classList.add('hidden')
+        dropdown.classList.add('hidden')
+        const response = await fetch(`api/items?searchValue=${search}`, {
+            method: 'GET'})
+        filteredItems = await response.json()
+    }
+
+    return filteredItems
 }
 
 function noItemsErrorMsg() {
