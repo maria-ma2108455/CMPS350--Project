@@ -28,18 +28,62 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
     const format = date.toLocaleString("en-GB", {
       month: "short",
       year: "numeric"
-    }).replace(" ","-")
+    }).replace(" ", "-")
     return format
   }
 
+  function getUniqueMonths (data) {
+    return [...new Set(data.map(item => item.MONTH))];
+  }
+
+
+  function formatData(uniqueMonths,data) {
+    return uniqueMonths.map(month => {
+      const monthData = data.filter(row => row.MONTH === month)
+      return formatMonthData(monthData)
+    })
+  }
+
+  function formatMonthData  (monthData)  {
+    let ceramics = 0;
+    let jewelry = 0;
+    let paintings = 0;
+
+    monthData.forEach(item => {
+        if (item.category === 'Ceramics') {
+          ceramics = item.totalRevenue;
+        } else if (item.category === 'Jewelry') {
+          jewelry = item.totalRevenue;
+        } else if (item.category === 'Paintings') {
+          paintings = item.totalRevenue;
+        }
+    });
+  
+
+    return {
+        Ceramics: ceramics,
+        Jewelry: jewelry,
+        Paintings: paintings,
+        MONTH: monthData[0].MONTH 
+    };
+};
+
   useEffect(() => {
     if (monthlyCategoryRevenue) {
-      setProducts(  
+      setProducts(
         monthlyCategoryRevenue.map(row => {
-          row[row.category] = row.totalRevenue
           row.MONTH = formatMonth(row.MONTH)
         })
+        
       )
+      const uniqueMonths = getUniqueMonths(monthlyCategoryRevenue)
+      const data = formatData(uniqueMonths,monthlyCategoryRevenue)
+
+      setProducts(
+        data
+      )
+      // const check = transformedData(uniqueMonths)
+      console.log(data);
     }
   }, [monthlyCategoryRevenue]);
 
@@ -48,10 +92,10 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
   }
   return (
     <ResponsiveContainer width="65%" height={450}>
-      <LineChart width={500} height={300} data={monthlyCategoryRevenue}>
+      <LineChart width={500} height={300} data={products}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="MONTH" padding={{ left: 30, right: 30 }} />
-        <YAxis/>
+        <YAxis />
         <Tooltip />
         <Legend />
         <Line
@@ -61,8 +105,8 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
           activeDot={{ r: 8 }}
           strokeWidth={2.5}
         />
-        <Line type="monotone" dataKey="Jewelry" stroke="#f68ba2" strokeWidth={2.5} />
-        <Line type="monotone" dataKey="Paintings" stroke="#83ccd2" strokeWidth={2.5}/>
+        <Line type="monotone" dataKey="Jewelry" stroke="#f68ba2" strokeWidth={2.5} activeDot={{ r: 8 }} />
+        <Line type="monotone" dataKey="Paintings" stroke="#83ccd2" strokeWidth={2.5} activeDot={{ r: 8 }} />
       </LineChart>
     </ResponsiveContainer>
   );
