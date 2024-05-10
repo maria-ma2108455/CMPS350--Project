@@ -7,7 +7,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 import styles from "./page.module.css";
 
@@ -27,9 +28,9 @@ export default function MonthlyRevenue({productsPerCategory}){
             setProducts(  
               Object.entries(productsPerCategory).map(([category, data]) => ({
                 category,
-                data: Object.entries(data).map(({month, totalRevenue})=>({
+                data: Object.entries(data).map(({month, totalPrice})=>({
                   month,
-                  totalRevenue,
+                  revenue: totalPrice,
                 })),
               }))
             );
@@ -40,7 +41,7 @@ export default function MonthlyRevenue({productsPerCategory}){
           return <p>Loading Data....</p>
         }
         return(
-          
+          <ResponsiveContainer width="65%" height={450}>
         <LineChart width={500} height={300}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" padding={{ left: 30, right: 30 }} />
@@ -59,6 +60,7 @@ export default function MonthlyRevenue({productsPerCategory}){
         />
       ))}
     </LineChart>
+    </ResponsiveContainer>
         );
   }
 
