@@ -344,14 +344,12 @@ async getTotalNumberOfSellers() {
   }
   async getitemsDetails(itemIds) {
     try {
-      const itemsDetails= [];
+      const itemsDetails= []
       for (const item of itemIds) {
         const itemDetails= await prisma.item.findUnique({
           where: { itemId: item.itemId }
         })
-        itemsDetails.push({
-            ...itemDetails, totalQuantitySold: item._sum.quantity
-          })
+        itemsDetails.push({...itemDetails, totalQuantitySold: item._sum.quantity })
       }
       return itemsDetails;
     } catch (error) {
@@ -367,19 +365,17 @@ async getTotalNumberOfSellers() {
 
         const countsPerCountry = {};
         allCustomers.forEach(customer => {
-            // const country = customer.shippingAddress.split(',');
             const address = customer.shippingAddress.split(',');
-
             const country = address.length > 0 ? address[address.length - 1].trim() : 'Unknown';
             countsPerCountry[country] = (countsPerCountry[country] || 0) + 1;
-        });
-
+        })
         return countsPerCountry;
 
     } catch (error) {
         return { error: error.message }
     }
 }   
+
 //stat4
     async getMonthlyRevenueOfProductsByCategory(){
 
