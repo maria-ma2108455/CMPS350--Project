@@ -52,7 +52,7 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
 
      <h2 className={styles.charttitle} id="topProducts">Top 3 Products</h2>
      <div className={styles.top3}>
-     <Top3Chart top3Items={itemsdetails}/>
+     <Top3Chart top3Items={itemsdetails} className={styles.chartSpace}/>
      <Top3Details top3Items={itemsdetails}/>
      </div>
 
@@ -78,7 +78,7 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
 
 
       <h2 className={styles.charttitle}>Top 5 Most Clicked Products</h2>
-     <div className={styles.top3}>
+     <div className={styles.top5}>
      <Top5Clicks top5Clicks={clicksOfItem}/>
      <TopClicksDetails top3Items={clicksOfItem}/>
      </div>

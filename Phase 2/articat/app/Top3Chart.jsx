@@ -42,7 +42,7 @@ export default function Top3Chart({ top3Items }) {
         <CartesianGrid strokeDasharray="2 1" />
         <Bar
           dataKey="Total Quantity Sold"
-          fill="#d65f83"
+          fill="#f5a9bbee"
           background={{ fill: "#eee" }}
         />
       </BarChart>

@@ -19,7 +19,7 @@ export default function Header() {
     <header className="head">
         <img src="images/no bg logo.PNG" alt="logo" className="logo" id="logo"></img>
         <div className="top-bar">
-          <h1>Dashboard</h1>
+          <h1 className="title">Dashboard</h1>
           <button className="signInButton" id="signInBtn" onClick={onClick}>Sign Out</button>
         </div>
         {/* <!-- Navigation --> */}
@@ -33,7 +33,10 @@ export default function Header() {
                 <li><a href="#topClicked">Top 5 Most Clicked Products</a></li>
             </ul>
         </nav>
+       
+
     </header>
+    <hr/>
         {/* page end div */}
         </div> 
   )
