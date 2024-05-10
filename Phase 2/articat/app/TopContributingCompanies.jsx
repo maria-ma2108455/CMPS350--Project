@@ -42,7 +42,7 @@ export default function TopContributingCompanies({top3Companies}) {
         <CartesianGrid strokeDasharray="2 1" />
         <Bar
           dataKey="Total Product Quantity"
-          fill="#d65f83"
+          fill="#8cdfc3"
           background={{ fill: "#eee" }}
         />
       </BarChart>

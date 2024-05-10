@@ -52,7 +52,7 @@ export default function Top5Chart({ top5Clicks }) {
         <CartesianGrid strokeDasharray="2 1" />
         <Bar
           dataKey="Number Of Clicks"
-          fill="#d65f83"
+          fill="#d7b9e5"
           background={{ fill: "#eee" }}
         />
       </BarChart>

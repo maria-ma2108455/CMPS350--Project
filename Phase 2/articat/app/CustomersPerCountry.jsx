@@ -52,7 +52,7 @@ export default function CustomersPerCountry({ customersPerCountry }) {
           <CartesianGrid strokeDasharray="2 1" />
           <Bar
             dataKey="Number Of Customers"
-            fill="#d65f83"
+            fill="#a4daf3"
             background={{ fill: "#eee" }}
           />
         </BarChart>

@@ -33,7 +33,10 @@ export default function Header() {
                 <li><a href="#topClicked">Top 5 Most Clicked Products</a></li>
             </ul>
         </nav>
+       
+
     </header>
+    <hr/>
         {/* page end div */}
         </div> 
   )
