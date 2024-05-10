@@ -85,6 +85,7 @@
   border: 2px solid rgb(136, 135, 135);
   padding: 1.5rem;
   border-radius: 1.5rem;
+  margin: 4rem;
 }
 @media screen and (max-width: 768px) {
   .maincards {
