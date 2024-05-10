@@ -15,7 +15,7 @@
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 5px;
+  gap: 2px;
 
 }
 
@@ -103,8 +103,10 @@
   margin-bottom: 0;
 
 }
-
-
+/* 
+.chartSpace{
+  margin: 0;
+} */
 .centered{
   display: flex;
   justify-content: center;
@@ -123,5 +125,26 @@
     margin-bottom: 0;
   }
 
+  
+.top3{
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: column; */
 
+}
+
+.twoCards{
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.itemDetails {
+  
+  margin-top: 1rem;
+  
+
+}
 }
