@@ -15,7 +15,7 @@ import styles from "./page.module.css";
 export default function CustomersPerCountry({ customersPerCountry }) {
   const [customers, setCustomers] = useState([]);
 
-  //use staate and use effect to avoid hydration errors
+  //use state and use effect to avoid hydration errors
   if (!customersPerCountry) {
     return <p>Loading Data....</p>;
   }

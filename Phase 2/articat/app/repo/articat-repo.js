@@ -2,9 +2,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export default class articatRepo {
-    async getAllUsers() {
-        return await prisma.user.findMany()
-    }
+
     async getUser(username) {
 
         return await prisma.user.findUnique({
@@ -13,34 +11,9 @@ export default class articatRepo {
             },
             include: {
                 seller: true,
-                customer:true
-             }
-        })
-    }
-    async getCustomer(username) {
-        return await prisma.customer.findUnique({
-            where: {
-                username: username
-            },
-            include: {
-                user: true
+                customer: true
             }
         })
-    }
-
-    async getSeller(username) {
-        try {
-            return await prisma.customer.findUnique({
-                where: {
-                    username: username
-                },
-                include: {
-                    user: true
-                }
-            })
-        } catch (error) {
-            return { error: error.message }
-        }
     }
 
     async getAllItems() {
@@ -50,6 +23,7 @@ export default class articatRepo {
             return { error: error.message }
         }
     }
+
     async getItems(category) {
         try {
             if (category === 'all')
@@ -182,11 +156,11 @@ export default class articatRepo {
             })
         } catch (error) {
             return { error: error.message }
-        } 
+        }
     }
 
 
-    async addPurchase(purchase){
+    async addPurchase(purchase) {
         try {
             return prisma.purchase.create({
                 data: purchase
@@ -204,7 +178,7 @@ export default class articatRepo {
             })
         } catch (error) {
             return { error: error.message }
-        } 
+        }
     }
 
     async getSellerItems(sellerUN) {
@@ -214,7 +188,7 @@ export default class articatRepo {
             })
         } catch (error) {
             return { error: error.message }
-        } 
+        }
     }
 
     async getSellerAvailableItems(sellerUN) {
@@ -223,13 +197,13 @@ export default class articatRepo {
                 where: {
                     AND: [
                         { sellerUN },
-                        { quantity: {gt: 0} }
+                        { quantity: { gt: 0 } }
                     ]
-                } 
+                }
             })
         } catch (error) {
             return { error: error.message }
-        } 
+        }
     }
 
     async getSellerSoldOutItems(sellerUN) {
@@ -238,143 +212,129 @@ export default class articatRepo {
                 where: {
                     AND: [
                         { sellerUN },
-                        { quantity: {lte: 0} }
+                        { quantity: { lte: 0 } }
                     ]
-                } 
+                }
             })
         } catch (error) {
             return { error: error.message }
-        } 
+        }
     }
 
-    async updateItemClick(itemId){
+    async updateItemClick(itemId) {
         try {
             return await prisma.item.update({
                 where: { itemId },
                 data: {
-                    clicks:{
-                        increment: 1,    
+                    clicks: {
+                        increment: 1,
                     },
                 },
             });
         } catch (error) {
             return { error: error.message }
-        } 
+        }
     }
 
-//----------------FOR STATISTICS:---------------------------------------------------
-async getUnpurchasedProducts() {
-    try {
-        return await prisma.item.findMany({
+    //----------------FOR STATISTICS:---------------------------------------------------
+
+    //Stat1: 1-	Total number of customers, companies, categories and products 
+
+    async getTotalNumberOfCustomers() {
+        try {
+            return await prisma.customer.count()
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
+
+    async getTotalNumberOfSellers() {
+        try {
+            return await prisma.seller.count()
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
+
+    async getTotalNumberOfProducts() {
+        try {
+            return await prisma.item.count();
+
+        } catch (error) {
+            return { error: error.message }
+        }
+
+    }
+
+    async getTotalNumberOfCategories() {
+        try {
+            const groupedCategories = await prisma.item.groupBy({
+                by: ['category']
+            })
+            //length of array is no of categorires 
+            return groupedCategories.length;
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
+
+    //Stat2: Top 3 most bought products over the last 6 months
+
+    async getTop3PurchasedProducts() {
+        const before6month = new Date();
+        before6month.setMonth(before6month.getMonth() - 6)
+        try {
+            //group with item id and add all quantities
+            return await prisma.purchase.groupBy({
+                by: ['itemId'], _sum: { quantity: true },
                 where: {
-                  purchases: {
-                    none: {}
-                  }
-                }
-              })
-        
-    } catch (error) {
-        return { error: error.message }
+                    date: { gte: before6month },
+                },
+                orderBy: {
+                    _sum: { quantity: 'desc' },
+                },
+                take: 3  //top3
+            })
+        } catch (error) {
+            return { error: error.message };
+        }
     }
-}
-
-//Stat1: 1-	Total number of customers, companies, categories and products 
-
-async getTotalNumberOfCustomers() {
-    try {
-        return await prisma.customer.count()
-    } catch (error) {
-        return { error: error.message }
-    }
-}
-
-async getTotalNumberOfSellers() {
-    try {
-        return await prisma.seller.count()
-    } catch (error) {
-        return { error: error.message }
-    }
-}
-
-  async getTotalNumberOfProducts() {
-    try {
-        return await prisma.item.count();
-          
-    } catch (error) {
-        return { error: error.message }
+    async getitemsDetails(itemIds) {
+        try {
+            const itemsDetails = []
+            for (const item of itemIds) {
+                const itemDetails = await prisma.item.findUnique({
+                    where: { itemId: item.itemId }
+                })
+                itemsDetails.push({ ...itemDetails, totalQuantitySold: item._sum.quantity })
+            }
+            return itemsDetails;
+        } catch (error) {
+            return { error: error.message };
+        }
     }
 
-  }
+    //Stat3: Number Of Customers Per Country
+    async getTotalNumberOfCustomersPerCountry() {
+        try {
+            //first get all customers
+            const allCustomers = await prisma.customer.findMany()
 
-  async  getTotalNumberOfCategories() {
-    try {
-      const groupedCategories = await prisma.item.groupBy({
-        by: ['category']
-      })
-      //length of array is no of categorires 
-      return groupedCategories.length;
-    } catch (error) {
-        return { error: error.message }
+            const countsPerCountry = {};
+            allCustomers.forEach(customer => {
+                const address = customer.shippingAddress.split(',');
+                const country = address.length > 0 ? address[address.length - 1].trim() : 'Unknown';
+                countsPerCountry[country] = (countsPerCountry[country] || 0) + 1;
+            })
+            return countsPerCountry;
+
+        } catch (error) {
+            return { error: error.message }
+        }
     }
-  }
-  
- //Stat2: Top 3 most bought products over the last 6 months
 
-  async  getTop3PurchasedProducts() {
-    const before6month = new Date();
-    before6month.setMonth(before6month.getMonth()-6)
-    try {
-      //group with item id and add all quantities
-      return await prisma.purchase.groupBy({
-        by: ['itemId'], _sum: {quantity: true},
-        where: {
-          date: {gte: before6month},
-        },
-        orderBy: { 
-            _sum: {quantity: 'desc'},
-        },
-        take: 3  //top3
-      })
-    } catch (error) {
-      return { error: error.message };
-    }
-  }
-  async getitemsDetails(itemIds) {
-    try {
-      const itemsDetails= []
-      for (const item of itemIds) {
-        const itemDetails= await prisma.item.findUnique({
-          where: { itemId: item.itemId }
-        })
-        itemsDetails.push({...itemDetails, totalQuantitySold: item._sum.quantity })
-      }
-      return itemsDetails;
-    } catch (error) {
-      return { error: error.message };
-    }
-  }
-
-  //Stat3: Number Of Customers Per Country
-  async getTotalNumberOfCustomersPerCountry() {
-    try {
-        //first get all customers
-        const allCustomers = await prisma.customer.findMany()
-
-        const countsPerCountry = {};
-        allCustomers.forEach(customer => {
-            const address = customer.shippingAddress.split(',');
-            const country = address.length > 0 ? address[address.length - 1].trim() : 'Unknown';
-            countsPerCountry[country] = (countsPerCountry[country] || 0) + 1;
-        })
-        return countsPerCountry;
-
-    } catch (error) {
-        return { error: error.message }
-    }
-}   
-
-//Stat4: Monthly revenue of each category
-    async getMonthlyRevenueOfProductsByCategory(){
+    //Stat4: Monthly revenue of each category
+    async getMonthlyRevenueOfProductsByCategory() {
 
         try {
 
@@ -382,69 +342,59 @@ async getTotalNumberOfSellers() {
                 SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase" , "Item" WHERE "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH","category" ORDER BY "date"
             `
 
-            // return await prisma.$queryRaw`
-            //     SELECT 
-            //     (SELECT sum("totalPrice"), STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTHCeramics" FROM "Purchase","Item" where "category"="Ceramics" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months')) "Ceramics" GROUP BY "MONTH",
-            //     (SELECT sum("totalPrice"), STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTHJewelry" FROM "Purchase","Item" where "category"="Jewelry" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months')) "Jewelry" GROUP BY "MONTH",
-            //     (SELECT sum("totalPrice"), STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTHPaintings" FROM "Purchase","Item" where "category"="Paintings" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months')) "Paintings" GROUP BY "MONTH",
-            //     STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase" , "Item" WHERE "Purchase"."itemId"="Item"."itemid" AND "MONTHCeramics"="MONTH" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') 
-            //     GROUP BY "MONTH" ORDER BY "date"
-            // `
-
         } catch (error) {
-          return { error: error.message };
+            return { error: error.message };
         }
     }
 
     //Stat5: Top 5 Most Clicked Products
-    async  getTopFiveMostClickedProducts() {
+    async getTopFiveMostClickedProducts() {
         try {
-          return await prisma.item.findMany({
-            orderBy: { 
-                clicks: 'desc'
-            },
-            take: 5
-          })
+            return await prisma.item.findMany({
+                orderBy: {
+                    clicks: 'desc'
+                },
+                take: 5
+            })
         } catch (error) {
-          return { error: error.message };
+            return { error: error.message };
         }
-      }
-
-       //Stat6: Top 3 companies with most no. of sales over the last 6 months
-
-  async getTop3Companies() {
-    try {
-      //group with item id and add all quantities
-      return await prisma.item.groupBy({
-        by: ['sellerUN'], _sum: {quantity: true},
-        orderBy: { 
-            _sum: {quantity: 'desc'},
-        },
-        take: 3  //top3
-      })
-    } catch (error) {
-      return { error: error.message };
-    }
-  }
-
-  async getCompanyDetails(companies) {
-    try {
-      const companyDetails = []
-      for (const company of companies) {
-        const companyDetail = await prisma.seller.findUnique({
-          where: { username: company.sellerUN },
-          select: {
-            companyName: true
-          }
-        })
-        companyDetails.push({...companyDetail, totalQuantity: company._sum.quantity })
-      }
-      return companyDetails;
-    } catch (error) {
-      return { error: error.message };
-    }
-  }
-
     }
 
-    
+    //Stat6: Top 3 companies selling the most no. of products
+
+    async getTop3Companies() {
+        try {
+            //group with item id and add all quantities
+            return await prisma.item.groupBy({
+                by: ['sellerUN'], _sum: { quantity: true },
+                orderBy: {
+                    _sum: { quantity: 'desc' },
+                },
+                take: 3  //top3
+            })
+        } catch (error) {
+            return { error: error.message };
+        }
+    }
+
+    async getCompanyDetails(companies) {
+        try {
+            const companyDetails = []
+            for (const company of companies) {
+                const companyDetail = await prisma.seller.findUnique({
+                    where: { username: company.sellerUN },
+                    select: {
+                        companyName: true
+                    }
+                })
+                companyDetails.push({ ...companyDetail, totalQuantity: company._sum.quantity })
+            }
+            return companyDetails;
+        } catch (error) {
+            return { error: error.message };
+        }
+    }
+
+}
+
