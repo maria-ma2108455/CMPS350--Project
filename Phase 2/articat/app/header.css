@@ -36,7 +36,11 @@ body {
         color: var(--color--icons);
         font-size: 2rem;
     }
-
+.title{
+    margin-right: 6rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 37PX;
+}
     .hidden {
         display: none;
     }
@@ -102,7 +106,7 @@ body {
             .signInButton {
                 border: none;
                 margin: 0.5rem 0rem;
-                background-color: white;
+                background-color: var(--color--bg);
                 padding: 0.5rem 1rem;
                 border-radius: 4rem;
             }
@@ -300,7 +304,7 @@ h2 {
 
 }
 
-@media (max-width: 49rem) {
+@media (max-width: 47rem) {
 
     /* using grids for the main layout of the page */
     .page {
@@ -343,9 +347,11 @@ h2 {
                 }
 
             }
-
+.title{
+    margin-right: 1rem;
+}
             .nav {
-
+                display: none;
                 margin-left: 0rem;
 
                 .flex {
@@ -363,5 +369,6 @@ h2 {
                 margin-left: 30%;
             }
         }
+        
     }
 }

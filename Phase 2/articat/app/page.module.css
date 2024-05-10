@@ -131,7 +131,7 @@
   margin-top: 1rem;
   margin-bottom: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 47rem) {
   .maincards {
     grid-template-columns: 1fr;
     gap: 10px;
