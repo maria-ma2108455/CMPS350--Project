@@ -3,16 +3,16 @@ import Image from "next/image";
 import { React } from 'react'
 import Link from 'next/link'
 import styles from "./page.module.css";
-import Card from "@/app/Card"
-import Top3Chart from "@/app/Top3Chart"
-import Top3Details from "@/app/Top3Details"
-import CustomersPerCountry from "@/app/CustomersPerCountry";
-import MonthlyRevenuePerCategory from "@/app/MonthlyRevenuePerCategory";
-import Top5Clicks from "@/app/Top5Clicks";
-import TopClicksDetails from "@/app/TopClicksDetails";
-import Header from "@/app/Header"
+import Card from "@/app/components/Card"
+import Top3Chart from "@/app/components/Top3Chart"
+import Top3Details from "@/app/components/Top3Details"
+import CustomersPerCountry from "@/app/components/CustomersPerCountry";
+import MonthlyRevenuePerCategory from "@/app/components/MonthlyRevenuePerCategory";
+import Top5Clicks from "@/app/components/Top5Clicks";
+import TopClicksDetails from "@/app/components/TopClicksDetails";
+import Header from "@/app/components/Header"
 import articatRepo from "@/app/repo/articat-repo"
-import TopContributingCompanies from "./TopContributingCompanies";
+import TopContributingCompanies from "./components/TopContributingCompanies";
 
 const ArtiCatRepo = new articatRepo()
 

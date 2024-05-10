@@ -1,40 +1,31 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer
-} from "recharts";
-import styles from "./page.module.css";
+import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend,ResponsiveContainer,} from "recharts";
+import styles from "@/app/page.module.css";
 
-export default function Top5Chart({ top5Clicks }) {
-  const [items, setItems] = useState([]);
+export default function Top3Chart({ top3Items }) {
+  const [items, setItems] = useState([])
 
   //use staate and use effect to avoid hydration errors
-  if (!top5Clicks) {
+  if (!top3Items) {
     return <p>....</p>
   }
   useEffect(() => {
-    if (top5Clicks) {
+    if (top3Items) {
       setItems(
-        top5Clicks.map((item) => ({
+        top3Items.map((item) => ({
           name: item.name,
-          "Number Of Clicks": item.clicks,
+          "Total Quantity Sold": item.totalQuantitySold,
         }))
       );
     }
-  }, [top5Clicks])
+  }, [top3Items]);
 
   return (
-
-    <ResponsiveContainer width="98%" height={400}>
-      <BarChart
-        width={650}
+    <div className={styles.barChart}>
+    <ResponsiveContainer width="95%" height={450} >
+      <BarChart 
+        width={600}
         height={400}
         data={items}
         margin={{
@@ -51,11 +42,12 @@ export default function Top5Chart({ top5Clicks }) {
         <Legend />
         <CartesianGrid strokeDasharray="2 1" />
         <Bar
-          dataKey="Number Of Clicks"
-          fill="#d7b9e5"
+          dataKey="Total Quantity Sold"
+          fill="#f5a9bbee"
           background={{ fill: "#eee" }}
         />
       </BarChart>
     </ResponsiveContainer>
+    </div>
   )
 }

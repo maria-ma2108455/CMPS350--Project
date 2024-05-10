@@ -10,18 +10,12 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
-import styles from "./page.module.css";
 
 // import React, { PureComponent } from 'react';
 
 export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
 
-  const [products, setProducts] = useState([]);
-
-  //use staate and use effect to avoid hydration errors
-  // if (!productsPerCategory) {
-  //     return <p>Loading Data....</p>
-  //   }
+  const [data, setData] = useState([]);
 
   function formatMonth(monthYear) {
     const date = new Date(monthYear)
@@ -70,7 +64,7 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
 
   useEffect(() => {
     if (monthlyCategoryRevenue) {
-      setProducts(
+      setData(
         monthlyCategoryRevenue.map(row => {
           row.MONTH = formatMonth(row.MONTH)
         })
@@ -79,11 +73,10 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
       const uniqueMonths = getUniqueMonths(monthlyCategoryRevenue)
       const data = formatData(uniqueMonths,monthlyCategoryRevenue)
 
-      setProducts(
+      setData(
         data
       )
-      // const check = transformedData(uniqueMonths)
-      console.log(data);
+      
     }
   }, [monthlyCategoryRevenue]);
 
@@ -92,7 +85,7 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
   }
   return (
     <ResponsiveContainer width="85%" height={450}>
-      <LineChart width={500} height={300} data={products}>
+      <LineChart width={500} height={300} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="MONTH" padding={{ left: 30, right: 30 }} />
         <YAxis />

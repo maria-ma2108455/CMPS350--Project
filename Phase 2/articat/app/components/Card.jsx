@@ -3,7 +3,7 @@ import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill, 
     from 'react-icons/bs'
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line }
     from 'recharts';
-import styles from "./page.module.css";
+import styles from "@/app/page.module.css";
 import articatRepo from "@/app/repo/articat-repo"
 const AtriCatRepo = new articatRepo()
 

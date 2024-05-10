@@ -10,7 +10,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import styles from "./page.module.css";
 
 export default function CustomersPerCountry({ customersPerCountry }) {
   const [customers, setCustomers] = useState([]);
