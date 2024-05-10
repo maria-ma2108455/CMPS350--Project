@@ -92,7 +92,7 @@
 }
 .barChart{
  
-  width: 160%;
+  width: 180%;
 }
 
 .top3{
@@ -146,7 +146,9 @@
   /* flex-direction: column; */
 
 }
-
+.barChart{
+  width: 100%;
+}
 
 .twoCards{
 
