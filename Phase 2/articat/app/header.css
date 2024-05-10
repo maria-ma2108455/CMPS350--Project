@@ -100,14 +100,14 @@ body {
                 list-style: none;
                 display: flex;
                 justify-content: start;
-                gap: 3rem;
+                gap: 2rem;
+                text-align: center;
                 margin: 0.5rem 1.5rem 1rem 2rem;
 
                 li {
                     
                     a {
                         
-                        padding: 0.8rem 0.8rem;
                         color: rgb(6, 5, 5);
                         text-decoration: none;
                         text-align: center;

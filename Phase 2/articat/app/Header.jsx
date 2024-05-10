@@ -30,7 +30,7 @@ export default function Header() {
                 <li><a href="#topCompanies">Top Contributing Companies</a></li>
                 <li><a href="#monthly">Monthly Revenue Per Category</a></li>
                 <li><a href="#country">Customers Per Country</a></li>
-                <li><a href="#topClicked">Top 5 Most Clicked Products</a></li>
+                <li><a href="#topClicked">Most Clicked Products</a></li>
             </ul>
         </nav>
        
