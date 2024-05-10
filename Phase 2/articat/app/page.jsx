@@ -11,6 +11,7 @@ import Top5Clicks from "@/app/Top5Clicks";
 import TopClicksDetails from "@/app/TopClicksDetails";
 // import CategoryPurchaseChart from "@/app/CategoryPurchaseChart";
 import articatRepo from "@/app/repo/articat-repo"
+import TopContributingCompanies from "./TopContributingCompanies";
 const ArtiCatRepo = new articatRepo()
 
 export default async function Home() {
@@ -21,6 +22,9 @@ export default async function Home() {
  const monthlyCategoryRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
  const clicksOfItem= await ArtiCatRepo.getTopFiveMostClickedProducts()
 //  const categoryPurchases= await ArtiCatRepo.getTotalPurchasesCategory()
+
+const top3CompanyUN = await ArtiCatRepo.getTop3Companies()
+const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
 
   return (
     <div>
@@ -34,6 +38,11 @@ export default async function Home() {
      <div className={styles.top3}>
      <Top3Chart top3Items={itemsdetails}/>
      <Top3Details top3Items={itemsdetails}/>
+     </div>
+
+     <h2 className={styles.charttitle}>Top Contributing Companies</h2>
+     <div className={styles.top3}>
+     <TopContributingCompanies top3Companies={top3Companies}/>
      </div>
 
      {/* <h2 className={styles.charttitle}>No. Of Purchases Per Category</h2>
@@ -50,7 +59,7 @@ export default async function Home() {
       </div>
 
       <div>
-      <h2 className={styles.charttitle}>Monthly Revenue</h2>
+      <h2 className={styles.charttitle}>Monthly Revenue Per Category</h2>
      <div className={styles.centered}>
      <MonthlyRevenuePerCategory monthlyCategoryRevenue={monthlyCategoryRevenue}/>
      </div>
