@@ -41,20 +41,29 @@ export default async function Home() {
      <CategoryPurchaseChart categoryPurchases={categoryPurchases}/>
      </div> */}
 
-     <h2 className={styles.charttitle}>Customers Per Country</h2>
+     <div className={styles.twoCards}>
+      <div>
+      <h2 className={styles.charttitle}>Customers Per Country</h2>
      <div className={styles.centered}>
      <CustomersPerCountry customersPerCountry={customersCount}/>
      </div>
+      </div>
 
-     <h2 className={styles.charttitle}>Monthly Revenue</h2>
+      <div>
+      <h2 className={styles.charttitle}>Monthly Revenue</h2>
      <div className={styles.centered}>
      <MonthlyRevenue productsPerCategory={monthlyProductsRevenue}/>
      </div>
+      </div>
 
-     <h2 className={styles.charttitle}>Top 5 Most Clicked Items</h2>
+      <div>
+      <h2 className={styles.charttitle}>Top 5 Most Clicked Items</h2>
      <div className={styles.top3}>
      <Top5Clicks top5Clicks={clicksOfItem}/>
      <TopClicksDetails top3Items={clicksOfItem}/>
+     </div>
+      </div>
+
      </div>
     </div>
     

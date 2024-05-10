@@ -32,7 +32,7 @@ export default function CustomersPerCountry({ customersPerCountry }) {
 
   return (
     
-      <ResponsiveContainer width="65%" height={450}>
+      <ResponsiveContainer width="100%" height={450}>
         <BarChart
           width={650}
           height={400}

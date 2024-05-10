@@ -10,6 +10,14 @@
   border-radius: 1.5rem;
 }
 
+.twoCards{
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+
+}
+
 .card:first-child {
   background-color:  #f5bdc9ee;
 }
