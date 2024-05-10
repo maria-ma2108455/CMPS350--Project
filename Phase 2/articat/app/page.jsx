@@ -45,6 +45,13 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
      <Card> </Card>
      </div>
 
+     <div>
+      <h2 className={styles.charttitle}>Monthly Revenue Per Category</h2>
+     <div className={styles.centered}>
+     <MonthlyRevenuePerCategory monthlyCategoryRevenue={monthlyCategoryRevenue}/>
+     </div>
+      </div>
+
      <h2 className={styles.charttitle} id="topProducts">Top 3 Products</h2>
      <div className={styles.top3}>
      <Top3Chart top3Items={itemsdetails}/>
@@ -71,14 +78,6 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
 
      </div>
 
-  
-     
-      <div>
-      <h2 className={styles.charttitle}>Monthly Revenue Per Category</h2>
-     <div className={styles.centered}>
-     <MonthlyRevenuePerCategory monthlyCategoryRevenue={monthlyCategoryRevenue}/>
-     </div>
-      </div>
 
       <h2 className={styles.charttitle}>Top 5 Most Clicked Products</h2>
      <div className={styles.top3}>
