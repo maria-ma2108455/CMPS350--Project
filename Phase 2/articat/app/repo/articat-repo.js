@@ -416,7 +416,7 @@ async getTotalNumberOfSellers() {
             orderBy: { 
                 clicks: 'desc'
             },
-            take: 3
+            take: 5
           })
         } catch (error) {
           return { error: error.message };

@@ -7,7 +7,7 @@ import Top3Chart from "@/app/Top3Chart"
 import Top3Details from "@/app/Top3Details"
 import CustomersPerCountry from "@/app/CustomersPerCountry";
 import MonthlyRevenue from "@/app/MonthlyRevenue";
-import Top3Clicks from "@/app/Top3Clicks";
+import Top5Clicks from "@/app/Top5Clicks";
 import TopClicksDetails from "@/app/TopClicksDetails";
 // import CategoryPurchaseChart from "@/app/CategoryPurchaseChart";
 import articatRepo from "@/app/repo/articat-repo"
@@ -51,9 +51,9 @@ export default async function Home() {
      <MonthlyRevenue productsPerCategory={monthlyProductsRevenue}/>
      </div>
 
-     <h2 className={styles.charttitle}>Top 3 Most Clicked Items</h2>
+     <h2 className={styles.charttitle}>Top 5 Most Clicked Items</h2>
      <div className={styles.top3}>
-     <Top3Clicks top3Clicks={clicksOfItem}/>
+     <Top5Clicks top5Clicks={clicksOfItem}/>
      <TopClicksDetails top3Items={clicksOfItem}/>
      </div>
     </div>
