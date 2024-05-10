@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import { React } from 'react'
+import Link from 'next/link'
 import styles from "./page.module.css";
 import Card from "@/app/Card"
 import Top3Chart from "@/app/Top3Chart"
@@ -9,8 +10,13 @@ import CustomersPerCountry from "@/app/CustomersPerCountry";
 import MonthlyRevenuePerCategory from "@/app/MonthlyRevenuePerCategory";
 import Top5Clicks from "@/app/Top5Clicks";
 import TopClicksDetails from "@/app/TopClicksDetails";
+import Header from "@/app/Header"
 // import CategoryPurchaseChart from "@/app/CategoryPurchaseChart";
 import articatRepo from "@/app/repo/articat-repo"
+import TopContributingCompanies from "./TopContributingCompanies";
+
+import '@/public/css/page.css'
+
 const ArtiCatRepo = new articatRepo()
 
 export default async function Home() {
@@ -22,9 +28,18 @@ export default async function Home() {
  const clicksOfItem= await ArtiCatRepo.getTopFiveMostClickedProducts()
 //  const categoryPurchases= await ArtiCatRepo.getTotalPurchasesCategory()
 
+const top3CompanyUN = await ArtiCatRepo.getTop3Companies()
+const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
+
+
+  
+
   return (
-    <div>
-     <h1>Dashboard</h1>
+    <>
+<Header/>
+
+<div>
+     
 
      <div className={styles.noCard}>
      <Card> </Card>
@@ -36,10 +51,21 @@ export default async function Home() {
      <Top3Details top3Items={itemsdetails}/>
      </div>
 
+     <h2 className={styles.charttitle}>Top Contributing Companies</h2>
+     <div className={styles.top3}>
+     <TopContributingCompanies top3Companies={top3Companies}/>
+     </div>
+
      {/* <h2 className={styles.charttitle}>No. Of Purchases Per Category</h2>
      <div className={styles.top3}>
      <CategoryPurchaseChart categoryPurchases={categoryPurchases}/>
      </div> */}
+           <div>
+      <h2 className={styles.charttitle}>Monthly Revenue Per Category</h2>
+     <div className={styles.centered}>
+     <MonthlyRevenuePerCategory monthlyCategoryRevenue={monthlyCategoryRevenue}/>
+     </div>
+      </div>
 
      <div className={styles.twoCards}>
       <div>
@@ -49,15 +75,10 @@ export default async function Home() {
      </div>
       </div>
 
-      <div>
-      <h2 className={styles.charttitle}>Monthly Revenue</h2>
-     <div className={styles.centered}>
-     <MonthlyRevenuePerCategory monthlyCategoryRevenue={monthlyCategoryRevenue}/>
-     </div>
-      </div>
+
 
       <div>
-      <h2 className={styles.charttitle}>Top 5 Most Clicked Items</h2>
+      <h2 className={styles.charttitle}>Top 5 Most Clicked Products</h2>
      <div className={styles.top3}>
      <Top5Clicks top5Clicks={clicksOfItem}/>
      <TopClicksDetails top3Items={clicksOfItem}/>
@@ -66,10 +87,11 @@ export default async function Home() {
 
      </div>
     </div>
+
+
+    </>
+
+
     
   )
 }
-
-
- 
-

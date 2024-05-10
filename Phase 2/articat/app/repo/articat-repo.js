@@ -400,4 +400,42 @@ async getTotalNumberOfSellers() {
           return { error: error.message };
         }
       }
+
+       //Stat6: Top 3 companies with most no. of sales over the last 6 months
+
+  async getTop3Companies() {
+    try {
+      //group with item id and add all quantities
+      return await prisma.item.groupBy({
+        by: ['sellerUN'], _sum: {quantity: true},
+        orderBy: { 
+            _sum: {quantity: 'desc'},
+        },
+        take: 3  //top3
+      })
+    } catch (error) {
+      return { error: error.message };
     }
+  }
+
+  async getCompanyDetails(companies) {
+    try {
+      const companyDetails = []
+      for (const company of companies) {
+        const companyDetail = await prisma.seller.findUnique({
+          where: { username: company.sellerUN },
+          select: {
+            companyName: true
+          }
+        })
+        companyDetails.push({...companyDetail, totalQuantity: company._sum.quantity })
+      }
+      return companyDetails;
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
+
+    }
+
+    

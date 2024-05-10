@@ -11,7 +11,8 @@ async function signIn(e) {
     
     if (user && user.password === signInData.password) {
         localStorage.currentUser = user.username
-        window.location.href = "mainPage.html"
+        if (user.type === "admin") window.location.href = "/?"
+        else window.location.href = "mainPage.html"
     } else {
         form.elements['password'].value = ''
         Swal.fire({

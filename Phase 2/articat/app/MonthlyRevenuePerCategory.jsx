@@ -34,15 +34,12 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
 
   useEffect(() => {
     if (monthlyCategoryRevenue) {
-      console.log(monthlyCategoryRevenue);
       setProducts(  
         monthlyCategoryRevenue.map(row => {
           row[row.category] = row.totalRevenue
           row.MONTH = formatMonth(row.MONTH)
         })
-      );
-      console.log('change');
-      console.log(monthlyCategoryRevenue);
+      )
     }
   }, [monthlyCategoryRevenue]);
 
