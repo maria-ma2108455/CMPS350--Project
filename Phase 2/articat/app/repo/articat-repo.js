@@ -410,7 +410,7 @@ async getTotalNumberOfSellers() {
     }
 
     //Stat5
-    async  getTopThreeMostClickedProducts() {
+    async  getTopFiveMostClickedProducts() {
         try {
           return await prisma.item.findMany({
             orderBy: { 
