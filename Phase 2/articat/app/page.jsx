@@ -36,7 +36,7 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
     <>
 <Header/>
 
-<div>
+<div className={styles.padding}>
      
 
      <div className={styles.noCard} id="basic">
