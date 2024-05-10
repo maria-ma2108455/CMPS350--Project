@@ -110,5 +110,9 @@
         "moneyBalance": 3400,
         "email": "raghad@gmail.com",
         "phoneNumber": "+974 66653344"
+    }, {
+        "type": "admin",
+        "username": "admin",
+        "password": "a_123"
     }
 ]

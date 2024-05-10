@@ -23,7 +23,7 @@ async function main() {
             await prisma.user.create({data: newUser})
             userInfo.username = username
             if (type === 'customer') await prisma.customer.create({data: userInfo})
-            else await prisma.seller.create({data: userInfo})
+            else if (type === 'seller') await prisma.seller.create({data: userInfo})
         } 
 
         for (const item of items) await prisma.item.create({ data: item })
