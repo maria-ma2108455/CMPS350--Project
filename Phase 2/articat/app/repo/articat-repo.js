@@ -382,27 +382,18 @@ async getTotalNumberOfSellers() {
         try {
 
             const ceramics = await prisma.$queryRaw`
-                SELECT sum("totalPrice") "totalRevenue", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "month" FROM "Purchase" , "Item" WHERE "category"="Ceramics" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH"
+                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase" , "Item" WHERE "category"="Ceramics" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH"
             `
 
             const jewelry = await prisma.$queryRaw`
-                SELECT sum("totalPrice") "totalRevenue", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "month" FROM "Purchase", "Item" WHERE "category"="jewelry" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH"
+                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase", "Item" WHERE "category"="jewelry" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH"
             `
 
             const paintings = await prisma.$queryRaw`
-                SELECT sum("totalPrice") "totalRevenue", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "month" FROM "Purchase", "Item" WHERE "category"="paintings" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH"
+                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase", "Item" WHERE "category"="paintings" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH"
             `
 
-            return [{
-                category: 'Ceramics',
-                data: ceramics[0]
-            },{
-                category: 'Jewelry',
-                data: jewelry[0]
-            },{
-                category: 'Paintings',
-                data: paintings[0]
-            }]
+            return [ceramics[0],jewelry[0],paintings[0]]
 
         } catch (error) {
           return { error: error.message };
