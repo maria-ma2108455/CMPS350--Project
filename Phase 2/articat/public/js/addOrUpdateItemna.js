@@ -15,9 +15,8 @@ let update= false
  document.addEventListener('DOMContentLoaded', async() => {
   if (itemId) {
     // fetching
-    const response = await fetch(`http://localhost:3000/api/items/${itemId}`, {method: 'GET'})
+    const response = await fetch(`api/items/${itemId}`, {method: 'GET'})
      const item = await response.json()
-      // const item = items.find(i => i.itemId === itemId)
       submitBTN.textContent = 'Update Item'
       preview.src = item.image
       preview.classList.remove('hidden')
@@ -48,24 +47,20 @@ async function addForm(e){
       const item = formToObject(e.target)      
       console.log(item)
       //fetch
-      // let foundIndex = items.findIndex(i => i.itemId == item.itemId)
-      const response = await fetch(`http://localhost:3000/api/item/${item.itemId}`, { method: 'GET' })
+      const response = await fetch(`api/item/${item.itemId}`, { method: 'GET' })
       let add = false
       if((response.ok)){
        const itemNo= '33'
           item.itemId = `I${itemNo}`;
           const sellerusername = localStorage.currentUser
-          //replace this with GET	/api/:userId go to that file AND ADD THE include 
-          // const seller = users.find(u => u.username == sellerusername)
-          const response1 = await fetch(`http://localhost:3000/api/${sellerusername}`, {method: 'GET'})
+          const response1 = await fetch(`api/${sellerusername}`, {method: 'GET'})
           user = await response1.json()
           item.seller = {
               username: user.seller.username,   
               companyName: user.seller.companyName
           }
           item.image = localStorage.getItem('uploadedImage')
-          //items.push(item)//here u will use POST
-          const response = await fetch('http://localhost:3000/api/items', {
+          const response = await fetch('api/items', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

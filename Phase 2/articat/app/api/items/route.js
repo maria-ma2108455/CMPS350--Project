@@ -1,5 +1,5 @@
 import articatRepo from "@/app/repo/articat-repo"
-const AtriCatRepo = new articatRepo()
+const ArtiCatRepo = new articatRepo()
 
 export async function GET(request) {
     let items
@@ -9,13 +9,13 @@ export async function GET(request) {
     const featured = searchParams.get('featured')
     
     if (category) {
-        items = await AtriCatRepo.getItems(category)
+        items = await ArtiCatRepo.getItems(category)
     } else if (searchValue) {
-        items = await AtriCatRepo.getSearchItems(searchValue)
+        items = await ArtiCatRepo.getSearchItems(searchValue)
     } else if (featured) {
-        items = await AtriCatRepo.getFeatured()
+        items = await ArtiCatRepo.getFeatured()
     } else {
-        items = await AtriCatRepo.getAllItems()
+        items = await ArtiCatRepo.getAllItems()
     }
 
    
@@ -26,7 +26,7 @@ export async function GET(request) {
 
 export async function POST(request) {
     const item = await request.json()
-    const newItem = await AtriCatRepo.addItem(item)
+    const newItem = await ArtiCatRepo.addItem(item)
   
 
     return new Response(JSON.stringify(newItem), {

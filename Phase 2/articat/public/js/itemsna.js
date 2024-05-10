@@ -18,15 +18,8 @@ async function handlePageLoad() {
    
     try {
 
-        // const items = JSON.parse(localStorage.items)
-
         let itemsHTML = ''
         let filteredItems = []
-
-        // if (sellerItems) {
-        //     title.textContent = "My Items"
-        //     showCategoryDropDown('seller')
-        //     filteredItems = items.filter(item => item.seller.username === localStorage.currentUser)
          if (category) {
 
 

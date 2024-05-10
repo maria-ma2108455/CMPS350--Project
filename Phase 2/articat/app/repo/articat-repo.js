@@ -92,9 +92,7 @@ export default class articatRepo {
         } catch (error) {
             return { error: error.message }
         }
-        // javacode:
-        // filteredItems = items.filter( i => i.quantity > 0 && i.name.toLowerCase().includes(search.toLowerCase()) 
-        // || i.seller.companyName.toLowerCase().includes(search.toLowerCase()))
+
     }
 
     async getHistory(username) {
@@ -187,7 +185,7 @@ export default class articatRepo {
         } 
     }
 
-    // add purchase
+
     async addPurchase(purchase){
         try {
             return prisma.purchase.create({
@@ -336,7 +334,6 @@ async getTotalNumberOfSellers() {
             _sum: {quantity: 'desc'},
         },
         take: 3  //top3
-        //will do another function to get the data of top 3 we found here 
       })
     } catch (error) {
       return { error: error.message };
@@ -357,7 +354,7 @@ async getTotalNumberOfSellers() {
     }
   }
 
-  //Stat3
+  //Stat3: Number Of Customers Per Country
   async getTotalNumberOfCustomersPerCountry() {
     try {
         //first get all customers
@@ -376,7 +373,7 @@ async getTotalNumberOfSellers() {
     }
 }   
 
-//stat4
+//Stat4: Monthly revenue of each category
     async getMonthlyRevenueOfProductsByCategory(){
 
         try {
@@ -390,8 +387,8 @@ async getTotalNumberOfSellers() {
         }
     }
 
-    //Stat5
-    async  getTopThreeMostClickedProducts() {
+    //Stat5: Top 5 Most Clicked Products
+    async  getTopFiveMostClickedProducts() {
         try {
           return await prisma.item.findMany({
             orderBy: { 

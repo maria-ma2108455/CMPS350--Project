@@ -6,7 +6,7 @@ import Card from "@/app/Card"
 import Top3Chart from "@/app/Top3Chart"
 import Top3Details from "@/app/Top3Details"
 import CustomersPerCountry from "@/app/CustomersPerCountry";
-import MonthlyRevenuePerCategory from "@/app/MonthlyRevenuePerCategory";
+import MonthlyRevenue from "@/app/MonthlyRevenue";
 import Top5Clicks from "@/app/Top5Clicks";
 import TopClicksDetails from "@/app/TopClicksDetails";
 // import CategoryPurchaseChart from "@/app/CategoryPurchaseChart";
@@ -18,8 +18,8 @@ export default async function Home() {
  const itemids= await ArtiCatRepo.getTop3PurchasedProducts()
  const itemsdetails= await ArtiCatRepo.getitemsDetails(itemids)
  const customersCount = await ArtiCatRepo.getTotalNumberOfCustomersPerCountry()
- const monthlyCategoryRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
- const clicksOfItem= await ArtiCatRepo.getTopThreeMostClickedProducts()
+ const monthlyProductsRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
+ const clicksOfItem= await ArtiCatRepo.getTopFiveMostClickedProducts()
 //  const categoryPurchases= await ArtiCatRepo.getTotalPurchasesCategory()
 
   return (
@@ -41,20 +41,29 @@ export default async function Home() {
      <CategoryPurchaseChart categoryPurchases={categoryPurchases}/>
      </div> */}
 
-     <h2 className={styles.charttitle}>Customers Per Country</h2>
+     <div className={styles.twoCards}>
+      <div>
+      <h2 className={styles.charttitle}>Customers Per Country</h2>
      <div className={styles.centered}>
      <CustomersPerCountry customersPerCountry={customersCount}/>
      </div>
+      </div>
 
-     <h2 className={styles.charttitle}>Monthly Revenue</h2>
+      <div>
+      <h2 className={styles.charttitle}>Monthly Revenue</h2>
      <div className={styles.centered}>
-     <MonthlyRevenuePerCategory monthlyCategoryRevenue={monthlyCategoryRevenue}/>
+     <MonthlyRevenue productsPerCategory={monthlyProductsRevenue}/>
      </div>
+      </div>
 
-     <h2 className={styles.charttitle}>Top 5 Most Clicked Items</h2>
+      <div>
+      <h2 className={styles.charttitle}>Top 5 Most Clicked Items</h2>
      <div className={styles.top3}>
      <Top5Clicks top5Clicks={clicksOfItem}/>
      <TopClicksDetails top3Items={clicksOfItem}/>
+     </div>
+      </div>
+
      </div>
     </div>
     

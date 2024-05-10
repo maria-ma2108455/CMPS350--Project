@@ -10,11 +10,9 @@ document.addEventListener('DOMContentLoaded', handlePageLoad)
 
 async function handlePageLoad() {
 
-    const baseURL = 'http://localhost:3000/api'
-
     const currentusername= localStorage.currentUser
 
-    const response = await fetch(`${baseURL}/${currentusername}/history`, {method: 'GET'})
+    const response = await fetch(`api/${currentusername}/history`, {method: 'GET'})
     const responseJson = await response.json()
 
     if (responseJson.purchases) {
