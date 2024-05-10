@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 export default function Header() {
@@ -25,12 +24,12 @@ export default function Header() {
         {/* <!-- Navigation --> */}
         <nav className="nav">
             <ul className="flex">
-                <li><a href="mainpage.html">Basic Statistics</a></li>
-                <li><a href="mainpage.html">Top 3 Products</a></li>
-                <li><a href="mainpage.html#categories">Top Contributing Companies</a></li>
-                <li><a href="mainpage.html#about">Monthly Revenue Per Category</a></li>
-                <li><a href="mainpage.html#contact">Customers Per Country</a></li>
-                <li><a href="mainpage.html#contact">Top 5 Most Clicked Products</a></li>
+                <li><a href="#basic">Basic Statistics</a></li>
+                <li><a href="#topProducts">Top 3 Products</a></li>
+                <li><a href="#topCompanies">Top Contributing Companies</a></li>
+                <li><a href="#monthly">Monthly Revenue Per Category</a></li>
+                <li><a href="#country">Customers Per Country</a></li>
+                <li><a href="#topClicked">Top 5 Most Clicked Products</a></li>
             </ul>
         </nav>
     </header>

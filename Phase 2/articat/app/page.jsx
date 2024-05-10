@@ -41,18 +41,18 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
 <div>
      
 
-     <div className={styles.noCard}>
+     <div className={styles.noCard} id="basic">
      <Card> </Card>
      </div>
 
-     <h2 className={styles.charttitle}>Top 3 Products</h2>
+     <h2 className={styles.charttitle} id="topProducts">Top 3 Products</h2>
      <div className={styles.top3}>
      <Top3Chart top3Items={itemsdetails}/>
      <Top3Details top3Items={itemsdetails}/>
      </div>
 
      <div className={styles.twoCards}>
-      <div>
+      <div id="country">
       <h2 className={styles.charttitle}>Customers Per Country</h2>
      <div className={styles.centered}>
      <CustomersPerCountry customersPerCountry={customersCount}/>
