@@ -32,6 +32,7 @@ export default async function Home() {
 
   return (
     <>
+      
       <Header />
 
       <div className={styles.padding}>
