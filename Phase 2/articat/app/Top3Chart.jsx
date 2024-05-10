@@ -22,8 +22,9 @@ export default function Top3Chart({ top3Items }) {
   }, [top3Items]);
 
   return (
-    <ResponsiveContainer width="95%" height={450}>
-      <BarChart
+    <div className={styles.barChart}>
+    <ResponsiveContainer width="95%" height={450} >
+      <BarChart 
         width={600}
         height={400}
         data={items}
@@ -47,5 +48,6 @@ export default function Top3Chart({ top3Items }) {
         />
       </BarChart>
     </ResponsiveContainer>
+    </div>
   )
 }
