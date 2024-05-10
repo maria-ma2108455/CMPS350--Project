@@ -17,7 +17,7 @@ export default function Top3Chart({ top3Clicks }) {
 
   //use staate and use effect to avoid hydration errors
   if (!top3Clicks) {
-    return <p>....</p>;
+    return <p>....</p>
   }
   useEffect(() => {
     if (top3Clicks) {
@@ -28,7 +28,7 @@ export default function Top3Chart({ top3Clicks }) {
         }))
       );
     }
-  }, [top3Clicks]);
+  }, [top3Clicks])
 
   return (
 
@@ -57,5 +57,5 @@ export default function Top3Chart({ top3Clicks }) {
         />
       </BarChart>
     </ResponsiveContainer>
-  );
+  )
 }
