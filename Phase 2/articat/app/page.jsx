@@ -6,7 +6,7 @@ import Card from "@/app/Card"
 import Top3Chart from "@/app/Top3Chart"
 import Top3Details from "@/app/Top3Details"
 import CustomersPerCountry from "@/app/CustomersPerCountry";
-import MonthlyRevenue from "@/app/MonthlyRevenue";
+import MonthlyRevenuePerCategory from "@/app/MonthlyRevenuePerCategory";
 import Top5Clicks from "@/app/Top5Clicks";
 import TopClicksDetails from "@/app/TopClicksDetails";
 // import CategoryPurchaseChart from "@/app/CategoryPurchaseChart";
@@ -18,7 +18,7 @@ export default async function Home() {
  const itemids= await ArtiCatRepo.getTop3PurchasedProducts()
  const itemsdetails= await ArtiCatRepo.getitemsDetails(itemids)
  const customersCount = await ArtiCatRepo.getTotalNumberOfCustomersPerCountry()
- const monthlyProductsRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
+ const monthlyCategoryRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
  const clicksOfItem= await ArtiCatRepo.getTopFiveMostClickedProducts()
 //  const categoryPurchases= await ArtiCatRepo.getTotalPurchasesCategory()
 
@@ -52,7 +52,7 @@ export default async function Home() {
       <div>
       <h2 className={styles.charttitle}>Monthly Revenue</h2>
      <div className={styles.centered}>
-     <MonthlyRevenue productsPerCategory={monthlyProductsRevenue}/>
+     <MonthlyRevenuePerCategory monthlyCategoryRevenue={monthlyCategoryRevenue}/>
      </div>
       </div>
 
