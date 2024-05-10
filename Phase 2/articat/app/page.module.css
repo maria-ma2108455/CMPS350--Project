@@ -62,10 +62,25 @@
 .itemDetails {
   display: flex;
   /* color: aqua; */
+  gap: 2rem;
   flex-direction: column;
   align-items: center;
   margin: 1rem;
-  margin-top: 4rem;
+  margin-top: 6rem;
+  /* border: black; */
+  padding: 0rem 1rem;
+  /* text-align:justify; */
+  font-size: 16px;
+
+}
+
+.itemDetails2 {
+  display: flex;
+  gap: 1.2rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  margin-top: 2rem;
   /* border: black; */
   padding: 0rem 1rem;
   /* text-align:justify; */
@@ -85,6 +100,7 @@
   border-radius: 1.5rem;
   margin: 4rem;
   margin-top: 1rem;
+  margin-bottom: 0;
 
 }
 
@@ -98,6 +114,7 @@
   border-radius: 1.5rem;
   margin: 4rem;
   margin-top: 1rem;
+  margin-bottom: 0;
 }
 @media screen and (max-width: 768px) {
   .maincards {

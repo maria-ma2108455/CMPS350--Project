@@ -11,7 +11,7 @@ export default function Top3Details({top3Items}) {
         {
           items.map(item=>
             <div>
-            <p>-Name: {item.name}, ID: {item.itemId}, Category: {item.category}, Price: {item.price}$, Seller: {item.sellerUN}</p>
+            <p>- Name: {item.name}, ID: {item.itemId}, Category: {item.category}, Price: {item.price}$, Seller: {item.sellerUN}</p>
             
             </div>
           )
