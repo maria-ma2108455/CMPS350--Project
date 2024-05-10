@@ -15,8 +15,6 @@ import Header from "@/app/Header"
 import articatRepo from "@/app/repo/articat-repo"
 import TopContributingCompanies from "./TopContributingCompanies";
 
-import '@/public/css/page.css'
-
 const ArtiCatRepo = new articatRepo()
 
 export default async function Home() {
