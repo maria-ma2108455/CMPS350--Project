@@ -27,9 +27,9 @@ export default function MonthlyRevenue({productsPerCategory}){
             setProducts(  
               Object.entries(productsPerCategory).map(([category, data]) => ({
                 category,
-                data: Object.entries(data).map(({month, totalPrice})=>({
+                data: Object.entries(data).map(({month, totalRevenue})=>({
                   month,
-                  revenue: totalPrice,
+                  totalRevenue,
                 })),
               }))
             );
@@ -40,6 +40,7 @@ export default function MonthlyRevenue({productsPerCategory}){
           return <p>Loading Data....</p>
         }
         return(
+          
         <LineChart width={500} height={300}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" padding={{ left: 30, right: 30 }} />
