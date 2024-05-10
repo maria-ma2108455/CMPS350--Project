@@ -379,8 +379,17 @@ async getTotalNumberOfSellers() {
         try {
 
             return await prisma.$queryRaw`
-                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase" , "Item" WHERE "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH" ORDER BY "date"
+                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase" , "Item" WHERE "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') GROUP BY "MONTH","category" ORDER BY "date"
             `
+
+            // return await prisma.$queryRaw`
+            //     SELECT 
+            //     (SELECT sum("totalPrice"), STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTHCeramics" FROM "Purchase","Item" where "category"="Ceramics" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months')) "Ceramics" GROUP BY "MONTH",
+            //     (SELECT sum("totalPrice"), STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTHJewelry" FROM "Purchase","Item" where "category"="Jewelry" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months')) "Jewelry" GROUP BY "MONTH",
+            //     (SELECT sum("totalPrice"), STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTHPaintings" FROM "Purchase","Item" where "category"="Paintings" AND "Purchase"."itemId"="Item"."itemid" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months')) "Paintings" GROUP BY "MONTH",
+            //     STRFTIME('%m-01-%Y',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase" , "Item" WHERE "Purchase"."itemId"="Item"."itemid" AND "MONTHCeramics"="MONTH" AND DATETIME(ROUND("date" / 1000), 'unixepoch') > date(date(),'-12 months') 
+            //     GROUP BY "MONTH" ORDER BY "date"
+            // `
 
         } catch (error) {
           return { error: error.message };
