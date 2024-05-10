@@ -11,7 +11,7 @@ async function signIn(e) {
     
     if (user && user.password === signInData.password) {
         localStorage.currentUser = user.username
-        if (user.type === "admin") window.location.href = "/?"
+        if (user.type === "admin") window.location.href = "statistics"
         else window.location.href = "mainPage.html"
     } else {
         form.elements['password'].value = ''
