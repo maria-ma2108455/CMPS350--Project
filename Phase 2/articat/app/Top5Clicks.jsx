@@ -12,27 +12,27 @@ import {
 } from "recharts";
 import styles from "./page.module.css";
 
-export default function Top3Chart({ top3Clicks }) {
+export default function Top5Chart({ top5Clicks }) {
   const [items, setItems] = useState([]);
 
   //use staate and use effect to avoid hydration errors
-  if (!top3Clicks) {
-    return <p>....</p>;
+  if (!top5Clicks) {
+    return <p>....</p>
   }
   useEffect(() => {
-    if (top3Clicks) {
+    if (top5Clicks) {
       setItems(
-        top3Clicks.map((item) => ({
+        top5Clicks.map((item) => ({
           name: item.name,
           "Number Of Clicks": item.clicks,
         }))
       );
     }
-  }, [top3Clicks]);
+  }, [top5Clicks])
 
   return (
 
-    <ResponsiveContainer width="65%" height={400}>
+    <ResponsiveContainer width="100%" height={400}>
       <BarChart
         width={650}
         height={400}
@@ -57,5 +57,5 @@ export default function Top3Chart({ top3Clicks }) {
         />
       </BarChart>
     </ResponsiveContainer>
-  );
+  )
 }

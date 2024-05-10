@@ -264,7 +264,7 @@ export default class articatRepo {
         } 
     }
 
-//FOR STATISTICS:---------------------------------------------------
+//----------------FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
     try {
         return await prisma.item.findMany({
@@ -279,6 +279,8 @@ async getUnpurchasedProducts() {
         return { error: error.message }
     }
 }
+
+//Stat1: 1-	Total number of customers, companies, categories and products 
 
 async getTotalNumberOfCustomers() {
     try {
@@ -296,13 +298,6 @@ async getTotalNumberOfSellers() {
     }
 }
 
-// async getTotalNumberOfPurchases() {
-//     try {
-//         return await prisma.purchase.count()
-//     } catch (error) {
-//         return { error: error.message }
-//     }
-// }
   async getTotalNumberOfProducts() {
     try {
         return await prisma.item.count();
@@ -311,9 +306,7 @@ async getTotalNumberOfSellers() {
         return { error: error.message }
     }
 
-    
   }
-
 
   async  getTotalNumberOfCategories() {
     try {
@@ -327,10 +320,11 @@ async getTotalNumberOfSellers() {
     }
   }
   
- 
-  async  getTopThreeMostBoughtProducts() {
+ //Stat2: Top 3 most bought products over the last 6 months
+
+  async  getTop3PurchasedProducts() {
     const before6month = new Date();
-    before6month.setMonth(before6month.getMonth() - 6);
+    before6month.setMonth(before6month.getMonth()-6)
     try {
       //group with item id and add all quantities
       return await prisma.purchase.groupBy({
@@ -348,18 +342,14 @@ async getTotalNumberOfSellers() {
       return { error: error.message };
     }
   }
-
-
   async getitemsDetails(itemIds) {
     try {
-      const itemsDetails = [];
+      const itemsDetails= []
       for (const item of itemIds) {
-        const itemDetails = await prisma.item.findUnique({
+        const itemDetails= await prisma.item.findUnique({
           where: { itemId: item.itemId }
         })
-        itemsDetails.push({
-            ...itemDetails, totalQuantitySold: item._sum.quantity
-          })
+        itemsDetails.push({...itemDetails, totalQuantitySold: item._sum.quantity })
       }
       return itemsDetails;
     } catch (error) {
@@ -367,6 +357,7 @@ async getTotalNumberOfSellers() {
     }
   }
 
+  //Stat3
   async getTotalNumberOfCustomersPerCountry() {
     try {
         //first get all customers
@@ -374,13 +365,10 @@ async getTotalNumberOfSellers() {
 
         const countsPerCountry = {};
         allCustomers.forEach(customer => {
-            // const country = customer.shippingAddress.split(',');
             const address = customer.shippingAddress.split(',');
-
             const country = address.length > 0 ? address[address.length - 1].trim() : 'Unknown';
             countsPerCountry[country] = (countsPerCountry[country] || 0) + 1;
-        });
-
+        })
         return countsPerCountry;
 
     } catch (error) {
@@ -388,6 +376,7 @@ async getTotalNumberOfSellers() {
     }
 }   
 
+//stat4
     async getMonthlyRevenueOfProductsByCategory(){
 
         try {
@@ -411,21 +400,17 @@ async getTotalNumberOfSellers() {
         }
     }
 
+    //Stat5
     async  getTopThreeMostClickedProducts() {
-
         try {
           return await prisma.item.findMany({
             orderBy: { 
                 clicks: 'desc'
             },
-            take: 3
+            take: 5
           })
         } catch (error) {
           return { error: error.message };
         }
       }
-
-}
-
-
-    
+    }
