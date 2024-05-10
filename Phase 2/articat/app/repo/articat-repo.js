@@ -392,26 +392,20 @@ async getTotalNumberOfSellers() {
 
         try {
 
-            return await prisma.$queryRaw`
-                SELECT sum("totalPrice") "totalRevenue", "category", DATETIME('1319017136629', 'unixepoch', 'localtime') FROM "Purchase", "Item" GROUP BY "category"
+            const ceramics = await prisma.$queryRaw`
+                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase" , "Item" WHERE "category"="Ceramics" AND "Purchase"."itemId"="Item"."itemid" GROUP BY "MONTH"
             `
 
-            // return await prisma.purchase.groupBy({
-            //     by: ['item.category', { function: 'date_format', args:['%Y-%m', 'date'], as: 'month' }],
-            //     _sum: {
-            //         quantity: true,
-            //         totalPrice: true,
-            //         // revenue: {
-            //         //   sum: {
-            //         //     value: 'totalPrice'
-            //         //   },
-            //         // },
-            //       },
-            //     orderBy: [
-            //         {month: 'asc'},
-            //         {'item.category': 'asc  '},
-            //     ],
-            //   })
+            const jewelry = await prisma.$queryRaw`
+                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase", "Item" WHERE "category"="jewelry" AND "Purchase"."itemId"="Item"."itemid" GROUP BY "MONTH"
+            `
+
+            const paintings = await prisma.$queryRaw`
+                SELECT sum("totalPrice") "totalRevenue", "category", STRFTIME('%m',DATETIME(ROUND("date" / 1000), 'unixepoch')) "MONTH" FROM "Purchase", "Item" WHERE "category"="paintings" AND "Purchase"."itemId"="Item"."itemid" GROUP BY "MONTH"
+            `
+
+            return [ceramics,jewelry,paintings]
+
         } catch (error) {
           return { error: error.message };
         }
