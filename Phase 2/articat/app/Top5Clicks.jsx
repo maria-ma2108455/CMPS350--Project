@@ -32,7 +32,7 @@ export default function Top5Chart({ top5Clicks }) {
 
   return (
 
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="98%" height={400}>
       <BarChart
         width={650}
         height={400}
