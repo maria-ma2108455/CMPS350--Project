@@ -10,12 +10,11 @@ const preview = document.querySelector("#preview")
 const reader = new FileReader()
 let update = false
 
-const baseURL = 'http://localhost:3000'
 document.addEventListener('DOMContentLoaded', async () => {
   const itemId = urlParameter.get('item');
   if (itemId) {
     // fetching
-    const response = await fetch(`${baseURL}/api/items/${urlParameter.get('item')}`, { method: 'GET' })
+    const response = await fetch(`api/items/${urlParameter.get('item')}`, { method: 'GET' })
     const item = await response.json()
 
     //loading image into the form
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     //loading data into the form
     update = true
-    const response2 = await fetch(`${baseURL}/api/items/${urlParameter.get('item')}`, { method: 'GET' })
+    const response2 = await fetch(`api/items/${urlParameter.get('item')}`, { method: 'GET' })
     const itemold = await response2.json()
     const itemId = document.querySelector('#itemId')
     const name = document.querySelector('#item-name')
@@ -81,12 +80,12 @@ async function addForm(e) {
 
       delete item.itemId
 
-      const response1 = await fetch(`${baseURL}/api/${sellerusername}`, { method: 'GET' })
+      const response1 = await fetch(`api/${sellerusername}`, { method: 'GET' })
       user = await response1.json()
       item.sellerUN = String(user.username)
       const image = localStorage.getItem('uploadedImage')
       item.image = String(image)
-      const response = await fetch(`${baseURL}/api/items`, {
+      const response = await fetch(`api/items`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -102,13 +101,13 @@ async function addForm(e) {
     else {
       //get the item thats being updated using api to take the image from it 
       console.log("here2")
-      const response2 = await fetch(`${baseURL}/api/items/${itemId}`, { method: 'GET' })
+      const response2 = await fetch(`api/items/${itemId}`, { method: 'GET' })
       const itemold = await response2.json()
       item.image = localStorage.getItem('uploadedImage') ? String(localStorage.getItem('uploadedImage')) : itemold.image
       console.log("here1")
       //make sure the type is same as in database
       parseItem(item)
-      const response = await fetch(`${baseURL}/api/items/${itemold.itemId}`, {
+      const response = await fetch(`api/items/${itemold.itemId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

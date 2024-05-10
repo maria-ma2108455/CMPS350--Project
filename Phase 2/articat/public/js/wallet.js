@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', handlePageLoad)
 
 async function handlePageLoad() {
 
-    // const users = JSON.parse(localStorage.users)
-    // const user = users.find(user => user.username == localStorage.currentUser)
-
     const response1 = await fetch(`api/${localStorage.currentUser}`, {
         method: "GET",
       });

@@ -27,10 +27,6 @@ function signIn() {
 async function showDropDown() {
     if (localStorage.currentUser) {
         let list = []
-
-        // const users = JSON.parse(localStorage.users)
-
-        // const currentUser = users.find(user => user.username == localStorage.currentUser)
         
         const response = await fetch(`api/${localStorage.currentUser}`,{ method: 'GET'})
         const currentUser = await response.json()
