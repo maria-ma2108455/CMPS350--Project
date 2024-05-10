@@ -79,6 +79,9 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
       const uniqueMonths = getUniqueMonths(monthlyCategoryRevenue)
       const data = formatData(uniqueMonths,monthlyCategoryRevenue)
 
+      setProducts(
+        data
+      )
       // const check = transformedData(uniqueMonths)
       console.log(data);
     }
@@ -89,7 +92,7 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
   }
   return (
     <ResponsiveContainer width="65%" height={450}>
-      <LineChart width={500} height={300} data={monthlyCategoryRevenue}>
+      <LineChart width={500} height={300} data={products}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="MONTH" padding={{ left: 30, right: 30 }} />
         <YAxis />
