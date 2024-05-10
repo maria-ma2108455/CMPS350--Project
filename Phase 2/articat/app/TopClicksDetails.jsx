@@ -7,11 +7,11 @@ export default function TopClicksDetails({top3Items}) {
   const [items, setitems] = useState(top3Items)
   return (
     <div>
-      <div className={styles.itemDetails}>
+      <div className={styles.itemDetails2}>
         {
           items.map(item=>
             <div>
-            <p>-Name: {item.name}, ID: {item.itemId}, Category: {item.category}, Price: {item.price}$, Seller: {item.sellerUN}</p>
+            <p>- Name: {item.name}, ID: {item.itemId}, Category: {item.category}, Price: {item.price}$, Seller: {item.sellerUN}</p>
             
             </div>
           )
