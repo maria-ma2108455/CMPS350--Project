@@ -296,13 +296,6 @@ async getTotalNumberOfSellers() {
     }
 }
 
-// async getTotalNumberOfPurchases() {
-//     try {
-//         return await prisma.purchase.count()
-//     } catch (error) {
-//         return { error: error.message }
-//     }
-// }
   async getTotalNumberOfProducts() {
     try {
         return await prisma.item.count();
@@ -311,9 +304,7 @@ async getTotalNumberOfSellers() {
         return { error: error.message }
     }
 
-    
   }
-
 
   async  getTotalNumberOfCategories() {
     try {
@@ -328,9 +319,9 @@ async getTotalNumberOfSellers() {
   }
   
  
-  async  getTopThreeMostBoughtProducts() {
+  async  getTop3PurchasedProducts() {
     const before6month = new Date();
-    before6month.setMonth(before6month.getMonth() - 6);
+    before6month.setMonth(before6month.getMonth()-6)
     try {
       //group with item id and add all quantities
       return await prisma.purchase.groupBy({
@@ -352,9 +343,9 @@ async getTotalNumberOfSellers() {
 
   async getitemsDetails(itemIds) {
     try {
-      const itemsDetails = [];
+      const itemsDetails= [];
       for (const item of itemIds) {
-        const itemDetails = await prisma.item.findUnique({
+        const itemDetails= await prisma.item.findUnique({
           where: { itemId: item.itemId }
         })
         itemsDetails.push({
@@ -434,7 +425,26 @@ async getTotalNumberOfSellers() {
         }
       }
 
-}
+      async  getTotalPurchasesCategory() {
+        //over the last year 
+        const before1year= new Date();
+        oneYearAgo.setFullYear(before1year.getFullYear()-1);
+      try{
+        return await prisma.purchase.groupBy({
+          by: ['item'],
+          _count: {itemId: true},
+          where: {
+            date: {gte: oneYearAgo},
+            item: {isNot: null}
+          },
+          include: {
+            item: {select: {category: true}}
+          }
+        })
+    } catch (error) {
+        return { error: error.message };
+      }
 
+      }
 
-    
+    }

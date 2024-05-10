@@ -13,7 +13,7 @@ const ArtiCatRepo = new articatRepo()
 
 export default async function Home() {
 
- const itemids= await ArtiCatRepo.getTopThreeMostBoughtProducts()
+ const itemids= await ArtiCatRepo.getTop3PurchasedProducts()
  const itemsdetails= await ArtiCatRepo.getitemsDetails(itemids)
  const customersCount = await ArtiCatRepo.getTotalNumberOfCustomersPerCountry()
  const monthlyProductsRevenue = await ArtiCatRepo.getMonthlyRevenueOfProductsByCategory()
