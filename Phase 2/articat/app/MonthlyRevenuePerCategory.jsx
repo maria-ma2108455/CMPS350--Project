@@ -101,7 +101,7 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
         <Line
           type="monotone"
           dataKey="Ceramics"
-          stroke="#e2cf88"
+          stroke="#d6b3e7"
           activeDot={{ r: 8 }}
           strokeWidth={2.5}
         />
