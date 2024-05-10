@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import styles from "./page.module.css";
 
 export default function CustomersPerCountry({customersPerCountry}) {
@@ -22,11 +22,11 @@ export default function CustomersPerCountry({customersPerCountry}) {
       }, [customersPerCountry]);
     
         return (
-            <>
+            <ResponsiveContainer width="65%" height={450}>
              <div className={styles.barChart}>
           <BarChart
           
-            width={600}
+            width={650}
             height={400}
             data={customers}
             margin={{
@@ -45,6 +45,6 @@ export default function CustomersPerCountry({customersPerCountry}) {
             <Bar dataKey="Number Of Customers" fill="#d65f83" background={{ fill: '#eee' }} />
           </BarChart>
           </div>
-          </>
+          </ResponsiveContainer>
         );
       }

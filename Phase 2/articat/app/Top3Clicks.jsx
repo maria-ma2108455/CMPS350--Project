@@ -32,7 +32,7 @@ export default function Top3Chart({ top3Clicks }) {
 
   return (
 
-    <ResponsiveContainer width="95%" height={400}>
+    <ResponsiveContainer width="65%" height={400}>
       <BarChart
         width={650}
         height={400}
