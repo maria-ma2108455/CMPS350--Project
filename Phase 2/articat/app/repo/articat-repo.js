@@ -264,7 +264,7 @@ export default class articatRepo {
         } 
     }
 
-//FOR STATISTICS:---------------------------------------------------
+//----------------FOR STATISTICS:---------------------------------------------------
 async getUnpurchasedProducts() {
     try {
         return await prisma.item.findMany({
@@ -279,6 +279,8 @@ async getUnpurchasedProducts() {
         return { error: error.message }
     }
 }
+
+//Stat1: 1-	Total number of customers, companies, categories and products 
 
 async getTotalNumberOfCustomers() {
     try {
@@ -318,7 +320,8 @@ async getTotalNumberOfSellers() {
     }
   }
   
- 
+ //Stat2: Top 3 most bought products over the last 6 months
+
   async  getTop3PurchasedProducts() {
     const before6month = new Date();
     before6month.setMonth(before6month.getMonth()-6)
@@ -339,8 +342,6 @@ async getTotalNumberOfSellers() {
       return { error: error.message };
     }
   }
-
-
   async getitemsDetails(itemIds) {
     try {
       const itemsDetails= [];
@@ -358,6 +359,7 @@ async getTotalNumberOfSellers() {
     }
   }
 
+  //Stat3
   async getTotalNumberOfCustomersPerCountry() {
     try {
         //first get all customers
@@ -378,7 +380,7 @@ async getTotalNumberOfSellers() {
         return { error: error.message }
     }
 }   
-
+//stat4
     async getMonthlyRevenueOfProductsByCategory(){
 
         try {
@@ -411,8 +413,8 @@ async getTotalNumberOfSellers() {
         }
     }
 
+    //Stat5
     async  getTopThreeMostClickedProducts() {
-
         try {
           return await prisma.item.findMany({
             orderBy: { 
@@ -424,7 +426,4 @@ async getTotalNumberOfSellers() {
           return { error: error.message };
         }
       }
-
-    
-
     }
