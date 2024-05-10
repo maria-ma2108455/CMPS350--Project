@@ -36,7 +36,7 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
     <>
 <Header/>
 
-<div>
+<div className={styles.padding}>
      
 
      <div className={styles.noCard} id="basic">
@@ -50,7 +50,8 @@ const top3Companies = await ArtiCatRepo.getCompanyDetails(top3CompanyUN)
      </div>
       </div>
 
-     <h2 className={styles.charttitle} id="topProducts">Top 3 Products</h2>
+     <h2 className={styles.charttitle} id="topProducts">Top 3 Most Bought Products</h2>
+     <p className={styles.chartp}>-Over the last 6 months-</p>
      <div className={styles.top3}>
      <Top3Chart top3Items={itemsdetails} className={styles.chartSpace}/>
      <Top3Details top3Items={itemsdetails}/>

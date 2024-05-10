@@ -91,7 +91,7 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
     return <p>Loading Data....</p>
   }
   return (
-    <ResponsiveContainer width="65%" height={450}>
+    <ResponsiveContainer width="85%" height={450}>
       <LineChart width={500} height={300} data={products}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="MONTH" padding={{ left: 30, right: 30 }} />
@@ -101,7 +101,7 @@ export default function MonthlyRevenuePerCategory({ monthlyCategoryRevenue }) {
         <Line
           type="monotone"
           dataKey="Ceramics"
-          stroke="#e2cf88"
+          stroke="#d6b3e7"
           activeDot={{ r: 8 }}
           strokeWidth={2.5}
         />
