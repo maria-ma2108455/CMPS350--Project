@@ -104,6 +104,10 @@
 
 }
 
+.padding{
+  padding-bottom: 2rem;
+}
+
 .top5{
   display: flex;
   flex-direction: column;
