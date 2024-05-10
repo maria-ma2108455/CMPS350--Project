@@ -12,7 +12,7 @@ function handleCategoryClick(){
 
 const featuredCC = document.querySelector('#featured-container')
 const shopAllBtn = document.querySelector('#shop-btn')
-items = JSON.parse(localStorage.items)
+
 document.addEventListener('DOMContentLoaded', addFeatured);
 shopAllBtn.addEventListener('click', handleShopAll)
 
