@@ -12,8 +12,6 @@ import {
 } from "recharts";
 import styles from "./page.module.css";
 
-// import React, { PureComponent } from 'react';
-
 export default function MonthlyRevenue({productsPerCategory}){
   
     const [products, setProducts] = useState([]);
