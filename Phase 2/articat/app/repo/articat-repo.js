@@ -428,7 +428,7 @@ async getTotalNumberOfSellers() {
       async  getTotalPurchasesCategory() {
         //over the last year 
         const before1year= new Date();
-        oneYearAgo.setFullYear(before1year.getFullYear()-1);
+        before1year.setFullYear(before1year.getFullYear()-1);
       try{
         return await prisma.purchase.groupBy({
           by: ['item'],
